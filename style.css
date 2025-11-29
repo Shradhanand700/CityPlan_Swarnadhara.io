@@ -55,6 +55,16 @@ header {
     animation: fadeIn 1s ease-in-out;
     text-align: left;   
 }
+.table{
+    background-color: white;
+    padding: 2rem;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 30px;
+}
 header h1 {
     font-size: 2rem;
     margin: 0;
