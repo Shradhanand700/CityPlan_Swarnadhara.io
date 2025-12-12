@@ -181,6 +181,7 @@
         border-radius: 30px;
         font-weight: 600;
         transition: all 0.3s ease;
+        cursor: pointer;
     }
 
     a.btn:hover {
@@ -230,6 +231,11 @@
         margin-top: 50px;
         font-size: 0.9rem;
         color: #ffdd59;
+    }
+
+    /* initially hide code panel */
+    #cpp-code-panel {
+        display: none;
     }
     </style>
 </head>
@@ -355,18 +361,18 @@
             </div>
         </section>
 
-        <!-- C++ CODE LINK -->
+        <!-- C++ CODE LINK (NO CODE YET) -->
         <section class="glass-panel hidden" id="cpp">
             <h2>C++ Code for Planning Core</h2>
             <p>
-                Click the button below to view the C++ sketch that models candidate stations and demand points,
+                Click the button below to load and display the C++ sketch that models candidate stations and demand points,
                 uses sorting + greedy for allocation, and a DP-like memo for repeated cost evaluations.
             </p>
-            <a href="#cpp-code" class="btn">View C++ Code</a>
+            <a class="btn" id="show-code-btn">View C++ Code</a>
         </section>
 
-        <!-- ACTUAL C++ CODE BLOCK (TARGET OF LINK) -->
-        <section class="glass-panel hidden" id="cpp-code">
+        <!-- HIDDEN C++ CODE PANEL (SHOWN ONLY AFTER CLICK) -->
+        <section class="glass-panel hidden" id="cpp-code-panel">
             <h2>C++ Sketch – Fuel Station Planning Core</h2>
             <pre style="overflow-x:auto; font-size:0.85rem; background:rgba(0,0,0,0.4); padding:20px; border-radius:15px;">
 #include &lt;bits/stdc++.h&gt;
@@ -478,6 +484,17 @@ int main() {
     }, { threshold: 0.1 });
 
     hiddenElements.forEach(el => observer.observe(el));
+
+    // show C++ code only after clicking the button
+    const showCodeBtn = document.getElementById('show-code-btn');
+    const cppPanel = document.getElementById('cpp-code-panel');
+
+    showCodeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        cppPanel.style.display = 'block';
+        cppPanel.classList.add('show');
+        cppPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
     </script>
 </body>
 </html>
