@@ -233,7 +233,6 @@
         color: #ffdd59;
     }
 
-    /* initially hide code panel */
     #cpp-code-panel {
         display: none;
     }
@@ -361,17 +360,17 @@
             </div>
         </section>
 
-        <!-- C++ CODE LINK (NO CODE YET) -->
+        <!-- C++ CODE LINK + LEARNING OUTCOMES -->
         <section class="glass-panel hidden" id="cpp">
-            <h2>C++ Code for Planning Core</h2>
+            <h2>C++ Code & Learning</h2>
             <p>
-                Click the button below to load and display the C++ sketch that models candidate stations and demand points,
-                uses sorting + greedy for allocation, and a DP-like memo for repeated cost evaluations.
+                Use the buttons below to load the C++ sketch or open a separate learning outcomes resource.
             </p>
             <a class="btn" id="show-code-btn">View C++ Code</a>
+            <a class="btn" id="learning-btn">Learning Outcomes</a>
         </section>
 
-        <!-- HIDDEN C++ CODE PANEL (SHOWN ONLY AFTER CLICK) -->
+        <!-- HIDDEN C++ CODE PANEL -->
         <section class="glass-panel hidden" id="cpp-code-panel">
             <h2>C++ Sketch – Fuel Station Planning Core</h2>
             <pre style="overflow-x:auto; font-size:0.85rem; background:rgba(0,0,0,0.4); padding:20px; border-radius:15px;">
@@ -473,7 +472,7 @@ int main() {
     </div>
 
     <script>
-    // simple scroll animation hook
+    // scroll animation
     const hiddenElements = document.querySelectorAll('.hidden');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -494,6 +493,13 @@ int main() {
         cppPanel.style.display = 'block';
         cppPanel.classList.add('show');
         cppPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // learning outcomes button – open a safe URL in new tab
+    const learningBtn = document.getElementById('learning-btn');
+    learningBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.open('YOUR_SAFE_LEARNING_URL_HERE', '_blank');
     });
     </script>
 </body>
