@@ -1,227 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business & Data Structures</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business DS Applications</title>
 
-    <style>
-        /* Reset default margin and padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<!-- Imported Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
 
-        /* Global Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f5f5f5;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-        }
+<style>
+/* --- BODY --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    min-height: 100vh;
+}
 
-        /* Main Container */
-        .container {
-            background-color: white;
-            padding: 2rem;
-            width: 90%;
-            max-width: 900px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            margin-top: 30px;
-        }
+/* --- CONTAINER --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
 
-        /* Header */
-        h1 {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+/* --- NAVBAR --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    margin-bottom: 50px;
+}
 
-        /* Section Titles */
-        h2 {
-            color: #4CAF50;
-            margin-bottom: 0.5rem;
-            font-size: 1.4rem;
-        }
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+}
 
-        h3 {
-            margin: 1.5rem 0 0.5rem;
-            color: #333;
-            font-size: 1.2rem;
-            text-decoration: underline;
-        }
+header .navbar h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
 
-        /* DS Sections */
-        .ds-section {
-            background-color: #e7f7e7;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 5px;
-        }
+/* --- GLASS PANELS --- */
+.glass-panel {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 30px 40px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .container {
-                padding: 1.5rem;
-            }
-        }
-    </style>
+.glass-panel:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(255,140,0,0.5);
+}
+
+/* --- GRADIENT HEADINGS --- */
+h2, h3 {
+    background: linear-gradient(90deg, #ff512f, #dd2476, #f0ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- CARD GRID --- */
+.ds-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.ds-card {
+    background: rgba(255,140,0,0.05);
+    padding: 25px;
+    border-radius: 25px;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.ds-card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 20px 60px rgba(255,140,0,0.4);
+}
+
+/* shimmer */
+.ds-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+    transform: skewX(-25deg);
+}
+
+.ds-card:hover::before {
+    animation: shimmer 0.8s forwards;
+}
+
+@keyframes shimmer {
+    0% { left: -80%; }
+    100% { left: 130%; }
+}
+
+/* --- SCROLL ANIMATION --- */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    color: #ffdd59;
+}
+</style>
+
 </head>
 
 <body>
 
-    <div class="container">
+<header>
+    <div class="logo">Business Data Structures</div>
+</header>
 
-        <h1>Business & Data Structures</h1>
+<div class="container">
 
+<!-- ===================== ENTERTAINMENT ===================== -->
+<section class="glass-panel hidden">
+    <h2>Entertainment Business</h2>
+    <div class="ds-list">
 
-        <!-- ENTERTAINMENT -->
-        <h3>Entertainment Business</h3>
-
-        <div class="ds-section">
-            <h2>1. Trees (BST / AVL / Red-Black)</h2>
+        <div class="ds-card hidden">
+            <h3>Trees (BST / AVL / Red-Black)</h3>
             <p>They keep customer or booking data sorted and allow quick searching for show times, slots, or items.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>2. Heaps</h2>
+        <div class="ds-card hidden">
+            <h3>Heaps</h3>
             <p>Useful for managing priority queues like fast-filling shows, game waitlists, or event rankings.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>3. BFS / DFS</h2>
+        <div class="ds-card hidden">
+            <h3>BFS / DFS</h3>
             <p>Gaming maps, room connections, or arena layouts can be modeled as graphs and explored efficiently.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>4. Sorting Algorithms</h2>
-            <p>Used for ordering seat numbers, food orders, game scores, or item lists by time/price/popularity.</p>
+        <div class="ds-card hidden">
+            <h3>Sorting Algorithms</h3>
+            <p>Used for ordering seat numbers, food orders, game scores, or lists by time/price/popularity.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>5. Trie</h2>
+        <div class="ds-card hidden">
+            <h3>Trie</h3>
             <p>Enables fast prefix-based search for movies, games, or menu items with autocomplete.</p>
         </div>
 
+    </div>
+</section>
 
+<!-- ===================== RESTAURANT ===================== -->
+<section class="glass-panel hidden">
+    <h2>Restaurant / Food Business</h2>
 
-        <!-- LIFESTYLE -->
-        <h3>Lifestyle Business</h3>
+    <div class="ds-list">
 
-        <div class="ds-section">
-            <h2>AVL / Red-Black Trees</h2>
+        <div class="ds-card hidden">
+            <h3>AVL / Red-Black Trees</h3>
             <p>Keep customer records, bookings, and memberships balanced and searchable with fast updates.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Heap</h2>
+        <div class="ds-card hidden">
+            <h3>Heap</h3>
             <p>Manages appointment priority, table reservations, or urgent orders in an efficient way.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Trie</h2>
+        <div class="ds-card hidden">
+            <h3>Trie</h3>
             <p>Quickly finds menu items or services when users type partial names.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Skip List</h2>
-            <p>Provides flexible and fast updates for dynamic menus, staff availability, or changing time slots.</p>
+        <div class="ds-card hidden">
+            <h3>Skip List</h3>
+            <p>Provides fast updates for dynamic menus, staff availability, or changing time slots.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Sorting Algorithms</h2>
+        <div class="ds-card hidden">
+            <h3>Sorting Algorithms</h3>
             <p>Helps rank customers, sort prices, arrange menu items, or order services.</p>
         </div>
 
+    </div>
+</section>
 
+<!-- ===================== EDUCATION ===================== -->
+<section class="glass-panel hidden">
+    <h2>Education Business</h2>
 
-        <!-- EDUCATION -->
-        <h3>Education Business</h3>
+    <div class="ds-list">
 
-        <div class="ds-section">
-            <h2>Segment Tree</h2>
+        <div class="ds-card hidden">
+            <h3>Segment Tree</h3>
             <p>Efficient for range queries like total attendance or marks within a roll-number interval.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>AVL / RB Trees</h2>
+        <div class="ds-card hidden">
+            <h3>AVL / RB Trees</h3>
             <p>Good for maintaining sorted student data, records, and enrolling/dropping updates quickly.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Trie</h2>
+        <div class="ds-card hidden">
+            <h3>Trie</h3>
             <p>Speeds up searching in digital libraries, documents, or course names using prefix lookup.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>BFS / DFS</h2>
+        <div class="ds-card hidden">
+            <h3>BFS / DFS</h3>
             <p>Useful for navigating course prerequisites, academic hierarchies, or campus structures.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Dijkstra / Bellman-Ford / Floyd</h2>
+        <div class="ds-card hidden">
+            <h3>Dijkstra / Bellman-Ford / Floyd</h3>
             <p>Used for shortest-path problems like campus navigation or timetable conflict optimization.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Union-Find</h2>
-            <p>Helps group students, detect cycles in prerequisite graphs, or manage club/team membership sets.</p>
+        <div class="ds-card hidden">
+            <h3>Union-Find</h3>
+            <p>Helps group students, detect cycles in prerequisite graphs, or manage club/team memberships.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Sorting Algorithms</h2>
-            <p>Required for ranking students, sorting marks, listing courses, or arranging class schedules.</p>
+        <div class="ds-card hidden">
+            <h3>Sorting Algorithms</h3>
+            <p>Required for ranking students, sorting marks, listing courses, or arranging schedules.</p>
         </div>
 
+    </div>
+</section>
 
+<!-- ===================== E-COMMERCE ===================== -->
+<section class="glass-panel hidden">
+    <h2>E-Commerce Business</h2>
 
-        <!-- E-COMMERCE -->
-        <h3>E-Commerce / Shipping Business</h3>
+    <div class="ds-list">
 
-        <div class="ds-section">
-            <h2>Trie</h2>
+        <div class="ds-card hidden">
+            <h3>Trie</h3>
             <p>Fast prefix search for product names, addresses, categories, and auto-completing user input.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Heap</h2>
+        <div class="ds-card hidden">
+            <h3>Heap</h3>
             <p>Prioritizes deliveries (express first), handles limited stock alerts, and processes urgent orders.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Graph Algorithms (Dijkstra / Bellman-Ford / Floyd-Warshall)</h2>
+        <div class="ds-card hidden">
+            <h3>Graph Algorithms</h3>
             <p>Calculate shortest/cheapest shipping routes and optimize delivery paths between warehouses.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Kruskal + Union-Find</h2>
+        <div class="ds-card hidden">
+            <h3>Kruskal + Union-Find</h3>
             <p>Build the most cost-efficient shipping/warehouse network using minimum spanning trees.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Segment / Fenwick Tree</h2>
+        <div class="ds-card hidden">
+            <h3>Segment / Fenwick Tree</h3>
             <p>Supports real-time updates on inventory and fast range queries across large product datasets.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Skip List</h2>
+        <div class="ds-card hidden">
+            <h3>Skip List</h3>
             <p>Maintains sorted dynamic lists of products by price, rating, or delivery speed.</p>
         </div>
 
-        <div class="ds-section">
-            <h2>Sorting Algorithms</h2>
+        <div class="ds-card hidden">
+            <h3>Sorting Algorithms</h3>
             <p>Help order products by cost, popularity, reviews, or arrival time.</p>
         </div>
 
     </div>
+</section>
+
+<footer>
+    © 2025 - Business DS Visual Guide
+</footer>
+
+</div>
+
+<!-- ======= SCROLL REVEAL SCRIPT ======= -->
+<script>
+const hiddenElems = document.querySelectorAll('.hidden');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.2 });
+
+hiddenElems.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
