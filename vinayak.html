@@ -1,407 +1,591 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title> — Blue & Green Economy Ideas (SDG-aligned)</title>
-  <meta name="description" content="Six identified business ideas with description, economic impact and related SDGs — ready for GitHub." />
-  <style>
-    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#2dd4bf;--glass: rgba(255,255,255,0.03)}
-    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,#071024 0%, #071b2a 100%); color:#e6eef6}
-    .wrap{max-width:980px;margin:36px auto;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-    header{display:flex;align-items:center;gap:16px}
-    header h1{margin:0;font-size:20px}
-    header p{margin:0;color:var(--muted);font-size:13px}
-    nav{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
-    .pill{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted);text-decoration:none}
-    section{margin-top:22px;padding:18px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));}
-    h2{margin:0 0 8px 0;font-size:18px}
-    .meta{font-size:13px;color:var(--muted);margin-bottom:12px}
-    .grid{display:grid;grid-template-columns:1fr;gap:12px}
-    .card{background:rgba(255,255,255,0.02);padding:14px;border-radius:8px}
-    ul{margin:6px 0 0 18px}
-    .sdg{display:inline-block;padding:6px 8px;border-radius:8px;font-weight:600;font-size:12px;margin-right:8px;background:rgba(255,255,255,0.03);color:var(--accent)}
-    footer{margin-top:18px;color:var(--muted);font-size:13px}
-    pre{background:#061421;padding:10px;border-radius:8px;overflow:auto;color:#bfeef0}
-    @media(min-width:880px){.grid{grid-template-columns:1fr 1fr}}
-  </style>
+    <meta charset="UTF-8">
+    <title>Coastal Smart City – Blue/Green Economy & DAA Reflections</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+    /* --- BODY --- */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Space Grotesk', sans-serif;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        color: #fff;
+        min-height: 100vh;
+    }
+
+    /* --- CONTAINER --- */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    /* --- NAVBAR --- */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background: linear-gradient(90deg, #ff512f, #dd2476);
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        margin-bottom: 50px;
+    }
+
+    header .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Pacifico', cursive;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    header .logo img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    header .navbar h1 {
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-right: 30px;
+    }
+
+    header .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+    }
+
+    header .navbar ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 8px 15px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    header .navbar ul li a:hover {
+        background: rgba(255,255,255,0.2);
+        color: #ffdd59;
+        transform: scale(1.05);
+    }
+
+    /* --- GLASS PANELS --- */
+    .glass-panel {
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 25px;
+        padding: 30px 40px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(255,255,255,0.2);
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .glass-panel:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(255,140,0,0.5);
+    }
+
+    /* --- INTRO CARD --- */
+    .intro-card p {
+        font-size: 1.6rem;
+        line-height: 1.8;
+        text-align: center;
+        animation: fadeInZoom 1s ease forwards;
+    }
+
+    @keyframes fadeInZoom {
+        0% { opacity: 0; transform: scale(0.8); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* --- GRADIENT HEADINGS --- */
+    h2, h3 {
+        background: linear-gradient(90deg, #ff512f, #dd2476, #f0ff00);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* --- TABLE --- */
+    .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    .styled-table caption {
+        caption-side: top;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    .styled-table th, .styled-table td {
+        border: 1px solid #fff;
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    .styled-table th {
+        background: rgba(255,140,0,0.2);
+    }
+
+    /* --- CARDS GRID --- */
+    .grid, .course-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+    }
+
+    /* --- CARD STYLING --- */
+    .card, .qa-card {
+        background: rgba(255,140,0,0.05);
+        padding: 20px;
+        border-radius: 20px;
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: default;
+    }
+
+    .qa-card:hover, .card:hover {
+        animation: bounce 0.6s;
+        transform: scale(1.04);
+        box-shadow: 0 25px 60px rgba(255,140,0,0.6);
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-15px); }
+        60% { transform: translateY(-8px); }
+    }
+
+    /* --- BUTTONS --- */
+    a.btn, button.btn {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 10px 25px;
+        background: rgba(255,140,0,0.2);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+    }
+
+    a.btn:hover, button.btn:hover {
+        background: #ff8c00;
+        color: #000;
+        box-shadow: 0 10px 20px rgba(255,140,0,0.5);
+    }
+
+    /* --- SHIMMER EFFECT --- */
+    .qa-card::before, .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+        transform: skewX(-25deg);
+    }
+
+    .qa-card:hover::before, .card:hover::before {
+        animation: shimmer 1s forwards;
+    }
+
+    @keyframes shimmer {
+        0% { left: -75%; }
+        100% { left: 125%; }
+    }
+
+    /* --- SDG PILL --- */
+    .sdg {
+        display: inline-block;
+        padding: 6px 8px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 12px;
+        margin-right: 8px;
+        margin-bottom: 4px;
+        background: rgba(255,255,255,0.05);
+        color: #2dd4bf;
+    }
+
+    /* --- Q&A STYLE --- */
+    .question-block h3 {
+        margin-top: 0;
+    }
+    .question-block p, .question-block ul {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* --- SCROLL ANIMATION --- */
+    .hidden {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease-out;
+    }
+
+    .show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* --- CODE / EXPORT PANELS --- */
+    pre {
+        background: rgba(0,0,0,0.4);
+        padding: 14px;
+        border-radius: 12px;
+        overflow: auto;
+        font-size: 0.85rem;
+        color: #d1f5ff;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        opacity: 0.8;
+        margin-top: 40px;
+        font-size: 0.9rem;
+        color: #ffdd59;
+    }
+    </style>
 </head>
 <body>
-  <div class="wrap">
+<div class="container">
+    <!-- NAVBAR -->
     <header>
-      <div>
-        <h1> — Blue & Green Economy Ideas</h1>
-        <p>Six business opportunities with brief description, economic impact and aligned SDGs — HTML ready for GitHub.</p>
-      </div>
-    </header><nav>
-  <a class="pill" href="#green-energy">Green Energy & Ocean Energy Hub</a>
-  <a class="pill" href="#clean-water">Clean Water + Environmental Industries</a>
-  <a class="pill" href="#transport">Transport model & logistics</a>
-  <a class="pill" href="#shipbuilding">Ship building & repair</a>
-  <a class="pill" href="#waste-to-blue">Waste-to-Blue-Energy</a>
-  <a class="pill" href="#deep-ocean">Deep Ocean Mining</a>
-</nav>
+        <div class="logo">
+            <img src="https://via.placeholder.com/40" alt="Logo">
+            Coastal Ideas & DAA
+        </div>
+        <nav class="navbar">
+            <h1>Blue/Green Economy & Algorithm Reflections</h1>
+            <ul>
+                <li><a href="#blue-green">Blue & Green Ideas</a></li>
+                <li><a href="#daa">DAA Reflections</a></li>
+                <li><a href="#export">Export Tools</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section id="green-energy">
-  <h2>1. Green Energy & Ocean Energy Hub</h2>
-  <div class="meta">Brief description • Economic impact • Related SDGs</div>
-  <div class="grid">
-    <div class="card">
-      <strong>Description</strong>
-      <p>A hub that develops, demonstrates and deploys ocean-based renewable energy (offshore wind, tidal, wave, OTEC) together with energy storage, grid integration and supply‑chain services. The hub can include R&D labs, manufacturing/assembly at portside, testing sites and workforce training.</p>
-    </div>
-    <div class="card">
-      <strong>Impact on the economy</strong>
-      <ul>
-        <li>Creates high‑skill jobs (engineering, marine construction, operations & maintenance).</li>
-        <li>Improves energy security and reduces fossil‑fuel imports.</li>
-        <li>Attracts investment and develops local supply chains (manufacturing, ports, cables).</li>
-        <li>Enables exportable technologies and services (design, installation, O&M).</li>
-      </ul>
-    </div>
-    <div class="card">
-      <strong>Related SDGs</strong>
-      <div style="margin-top:8px">
-        <span class="sdg">SDG 7</span>
-        <span class="sdg">SDG 9</span>
-        <span class="sdg">SDG 11</span>
-        <span class="sdg">SDG 13</span>
-        <span class="sdg">SDG 14</span>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- INTRO -->
+    <section class="glass-panel intro-card">
+        <p>
+            Six SDG-aligned blue & green economy business ideas for a coastal city, combined with Design & Analysis of Algorithms reflections — styled as a single GitHub-ready concept page.
+        </p>
+    </section>
 
-<section id="clean-water">
-  <h2>2. Clean Water + Environmental Industries</h2>
-  <div class="meta">Brief description • Economic impact • Related SDGs</div>
-  <div class="grid">
-    <div class="card">
-      <strong>Description</strong>
-      <p>Companies and projects that deliver water purification (including decentralized systems), desalination, wastewater treatment, reuse, pollution‑control technologies and environmental monitoring services to protect ecosystems and ensure water security.</p>
-    </div>
-    <div class="card">
-      <strong>Impact on the economy</strong>
-      <ul>
-        <li>Secures water supply for households, agriculture and industry — increasing productivity.</li>
-        <li>Reduces public health burden by preventing water‑borne diseases.</li>
-        <li>Generates manufacturing and service jobs in engineering, operations and monitoring.</li>
-        <li>Enables industrial expansion where reliable water is available.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <strong>Related SDGs</strong>
-      <div style="margin-top:8px">
-        <span class="sdg">SDG 6</span>
-        <span class="sdg">SDG 3</span>
-        <span class="sdg">SDG 11</span>
-        <span class="sdg">SDG 12</span>
-        <span class="sdg">SDG 14</span>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- BLUE & GREEN ECONOMY SECTION -->
+    <section class="glass-panel hidden" id="blue-green">
+        <h2>Blue & Green Economy Business Ideas</h2>
+        <p style="font-size:0.95rem;opacity:0.85;">
+            Each idea includes a brief description, economic impact, and related SDGs for your 1300 sq km coastal city.
+        </p>
 
-<section id="transport">
-  <h2>3. Transport model and logistics</h2>
-  <div class="meta">Brief description • Economic impact • Related SDGs</div>
-  <div class="grid">
-    <div class="card">
-      <strong>Description</strong>
-      <p>Integrated transport solutions spanning electric buses & ferries, smart public transport, intermodal freight, green last‑mile delivery, port logistics and digital supply‑chain platforms that reduce emissions and improve efficiency.</p>
-    </div>
-    <div class="card">
-      <strong>Impact on the economy</strong>
-      <ul>
-        <li>Lowers logistics costs and improves competitiveness for exporters and local businesses.</li>
-        <li>Creates jobs across vehicle manufacturing, fleet operations, warehousing and IT services.</li>
-        <li>Reduces congestion and time lost, increasing productivity in cities.</li>
-        <li>Supports growth of trade by improving port and inland connectivity.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <strong>Related SDGs</strong>
-      <div style="margin-top:8px">
-        <span class="sdg">SDG 9</span>
-        <span class="sdg">SDG 11</span>
-        <span class="sdg">SDG 13</span>
-        <span class="sdg">SDG 8</span>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- NAV PILLS -->
+        <div class="course-container" style="margin-bottom:20px;">
+            <a class="btn" href="#green-energy">Green & Ocean Energy Hub</a>
+            <a class="btn" href="#clean-water">Clean Water & Environment</a>
+            <a class="btn" href="#transport">Transport & Logistics</a>
+            <a class="btn" href="#shipbuilding">Shipbuilding & Repair</a>
+            <a class="btn" href="#waste-blue">Waste-to-Blue-Energy</a>
+            <a class="btn" href="#deep-ocean">Deep Ocean Mining</a>
+        </div>
 
-<section id="shipbuilding">
-  <h2>4. Ship building and ship repair business</h2>
-  <div class="meta">Brief description • Economic impact • Related SDGs</div>
-  <div class="grid">
-    <div class="card">
-      <strong>Description</strong>
-      <p>Facilities that design, construct, retrofit and repair vessels — from fishing boats to commercial ships and offshore platforms. Includes shipyards, specialized workshops and naval architecture services.</p>
-    </div>
-    <div class="card">
-      <strong>Impact on the economy</strong>
-      <ul>
-        <li>Provides large numbers of skilled and semi‑skilled jobs (welders, fitters, engineers).</li>
-        <li>Builds industrial capacity for maritime trade and naval requirements.</li>
-        <li>Creates demand for steel, engines, electronics and marine sub‑suppliers.</li>
-        <li>Supports port ecosystem and regional exports through improved fleet availability.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <strong>Related SDGs</strong>
-      <div style="margin-top:8px">
-        <span class="sdg">SDG 9</span>
-        <span class="sdg">SDG 8</span>
-        <span class="sdg">SDG 14</span>
-        <span class="sdg">SDG 11</span>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- 1. GREEN ENERGY -->
+        <div class="glass-panel" id="green-energy">
+            <h3>1. Green Energy & Ocean Energy Hub</h3>
+            <div class="grid">
+                <div class="card">
+                    <strong>Description</strong>
+                    <p>A hub that develops, tests, and deploys offshore wind, tidal, wave, and OTEC energy, with storage, grid integration, port-side manufacturing, and workforce training.</p>
+                </div>
+                <div class="card">
+                    <strong>Economic Impact</strong>
+                    <ul>
+                        <li>Creates high‑skill engineering and marine jobs.</li>
+                        <li>Improves energy security and reduces fuel imports.</li>
+                        <li>Builds local supply chains around ports and cabling.</li>
+                        <li>Enables export of design, installation, and O&M services.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <strong>SDG Alignment</strong>
+                    <div style="margin-top:8px">
+                        <span class="sdg">SDG 7</span>
+                        <span class="sdg">SDG 9</span>
+                        <span class="sdg">SDG 11</span>
+                        <span class="sdg">SDG 13</span>
+                        <span class="sdg">SDG 14</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<section id="waste-to-blue">
-  <h2>5. Waste-to-Blue-Energy Solutions</h2>
-  <div class="meta">Brief description • Economic impact • Related SDGs</div>
-  <div class="grid">
-    <div class="card">
-      <strong>Description</strong>
-      <p>Converting coastal and marine waste (seaweed, organic coastal biomass, fishing residues, plastics) into energy carriers (biofuel, biogas, hydrogen, electricity) using biochemical, thermochemical and advanced recycling processes.</p>
-    </div>
-    <div class="card">
-      <strong>Impact on the economy</strong>
-      <ul>
-        <li>Enables circular value chains — turning pollutants into marketable energy and products.</li>
-        <li>Reduces cleanup costs and restores tourism/fisheries value along coastlines.</li>
-        <li>Stimulates startups in biotech, recycling and green chemistry.</li>
-        <li>Creates local energy sources for coastal communities and industries.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <strong>Related SDGs</strong>
-      <div style="margin-top:8px">
-        <span class="sdg">SDG 12</span>
-        <span class="sdg">SDG 7</span>
-        <span class="sdg">SDG 13</span>
-        <span class="sdg">SDG 14</span>
-        <span class="sdg">SDG 11</span>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- 2. CLEAN WATER -->
+        <div class="glass-panel" id="clean-water">
+            <h3>2. Clean Water & Environmental Industries</h3>
+            <div class="grid">
+                <div class="card">
+                    <strong>Description</strong>
+                    <p>Enterprises providing purification, desalination, wastewater reuse, pollution control, and environmental monitoring for secure, healthy water systems.</p>
+                </div>
+                <div class="card">
+                    <strong>Economic Impact</strong>
+                    <ul>
+                        <li>Secures water for households, farms, and industry.</li>
+                        <li>Reduces health burden from water‑borne diseases.</li>
+                        <li>Creates engineering and operations jobs.</li>
+                        <li>Enables industry growth wherever water is reliable.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <strong>SDG Alignment</strong>
+                    <div style="margin-top:8px">
+                        <span class="sdg">SDG 6</span>
+                        <span class="sdg">SDG 3</span>
+                        <span class="sdg">SDG 11</span>
+                        <span class="sdg">SDG 12</span>
+                        <span class="sdg">SDG 14</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<section id="deep-ocean">
-  <h2>6. Deep Ocean Mining — Rare Earth & Critical Minerals</h2>
-  <div class="meta">Brief description • Economic impact • Related SDGs</div>
-  <div class="grid">
-    <div class="card">
-      <strong>Description</strong>
-      <p>Carefully governed extraction of polymetallic nodules and mineral deposits from the seabed (cobalt, nickel, manganese, rare earth elements) to supply the supply chain for batteries, electronics and renewable technologies — with strict environmental safeguards and monitoring.</p>
-    </div>
-    <div class="card">
-      <strong>Impact on the economy</strong>
-      <ul>
-        <li>Secures strategic supplies for high‑tech manufacturing (EVs, energy storage, electronics).</li>
-        <li>Creates high‑tech jobs in robotics, marine robotics and subsea engineering.</li>
-        <li>Generates export revenue while reducing import dependence for critical minerals.</li>
-        <li>Requires investment in monitoring, regulation and environmental impact mitigation — creating additional service sectors.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <strong>Related SDGs</strong>
-      <div style="margin-top:8px">
-        <span class="sdg">SDG 9</span>
-        <span class="sdg">SDG 12</span>
-        <span class="sdg">SDG 7</span>
-        <span class="sdg">SDG 14</span>
-        <span class="sdg">SDG 8</span>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- 3. TRANSPORT -->
+        <div class="glass-panel" id="transport">
+            <h3>3. Transport Model & Logistics</h3>
+            <div class="grid">
+                <div class="card">
+                    <strong>Description</strong>
+                    <p>Integrated transport: electric buses and ferries, smart public transit, intermodal freight, green last‑mile delivery, and port logistics on digital platforms.</p>
+                </div>
+                <div class="card">
+                    <strong>Economic Impact</strong>
+                    <ul>
+                        <li>Lowers logistics costs and boosts competitiveness.</li>
+                        <li>Creates jobs in fleets, warehousing, and IT.</li>
+                        <li>Reduces congestion and time lost in traffic.</li>
+                        <li>Improves trade via better port connectivity.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <strong>SDG Alignment</strong>
+                    <div style="margin-top:8px">
+                        <span class="sdg">SDG 9</span>
+                        <span class="sdg">SDG 11</span>
+                        <span class="sdg">SDG 13</span>
+                        <span class="sdg">SDG 8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  </div>
+        <!-- 4. SHIPBUILDING -->
+        <div class="glass-panel" id="shipbuilding">
+            <h3>4. Shipbuilding & Ship Repair</h3>
+            <div class="grid">
+                <div class="card">
+                    <strong>Description</strong>
+                    <p>Shipyards and workshops that design, build, retrofit, and repair vessels, from fishing boats to commercial ships and offshore platforms.</p>
+                </div>
+                <div class="card">
+                    <strong>Economic Impact</strong>
+                    <ul>
+                        <li>Provides large numbers of skilled and semi‑skilled jobs.</li>
+                        <li>Builds maritime and naval industrial capacity.</li>
+                        <li>Drives demand for steel, engines, and electronics.</li>
+                        <li>Strengthens port ecosystems and exports.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <strong>SDG Alignment</strong>
+                    <div style="margin-top:8px">
+                        <span class="sdg">SDG 9</span>
+                        <span class="sdg">SDG 8</span>
+                        <span class="sdg">SDG 14</span>
+                        <span class="sdg">SDG 11</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. WASTE TO BLUE -->
+        <div class="glass-panel" id="waste-blue">
+            <h3>5. Waste-to-Blue-Energy Solutions</h3>
+            <div class="grid">
+                <div class="card">
+                    <strong>Description</strong>
+                    <p>Convert coastal waste (seaweed, biomass, fishing residues, plastics) into fuels and power via biochemical, thermochemical, and advanced recycling.</p>
+                </div>
+                <div class="card">
+                    <strong>Economic Impact</strong>
+                    <ul>
+                        <li>Creates circular value chains from pollution.</li>
+                        <li>Reduces cleanup costs and restores tourism/fisheries.</li>
+                        <li>Drives biotech and recycling startups.</li>
+                        <li>Provides local energy for coastal communities.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <strong>SDG Alignment</strong>
+                    <div style="margin-top:8px">
+                        <span class="sdg">SDG 12</span>
+                        <span class="sdg">SDG 7</span>
+                        <span class="sdg">SDG 13</span>
+                        <span class="sdg">SDG 14</span>
+                        <span class="sdg">SDG 11</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. DEEP OCEAN -->
+        <div class="glass-panel" id="deep-ocean">
+            <h3>6. Deep Ocean Mining – Critical Minerals</h3>
+            <div class="grid">
+                <div class="card">
+                    <strong>Description</strong>
+                    <p>Governed extraction of polymetallic nodules and seabed minerals (cobalt, nickel, manganese, rare earths) for batteries, electronics, and renewable tech, with strict environmental monitoring.</p>
+                </div>
+                <div class="card">
+                    <strong>Economic Impact</strong>
+                    <ul>
+                        <li>Secures strategic mineral supplies for high‑tech industry.</li>
+                        <li>Creates subsea engineering and robotics jobs.</li>
+                        <li>Generates export revenue and reduces import dependence.</li>
+                        <li>Stimulates monitoring and regulatory service sectors.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <strong>SDG Alignment</strong>
+                    <div style="margin-top:8px">
+                        <span class="sdg">SDG 9</span>
+                        <span class="sdg">SDG 12</span>
+                        <span class="sdg">SDG 7</span>
+                        <span class="sdg">SDG 14</span>
+                        <span class="sdg">SDG 8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DAA REFLECTIONS SECTION -->
+    <section class="glass-panel hidden" id="daa">
+        <h2>Course Reflections – Design & Analysis of Algorithms</h2>
+        <p style="font-size:0.95rem;opacity:0.85;">
+            Key conceptual takeaways from iteration, recursion, efficiency, hierarchies, graphs, and major algorithmic techniques.
+        </p>
+
+        <div class="glass-panel question-block">
+            <h3>1. Problems in Nature – Iteration, Recursion, Backtracking</h3>
+            <p>Nature exhibits repeated cycles (seasons), self-similar structures, and trial‑and‑error exploration that mirror iteration, recursion, and backtracking patterns.</p>
+        </div>
+
+        <div class="glass-panel question-block">
+            <h3>2. Space & Time Efficiency – Orders of Growth</h3>
+            <p>Space efficiency is extra memory an algorithm needs; time efficiency is how long it runs. Both matter for scalability and cost.</p>
+            <p class="small">Common classes: O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ), O(n!).</p>
+        </div>
+
+        <div class="glass-panel question-block">
+            <h3>3. Design Principles (Brave vs Cautious, Prefix/Suffix, Balance)</h3>
+            <p>Traversal metaphors (brave vs cautious) connect to BFS/DFS; prefix/suffix reasoning drives efficient string algorithms; balancing keeps trees efficient under updates.</p>
+        </div>
+
+        <div class="glass-panel question-block">
+            <h3>4. Hierarchical Data – Trees & Variants</h3>
+            <p>BSTs, AVL, 2–3 trees, red‑black trees, heaps, and tries show trade‑offs in search speed, balancing cost, and usage (priority queues, dictionaries, indexes).</p>
+        </div>
+
+        <div class="glass-panel question-block">
+            <h3>5. Array Query Algorithms</h3>
+            <p>Range queries and updates (Fenwick tree, segment tree, precomputed tables) underpin fast analytics in finance, e‑commerce, and logs.</p>
+        </div>
+
+        <div class="glass-panel question-block">
+            <h3>6. Trees vs Graphs & Traversals</h3>
+            <p>Trees are connected, acyclic, with n–1 edges; graphs are general. Traversals (BFS/DFS) enable routing, connectivity, and exploration in graphs; tree traversals power BST operations and expression evaluation.</p>
+        </div>
+
+        <div class="glass-panel question-block">
+            <h3>7. Sorting & Searching Connections</h3>
+            <p>Simple sorts (bubble, selection, insertion) are educational; merge and quick sort deliver O(n log n) performance. Searching spans linear, binary, and graph searches.</p>
+        </div>
+
+        <div class="glass-panel question-block">
+            <h3>8. Graph Algorithms – Spanning Trees & Shortest Paths</h3>
+            <p>Spanning trees minimize total connection cost; shortest paths minimize travel time or cost, foundational for networking and routing.</p>
+        </div>
+
+        <div class="glass-panel question-block">
+            <h3>9. Algorithm Design Techniques</h3>
+            <p>Backtracking, divide & conquer, shortest path algorithms, and graph traversals form a toolkit for search, optimization, and exploration problems.</p>
+        </div>
+    </section>
+
+    <!-- EXPORT / COPY TOOLS -->
+    <section class="glass-panel hidden" id="export">
+        <h2>Export This Page</h2>
+        <p style="font-size:0.95rem;opacity:0.85;">
+            Use the buttons to copy the current HTML or download it as a standalone file for GitHub Pages or local use.
+        </p>
+        <button class="btn" onclick="copyHtml()">Copy HTML</button>
+        <button class="btn" onclick="downloadFile()">Download .html</button>
+        <pre>// Note: buttons use a small script at the bottom to grab the page and export it.</pre>
+    </section>
+
+    <footer>
+        Blue & Green Economy + DAA Reflections – Coastal Smart City Concept Page
+    </footer>
+</div>
+
+<script>
+const hiddenElements = document.querySelectorAll('.hidden');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.1 });
+hiddenElements.forEach(el => observer.observe(el));
+
+function copyHtml() {
+    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+    navigator.clipboard.writeText(html)
+        .then(() => alert('HTML copied to clipboard'))
+        .catch(() => alert('Copy failed — please copy manually.'));
+}
+
+function downloadFile() {
+    const blob = new Blob(['<!DOCTYPE html>\n' + document.documentElement.outerHTML], {type: 'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'coastal_ideas_daa.html';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+}
+</script>
 </body>
-			</html>
-<!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Algorithms & Nature — Summary</title>
-  <style>
-    :root{--accent:#2563eb;--muted:#6b7280;--bg:#0f172a;--card:#0b1220}
-    body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;line-height:1.6;margin:0;background:#f8fafc;color:#0b1220}
-    header{background:linear-gradient(90deg,#eef2ff,#f0fdf4);padding:28px 20px;border-bottom:1px solid rgba(11,18,32,0.04)}
-    .container{max-width:980px;margin:24px auto;padding:0 18px}
-    h1{margin:0 0 6px;font-size:1.6rem}
-    p.lead{margin:0;color:var(--muted)}
-    nav.toc{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
-    nav.toc a{background:#fff;border:1px solid rgba(11,18,32,0.06);padding:6px 10px;border-radius:10px;text-decoration:none;color:var(--accent);font-size:0.9rem}
-    section.card{background:#fff;padding:18px;margin:18px 0;border-radius:10px;box-shadow:0 6px 20px rgba(12,22,45,0.04)}
-    section.card h2{margin-top:0}
-    .muted{color:var(--muted)}
-    pre.code{background:#0b1220;color:#e6eef8;padding:12px;border-radius:8px;overflow:auto}
-    /* Order-of-growth chart */
-    .o-chart{display:grid;grid-template-columns:160px 1fr;gap:10px;align-items:center}
-    .o-label{font-family:monospace}
-    .bar{height:18px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#7c3aed);box-shadow:inset 0 -4px 0 rgba(255,255,255,0.03)}
-    .bar.s1{width:4%}
-    .bar.slog{width:8%}
-    .bar.sn{width:30%}
-    .bar.snlog{width:45%}
-    .bar.sq{width:70%}
-    .bar.s2n{width:92%}
-    .bar.snf{width:100%}
-    footer{padding:18px;text-align:center;color:var(--muted);font-size:0.9rem}
-    @media (max-width:600px){.o-chart{grid-template-columns:1fr}} 
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container">
-      <h1>Algorithms & Nature — Concise Summary</h1>
-      <p class="lead">A clear, structured HTML summary covering computational patterns observed in nature, complexity, design principles, data structures, and algorithm techniques.</p>
-      <nav class="toc" aria-label="Table of contents">
-        <a href="#q1">1. Nature & Computational Patterns</a>
-        <a href="#q2">2. Space & Time Efficiency</a>
-        <a href="#q3">3. Design Principles</a>
-        <a href="#q4">4. Hierarchical Data & Trees</a>
-        <a href="#q5">5. Array Query Algorithms</a>
-        <a href="#q6">6. Trees vs Graphs</a>
-        <a href="#q7">7. Sorting & Searching</a>
-        <a href="#q8">8. Graph Algorithms</a>
-        <a href="#q9">9. Design Techniques Overview</a>
-      </nav>
-    </div>
-  </header>  <main class="container"><section id="q1" class="card">
-  <h2>1. What kinds of problems do we observe in nature? (iteration, recursion, backtracking)</h2>
-  <p>Nature naturally mirrors computational patterns:</p>
-  <ul>
-    <li><strong>Iteration:</strong> Seasonal cycles (spring → summer → monsoon → winter) repeat—an iterative process that continues until interrupted.</li>
-    <li><strong>Recursion:</strong> Structural repetition at multiple scales (e.g., patterns on millipedes or branching leaf structures) where a form contains smaller copies of itself.</li>
-    <li><strong>Backtracking:</strong> Exploratory behaviors—animals navigating burrows or foraging paths—where failed routes are abandoned and earlier decision points are revisited to try alternatives.</li>
-  </ul>
-</section>
-
-<section id="q2" class="card">
-  <h2>2. What is space and time efficiency? Why are they important?</h2>
-  <p>Space efficiency measures extra memory an algorithm uses. Time efficiency measures how long it takes to run. Both affect performance, cost, and scalability when handling large inputs.</p>
-  <h3>Major complexity classes</h3>
-  <ul>
-    <li>O(1) — Constant</li>
-    <li>O(log n) — Logarithmic</li>
-    <li>O(n) — Linear</li>
-    <li>O(n log n) — Linearithmic</li>
-    <li>O(n²) — Quadratic</li>
-    <li>O(2ⁿ) — Exponential</li>
-    <li>O(n!) — Factorial</li>
-  </ul>
-
-  <h3>Order of Growth Chart</h3>
-  <div class="o-chart">
-    <div class="o-label">O(1)</div><div class="bar s1"></div>
-    <div class="o-label">O(log n)</div><div class="bar slog"></div>
-    <div class="o-label">O(n)</div><div class="bar sn"></div>
-    <div class="o-label">O(n log n)</div><div class="bar snlog"></div>
-    <div class="o-label">O(n²)</div><div class="bar sq"></div>
-    <div class="o-label">O(2ⁿ)</div><div class="bar s2n"></div>
-    <div class="o-label">O(n!)</div><div class="bar snf"></div>
-  </div>
-
-  <p class="muted">Note: shorter bars = better scalability. O(1) and O(log n) are most efficient for large inputs; exponential and factorial grow infeasibly fast.</p>
-</section>
-
-<section id="q3" class="card">
-  <h2>3. Key takeaways from the design principles (Chapter 2)</h2>
-  <ul>
-    <li>Tie algorithm intuition to strong design philosophies to make complex ideas approachable.</li>
-    <li>Use the BFS vs DFS analogy: bold breadth-first exploration versus cautious depth-first probing.</li>
-    <li>Prefix & suffix thinking underlies pattern-matching algorithms such as KMP and Boyer–Moore.</li>
-    <li>Balancing techniques (rotations) are central to stable tree structures like AVL and red-black trees.</li>
-  </ul>
-</section>
-
-<section id="q4" class="card">
-  <h2>4. Hierarchical data and how tree structures optimize solutions</h2>
-  <p>Trees model hierarchical relationships efficiently. Key points:</p>
-  <ul>
-    <li><strong>Binary Trees:</strong> Simple hierarchical storage; susceptible to skewness.</li>
-    <li><strong>AVL Trees:</strong> Maintain strict balance via rotations for guaranteed O(log n) operations.</li>
-    <li><strong>Red-Black Trees:</strong> Easier balancing rules with good practical performance.</li>
-    <li><strong>2–3 Trees:</strong> Store multiple keys per node to preserve balanced height.</li>
-    <li><strong>Heaps:</strong> Ideal for priority operations (extract-max/extract-min).</li>
-    <li><strong>Tries:</strong> Excellent for prefix searches, autocomplete, and dictionary operations.</li>
-  </ul>
-</section>
-
-<section id="q5" class="card">
-  <h2>5. Need for array query algorithms and their implications</h2>
-  <p>Range-query techniques let systems extract statistics quickly from subarray ranges—valuable in e-commerce filters, financial trend analysis, and analytics dashboards.</p>
-  <ul>
-    <li><strong>Fenwick Trees (BIT):</strong> Compact, efficient point-update and prefix-sum queries using bit manipulation.</li>
-    <li><strong>Segment Trees:</strong> Support range updates and range queries with flexible combination functions.</li>
-    <li><strong>Lookup Tables / Precomputation:</strong> Trade memory for near-instant queries when input space is limited.</li>
-  </ul>
-</section>
-
-<section id="q6" class="card">
-  <h2>6. Difference between trees and graphs, their traversals, and applications</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-    <div>
-      <h4>Trees</h4>
-      <ul>
-        <li>Connected, acyclic, with a root</li>
-        <li>Exactly n−1 edges for n nodes</li>
-        <li>No cycles</li>
-      </ul>
-    </div>
-    <div>
-      <h4>Graphs</h4>
-      <ul>
-        <li>May be connected/disconnected</li>
-        <li>Can contain cycles</li>
-        <li>No required root; edges arbitrary</li>
-      </ul>
-    </div>
-  </div>
-
-  <h4>Traversals</h4>
-  <p><strong>Tree:</strong> Pre-order (Root→Left→Right), In-order (Left→Root→Right), Post-order (Left→Right→Root).</p>
-  <p><strong>Graph:</strong> DFS for deep exploration (mazes, path finding), BFS for level-wise search (shortest unweighted paths, network routing).</p>
-</section>
-
-<section id="q7" class="card">
-  <h2>7. Sorting and searching algorithms: techniques and real-world relevance</h2>
-  <ul>
-    <li><strong>Bubble / Insertion / Selection:</strong> Educational and fine for small inputs.</li>
-    <li><strong>Merge Sort:</strong> Stable divide & conquer with O(n log n) worst-case.</li>
-    <li><strong>Quick Sort:</strong> Fast in practice; average O(n log n), but worst-case O(n²) without good pivoting.</li>
-    <li><strong>Searching:</strong> Linear search for unsorted lists; binary search for sorted lists (O(log n)).</li>
-  </ul>
-  <p class="muted">Applications: product listing, database indexing, ranking, file search, and information retrieval systems.</p>
-</section>
-
-<section id="q8" class="card">
-  <h2>8. Importance of graph algorithms—spanning trees and shortest paths</h2>
-  <p>Spanning trees (e.g., MST via Kruskal/Prim) minimise connection cost—useful for network design. Shortest-path algorithms (Dijkstra, Bellman-Ford, Floyd–Warshall) find optimal routes in weighted networks—critical for navigation, routing, and logistics.</p>
-</section>
-
-<section id="q9" class="card">
-  <h2>9. Overview of algorithm design techniques studied</h2>
-  <ul>
-    <li><strong>Backtracking:</strong> Systematic exploration with pruning (N-Queens, constraint satisfaction).</li>
-    <li><strong>Divide & Conquer:</strong> Break problems into subproblems and combine (Merge Sort, Quick Sort).</li>
-    <li><strong>Shortest Path Algorithms:</strong> Dijkstra (non-negative weights), Floyd–Warshall (all pairs).</li>
-    <li><strong>Graph Traversals:</strong> BFS/DFS to structure exploration and search.</li>
-  </ul>
-</section>
-
-<footer>
-  <p>Generated summary • Use this HTML to embed in a GitHub repo or print as a quick reference.</p>
-</footer>
-
-  </main></body>
-	</html>
+</html>
