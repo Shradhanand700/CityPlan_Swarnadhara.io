@@ -10,11 +10,11 @@
           data-autoloader-path="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/"></script>
   <style>
     body{margin:0;padding:0;font-family:'Space Grotesk',sans-serif;
-      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh}
+      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh;overflow-x:hidden}
     .container{max-width:1200px;margin:0 auto;padding:40px 20px}
     header{display:flex;justify-content:space-between;align-items:center;
       padding:15px 30px;background:linear-gradient(90deg,#ff512f,#dd2476);
-      border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.5);margin-bottom:50px}
+      border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.5);margin-bottom:50px;position:relative}
     .logo{display:flex;align-items:center;gap:10px;font-family:'Pacifico',cursive;
       font-size:1.8rem;font-weight:700;color:#fff}
     .logo img{width:40px;height:40px;border-radius:50%}
@@ -23,6 +23,17 @@
     .navbar a{color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;
       border-radius:8px;transition:.3s}
     .navbar a:hover{background:rgba(255,255,255,.2);color:#ffdd59;transform:scale(1.05)}
+    .back-btn{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.35);
+      border-radius:999px;border:none;color:#fffbeb;padding:6px 14px;
+      cursor:pointer;font-size:.9rem;display:flex;align-items:center;gap:4px}
+    .back-btn:hover{background:rgba(0,0,0,.6)}
+    .side-nav{position:fixed;left:-120px;top:50%;transform:translateY(-50%);
+      display:flex;flex-direction:column;gap:10px;z-index:5}
+    .side-nav a{writing-mode:vertical-rl;text-orientation:mixed;
+      background:rgba(15,23,42,.9);color:#fff;text-decoration:none;
+      padding:10px 6px;border-radius:12px 0 0 12px;font-size:.8rem;
+      border:1px solid rgba(255,255,255,.2);transition:.3s}
+    .side-nav a:hover{transform:translateX(110px);background:#ff512f}
     .glass-panel{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);
       -webkit-backdrop-filter:blur(20px);border-radius:25px;padding:30px 40px;
       margin-bottom:30px;border:1px solid rgba(255,255,255,.2);
@@ -49,15 +60,22 @@
   </style>
 </head>
 <body>
+<div class="side-nav">
+  <a href="index.html">Home</a>
+  <a href="fuel.html">Fuel</a>
+  <a href="traffic.html">Traffic</a>
+  <a href="construction.html">Construction</a>
+</div>
+
 <div class="container">
   <header>
+    <button class="back-btn" onclick="history.back()">🔙 Back</button>
     <div class="logo">
       <img src="https://via.placeholder.com/40" alt="Logo"> Coastal Smart City
     </div>
     <nav class="navbar">
       <h1>APMC Management</h1>
       <ul>
-        <li><a href="index.html">Overview</a></li>
         <li><a href="fuel.html">Fuel</a></li>
         <li><a href="apmc.html">APMC</a></li>
         <li><a href="traffic.html">Traffic</a></li>
@@ -69,10 +87,10 @@
   <section class="glass-panel">
     <h2>Business Plan</h2>
     <p>
-      The APMC vertical runs digital mandis with transparent auctions, warehousing, and payment rails. It earns from per‑lot platform fees, storage subscriptions, logistics brokerage, and analytics subscriptions for cooperatives and policymakers.
+      The APMC vertical runs digital mandis with transparent auctions, warehousing, and payment rails. It earns from per‑lot platform fees, storage subscriptions, logistics brokerage, and analytics services for cooperatives and policymakers.
     </p>
     <p>
-      The roadmap starts with high‑volume crops and mandis, rolls out to smaller markets, and later integrates export terminals and cold‑chain operators for premium produce flows.
+      The roadmap starts with high‑volume crops and mandis, later extending to export terminals and cold‑chain partners for premium produce.
     </p>
     <div class="sdg-badges" style="margin-top:16px">
       <strong>SDG Alignment:</strong><br>
@@ -88,49 +106,58 @@
     <div class="course-container">
       <div class="qa-card">
         <h3>Hierarchical Market Graph</h3>
-        <p>Model village centres, mandis, warehouses, and ports as a layered graph for produce, bids, and information.</p>
+        <p>Model village centres, mandis, warehouses, and ports as a layered network for produce, bids, and information.</p>
       </div>
       <div class="qa-card">
         <h3>Greedy Auction Clearing</h3>
-        <p>Sort bids with merge sort and clear from highest to lowest while enforcing MSP and quality constraints.</p>
+        <p>Sort bids with merge sort and clear lots from highest bid down, under MSP and quality constraints.</p>
       </div>
       <div class="qa-card">
         <h3>DP Sell vs Store</h3>
-        <p>Dynamic programming compares selling now against storing with decay and forecast prices for future slots.</p>
+        <p>Dynamic programming compares selling now versus storing with loss and future price forecasts.</p>
       </div>
     </div>
   </section>
 
   <section class="glass-panel">
-    <h2>APMC – C++ Sketch</h2>
+    <h2>APMC – C++ (Optimised Sketch)</h2>
     <pre><code class="language-cpp">
 #include &lt;bits/stdc++.h&gt;
 using namespace std;
 
-struct Lot{int id;string commodity;double qty,basePrice;int perishDays;};
-struct Bid{int lotId,traderId;double price,qty;};
+struct Lot{
+    int id;
+    string commodity;
+    double qty,basePrice;
+    int perishDays;
+};
+struct Bid{
+    int lotId,traderId;
+    double price,qty;
+};
 
-bool cmpBid(const Bid&a,const Bid&b){
-    if(a.price!=b.price)return a.price&gt;b.price;
+inline bool cmpBid(const Bid&a,const Bid&b){
+    if(a.price!=b.price) return a.price&gt;b.price;
     return a.traderId&lt;b.traderId;
 }
 
 void mergeVec(vector&lt;Bid&gt;&a,int l,int m,int r){
-    int n1=m-l+1,n2=r-m;
-    vector&lt;Bid&gt;L(n1),R(n2);
-    for(int i=0;i&lt;n1;i++)L[i]=a[l+i];
-    for(int j=0;j&lt;n2;j++)R[j]=a[m+1+j];
+    const int n1=m-l+1,n2=r-m;
+    vector&lt;Bid&gt; L; L.reserve(n1);
+    vector&lt;Bid&gt; R; R.reserve(n2);
+    for(int i=0;i&lt;n1;i++) L.push_back(a[l+i]);
+    for(int j=0;j&lt;n2;j++) R.push_back(a[m+1+j]);
     int i=0,j=0,k=l;
-    while(i&lt;n1&&j&lt;n2){
-        if(cmpBid(L[i],R[j]))a[k++]=L[i++];
+    while(i&lt;n1 && j&lt;n2){
+        if(cmpBid(L[i],R[j])) a[k++]=L[i++];
         else a[k++]=R[j++];
     }
-    while(i&lt;n1)a[k++]=L[i++];
-    while(j&lt;n2)a[k++]=R[j++];
+    while(i&lt;n1) a[k++]=L[i++];
+    while(j&lt;n2) a[k++]=R[j++];
 }
 
 void mergeSort(vector&lt;Bid&gt;&a,int l,int r){
-    if(l&gt;=r)return;
+    if(l&gt;=r) return;
     int m=l+(r-l)/2;
     mergeSort(a,l,m);
     mergeSort(a,m+1,r);
@@ -138,36 +165,52 @@ void mergeSort(vector&lt;Bid&gt;&a,int l,int r){
 }
 
 double clearAuctionGreedy(const Lot&lot,const vector&lt;Bid&gt;&bids){
-    double rem=lot.qty,rev=0.0;
-    for(auto &b:bids){
-        if(b.lotId!=lot.id)continue;
-        if(b.price&lt;lot.basePrice)continue;
-        if(rem&lt;=0)break;
-        double t=min(rem,b.qty);
-        rev+=t*b.price; rem-=t;
+    double rem=lot.qty;
+    double revenue=0.0;
+    for(const auto &b:bids){
+        if(b.lotId!=lot.id || b.price&lt;lot.basePrice) continue;
+        if(rem&lt;=0) break;
+        const double traded=min(rem,b.qty);
+        revenue+=traded*b.price;
+        rem-=traded;
     }
-    return rev;
+    return revenue;
 }
 
-map&lt;pair&lt;int,int&gt;,double&gt; memoAPMC;
+unordered_map&lt;long long,double&gt; memoAPMC;
+inline long long keyAP(int lotId,int day){
+    return (static_cast&lt;long long&gt;(lotId)&lt;&lt;32) | static_cast&lt;unsigned int&gt;(day);
+}
+
 double bestRevenueDP(const Lot&lot,int day,int maxDay,
-                     const vector&lt;double&gt;&f){
-    if(day&gt;=maxDay||lot.perishDays-day&lt;=0)return 0.0;
-    auto key=make_pair(lot.id,day);
-    if(memoAPMC.count(key))return memoAPMC[key];
-    double sellNow=lot.qty*f[day];
-    double storedQty=lot.qty*0.98;
-    double waitVal=storedQty*f[day+1];
-    return memoAPMC[key]=max(sellNow,waitVal);
+                     const vector&lt;double&gt;&forecast){
+    if(day&gt;=maxDay || lot.perishDays-day&lt;=0) return 0.0;
+    const long long key=keyAP(lot.id,day);
+    auto it=memoAPMC.find(key);
+    if(it!=memoAPMC.end()) return it->second;
+
+    const double sellNow=lot.qty*forecast[day];
+    const double storedQty=lot.qty*0.98; // 2% loss
+    const double waitVal=storedQty*forecast[day+1];
+    double val=max(sellNow,waitVal);
+    memoAPMC.emplace(key,val);
+    return val;
 }
 
 int main(){
     Lot tomato{1,"Tomato",1000,12.0,3};
-    vector&lt;Bid&gt;bids={{1,201,13.5,400},{1,202,13.0,300},{1,203,12.5,600}};
+    vector&lt;Bid&gt; bids;
+    bids.reserve(3);
+    bids.push_back({1,201,13.5,400});
+    bids.push_back({1,202,13.0,300});
+    bids.push_back({1,203,12.5,600});
+
     mergeSort(bids,0,(int)bids.size()-1);
+
     cout&lt;&lt;"Greedy revenue: "
         &lt;&lt;clearAuctionGreedy(tomato,bids)&lt;&lt;"\n";
-    vector&lt;double&gt;forecast={12.0,13.0,11.0};
+
+    vector&lt;double&gt; forecast={12.0,13.0,11.0};
     cout&lt;&lt;"DP best revenue: "
         &lt;&lt;bestRevenueDP(tomato,0,2,forecast)&lt;&lt;"\n";
     return 0;
