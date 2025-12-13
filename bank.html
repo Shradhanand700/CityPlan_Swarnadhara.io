@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Module 5 – Smart Banking</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#0b0b0f;
+    color:#eaeaea;
+}
+
+/* ===== Sidebar ===== */
+.sidebar{
+    position:fixed;
+    top:0; left:0;
+    width:260px; height:100vh;
+    background:#111116;
+    padding:25px;
+    overflow-y:auto;
+}
+.sidebar h2{
+    color:#9ad1ff;
+    text-align:center;
+    margin-bottom:30px;
+}
+.sidebar a{
+    display:block;
+    color:#eaeaea;
+    text-decoration:none;
+    padding:12px;
+    margin-bottom:12px;
+    border-radius:8px;
+    background:#1a1a22;
+}
+.sidebar a:hover,
+.sidebar a.active{
+    background:#2b2b38;
+    color:#9ad1ff;
+    font-weight:600;
+}
+
+/* ===== Main ===== */
+.container{
+    margin-left:280px;
+    padding:40px;
+    max-width:1200px;
+}
+.card{
+    background:#15151d;
+    padding:28px;
+    border-radius:14px;
+    margin-bottom:35px;
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
+
+h1{color:#9ad1ff}
+h2{color:#cfcfcf}
+h3{color:#a8a8a8}
+p{line-height:1.8}
+
+.line{
+    background:#1f1f2a;
+    padding:12px;
+    border-radius:8px;
+    margin:8px 0;
+}
+
+/* ===== Tables ===== */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+th,td{
+    padding:12px;
+    border:1px solid #333;
+}
+th{
+    background:#1f1f2a;
+    color:#9ad1ff;
+}
+td{background:#14141b}
+
+/* ===== Code ===== */
+pre{
+    background:#0d0d12;
+    color:#d6d6d6;
+    padding:22px;
+    border-radius:12px;
+    font-size:13px;
+    line-height:1.7;
+    max-height:70vh;
+    overflow:auto;
+    white-space:pre;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>Modules</h2>
+    <a href="index.html">🏥 Health Care</a>
+    <a href="module2_crime_prevention.html">🚓 Crime Prevention</a>
+    <a href="module3_tourism.html">🏝 Tourism</a>
+    <a href="module4_tax_fraud.html">💰 Smart Tax</a>
+    <a href="module5_smart_banking.html" class="active">🏦 Smart Banking</a>
+</div>
+
+<!-- Main -->
+<div class="container">
+
+<h1>Module 5 – Smart Banking System</h1>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>A. Transaction Stream Monitor & Fraud</h2>
+
+<p>
+Monitors real-time banking transactions to detect anomalies, duplicate patterns,
+and suspicious connectivity between accounts.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+Incoming transactions are checked using a Bloom filter for fast duplicate
+rejection. Sliding-window z-score flags abnormal amounts. LSH-style hashing
+groups near-duplicate transactions, while BFS explores suspicious account links.
+</div>
+
+<h3>Efficiency Analysis</h3>
+<table>
+<tr><th>Technique</th><th>Time</th><th>Space</th></tr>
+<tr><td>Sliding Window</td><td>O(1) amortized</td><td>O(W)</td></tr>
+<tr><td>Bloom Filter</td><td>O(k)</td><td>Sublinear</td></tr>
+<tr><td>Graph BFS/DFS</td><td>O(V + E)</td><td>O(V + E)</td></tr>
+</table>
+</div>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>B. Credit Scoring Engine</h2>
+
+<p>
+Combines multiple financial features to compute credit scores using
+optimization and learning techniques.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+A DP knapsack model selects the best feature combination under constraints.
+Greedy ranking gives fast approximations. A logistic-regression stub demonstrates
+learning-based scoring. Feature metadata is retrieved via Trie and HashMap.
+</div>
+
+<h3>Efficiency Analysis</h3>
+<table>
+<tr><th>Method</th><th>Time</th><th>Space</th></tr>
+<tr><td>DP (Knapsack)</td><td>O(n × budget)</td><td>O(budget)</td></tr>
+<tr><td>Greedy</td><td>O(n log n)</td><td>O(n)</td></tr>
+<tr><td>Trie Lookup</td><td>O(len)</td><td>O(sum len)</td></tr>
+</table>
+</div>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>D. Ledger & Fast Lookup</h2>
+
+<p>
+Ensures fast transaction lookup and ordered ledger maintenance.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+A Skip List provides probabilistic O(log n) ordered operations. std::map
+guarantees strict log-time bounds, while unordered_map enables constant-time
+ID lookups.
+</div>
+
+<h3>Efficiency Analysis</h3>
+<table>
+<tr><th>Structure</th><th>Time</th><th>Space</th></tr>
+<tr><td>Skip List</td><td>Avg O(log n)</td><td>O(n)</td></tr>
+<tr><td>std::map</td><td>O(log n)</td><td>O(n)</td></tr>
+<tr><td>unordered_map</td><td>O(1) avg</td><td>O(n)</td></tr>
+</table>
+</div>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>Integrated C++ Code – Smart Banking</h2>
+
+<pre>
+// ================= SLIDING WINDOW Z-SCORE =================
+struct SlidingZ{
+    int W; deque&lt;double&gt; q; double sum=0, sumsq=0;
+    SlidingZ(int w):W(w){}
+    pair&lt;bool,double&gt; push(double x,double k){
+        q.push_back(x); sum+=x; sumsq+=x*x;
+        if(q.size()&gt;W){
+            double o=q.front(); q.pop_front();
+            sum-=o; sumsq-=o*o;
+        }
+        if(q.size()&lt;10) return {false,0};
+        double mean=sum/q.size();
+        double var=sumsq/q.size()-mean*mean;
+        double sd=sqrt(max(0.0,var));
+        double z = sd&gt;0 ? (x-mean)/sd : 0;
+        return {z&gt;k,z};
+    }
+};
+
+// ================= BLOOM FILTER =================
+struct Bloom{
+    vector&lt;uint8_t&gt; bits; size_t m; int k;
+    Bloom(size_t mb,int kh):m(mb),k(kh),bits((mb+7)/8,0){}
+};
+
+// ================= TRIE =================
+struct Trie{
+    struct Node{ unordered_map&lt;char,int&gt; ch; int val=-1; };
+    vector&lt;Node&gt; t;
+    Trie(){ t.emplace_back(); }
+};
+
+// ================= SKIP LIST =================
+struct SkipNode{
+    long long key; string val;
+    vector&lt;SkipNode*&gt; next;
+    SkipNode(long long k,string v,int l):key(k),val(v),next(l,nullptr){}
+};
+</pre>
+
+</div>
+
+</div>
+</body>
+</html>
