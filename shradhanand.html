@@ -1,1 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Module 1 – Health Care</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#0b0b0f;
+    color:#eaeaea;
+}
+
+/* Sidebar */
+.sidebar{
+    position:fixed;
+    top:0; left:0;
+    width:260px; height:100vh;
+    background:#111116;
+    padding:25px;
+    overflow-y:auto;
+}
+.sidebar h2{
+    color:#9ad1ff;
+    text-align:center;
+    margin-bottom:30px;
+}
+.sidebar a{
+    display:block;
+    color:#eaeaea;
+    text-decoration:none;
+    padding:12px;
+    margin-bottom:12px;
+    border-radius:8px;
+    background:#1a1a22;
+}
+.sidebar a:hover,
+.sidebar a.active{
+    background:#2b2b38;
+    color:#9ad1ff;
+    font-weight:600;
+}
+
+/* Main */
+.container{
+    margin-left:280px;
+    padding:40px;
+    max-width:1200px;
+}
+.card{
+    background:#15151d;
+    padding:28px;
+    border-radius:14px;
+    margin-bottom:35px;
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
+h1{color:#9ad1ff}
+h2{color:#cfcfcf}
+h3{color:#a8a8a8}
+p{line-height:1.8}
+
+.line{
+    background:#1f1f2a;
+    padding:12px;
+    border-radius:8px;
+    margin:8px 0;
+}
+
+/* Table */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+th,td{
+    padding:12px;
+    border:1px solid #333;
+}
+th{
+    background:#1f1f2a;
+    color:#9ad1ff;
+}
+td{background:#14141b}
+
+/* Code */
+pre{
+    background:#0d0d12;
+    color:#d6d6d6;
+    padding:22px;
+    border-radius:12px;
+    font-size:13px;
+    line-height:1.7;
+    max-height:70vh;
+    overflow:auto;
+    white-space:pre;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>Modules</h2>
+    <a href="index.html" class="active">🏥 Health Care</a>
+    <a href="module2_crime_prevention.html">🚓 Crime Prevention</a>
+</div>
+
+<div class="container">
+
+<h1>Module 1 – Health Care System</h1>
+
+<div class="card">
+<h2>A. Emergency Routing & Dispatch</h2>
+<p>
+Computes the fastest ambulance → patient → hospital route under dynamic
+conditions using shortest path algorithms.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+The city map is modeled as a graph. Dijkstra computes shortest paths from the
+patient to all nodes. The nearest hospital with available beds is selected,
+and the best ambulance is chosen based on distance and severity.
+</div>
+
+<h3>Efficiency Analysis</h3>
+<table>
+<tr><th>Algorithm</th><th>Time</th><th>Space</th></tr>
+<tr><td>Dijkstra</td><td>O(E log V)</td><td>O(V + E)</td></tr>
+<tr><td>A*</td><td>O(E log V)</td><td>O(V)</td></tr>
+<tr><td>Bellman-Ford</td><td>O(VE)</td><td>O(V)</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>B. Hospital Bed & Resource Manager</h2>
+<p>
+Maintains hospital bed occupancy and schedules surgeries efficiently.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+A segment tree supports fast range updates for bed occupancy.
+A Fenwick tree tracks total admissions efficiently.
+</div>
+</div>
+
+<div class="card">
+<h2>Integrated C++ Code – Health Care</h2>
+
+<pre>
+// ===== GRAPH & ROUTING =====
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+const double INF = 1e18;
+
+struct Edge{ int to; double w; };
+
+struct Graph{
+    int n;
+    vector&lt;vector&lt;Edge&gt;&gt; adj;
+
+    Graph(int n):n(n),adj(n){}
+
+    void add(int u,int v,double w,bool und=true){
+        adj[u].push_back({v,w});
+        if(und) adj[v].push_back({u,w});
+    }
+
+    vector&lt;double&gt; dijkstra(int s){
+        vector&lt;double&gt; dist(n,INF);
+        priority_queue&lt;pair&lt;double,int&gt;, vector&lt;pair&lt;double,int&gt;&gt;, greater&lt;&gt;&gt; pq;
+        dist[s]=0; pq.push({0,s});
+        while(!pq.empty()){
+            auto [d,u]=pq.top(); pq.pop();
+            if(d&gt;dist[u]) continue;
+            for(auto &amp;e:adj[u]){
+                if(dist[e.to] &gt; d + e.w){
+                    dist[e.to] = d + e.w;
+                    pq.push({dist[e.to], e.to});
+                }
+            }
+        }
+        return dist;
+    }
+};
+
+// ===== BED MANAGEMENT =====
+struct Fenwick{
+    int n;
+    vector&lt;int&gt; bit;
+    Fenwick(int n):n(n),bit(n+1,0){}
+    void add(int i,int v){
+        for(++i;i&lt;=n;i+=i&amp;-i) bit[i]+=v;
+    }
+    int sum(int i){
+        int r=0;
+        for(++i;i&gt;0;i-=i&amp;-i) r+=bit[i];
+        return r;
+    }
+};
+</pre>
+
+</div>
+</div>
+</body>
+</html>
 
