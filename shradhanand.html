@@ -110,77 +110,116 @@ pre{
     <a href="bank.html">Bank Management</a>
 </div>
 
-<div class="container">
-
-<h1>Module 1 – Health Care System</h1>
-
 <div class="card">
-<h2>A. Emergency Routing & Dispatch</h2>
+<h2>Input Data (JSON-Based Real World Input)</h2>
+
 <p>
-Computes the fastest ambulance → patient → hospital route under dynamic
-conditions using shortest path algorithms.
+Instead of hardcoding city roads, hospitals, and patients, the system
+uses a <b>JSON input file</b>. This makes the system scalable and realistic,
+allowing city data to change without modifying the algorithm.
 </p>
 
-<h3>How the Code Works</h3>
+<h3>What This JSON File Is Used For</h3>
 <div class="line">
-The city map is modeled as a graph. Dijkstra computes shortest paths from the
-patient to all nodes. The nearest hospital with available beds is selected,
-and the best ambulance is chosen based on distance and severity.
+<ul>
+<li>Defines the city road network with distances</li>
+<li>Stores ambulance locations and readiness</li>
+<li>Stores patient location and severity</li>
+<li>Stores hospital locations and available beds</li>
+</ul>
 </div>
 
-<h3>Efficiency Analysis</h3>
+<h3>Sample JSON Input File</h3>
+
+<pre>
+{
+  "roads": [
+    { "from": "A", "to": "B", "distance": 3.2 },
+    { "from": "B", "to": "C", "distance": 1.5 },
+    { "from": "C", "to": "D", "distance": 2.8 },
+    { "from": "A", "to": "D", "distance": 6.5 }
+  ],
+  "ambulances": [
+    { "id": "AMB01", "location": "A", "ready": true },
+    { "id": "AMB02", "location": "B", "ready": true }
+  ],
+  "patients": [
+    { "id": "PAT101", "location": "C", "severity": 4 }
+  ],
+  "hospitals": [
+    { "id": "HOSP1", "location": "D", "beds_free": 5 }
+  ]
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>How the Algorithm Uses the JSON File (Approach-1)</h2>
+
+<div class="line">
+<ul>
+<li>The JSON file is read at runtime using a JSON parser</li>
+<li>City locations are converted into numeric graph nodes</li>
+<li>Roads form weighted graph edges</li>
+<li>Dijkstra’s algorithm runs from patient location</li>
+<li>Nearest hospital with free beds is selected</li>
+</ul>
+</div>
+
+<h3>Why This Approach Is Used</h3>
 <table>
-<tr><th>Algorithm</th><th>Time</th><th>Space</th></tr>
-<tr><td>Dijkstra</td><td>O(E log V)</td><td>O(V + E)</td></tr>
-<tr><td>A*</td><td>O(E log V)</td><td>O(V)</td></tr>
-<tr><td>Bellman-Ford</td><td>O(VE)</td><td>O(V)</td></tr>
+<tr><th>Reason</th><th>Benefit</th></tr>
+<tr><td>External input file</td><td>No hardcoding, real-world flexibility</td></tr>
+<tr><td>Graph modeling</td><td>Accurate routing</td></tr>
+<tr><td>Dijkstra algorithm</td><td>Fast emergency response</td></tr>
 </table>
 </div>
 
 <div class="card">
-<h2>B. Hospital Bed & Resource Manager</h2>
-<p>
-Maintains hospital bed occupancy and schedules surgeries efficiently.
-</p>
-
-<h3>How the Code Works</h3>
-<div class="line">
-A segment tree supports fast range updates for bed occupancy.
-A Fenwick tree tracks total admissions efficiently.
-</div>
-</div>
-
-<div class="card">
-<h2>Integrated C++ Code – Health Care</h2>
+<h2>Integrated C++ Code (JSON-Driven Emergency Routing)</h2>
 
 <pre>
-// ===== GRAPH & ROUTING =====
+// File: healthcare.cpp
+// Compile: g++ -std=c++17 healthcare.cpp -O2 -o healthcare
+// Run: ./healthcare
+
 #include &lt;bits/stdc++.h&gt;
+#include "json.hpp"
 using namespace std;
+using json = nlohmann::json;
+
 const double INF = 1e18;
 
-struct Edge{ int to; double w; };
+struct Edge {
+    int to;
+    double w;
+};
 
-struct Graph{
+struct Graph {
     int n;
     vector&lt;vector&lt;Edge&gt;&gt; adj;
 
-    Graph(int n):n(n),adj(n){}
+    Graph(int n = 0) : n(n), adj(n) {}
 
-    void add(int u,int v,double w,bool und=true){
-        adj[u].push_back({v,w});
-        if(und) adj[v].push_back({u,w});
+    void addEdge(int u, int v, double w) {
+        adj[u].push_back({v, w});
+        adj[v].push_back({u, w});
     }
 
-    vector&lt;double&gt; dijkstra(int s){
-        vector&lt;double&gt; dist(n,INF);
-        priority_queue&lt;pair&lt;double,int&gt;, vector&lt;pair&lt;double,int&gt;&gt;, greater&lt;&gt;&gt; pq;
-        dist[s]=0; pq.push({0,s});
-        while(!pq.empty()){
-            auto [d,u]=pq.top(); pq.pop();
-            if(d&gt;dist[u]) continue;
-            for(auto &amp;e:adj[u]){
-                if(dist[e.to] &gt; d + e.w){
+    vector&lt;double&gt; dijkstra(int src) {
+        vector&lt;double&gt; dist(n, INF);
+        priority_queue&lt;pair&lt;double, int&gt;,
+            vector&lt;pair&lt;double, int&gt;&gt;, greater&lt;&gt;&gt; pq;
+
+        dist[src] = 0;
+        pq.push({0, src});
+
+        while (!pq.empty()) {
+            auto [d, u] = pq.top(); pq.pop();
+            if (d &gt; dist[u]) continue;
+
+            for (auto &amp;e : adj[u]) {
+                if (dist[e.to] &gt; d + e.w) {
                     dist[e.to] = d + e.w;
                     pq.push({dist[e.to], e.to});
                 }
@@ -190,24 +229,51 @@ struct Graph{
     }
 };
 
-// ===== BED MANAGEMENT =====
-struct Fenwick{
-    int n;
-    vector&lt;int&gt; bit;
-    Fenwick(int n):n(n),bit(n+1,0){}
-    void add(int i,int v){
-        for(++i;i&lt;=n;i+=i&amp;-i) bit[i]+=v;
-    }
-    int sum(int i){
-        int r=0;
-        for(++i;i&gt;0;i-=i&amp;-i) r+=bit[i];
-        return r;
-    }
-};
-</pre>
+int main() {
+    ifstream file("healthcare_input.json");
+    json data; file &gt;&gt; data;
 
+    unordered_map&lt;string,int&gt; id;
+    int idx = 0;
+
+    auto getId = [&](const string &amp;s) {
+        if (!id.count(s)) id[s] = idx++;
+        return id[s];
+    };
+
+    for (auto &amp;r : data["roads"]) {
+        getId(r["from"]);
+        getId(r["to"]);
+    }
+
+    Graph g(idx);
+    for (auto &amp;r : data["roads"]) {
+        g.addEdge(getId(r["from"]), getId(r["to"]), r["distance"]);
+    }
+
+    int patientNode = getId(data["patients"][0]["location"]);
+    auto dist = g.dijkstra(patientNode);
+
+    double best = INF;
+    string bestHospital = "NONE";
+
+    for (auto &amp;h : data["hospitals"]) {
+        if (h["beds_free"].get&lt;int&gt;() &gt; 0) {
+            int hn = getId(h["location"]);
+            if (dist[hn] &lt; best) {
+                best = dist[hn];
+                bestHospital = h["id"];
+            }
+        }
+    }
+
+    cout &lt;&lt; "Nearest Hospital: " &lt;&lt; bestHospital &lt;&lt; "\\n";
+    cout &lt;&lt; "Distance: " &lt;&lt; best &lt;&lt; " km\\n";
+    return 0;
+}
+</pre>
 </div>
-</div>
+
 </body>
 </html>
 
