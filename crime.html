@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Module 2 – Crime Prevention</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#0b0b0f;
+    color:#eaeaea;
+}
+.sidebar{
+    position:fixed;
+    top:0; left:0;
+    width:260px; height:100vh;
+    background:#111116;
+    padding:25px;
+}
+.sidebar h2{
+    color:#9ad1ff;
+    text-align:center;
+}
+.sidebar a{
+    display:block;
+    padding:12px;
+    margin:10px 0;
+    background:#1a1a22;
+    color:#eaeaea;
+    border-radius:8px;
+    text-decoration:none;
+}
+.sidebar a:hover,.sidebar a.active{
+    background:#2b2b38;
+    color:#9ad1ff;
+    font-weight:600;
+}
+.container{
+    margin-left:280px;
+    padding:40px;
+    max-width:1200px;
+}
+.card{
+    background:#15151d;
+    padding:28px;
+    border-radius:14px;
+    margin-bottom:35px;
+}
+h1{color:#9ad1ff}
+h2{color:#cfcfcf}
+p{line-height:1.8}
+
+.line{
+    background:#1f1f2a;
+    padding:12px;
+    border-radius:8px;
+    margin:8px 0;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+th,td{
+    padding:12px;
+    border:1px solid #333;
+}
+th{background:#1f1f2a;color:#9ad1ff}
+td{background:#14141b}
+pre{
+    background:#0d0d12;
+    color:#d6d6d6;
+    padding:22px;
+    border-radius:12px;
+    font-size:13px;
+    line-height:1.7;
+    max-height:70vh;
+    overflow:auto;
+    white-space:pre;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>Modules</h2>
+    <a href="index.html">🏥 Health Care</a>
+    <a href="module2_crime_prevention.html" class="active">🚓 Crime Prevention</a>
+</div>
+
+<div class="container">
+
+<h1>Module 2 – Crime Prevention System</h1>
+
+<div class="card">
+<h2>C. CCTV / Sensor Network Design</h2>
+<p>
+Designs a minimum-cost CCTV network using Minimum Spanning Tree algorithms.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+Each CCTV camera is a node. Kruskal’s algorithm selects the cheapest edges
+while Union-Find avoids cycles, forming an optimal backbone.
+</div>
+</div>
+
+<div class="card">
+<h2>D. Identity / DB Search & Matching</h2>
+<p>
+Enables fast identity lookup and suspicious pattern detection.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+Trie supports fast name searches. KMP scans logs efficiently. Bloom filter
+rejects non-existing records quickly.
+</div>
+</div>
+
+<div class="card">
+<h2>Integrated C++ Code – Crime Prevention</h2>
+
+<pre>
+// ===== DSU =====
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+struct DSU{
+    vector&lt;int&gt; p,r;
+    DSU(int n):p(n),r(n,0){ iota(p.begin(),p.end(),0); }
+    int find(int x){
+        return p[x]==x?x:p[x]=find(p[x]);
+    }
+    bool unite(int a,int b){
+        a=find(a); b=find(b);
+        if(a==b) return false;
+        if(r[a]&lt;r[b]) swap(a,b);
+        p[b]=a;
+        if(r[a]==r[b]) r[a]++;
+        return true;
+    }
+};
+
+// ===== TRIE =====
+struct Trie{
+    struct Node{
+        unordered_map&lt;char,int&gt; ch;
+        bool end=false;
+    };
+    vector&lt;Node&gt; t;
+    Trie(){ t.emplace_back(); }
+    void insert(string s){
+        int cur=0;
+        for(char &amp;c:s){
+            c=tolower(c);
+            if(!t[cur].ch[c]){
+                t[cur].ch[c]=t.size();
+                t.emplace_back();
+            }
+            cur=t[cur].ch[c];
+        }
+        t[cur].end=true;
+    }
+};
+
+// ===== BLOOM FILTER =====
+struct Bloom{
+    vector&lt;bool&gt; b;
+    int k;
+    Bloom(int m,int k):b(m,false),k(k){}
+    void add(string s){
+        hash&lt;string&gt; h;
+        for(int i=0;i&lt;k;i++)
+            b[(h(s)+i*i)%b.size()] = true;
+    }
+    bool maybe(string s){
+        hash&lt;string&gt; h;
+        for(int i=0;i&lt;k;i++)
+            if(!b[(h(s)+i*i)%b.size()])
+                return false;
+        return true;
+    }
+};
+</pre>
+
+</div>
+</div>
+</body>
+</html>
