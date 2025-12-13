@@ -11,7 +11,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Space Grotesk', sans-serif;
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    background:
+        linear-gradient(135deg, rgba(15,12,41,0.9), rgba(48,43,99,0.9), rgba(36,36,62,0.9)),
+        url("daaa.jpg") center/cover fixed no-repeat;
     color: #fff;
     min-height: 100vh;
 }
@@ -32,7 +34,8 @@ header {
     background: linear-gradient(90deg, #ff512f, #dd2476);
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-    margin-bottom: 50px;
+    margin: 20px auto 30px;
+    max-width: 1200px;
 }
 
 header .logo {
@@ -79,6 +82,35 @@ header .navbar ul li a:hover {
     background: rgba(255,255,255,0.2);
     color: #ffdd59;
     transform: scale(1.05);
+}
+
+/* --- WELCOME ARCH TEXT --- */
+.welcome-arch {
+    text-align: center;
+    margin: 10px auto 30px;
+    max-width: 1200px;
+}
+
+.welcome-arch h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    color: #fffbeb;
+    text-shadow:
+        0 0 10px rgba(0,0,0,0.6),
+        0 0 25px rgba(0,0,0,0.8);
+    display: inline-block;
+    padding: 12px 40px;
+    border-radius: 999px;
+    border: 4px solid #ffdd59;
+    background: radial-gradient(circle at top, rgba(255,255,255,0.15), transparent);
+}
+
+/* Optional slight curve illusion */
+.welcome-arch h1 span {
+    display: inline-block;
+    transform: translateY(-3px);
 }
 
 /* --- GLASS PANELS --- */
@@ -223,6 +255,20 @@ a.btn:hover {
     transform: translateY(0);
 }
 
+/* --- CITY SKETCH GRID --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.interactive-card {
+    background: rgba(15,23,42,0.7);
+    border-radius: 20px;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
 /* --- FOOTER --- */
 footer {
     text-align: center;
@@ -255,6 +301,10 @@ footer {
         </ul>
     </nav>
 </header>
+
+<div class="welcome-arch">
+    <h1><span>WELCOME TO SWARNADHARA</span></h1>
+</div>
 
 <section class="container">
 
@@ -313,16 +363,16 @@ footer {
     <div class="glass-panel hidden">
         <h2>Business Ideas</h2>
         <div class="card hidden">
-            <h3>Team Member 1-Chidrup</h3>
+            <h3>Team Member 1 - Chidrup</h3>
             <ul>
                 <li>Fuel Stations Management.</li>
                 <li>APMC Management.</li>
                 <li>Traffic Management.</li>
-                <li>Construction Contracter Business.</li>
+                <li>Construction Contractor Business.</li>
             </ul>
         </div>
         <div class="card hidden">
-            <h3>Team Member 2-Vinayak</h3>
+            <h3>Team Member 2 - Vinayak</h3>
             <ul>
                 <li>Green Energy & Ocean Energy Hub</li>
                 <li>Clean Water + Environmental Industries</li>
@@ -333,7 +383,7 @@ footer {
             </ul>
         </div>
         <div class="card hidden">
-            <h3>Team Member 3-Vikram</h3>
+            <h3>Team Member 3 - Vikram</h3>
             <ul>
                 <li>Entertainment – cinema, gaming arena, food streets, go-karting</li>
                 <li>Lifestyle – gym, café, restaurant, spas, salons</li>
@@ -342,7 +392,7 @@ footer {
             </ul>
         </div>
         <div class="card hidden">
-            <h3>Team Member 4-Shradhanand.</h3>
+            <h3>Team Member 4 - Shradhanand</h3>
             <ul>
                 <li>Crime Detection and Surveillance Optimization</li>
                 <li>Healthcare and Emergency Dispatch System</li>
@@ -353,32 +403,31 @@ footer {
             </ul>
         </div>
     </div>
+
     <!-- CITY DESIGN SKETCH SECTION -->
-<div class="glass-panel hidden">
-    <h2>🏙 City Design Sketch</h2>
-    <p style="font-size: 1.1rem; margin-bottom: 25px;">
-        These sketches illustrate the overall layout and demographic planning for the city. They provide a visual understanding of zones, road networks, and key infrastructural placements.
-    </p>
+    <div class="glass-panel hidden">
+        <h2>🏙 City Design Sketch</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 25px;">
+            These sketches illustrate the overall layout and demographic planning for the city. They provide a visual understanding of zones, road networks, and key infrastructural placements.
+        </p>
 
-    <div class="card-grid">
-        <div class="interactive-card hidden">
-            <img src="assets/swarnafr.jpg" alt="City Layout Sketch" style="width:100%; border-radius: 20px; margin-bottom: 10px;">
-            <p style="font-size: 0.95rem; opacity: 0.8;">
-                This sketch shows the detailed city layout including residential areas, commercial zones, and major landmarks.
-                Swarna Dhārā is a future-ready coastal metropolis near Goa, where the Arabian Sea meets the Western Ghats. Designed for Viksit Bharat 2047, it blends economic growth with sustainability, social inclusion, and blue-economy innovation. Its planning integrates coastal tourism, clean-energy corridors, modern urban districts, and eco-protected Ghats, creating a metropolis that is both advanced and naturally harmonious.
+        <div class="card-grid">
+            <div class="interactive-card hidden">
+                <img src="assets/swarnafr.jpg" alt="City Layout Sketch" style="width:100%; border-radius: 20px; margin-bottom: 10px;">
+                <p style="font-size: 0.95rem; opacity: 0.8;">
+                    This sketch shows the detailed city layout including residential areas, commercial zones, and major landmarks.
+                    Swarna Dhārā is a future-ready coastal metropolis near Goa, where the Arabian Sea meets the Western Ghats. Designed for Viksit Bharat 2047, it blends economic growth with sustainability, social inclusion, and blue-economy innovation.
+                </p>
+            </div>
 
-            </p>
-        </div>
-
-        <div class="interactive-card hidden">
-            <img src="assets/swarnabk.jpg" alt="City Demographics & Planning" style="width:100%; border-radius: 20px; margin-bottom: 10px;">
-            <p style="font-size: 0.95rem; opacity: 0.8;">
-                This diagram highlights demographic distribution, utilities, and statistical planning for efficient city management.Inspired by India’s Chola-era maritime supremacy, when the nation led global sea trade and contributed nearly 25% of the world’s GDP, Swarna Dhārā revives this legacy. With advanced ports, marine-trade hubs, and blue-economy networks, it reclaims India’s historic ocean influence. The metropolis merges history, innovation, and nature—embodying a true “flow of prosperity” for the future.
-            </p>
+            <div class="interactive-card hidden">
+                <img src="assets/swarnabk.jpg" alt="City Demographics & Planning" style="width:100%; border-radius: 20px; margin-bottom: 10px;">
+                <p style="font-size: 0.95rem; opacity: 0.8;">
+                    This diagram highlights demographic distribution, utilities, and statistical planning for efficient city management. Inspired by India’s maritime legacy, Swarna Dhārā uses advanced ports and blue-economy hubs to revive ocean-led prosperity.
+                </p>
+            </div>
         </div>
     </div>
-</div>
-
 
 </section>
 
