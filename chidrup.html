@@ -36,7 +36,7 @@
       -webkit-background-clip:text;-webkit-text-fill-color:transparent}
     .styled-table{width:100%;border-collapse:collapse;margin:20px 0}
     .styled-table caption{caption-side:top;font-size:1.3rem;margin-bottom:10px}
-    .styled-table th,.styled-table td{border:1px solid #fff;padding:12px 15px;text-align:left}
+    .styled-table th,.styled-table td{border:1px solid #fff;padding:12px 15px;text-align:left;vertical-align:top}
     .styled-table th{background:rgba(255,140,0,.2)}
     .course-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
     .qa-card,.card{background:rgba(255,140,0,.05);padding:25px;border-radius:25px;
@@ -82,12 +82,13 @@
         <li><a href="#traffic-intro">Traffic</a></li>
         <li><a href="#construction-intro">Construction</a></li>
         <li><a href="#algorithms">Algorithms</a></li>
+        <li><a href="#algo-chart">Complexity Chart</a></li>
         <li><a href="#codes">C++ Modules</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- OVERVIEW FOCUSED ON BUSINESS PLANS -->
+  <!-- OVERVIEW -->
   <section class="glass-panel intro-card" id="overview">
     <p>
       The business plan combines four revenue‑generating verticals – Fuel Networks, Digital APMC, Smart Traffic, and Construction Contracting – into one integrated coastal platform that shares data, optimises assets, and builds long‑term, SDG‑aligned value.
@@ -123,6 +124,7 @@
     </div>
   </section>
 
+  <!-- BUSINESS INTRO SECTIONS -->
   <section class="glass-panel hidden" id="fuel-intro">
     <h2>Fuel Station Management – Business Intro</h2>
     <p>
@@ -179,13 +181,19 @@
     </div>
   </section>
 
+  <!-- TECHNIQUES + EFFICIENCY TABLE -->
   <section class="glass-panel hidden" id="algorithms">
-    <h2>Techniques, Principles, Sorting & Searching</h2>
+    <h2>Techniques, Principles, Searching & Efficiency</h2>
     <table class="styled-table">
       <caption>Best-Fit Algorithmic Choices Across Verticals</caption>
       <thead>
       <tr>
-        <th>Vertical</th><th>Core Technique</th><th>Key Principles</th><th>Sorting</th><th>String Search</th>
+        <th>Vertical</th>
+        <th>Core Technique</th>
+        <th>Key Principles</th>
+        <th>Sorting</th>
+        <th>String Search</th>
+        <th>Efficiency Analysis</th>
       </tr>
       </thead>
       <tbody>
@@ -195,6 +203,9 @@
         <td>Partitioning, Shortest Path Trees, Space–Time Trade-off</td>
         <td>Quick Sort / Merge Sort</td>
         <td>Rabin–Karp, Brute Force</td>
+        <td>
+          Greedy assignment checks every station for each demand point: time ≈ O(D·S) where D is number of demand nodes and S is stations; DP over horizon H is O(H) with O(H) memo space.
+        </td>
       </tr>
       <tr>
         <td>APMC</td>
@@ -202,6 +213,9 @@
         <td>Partitioning, Hierarchical Data, Sliding Window</td>
         <td>Merge Sort / Heap + PQ</td>
         <td>Rabin–Karp, Brute Force</td>
+        <td>
+          Merge sort on B bids runs in O(B log B) time with O(B) extra space; greedy clearing is linear O(B); DP for sell vs store across H days is O(H) time and O(H) space.
+        </td>
       </tr>
       <tr>
         <td>Traffic</td>
@@ -209,6 +223,9 @@
         <td>Shortest Path Trees, Pattern Recognition, Trade-off</td>
         <td>Heaps, Quick Sort</td>
         <td>Rabin–Karp (logs)</td>
+        <td>
+          Dijkstra with a binary-heap priority queue runs in O((V + E) log V) time and O(V + E) space; greedy phase selection per junction is O(P); corridor DP over T slots is O(T).
+        </td>
       </tr>
       <tr>
         <td>Construction</td>
@@ -216,11 +233,27 @@
         <td>Decomposition, Partitioning, Trade-off</td>
         <td>Quick Sort / Merge Sort</td>
         <td>Rabin–Karp (contracts)</td>
+        <td>
+          Sorting N tasks by deadline/penalty costs O(N log N) time with O(1) extra space in-place; single pass penalty aggregation is O(N); logistics shortest paths are O((V + E) log V); project-cost DP over H days is O(H) time.
+        </td>
       </tr>
       </tbody>
     </table>
   </section>
 
+  <!-- COMPLEXITY CHART SECTION -->
+  <section class="glass-panel hidden" id="algo-chart">
+    <h2>Complexity Comparison Chart</h2>
+    <p style="font-size:0.95rem;opacity:0.9">
+      The bar chart encodes relative asymptotic time cost of each core planning algorithm on a simple rank scale
+      (1 = O(n), 2 = O(n log n), 3 = quadratic‑like, 4 = heavier graph‑based like O((V + E) log V)).
+    </p>
+    <!-- Export the generated chart as chart.png and place it in the same folder -->
+    <img src="chart.png" alt="Relative time complexity of core planning algorithms"
+         style="width:100%;border-radius:18px;box-shadow:0 15px 40px rgba(0,0,0,0.5);">
+  </section>
+
+  <!-- LOGIC SECTIONS -->
   <section class="glass-panel hidden" id="fuel-algo">
     <h2>Fuel Station Management – Logic</h2>
     <div class="course-container">
@@ -293,6 +326,7 @@
     </div>
   </section>
 
+  <!-- C++ MODULES -->
   <section class="glass-panel hidden" id="codes">
     <h2>C++ Core Modules</h2>
     <p>Each vertical has a C++ sketch. Click a button to open the code panel; use the close icon inside the panel to hide it again.</p>
