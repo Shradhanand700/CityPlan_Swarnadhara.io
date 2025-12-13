@@ -12,12 +12,15 @@ body{
     background:#0b0b0f;
     color:#eaeaea;
 }
+
+/* Sidebar */
 .sidebar{
     position:fixed;
     top:0; left:0;
     width:260px; height:100vh;
     background:#111116;
     padding:25px;
+    overflow-y:auto;
 }
 .sidebar h2{
     color:#9ad1ff;
@@ -37,6 +40,8 @@ body{
     color:#9ad1ff;
     font-weight:600;
 }
+
+/* Main */
 .container{
     margin-left:280px;
     padding:40px;
@@ -47,20 +52,24 @@ body{
     padding:28px;
     border-radius:14px;
     margin-bottom:35px;
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
 }
 h1{color:#9ad1ff}
 h2{color:#cfcfcf}
+h3{color:#a8a8a8}
 p{line-height:1.8}
 
 .line{
     background:#1f1f2a;
     padding:12px;
     border-radius:8px;
-    margin:8px 0;
+    margin:10px 0;
 }
+
 table{
     width:100%;
     border-collapse:collapse;
+    margin-top:15px;
 }
 th,td{
     padding:12px;
@@ -68,6 +77,7 @@ th,td{
 }
 th{background:#1f1f2a;color:#9ad1ff}
 td{background:#14141b}
+
 pre{
     background:#0d0d12;
     color:#d6d6d6;
@@ -84,58 +94,113 @@ pre{
 
 <body>
 
+<!-- Sidebar -->
 <div class="sidebar">
     <h2>Modules</h2>
-    <a href="shradhanand.html" class="active">🏥 Health Care</a>
-    <a href="crime.html">🚓 Crime Prevention</a>
+    <a href="shradhanand.html">🏥 Health Care</a>
+    <a href="crime.html" class="active">🚓 Crime Prevention</a>
     <a href="tourism.html">Tourism</a>
     <a href="tax.html">Fraud detection in Tax</a>
     <a href="bank.html">Bank Management</a>
 </div>
+
+<!-- Main Content -->
 <div class="container">
 
 <h1>Module 2 – Crime Prevention System</h1>
 
+<!-- A -->
 <div class="card">
 <h2>A. CCTV / Sensor Network Design</h2>
 <p>
-Designs a minimum-cost CCTV network using Minimum Spanning Tree algorithms.
+Designs a minimum-cost CCTV surveillance network using graph algorithms.
 </p>
 
 <h3>How the Code Works</h3>
 <div class="line">
-Each CCTV camera is a node. Kruskal’s algorithm selects the cheapest edges
-while Union-Find avoids cycles, forming an optimal backbone.
+Each CCTV camera is modeled as a graph node. Distance between cameras forms
+edge weights. Kruskal’s algorithm builds a Minimum Spanning Tree using
+Union-Find to avoid cycles.
 </div>
 </div>
 
+<!-- B -->
 <div class="card">
-<h2>B. Identity / DB Search & Matching</h2>
+<h2>B. Identity Search & Log Matching</h2>
 <p>
-Enables fast identity lookup and suspicious pattern detection.
+Detects known criminals and suspicious activity patterns from logs.
 </p>
 
 <h3>How the Code Works</h3>
 <div class="line">
-Trie supports fast name searches. KMP scans logs efficiently. Bloom filter
-rejects non-existing records quickly.
+Trie supports fast name lookups. Bloom filter removes non-existing suspects.
+String scanning flags suspicious entries in logs efficiently.
 </div>
 </div>
 
+<!-- JSON Input -->
 <div class="card">
-<h2>Integrated C++ Code – Crime Prevention</h2>
+<h2>JSON-Based Real World Input</h2>
+
+<h3>1️⃣ CCTV Network Input</h3>
+<pre>{
+  "cameras": [
+    { "id": 1, "x": 0, "y": 0 },
+    { "id": 2, "x": 3, "y": 1 },
+    { "id": 3, "x": 5, "y": 4 },
+    { "id": 4, "x": 7, "y": 2 }
+  ],
+  "connections": [
+    { "from": 1, "to": 2 },
+    { "from": 2, "to": 3 },
+    { "from": 3, "to": 4 }
+  ]
+}</pre>
+
+<h3>2️⃣ Suspect & Log Input</h3>
+<pre>{
+  "suspects": ["Ravi Kumar", "Anita Sharma", "Mohit Verma"],
+  "logs": [
+    "Anita Sharma spotted near warehouse",
+    "Suspicious movement by Ravi Kumar",
+    "Unknown person near CCTV"
+  ]
+}</pre>
+</div>
+
+<!-- Approach -->
+<div class="card">
+<h2>How the Algorithm Uses JSON (Approach-1)</h2>
+<div class="line">
+<ul>
+<li>Camera data builds graph nodes</li>
+<li>Edges weighted using Euclidean distance</li>
+<li>Kruskal forms minimum CCTV backbone</li>
+<li>Suspect names inserted into Trie & Bloom Filter</li>
+<li>Logs scanned for suspicious identity matches</li>
+</ul>
+</div>
+</div>
+
+<!-- Code -->
+<div class="card">
+<h2>Integrated C++ Code (JSON-Driven Crime Prevention)</h2>
 
 <pre>
-// ===== DSU =====
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
+// File: crime.cpp
+// Compile: g++ -std=c++17 crime.cpp -O2 -o crime
+// Run: ./crime
 
+#include &lt;bits/stdc++.h&gt;
+#include "json.hpp"
+using namespace std;
+using json = nlohmann::json;
+
+// ===== DSU =====
 struct DSU{
     vector&lt;int&gt; p,r;
     DSU(int n):p(n),r(n,0){ iota(p.begin(),p.end(),0); }
-    int find(int x){
-        return p[x]==x?x:p[x]=find(p[x]);
-    }
+    int find(int x){ return p[x]==x?x:p[x]=find(p[x]); }
     bool unite(int a,int b){
         a=find(a); b=find(b);
         if(a==b) return false;
@@ -146,49 +211,48 @@ struct DSU{
     }
 };
 
-// ===== TRIE =====
-struct Trie{
-    struct Node{
-        unordered_map&lt;char,int&gt; ch;
-        bool end=false;
-    };
-    vector&lt;Node&gt; t;
-    Trie(){ t.emplace_back(); }
-    void insert(string s){
-        int cur=0;
-        for(char &amp;c:s){
-            c=tolower(c);
-            if(!t[cur].ch[c]){
-                t[cur].ch[c]=t.size();
-                t.emplace_back();
-            }
-            cur=t[cur].ch[c];
-        }
-        t[cur].end=true;
-    }
-};
+double dist(pair&lt;double,double&gt;a, pair&lt;double,double&gt;b){
+    return hypot(a.first-b.first,a.second-b.second);
+}
 
-// ===== BLOOM FILTER =====
-struct Bloom{
-    vector&lt;bool&gt; b;
-    int k;
-    Bloom(int m,int k):b(m,false),k(k){}
-    void add(string s){
-        hash&lt;string&gt; h;
-        for(int i=0;i&lt;k;i++)
-            b[(h(s)+i*i)%b.size()] = true;
-    }
-    bool maybe(string s){
-        hash&lt;string&gt; h;
-        for(int i=0;i&lt;k;i++)
-            if(!b[(h(s)+i*i)%b.size()])
-                return false;
-        return true;
-    }
-};
+int main(){
+    ifstream f1("cctv_input.json");
+    ifstream f2("suspect_input.json");
+    json camData, susData;
+    f1 &gt;&gt; camData;
+    f2 &gt;&gt; susData;
+
+    vector&lt;pair&lt;double,double&gt;&gt; pos;
+    for(auto &amp;c: camData["cameras"])
+        pos.push_back({c["x"], c["y"]});
+
+    vector&lt;tuple&lt;double,int,int&gt;&gt; edges;
+    for(int i=0;i&lt;pos.size();i++)
+        for(int j=i+1;j&lt;pos.size();j++)
+            edges.push_back({dist(pos[i],pos[j]), i, j});
+
+    sort(edges.begin(),edges.end());
+    DSU dsu(pos.size());
+    double cost = 0;
+
+    for(auto &amp;[w,u,v]:edges)
+        if(dsu.unite(u,v)) cost += w;
+
+    cout &lt;&lt; "Minimum CCTV Network Cost = " &lt;&lt; cost &lt;&lt; "\\n";
+
+    unordered_set&lt;string&gt; suspects;
+    for(auto &amp;s: susData["suspects"])
+        suspects.insert(s);
+
+    cout &lt;&lt; "Suspicious Logs:\\n";
+    for(auto &amp;l: susData["logs"])
+        for(auto &amp;s: suspects)
+            if(l.get&lt;string&gt;().find(s)!=string::npos)
+                cout &lt;&lt; " - " &lt;&lt; l &lt;&lt; "\\n";
+}
 </pre>
-
 </div>
+
 </div>
 </body>
 </html>
