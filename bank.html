@@ -51,32 +51,32 @@ body{
 }
 .card{
     background:#15151d;
-    padding:28px;
-    border-radius:14px;
-    margin-bottom:35px;
-    box-shadow:0 0 20px rgba(0,0,0,0.6);
+    padding:30px;
+    border-radius:16px;
+    margin-bottom:40px;
+    box-shadow:0 0 22px rgba(0,0,0,0.65);
 }
 
 h1{color:#9ad1ff}
 h2{color:#cfcfcf}
 h3{color:#a8a8a8}
-p{line-height:1.8}
+p{line-height:1.9}
 
 .line{
     background:#1f1f2a;
-    padding:12px;
-    border-radius:8px;
-    margin:8px 0;
+    padding:14px;
+    border-radius:10px;
+    margin:12px 0;
 }
 
 /* ===== Tables ===== */
 table{
     width:100%;
     border-collapse:collapse;
-    margin-top:15px;
+    margin-top:18px;
 }
 th,td{
-    padding:12px;
+    padding:14px;
     border:1px solid #333;
 }
 th{
@@ -89,11 +89,11 @@ td{background:#14141b}
 pre{
     background:#0d0d12;
     color:#d6d6d6;
-    padding:22px;
-    border-radius:12px;
+    padding:24px;
+    border-radius:14px;
     font-size:13px;
     line-height:1.7;
-    max-height:70vh;
+    max-height:75vh;
     overflow:auto;
     white-space:pre;
 }
@@ -102,43 +102,43 @@ pre{
 
 <body>
 
-<!-- Sidebar -->
+<!-- ===== Sidebar ===== -->
 <div class="sidebar">
     <h2>Modules</h2>
-    <a href="shradhanand.html" class="active">🏥 Health Care</a>
+    <a href="health.html">🏥 Health Care</a>
     <a href="crime.html">🚓 Crime Prevention</a>
-    <a href="tourism.html">Tourism</a>
-    <a href="tax.html">Fraud detection in Tax</a>
-    <a href="bank.html">Bank Management</a>
+    <a href="tourism.html">🏖 Tourism</a>
+    <a href="tax.html">💰 Tax & Fraud</a>
+    <a href="bank.html" class="active">🏦 Smart Banking</a>
 </div>
 
-<!-- Main -->
+<!-- ===== Main Content ===== -->
 <div class="container">
 
 <h1>Module 5 – Smart Banking System</h1>
 
 <!-- ================================================= -->
 <div class="card">
-<h2>A. Transaction Stream Monitor & Fraud</h2>
+<h2>A. Transaction Stream Monitoring & Fraud Detection</h2>
 
 <p>
-Monitors real-time banking transactions to detect anomalies, duplicate patterns,
-and suspicious connectivity between accounts.
+Processes live banking transactions to detect abnormal behavior, duplicate
+patterns, and suspicious account connectivity.
 </p>
 
 <h3>How the Code Works</h3>
 <div class="line">
-Incoming transactions are checked using a Bloom filter for fast duplicate
-rejection. Sliding-window z-score flags abnormal amounts. LSH-style hashing
-groups near-duplicate transactions, while BFS explores suspicious account links.
+A sliding-window z-score detects unusually large transactions.  
+Bloom filters reject duplicate transaction IDs efficiently.  
+Graph traversal (BFS/DFS) explores suspicious money-flow networks.
 </div>
 
 <h3>Efficiency Analysis</h3>
 <table>
-<tr><th>Technique</th><th>Time</th><th>Space</th></tr>
-<tr><td>Sliding Window</td><td>O(1) amortized</td><td>O(W)</td></tr>
+<tr><th>Technique</th><th>Time Complexity</th><th>Space</th></tr>
+<tr><td>Sliding Window Z-Score</td><td>O(1) amortized</td><td>O(W)</td></tr>
 <tr><td>Bloom Filter</td><td>O(k)</td><td>Sublinear</td></tr>
-<tr><td>Graph BFS/DFS</td><td>O(V + E)</td><td>O(V + E)</td></tr>
+<tr><td>Graph BFS / DFS</td><td>O(V + E)</td><td>O(V + E)</td></tr>
 </table>
 </div>
 
@@ -147,39 +147,38 @@ groups near-duplicate transactions, while BFS explores suspicious account links.
 <h2>B. Credit Scoring Engine</h2>
 
 <p>
-Combines multiple financial features to compute credit scores using
-optimization and learning techniques.
+Evaluates customer creditworthiness using income, age, and repayment history.
 </p>
 
 <h3>How the Code Works</h3>
 <div class="line">
-A DP knapsack model selects the best feature combination under constraints.
-Greedy ranking gives fast approximations. A logistic-regression stub demonstrates
-learning-based scoring. Feature metadata is retrieved via Trie and HashMap.
+A dynamic-programming knapsack model selects optimal financial features.
+Greedy ranking provides fast approximations. Trie and hash maps allow fast
+feature lookup. A logistic-style scoring stub demonstrates learning-based logic.
 </div>
 
 <h3>Efficiency Analysis</h3>
 <table>
 <tr><th>Method</th><th>Time</th><th>Space</th></tr>
 <tr><td>DP (Knapsack)</td><td>O(n × budget)</td><td>O(budget)</td></tr>
-<tr><td>Greedy</td><td>O(n log n)</td><td>O(n)</td></tr>
-<tr><td>Trie Lookup</td><td>O(len)</td><td>O(sum len)</td></tr>
+<tr><td>Greedy Ranking</td><td>O(n log n)</td><td>O(n)</td></tr>
+<tr><td>Trie Lookup</td><td>O(L)</td><td>O(ΣL)</td></tr>
 </table>
 </div>
 
 <!-- ================================================= -->
 <div class="card">
-<h2>D. Ledger & Fast Lookup</h2>
+<h2>C. Ledger Management & Fast Lookup</h2>
 
 <p>
-Ensures fast transaction lookup and ordered ledger maintenance.
+Maintains ordered transaction history with ultra-fast lookup capabilities.
 </p>
 
 <h3>How the Code Works</h3>
 <div class="line">
-A Skip List provides probabilistic O(log n) ordered operations. std::map
-guarantees strict log-time bounds, while unordered_map enables constant-time
-ID lookups.
+Skip Lists maintain ordered ledger entries with probabilistic guarantees.
+std::map ensures strict log-time ordering. unordered_map allows constant-time
+transaction ID lookups.
 </div>
 
 <h3>Efficiency Analysis</h3>
@@ -193,12 +192,13 @@ ID lookups.
 
 <!-- ================================================= -->
 <div class="card">
-<h2>Integrated C++ Code – Smart Banking</h2>
+<h2>Integrated C++ Core Logic (Excerpt)</h2>
 
 <pre>
 // ================= SLIDING WINDOW Z-SCORE =================
 struct SlidingZ{
-    int W; deque&lt;double&gt; q; double sum=0, sumsq=0;
+    int W; deque&lt;double&gt; q;
+    double sum=0, sumsq=0;
     SlidingZ(int w):W(w){}
     pair&lt;bool,double&gt; push(double x,double k){
         q.push_back(x); sum+=x; sumsq+=x*x;
@@ -215,25 +215,42 @@ struct SlidingZ{
     }
 };
 
-// ================= BLOOM FILTER =================
-struct Bloom{
-    vector&lt;uint8_t&gt; bits; size_t m; int k;
-    Bloom(size_t mb,int kh):m(mb),k(kh),bits((mb+7)/8,0){}
-};
-
-// ================= TRIE =================
-struct Trie{
-    struct Node{ unordered_map&lt;char,int&gt; ch; int val=-1; };
-    vector&lt;Node&gt; t;
-    Trie(){ t.emplace_back(); }
-};
-
-// ================= SKIP LIST =================
+// ================= SKIP LIST NODE =================
 struct SkipNode{
-    long long key; string val;
+    long long key; string value;
     vector&lt;SkipNode*&gt; next;
-    SkipNode(long long k,string v,int l):key(k),val(v),next(l,nullptr){}
+    SkipNode(long long k,string v,int lvl)
+        :key(k),value(v),next(lvl,nullptr){}
 };
+</pre>
+
+</div>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>📁 JSON Data Inputs</h2>
+
+<h3>transactions.json</h3>
+<pre>
+{
+  "transactions": [
+    { "txid": 1, "sender": 101, "amount": 520.75 },
+    { "txid": 2, "sender": 102, "amount": 510.20 },
+    { "txid": 3, "sender": 101, "amount": 9800.00 },
+    { "txid": 4, "sender": 103, "amount": 545.10 }
+  ]
+}
+</pre>
+
+<h3>customers.json</h3>
+<pre>
+{
+  "customers": [
+    { "id": 1, "income": 60000, "age": 35, "credit_score": 720 },
+    { "id": 2, "income": 35000, "age": 28, "credit_score": 640 },
+    { "id": 3, "income": 95000, "age": 42, "credit_score": 810 }
+  ]
+}
 </pre>
 
 </div>
