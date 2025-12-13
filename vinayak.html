@@ -271,3 +271,250 @@ with minimal ecological impact.
 </div>
 </body>
   </html>
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Algorithms & Nature — Summary</title>
+
+<style>
+/* --- BODY --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* --- CONTAINER --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* --- NAVBAR --- */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    margin: 30px;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* --- TOC --- */
+nav.toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+nav.toc a {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav.toc a:hover {
+    background: #ffdd59;
+    color: #000;
+}
+
+/* --- GLASS PANELS --- */
+.glass-panel {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 25px;
+    padding: 30px 40px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.4s ease;
+}
+
+.glass-panel:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(255,140,0,0.4);
+}
+
+/* --- HEADINGS --- */
+h2, h3 {
+    background: linear-gradient(90deg, #ff512f, #dd2476, #f0ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+ul {
+    line-height: 1.8;
+}
+
+/* --- ORDER OF GROWTH CHART --- */
+.o-chart {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.o-label {
+    font-family: monospace;
+}
+
+.bar {
+    height: 18px;
+    border-radius: 8px;
+    background: linear-gradient(90deg,#ff512f,#f0ff00);
+}
+
+.bar.s1{width:4%}
+.bar.slog{width:8%}
+.bar.sn{width:30%}
+.bar.snlog{width:45%}
+.bar.sq{width:70%}
+.bar.s2n{width:92%}
+.bar.snf{width:100%}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #ffdd59;
+    opacity: 0.85;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Algorithms & Nature — Concise Summary</h1>
+</header>
+
+<div class="container">
+
+<nav class="toc">
+  <a href="#q1">Nature Patterns</a>
+  <a href="#q2">Efficiency</a>
+  <a href="#q3">Design Principles</a>
+  <a href="#q4">Trees</a>
+  <a href="#q5">Array Queries</a>
+  <a href="#q6">Trees vs Graphs</a>
+  <a href="#q7">Sorting</a>
+  <a href="#q8">Graph Algorithms</a>
+  <a href="#q9">Techniques</a>
+</nav>
+
+<section id="q1" class="glass-panel">
+<h2>1. Computational Patterns in Nature</h2>
+<ul>
+<li><b>Iteration:</b> Seasonal cycles repeat endlessly.</li>
+<li><b>Recursion:</b> Fractal-like structures in leaves and shells.</li>
+<li><b>Backtracking:</b> Animals revisiting paths while foraging.</li>
+</ul>
+</section>
+
+<section id="q2" class="glass-panel">
+<h2>2. Space & Time Efficiency</h2>
+<ul>
+<li>O(1), O(log n), O(n), O(n log n)</li>
+<li>O(n²), O(2ⁿ), O(n!)</li>
+</ul>
+
+<h3>Order of Growth</h3>
+<div class="o-chart">
+<div class="o-label">O(1)</div><div class="bar s1"></div>
+<div class="o-label">O(log n)</div><div class="bar slog"></div>
+<div class="o-label">O(n)</div><div class="bar sn"></div>
+<div class="o-label">O(n log n)</div><div class="bar snlog"></div>
+<div class="o-label">O(n²)</div><div class="bar sq"></div>
+<div class="o-label">O(2ⁿ)</div><div class="bar s2n"></div>
+<div class="o-label">O(n!)</div><div class="bar snf"></div>
+</div>
+</section>
+
+<section id="q3" class="glass-panel">
+<h2>3. Design Principles</h2>
+<ul>
+<li>BFS vs DFS exploration strategies</li>
+<li>Prefix & suffix logic in pattern matching</li>
+<li>Balancing rotations in trees</li>
+</ul>
+</section>
+
+<section id="q4" class="glass-panel">
+<h2>4. Hierarchical Data & Trees</h2>
+<ul>
+<li>Binary Trees</li>
+<li>AVL & Red-Black Trees</li>
+<li>Heaps & Tries</li>
+</ul>
+</section>
+
+<section id="q5" class="glass-panel">
+<h2>5. Array Query Algorithms</h2>
+<ul>
+<li>Fenwick Tree</li>
+<li>Segment Tree</li>
+<li>Precomputation Tables</li>
+</ul>
+</section>
+
+<section id="q6" class="glass-panel">
+<h2>6. Trees vs Graphs</h2>
+<ul>
+<li>Trees: hierarchical, acyclic</li>
+<li>Graphs: cycles, networks</li>
+<li>Traversals: DFS & BFS</li>
+</ul>
+</section>
+
+<section id="q7" class="glass-panel">
+<h2>7. Sorting & Searching</h2>
+<ul>
+<li>Merge Sort, Quick Sort</li>
+<li>Binary Search</li>
+</ul>
+</section>
+
+<section id="q8" class="glass-panel">
+<h2>8. Graph Algorithms</h2>
+<ul>
+<li>Minimum Spanning Tree</li>
+<li>Dijkstra & Floyd–Warshall</li>
+</ul>
+</section>
+
+<section id="q9" class="glass-panel">
+<h2>9. Algorithm Design Techniques</h2>
+<ul>
+<li>Divide & Conquer</li>
+<li>Backtracking</li>
+<li>Graph Traversals</li>
+</ul>
+</section>
+
+<footer>
+<p>Glassmorphism version • Ready for GitHub & academic submission</p>
+</footer>
+
+</div>
+</body>
+</html>
