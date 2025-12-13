@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Coastal City – Blue/Green Economy & Algorithms</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Blue & Green economy ideas plus Algorithms & Nature summary in a single glassmorphism layout." />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>DSA in Sustainable Industry Sectors</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <style>
     body{
       margin:0;padding:0;
-      font-family:'Space Grotesk',sans-serif;
+      font-family:'Space Grotesk',system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
       background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
       color:#e6eef6;min-height:100vh;
     }
@@ -22,7 +20,8 @@
     }
     .logo{
       display:flex;align-items:center;gap:10px;
-      font-family:'Pacifico',cursive;font-size:1.7rem;font-weight:700;color:#fff;
+      font-size:1.7rem;font-weight:700;
+      font-family:'Pacifico',cursive;
     }
     .logo img{width:38px;height:38px;border-radius:50%;}
     .navbar h1{margin:0 0 6px 0;font-size:1.4rem;}
@@ -43,65 +42,41 @@
       border:1px solid rgba(255,255,255,.16);
       box-shadow:0 12px 30px rgba(15,23,42,.7);
     }
-    .glass:hover{
-      transform:translateY(-4px);transition:.4s;
-      box-shadow:0 18px 40px rgba(255,140,0,.45);
-    }
-    h2,h3{
+    .sector-title{
       margin-top:0;
       background:linear-gradient(90deg,#ff512f,#dd2476,#f0ff00);
       -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      font-size:1.3rem;
     }
-    p.meta{font-size:.8rem;color:#9aa4b2;margin:0 0 10px;}
-    .pill{
-      display:inline-block;
-      padding:5px 10px;border-radius:999px;
-      background:rgba(255,255,255,.06);
-      font-size:.8rem;color:#9aa4b2;
-      text-decoration:none;margin:0 6px 6px 0;
+    .section-header{
+      font-size:.98rem;font-weight:600;margin-top:14px;margin-bottom:4px;
+      color:#e5e7eb;
     }
-    .pill:hover{background:rgba(255,255,255,.16);color:#fffbeb;}
-
-    .grid2{
-      display:grid;grid-template-columns:1fr;gap:14px;
+    .sdg-list{list-style:none;margin:6px 0 0;padding:0;}
+    .sdg-list li{
+      margin-bottom:4px;padding:5px 7px;
+      border-radius:8px;
+      background:rgba(15,23,42,.85);
+      border-left:3px solid #38bdf8;
+      font-size:.88rem;
     }
-    @media(min-width:880px){.grid2{grid-template-columns:1fr 1fr;}}
-    .card{
-      background:rgba(15,23,42,.65);
-      border-radius:14px;padding:14px;
-      border:1px solid rgba(148,163,184,.35);
-      font-size:.9rem;
+    .dsa-list{margin:6px 0 0 18px;font-size:.9rem;}
+    pre{
+      background:#111827;border-radius:10px;
+      padding:12px;overflow-x:auto;
+      font-family:'Consolas','Monaco',monospace;
+      font-size:.85rem;color:#e5e7eb;
     }
-    ul{margin:6px 0 0 18px;padding:0;}
-    .sdg{
-      display:inline-block;padding:5px 7px;border-radius:8px;
-      font-weight:600;font-size:.7rem;margin-right:6px;margin-bottom:4px;
-      background:rgba(15,118,110,.12);color:#2dd4bf;
+    .code-comment{color:#6b7280;}
+    .code-include{color:#c678dd;}
+    .code-keyword{color:#56b6c2;}
+    .code-type{color:#e5c07b;}
+    .code-function{color:#61afef;}
+    .code-string{color:#98c379;}
+    h1.page-title{
+      margin:0 0 6px 0;font-size:1.5rem;
     }
-    .muted{color:#9aa4b2;font-size:.9rem;}
-
-    .q-card{background:rgba(15,23,42,.8);}
-    .q-card h2{font-size:1.05rem;}
-    .o-chart{
-      display:grid;grid-template-columns:110px 1fr;gap:8px;
-      align-items:center;margin-top:8px;
-    }
-    .o-label{font-family:monospace;font-size:.78rem;color:#cbd5f5;}
-    .bar{
-      height:14px;border-radius:8px;
-      background:linear-gradient(90deg,#38bdf8,#7c3aed);
-      box-shadow:inset 0 -3px 0 rgba(15,23,42,.9);
-    }
-    .bar.s1{width:4%}.bar.slog{width:8%}.bar.sn{width:30%}
-    .bar.snlog{width:45%}.bar.sq{width:70%}.bar.s2n{width:92%}.bar.snf{width:100%}
-
-    .view{display:none;}
-    .view.active{display:block;}
-
-    footer{
-      text-align:center;margin-top:24px;font-size:.8rem;
-      color:#ffdd59;opacity:.9;
-    }
+    p.lead{margin:0;color:#cbd5f5;font-size:.9rem;}
   </style>
 </head>
 <body>
@@ -109,315 +84,274 @@
   <header>
     <div class="logo">
       <img src="https://via.placeholder.com/38" alt="Logo">
-      Coastal Knowledge Hub
+      Coastal DSA Hub
     </div>
     <nav class="navbar">
       <div>
-        <h1>Blue/Green Economy & Algorithms</h1>
+        <h1 class="page-title">DSA in Sustainable Industry Sectors</h1>
         <ul>
-          <li><a href="#" data-view="economy" class="active">Blue & Green Economy</a></li>
-          <li><a href="#" data-view="algorithms">Algorithms & Nature</a></li>
+          <li><a href="#" class="active">Sustainable DSA Sectors</a></li>
         </ul>
       </div>
     </nav>
   </header>
 
-  <!-- BLUE & GREEN ECONOMY VIEW -->
-  <div id="view-economy" class="view active">
+  <main>
     <section class="glass">
-      <h2>Blue & Green Economy Ideas (SDG-aligned)</h2>
-      <p class="muted">
-        Six business opportunities for a coastal region, each with description, economic impact,
-        and related SDGs – ready to be used in planning docs or GitHub READMEs.
-      </p>
-      <div>
-        <a class="pill" href="#green-energy">Green Energy &amp; Ocean Hub</a>
-        <a class="pill" href="#clean-water">Clean Water &amp; Environment</a>
-        <a class="pill" href="#transport">Transport &amp; Logistics</a>
-        <a class="pill" href="#shipbuilding">Shipbuilding &amp; Repair</a>
-        <a class="pill" href="#waste-to-blue">Waste-to-Blue-Energy</a>
-        <a class="pill" href="#deep-ocean">Deep Ocean Mining</a>
-      </div>
-    </section>
-
-    <section class="glass" id="green-energy">
-      <h2>1. Green Energy & Ocean Energy Hub</h2>
-      <p class="meta">Brief description • Economic impact • Related SDGs</p>
-      <div class="grid2">
-        <div class="card">
-          <strong>Description</strong>
-          <p>A hub that develops, demonstrates and deploys ocean-based renewable energy (offshore wind, tidal, wave, OTEC) with storage, grid integration, and supply‑chain services, including R&amp;D labs, portside assembly, test sites, and training.</p>
-        </div>
-        <div class="card">
-          <strong>Impact on the economy</strong>
-          <ul>
-            <li>Creates high‑skill jobs in engineering, marine construction, and O&amp;M.</li>
-            <li>Improves energy security and reduces fossil-fuel imports.</li>
-            <li>Attracts investment and builds local manufacturing and port supply chains.</li>
-            <li>Generates exportable design, installation, and service capabilities.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Related SDGs</strong><br>
-          <span class="sdg">SDG 7</span><span class="sdg">SDG 9</span>
-          <span class="sdg">SDG 11</span><span class="sdg">SDG 13</span>
-          <span class="sdg">SDG 14</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="glass" id="clean-water">
-      <h2>2. Clean Water + Environmental Industries</h2>
-      <p class="meta">Brief description • Economic impact • Related SDGs</p>
-      <div class="grid2">
-        <div class="card">
-          <strong>Description</strong>
-          <p>Firms delivering purification, decentralized systems, desalination, wastewater reuse, pollution control, and environmental monitoring to protect ecosystems and ensure water security.</p>
-        </div>
-        <div class="card">
-          <strong>Impact on the economy</strong>
-          <ul>
-            <li>Secures water for homes, farms, and industry, boosting productivity.</li>
-            <li>Reduces health burden from water‑borne diseases.</li>
-            <li>Creates engineering, operations, and monitoring jobs.</li>
-            <li>Enables industrial expansion where reliable water is available.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Related SDGs</strong><br>
-          <span class="sdg">SDG 6</span><span class="sdg">SDG 3</span>
-          <span class="sdg">SDG 11</span><span class="sdg">SDG 12</span>
-          <span class="sdg">SDG 14</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="glass" id="transport">
-      <h2>3. Transport Model & Logistics</h2>
-      <p class="meta">Brief description • Economic impact • Related SDGs</p>
-      <div class="grid2">
-        <div class="card">
-          <strong>Description</strong>
-          <p>Integrated transport: electric buses and ferries, smart public transport, intermodal freight, green last‑mile delivery, port logistics, and digital supply‑chain platforms.</p>
-        </div>
-        <div class="card">
-          <strong>Impact on the economy</strong>
-          <ul>
-            <li>Lowers logistics costs and improves competitiveness.</li>
-            <li>Creates jobs in vehicle manufacturing, fleet operations, warehousing, and IT.</li>
-            <li>Reduces congestion and time lost in cities.</li>
-            <li>Supports trade by improving port and inland connectivity.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Related SDGs</strong><br>
-          <span class="sdg">SDG 9</span><span class="sdg">SDG 11</span>
-          <span class="sdg">SDG 13</span><span class="sdg">SDG 8</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="glass" id="shipbuilding">
-      <h2>4. Shipbuilding & Ship Repair Business</h2>
-      <p class="meta">Brief description • Economic impact • Related SDGs</p>
-      <div class="grid2">
-        <div class="card">
-          <strong>Description</strong>
-          <p>Facilities that design, construct, retrofit, and repair vessels, from fishing boats to commercial ships and offshore platforms, including shipyards, workshops, and naval architecture services.</p>
-        </div>
-        <div class="card">
-          <strong>Impact on the economy</strong>
-          <ul>
-            <li>Provides large numbers of skilled and semi‑skilled jobs.</li>
-            <li>Builds capacity for maritime trade and naval requirements.</li>
-            <li>Drives demand for steel, engines, electronics, and marine suppliers.</li>
-            <li>Supports port ecosystems and regional exports via better fleet availability.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Related SDGs</strong><br>
-          <span class="sdg">SDG 9</span><span class="sdg">SDG 8</span>
-          <span class="sdg">SDG 14</span><span class="sdg">SDG 11</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="glass" id="waste-to-blue">
-      <h2>5. Waste-to-Blue-Energy Solutions</h2>
-      <p class="meta">Brief description • Economic impact • Related SDGs</p>
-      <div class="grid2">
-        <div class="card">
-          <strong>Description</strong>
-          <p>Converts coastal and marine waste (seaweed, biomass, fishing residues, plastics) into biofuels, biogas, electricity, or hydrogen using biochemical, thermochemical, and advanced recycling processes.</p>
-        </div>
-        <div class="card">
-          <strong>Impact on the economy</strong>
-          <ul>
-            <li>Creates circular value chains from pollutants.</li>
-            <li>Reduces cleanup costs and restores tourism/fisheries value.</li>
-            <li>Stimulates biotech, recycling, and green-chemistry startups.</li>
-            <li>Provides local energy sources for coastal communities.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Related SDGs</strong><br>
-          <span class="sdg">SDG 12</span><span class="sdg">SDG 7</span>
-          <span class="sdg">SDG 13</span><span class="sdg">SDG 14</span>
-          <span class="sdg">SDG 11</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="glass" id="deep-ocean">
-      <h2>6. Deep Ocean Mining – Rare Earth & Critical Minerals</h2>
-      <p class="meta">Brief description • Economic impact • Related SDGs</p>
-      <div class="grid2">
-        <div class="card">
-          <strong>Description</strong>
-          <p>Carefully governed extraction of polymetallic nodules and seabed minerals (cobalt, nickel, manganese, rare earths) for batteries, electronics, and renewable technologies with strong environmental safeguards.</p>
-        </div>
-        <div class="card">
-          <strong>Impact on the economy</strong>
-          <ul>
-            <li>Secures strategic mineral supplies for high‑tech manufacturing.</li>
-            <li>Creates high‑tech jobs in robotics and subsea engineering.</li>
-            <li>Generates export revenues and reduces import dependence.</li>
-            <li>Requires investment in monitoring and regulation, creating new service sectors.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Related SDGs</strong><br>
-          <span class="sdg">SDG 9</span><span class="sdg">SDG 12</span>
-          <span class="sdg">SDG 7</span><span class="sdg">SDG 14</span>
-          <span class="sdg">SDG 8</span>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ALGORITHMS & NATURE VIEW -->
-  <div id="view-algorithms" class="view">
-    <section class="glass">
-      <h2>Algorithms & Nature — Summary</h2>
-      <p class="muted">
-        Concise notes on how nature reflects algorithmic ideas, plus complexity, data structures,
-        and design techniques – formatted as Q&amp;A style cards.
+      <p class="lead">
+        Mapping real-world sustainable sectors to core data structures and algorithms, with SDG alignment and small C++ snippets.
       </p>
     </section>
 
-    <section id="q1" class="glass q-card">
-      <h2>1. Problems in Nature (Iteration, Recursion, Backtracking)</h2>
-      <p>Nature mirrors computational patterns:</p>
-      <ul>
-        <li><strong>Iteration:</strong> Seasonal cycles repeatedly execute like loops.</li>
-        <li><strong>Recursion:</strong> Self-similar structures (branching, segments) repeat at different scales.</li>
-        <li><strong>Backtracking:</strong> Animals explore paths, retreat from dead-ends, and try alternatives.</li>
+    <!-- 1. Green Energy & Ocean Hub -->
+    <section class="glass">
+      <h2 class="sector-title">🌱 1. Green Energy & Ocean Energy Hub</h2>
+
+      <div class="section-header">What does this sector do?</div>
+      <p>The Green Energy &amp; Ocean Energy Hub focuses on generating renewable energy from offshore wind farms, tidal power stations, wave energy systems, and floating solar plants distributed along coastal and deep‑ocean regions. Because underwater cables are costly and hard to maintain, the network must be planned to connect all stations with minimal cable while maintaining reliability.</p>
+
+      <div class="section-header">How does this sector use Data Structures & Algorithms?</div>
+      <p>The energy network is modeled as a weighted graph where stations are vertices and submarine cables are edges. Minimum Spanning Tree algorithms reduce cable cost, and Union–Find prevents redundant cycles when new links are added.</p>
+
+      <div class="section-header">🌍 SDG Alignment</div>
+      <ul class="sdg-list">
+        <li><strong>SDG 7</strong> – Affordable and Clean Energy: Delivers reliable renewable power.</li>
+        <li><strong>SDG 9</strong> – Industry, Innovation and Infrastructure: Builds resilient offshore energy infrastructure.</li>
+        <li><strong>SDG 13</strong> – Climate Action: Cuts emissions via large‑scale renewables.</li>
       </ul>
-    </section>
 
-    <section id="q2" class="glass q-card">
-      <h2>2. Space & Time Efficiency</h2>
-      <p>Space efficiency is extra memory used; time efficiency is runtime. Together they determine scalability.</p>
-      <ul>
-        <li>O(1), O(log n), O(n), O(n log n)</li>
-        <li>O(n²), O(2ⁿ), O(n!)</li>
+      <div class="section-header">Data Structures Used</div>
+      <ul class="dsa-list">
+        <li>Graph</li>
+        <li>Union–Find (Disjoint Set)</li>
       </ul>
-      <div class="o-chart">
-        <div class="o-label">O(1)</div><div class="bar s1"></div>
-        <div class="o-label">O(log n)</div><div class="bar slog"></div>
-        <div class="o-label">O(n)</div><div class="bar sn"></div>
-        <div class="o-label">O(n log n)</div><div class="bar snlog"></div>
-        <div class="o-label">O(n²)</div><div class="bar sq"></div>
-        <div class="o-label">O(2ⁿ)</div><div class="bar s2n"></div>
-        <div class="o-label">O(n!)</div><div class="bar snf"></div>
-      </div>
-      <p class="muted">Shorter bars = better scalability for large inputs.</p>
+
+      <div class="section-header">Sample Code – Graph Representation (C++)</div>
+      <pre><code><span class="code-include">#include &lt;iostream&gt;</span>
+<span class="code-include">#include &lt;vector&gt;</span>
+<span class="code-keyword">using</span> <span class="code-keyword">namespace</span> std;
+
+<span class="code-comment">/*
+Vertex  -&gt; Energy station
+Edge    -&gt; Underwater power cable
+Adjacency list is memory efficient
+*/</span>
+
+<span class="code-type">int</span> <span class="code-function">main</span>() {
+  <span class="code-type">int</span> numberOfStations = 4;
+  <span class="code-type">vector&lt;vector&lt;int&gt;&gt;</span> energyGraph(numberOfStations);
+
+  energyGraph[0].<span class="code-function">push_back</span>(1);
+  energyGraph[0].<span class="code-function">push_back</span>(2);
+  energyGraph[1].<span class="code-function">push_back</span>(3);
+
+  cout <span class="code-string">&lt;&lt; "Green energy network graph initialized successfully"</span>;
+  <span class="code-keyword">return</span> 0;
+}</code></pre>
     </section>
 
-    <section id="q3" class="glass q-card">
-      <h2>3. Design Principles</h2>
-      <ul>
-        <li>BFS vs DFS as brave vs cautious exploration.</li>
-        <li>Prefix/suffix reasoning drives pattern matching (KMP, Boyer–Moore).</li>
-        <li>Balancing operations maintain tree performance (AVL, red-black).</li>
+    <!-- 2. Clean Water -->
+    <section class="glass">
+      <h2 class="sector-title">💧 2. Clean Water & Environmental Industries</h2>
+
+      <div class="section-header">What does this sector do?</div>
+      <p>This sector manages treatment plants, reservoirs, desalination units, and pipelines to deliver safe water to consumers on time.</p>
+
+      <div class="section-header">How does this sector use Data Structures & Algorithms?</div>
+      <p>Queues control batch processing in treatment plants, hash tables support instant lookups for quality parameters, and all‑pairs shortest path algorithms such as Floyd–Warshall can evaluate optimal distribution paths.</p>
+
+      <div class="section-header">🌍 SDG Alignment</div>
+      <ul class="sdg-list">
+        <li><strong>SDG 6</strong> – Clean Water and Sanitation.</li>
+        <li><strong>SDG 3</strong> – Good Health and Well‑being.</li>
+        <li><strong>SDG 9</strong> – Industry, Innovation and Infrastructure.</li>
       </ul>
-    </section>
 
-    <section id="q4" class="glass q-card">
-      <h2>4. Hierarchical Data & Trees</h2>
-      <ul>
-        <li>Binary/AVL/Red-black/2–3 trees for ordered data.</li>
-        <li>Heaps for priority scheduling.</li>
-        <li>Tries for fast prefix and dictionary operations.</li>
+      <div class="section-header">Data Structures Used</div>
+      <ul class="dsa-list">
+        <li>Queue</li>
+        <li>Hash Table</li>
       </ul>
+
+      <div class="section-header">Sample Code – Queue (C++)</div>
+      <pre><code><span class="code-include">#include &lt;iostream&gt;</span>
+<span class="code-include">#include &lt;queue&gt;</span>
+<span class="code-keyword">using</span> <span class="code-keyword">namespace</span> std;
+
+<span class="code-comment">/*
+FIFO processing of water treatment batches
+*/</span>
+<span class="code-type">int</span> <span class="code-function">main</span>() {
+  <span class="code-type">queue&lt;int&gt;</span> waterQueue;
+  waterQueue.<span class="code-function">push</span>(101);
+  waterQueue.<span class="code-function">push</span>(102);
+  waterQueue.<span class="code-function">push</span>(103);
+
+  cout <span class="code-string">&lt;&lt; "Processing batch: "</span> <span class="code-string">&lt;&lt; waterQueue.front()</span>;
+  waterQueue.<span class="code-function">pop</span>();
+  <span class="code-keyword">return</span> 0;
+}</code></pre>
     </section>
 
-    <section id="q5" class="glass q-card">
-      <h2>5. Array Query Algorithms</h2>
-      <ul>
-        <li>Fenwick tree for prefix sums with low memory.</li>
-        <li>Segment tree for flexible range queries/updates.</li>
-        <li>Precomputation tables for O(1) queries over small domains.</li>
+    <!-- 3. Transport & Logistics -->
+    <section class="glass">
+      <h2 class="sector-title">🚦 3. Transport Model & Logistics</h2>
+
+      <div class="section-header">What does this sector do?</div>
+      <p>This sector coordinates roads, rail, ports, and logistics hubs to minimize construction costs and operating delays for freight and passengers.</p>
+
+      <div class="section-header">How does this sector use Data Structures & Algorithms?</div>
+      <p>Union–Find helps avoid cycles when designing minimal transport networks, while priority queues order shipments so high‑priority cargo is dispatched first.</p>
+
+      <div class="section-header">🌍 SDG Alignment</div>
+      <ul class="sdg-list">
+        <li><strong>SDG 9</strong> – Efficient transport infrastructure.</li>
+        <li><strong>SDG 11</strong> – Sustainable urban and regional connectivity.</li>
+        <li><strong>SDG 8</strong> – Supports trade and economic growth.</li>
       </ul>
-    </section>
 
-    <section id="q6" class="glass q-card">
-      <h2>6. Trees vs Graphs & Traversals</h2>
-      <p><strong>Trees:</strong> connected, acyclic, rooted, n−1 edges.</p>
-      <p><strong>Graphs:</strong> general vertex/edge structure, may have cycles or be disconnected.</p>
-      <p><strong>Traversals:</strong> tree traversals (pre/in/post) vs BFS/DFS on graphs for connectivity and shortest paths.</p>
-    </section>
-
-    <section id="q7" class="glass q-card">
-      <h2>7. Sorting & Searching</h2>
-      <ul>
-        <li>Bubble/Insertion/Selection: simple, good for teaching and small n.</li>
-        <li>Merge sort: stable O(n log n).</li>
-        <li>Quick sort: average O(n log n) with good pivots.</li>
-        <li>Linear vs binary search depending on order; graph searches for network data.</li>
+      <div class="section-header">Data Structures Used</div>
+      <ul class="dsa-list">
+        <li>Union–Find</li>
+        <li>Priority Queue</li>
       </ul>
+
+      <div class="section-header">Sample Code – Priority Queue (C++)</div>
+      <pre><code><span class="code-include">#include &lt;iostream&gt;</span>
+<span class="code-include">#include &lt;queue&gt;</span>
+<span class="code-keyword">using</span> <span class="code-keyword">namespace</span> std;
+
+<span class="code-comment">/*
+Higher value = higher priority shipment
+*/</span>
+<span class="code-type">int</span> <span class="code-function">main</span>() {
+  <span class="code-type">priority_queue&lt;int&gt;</span> shipmentQueue;
+  shipmentQueue.<span class="code-function">push</span>(20);
+  shipmentQueue.<span class="code-function">push</span>(80);
+  shipmentQueue.<span class="code-function">push</span>(50);
+
+  cout <span class="code-string">&lt;&lt; "Processing shipment priority: "</span>
+       <span class="code-string">&lt;&lt; shipmentQueue.top()</span>;
+  <span class="code-keyword">return</span> 0;
+}</code></pre>
     </section>
 
-    <section id="q8" class="glass q-card">
-      <h2>8. Graph Algorithms</h2>
-      <p>Spanning trees (MST) minimize connection cost; shortest paths minimize travel time/cost in networks, important for routing, logistics, and navigation.</p>
-    </section>
+    <!-- 4. Shipbuilding -->
+    <section class="glass">
+      <h2 class="sector-title">🚢 4. Ship Building & Ship Repair Business</h2>
 
-    <section id="q9" class="glass q-card">
-      <h2>9. Design Techniques Overview</h2>
-      <ul>
-        <li>Backtracking for exhaustive search with pruning.</li>
-        <li>Divide & conquer for efficient decomposition.</li>
-        <li>Shortest path algorithms for weighted graphs.</li>
-        <li>Graph traversals as core exploration tools.</li>
+      <div class="section-header">What does this sector do?</div>
+      <p>Shipbuilding is hierarchical assembly of hull, decks, and systems; repair often reverses this as components are dismantled, inspected, and replaced.</p>
+
+      <div class="section-header">🌍 SDG Alignment</div>
+      <ul class="sdg-list">
+        <li><strong>SDG 9</strong> – Maritime industrial capacity.</li>
+        <li><strong>SDG 8</strong> – Skilled shipyard employment.</li>
+        <li><strong>SDG 14</strong> – Safer vessels reduce marine pollution risk.</li>
       </ul>
+
+      <div class="section-header">Data Structures Used</div>
+      <ul class="dsa-list">
+        <li>Tree (hierarchy of components)</li>
+        <li>Stack (LIFO dismantling steps)</li>
+      </ul>
+
+      <div class="section-header">Sample Code – Tree (C++)</div>
+      <pre><code><span class="code-include">#include &lt;iostream&gt;</span>
+<span class="code-keyword">using</span> <span class="code-keyword">namespace</span> std;
+
+<span class="code-keyword">struct</span> ShipComponent {
+  <span class="code-type">int</span> id;
+  ShipComponent* left;
+  ShipComponent* right;
+};
+
+ShipComponent* <span class="code-function">createComponent</span>(<span class="code-type">int</span> id) {
+  ShipComponent* node = <span class="code-keyword">new</span> ShipComponent();
+  node-&gt;id = id;
+  node-&gt;left = node-&gt;right = NULL;
+  <span class="code-keyword">return</span> node;
+}
+<span class="code-comment">// main() would build a tree for hull, deck, engine, etc.</span></code></pre>
     </section>
-  </div>
+
+    <!-- 5. Waste-to-Blue-Energy -->
+    <section class="glass">
+      <h2 class="sector-title">♻️ 5. Waste-to-Blue-Energy Solutions</h2>
+
+      <div class="section-header">What does this sector do?</div>
+      <p>Converts marine and urban waste streams into biogas, biofuel, and other energy carriers, supporting circular economy models.</p>
+
+      <div class="section-header">🌍 SDG Alignment</div>
+      <ul class="sdg-list">
+        <li><strong>SDG 12</strong> – Responsible consumption and production.</li>
+        <li><strong>SDG 7</strong> – Clean energy from waste.</li>
+        <li><strong>SDG 14</strong> – Less marine waste and pollution.</li>
+      </ul>
+
+      <div class="section-header">Data Structures Used</div>
+      <ul class="dsa-list">
+        <li>Array (raw waste/energy values)</li>
+        <li>Heap (max-heap for high-energy waste first)</li>
+      </ul>
+
+      <div class="section-header">Sample Code – Array + Heap (C++)</div>
+      <pre><code><span class="code-include">#include &lt;iostream&gt;</span>
+<span class="code-include">#include &lt;queue&gt;</span>
+<span class="code-keyword">using</span> <span class="code-keyword">namespace</span> std;
+
+<span class="code-type">int</span> <span class="code-function">main</span>() {
+  <span class="code-type">int</span> energyValues[] = {25, 60, 40, 80, 30};
+  <span class="code-type">priority_queue&lt;int&gt;</span> energyHeap;
+
+  <span class="code-keyword">for</span> (<span class="code-type">int</span> value : energyValues)
+    energyHeap.<span class="code-function">push</span>(value);
+
+  cout <span class="code-string">&lt;&lt; "Highest energy waste processed: "</span>
+       <span class="code-string">&lt;&lt; energyHeap.top()</span>;
+  <span class="code-keyword">return</span> 0;
+}</code></pre>
+    </section>
+
+    <!-- 6. Deep Ocean Mining -->
+    <section class="glass">
+      <h2 class="sector-title">🌊 6. Deep Ocean Mining – Rare Earth & Critical Minerals</h2>
+
+      <div class="section-header">What does this sector do?</div>
+      <p>Uses autonomous underwater vehicles to explore and extract rare earth and critical minerals from the seabed while aiming to minimise ecological disruption.</p>
+
+      <div class="section-header">🌍 SDG Alignment</div>
+      <ul class="sdg-list">
+        <li><strong>SDG 9</strong> – High‑tech resource extraction infrastructure.</li>
+        <li><strong>SDG 12</strong> – Efficient use of critical minerals.</li>
+        <li><strong>SDG 14</strong> – Emphasis on environmentally responsible seabed exploration.</li>
+      </ul>
+
+      <div class="section-header">Data Structures & Algorithms Used</div>
+      <ul class="dsa-list">
+        <li>Graph (seabed locations and paths)</li>
+        <li>Depth First Search (DFS)</li>
+      </ul>
+
+      <div class="section-header">Sample Code – DFS (C++)</div>
+      <pre><code><span class="code-type">void</span> <span class="code-function">DFS</span>(<span class="code-type">int</span> node,
+          <span class="code-keyword">const</span> <span class="code-type">vector&lt;vector&lt;int&gt;&gt;</span>& seabedMap,
+          <span class="code-type">vector&lt;bool&gt;</span>& visited) {
+
+  visited[node] = <span class="code-keyword">true</span>;
+  cout <span class="code-string">&lt;&lt; "Exploring seabed location: "</span> <span class="code-string">&lt;&lt; node &lt;&lt; endl</span>;
+
+  <span class="code-keyword">for</span> (<span class="code-type">int</span> next : seabedMap[node]) {
+    <span class="code-keyword">if</span> (!visited[next])
+      <span class="code-function">DFS</span>(next, seabedMap, visited);
+  }
+}</code></pre>
+    </section>
+  </main>
 
   <footer>
-    Single-page coastal city knowledge hub – Blue/Green economy ideas & algorithm reflections.
+    DSA in Sustainable Industry Sectors – Coastal style glassmorphism layout.
   </footer>
 </div>
-
-<script>
-  const navLinks=document.querySelectorAll('.navbar a[data-view]');
-  const views={
-    economy:document.getElementById('view-economy'),
-    algorithms:document.getElementById('view-algorithms')
-  };
-  function showView(name){
-    Object.keys(views).forEach(k=>{
-      views[k].classList.toggle('active',k===name);
-    });
-    navLinks.forEach(a=>{
-      a.classList.toggle('active',a.dataset.view===name);
-    });
-  }
-  navLinks.forEach(a=>{
-    a.addEventListener('click',e=>{
-      e.preventDefault();showView(a.dataset.view);
-    });
-  });
-</script>
 </body>
 </html>
