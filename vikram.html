@@ -1,1 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business DS Applications</title>
+
+<!-- Imported Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+/* --- BODY --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #FFFDD0);
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* --- CONTAINER --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* --- NAVBAR --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, rgba(83, 216, 233, 0.85));
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    margin-bottom: 50px;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: inherit, cursive;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0d0c0c;
+}
+
+header .navbar h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* --- GLASS PANELS --- */
+.glass-panel {
+    background: rgba(40, 42, 54, 0.85);
+    backdrop-filter: blur(20px);
+    border-radius: 50px;
+    padding: 30px 40px;
+    margin-bottom: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-panel:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* --- GRADIENT HEADINGS --- */
+h2 {
+    background: linear-gradient(90deg, #ff512f, #dd2476, #f0ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+ h3 {
+    background: linear-gradient(90deg, #6E2C00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- CARD GRID --- */
+.ds-list {
+    display: list-item;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.ds-card {
+    background: rgba(245, 245, 245, 0.4);
+    padding: 25px;
+    border-radius: 25px;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+    color: #2B2B2B;
+}
+
+.ds-card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 20px 60px rgba(252, 251, 251, 0.247);
+}
+/* shimmer */
+.ds-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: skewX(-25deg);
+}
+
+.ds-card:hover::before {
+    animation: shimmer 0.8s forwards;
+}
+
+@keyframes shimmer {
+    0% { left: -80%; }
+    100% { left: 130%; }
+}
+
+/* --- SCROLL ANIMATION --- */
+.hidden {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: all 0.8s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    color: #080807da;
+}
+.big-text {
+  font-size: 20px;  /* You can adjust the size */
+  font-weight: lighter; /* optional */
+}
+.codeBox {
+    display: none;
+    background: #f8f3f3;
+    color: #090909;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+.codeBox.show {
+    display: block;
+}
+
+
+
+button {
+    padding: 10px 18px;
+    font-size: 16px;
+    background: #f6fafab4;
+    color: rgb(14, 11, 11);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #14dcef;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<header>
+    <div class="logo">Business Data Structures</div>
+</header>
+
+<div class="container">
+
+
+
+<!-- ===================== ENTERTAINMENT ===================== -->
+<section class="glass-panel hidden">
+    <h2>Entertainment Business</h2>
+    <div class="big-text">
+        The entertainment industry focuses on providing enjoyment and leisure to people through movies, music, games, events, and other forms of media. This business thrives by creating engaging experiences that capture the audience’s attention, such as films, concerts, streaming platforms, or gaming ventures. It not only offers fun and relaxation but also has the potential to generate significant revenue through ticket sales, subscriptions, and advertising.
+        <ul>
+            <li>SDG 8 – Decent Work & Economic Growth
+        → Jobs for artists, technicians, creators</li>
+        <li>SDG 9 – Industry, Innovation & Infrastructure
+        → Digital platforms, streaming technology, gaming engines</li>
+        <li>SDG 12 – Responsible Consumption & Production
+→           Eco-friendly film sets, reduced waste, green events</li>
+        </ul>
+        
+    </div>
+    <div class="ds-list">
+
+        <div class="ds-card hidden">
+            <h3>Trees (BST / AVL / Red-Black)</h3>
+            <p>They keep customer or booking data sorted and allow quick searching for show times, slots, or items.</p>            
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>Heaps</h3>
+            <p >Useful for managing priority queues like fast-filling shows, game waitlists, or event rankings.</p>
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>Sorting Algorithms</h3>
+            <p>Used for ordering seat numbers, food orders, game scores, or lists by time/price/popularity.</p>
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>Trie</h3>
+            <p>Enables fast prefix-based search for movies, games, or menu items with autocomplete.</p>
+            
+        </div>
+<br>
+    </div>
+</section>
+
+<!-- ===================== RESTAURANT ===================== -->
+<section class="glass-panel hidden">
+    <h2>Restaurant / Food Business</h2>
+    <div class="big-text">
+        A restaurant or food business is centered around preparing and serving food and beverages to customers. It can range from small cafes and street food stalls to fine dining restaurants. This business satisfies the essential human need for nourishment while providing a memorable dining experience. Success in this industry depends on quality, taste, customer service, and innovative menu offerings that appeal to a variety of tastes.
+        
+        <ul>
+            <li>SDG 2 – Zero Hunger 
+→ Affordable food, food donations</li>
+
+<li>SDG 3 – Good Health & Well-Being
+→ Nutritious, hygienic food</li>
+
+<li>SDG 8 – Decent Work & Economic Growth
+→ Jobs for chefs, delivery staff, farmers</li>
+
+<li>SDG 12 – Responsible Consumption & Production
+→ Reducing food waste, sustainable sourcing</li>
+
+<li>SDG 13 – Climate Action
+→ Local sourcing, reduced carbon footprint</li>
+        </ul>
+    </div>
+
+    <div class="ds-list">
+
+        <div class="ds-card hidden">
+            <h3>AVL / Red-Black Trees</h3>
+            <p>Keep customer records, bookings, and memberships balanced and searchable with fast updates.</p>
+        </div>
+        <br>
+        <div class="ds-card hidden">
+            <h3>Heap</h3>
+            <p>Manages appointment priority, table reservations, or urgent orders in an efficient way.</p>
+            
+        </div>
+        <br>
+        <div class="ds-card hidden">
+            <h3>Trie</h3>
+            <p>Quickly finds menu items or services when users type partial names.</p> 
+        </div>
+ <br>
+        <div class="ds-card hidden">
+            <h3>Skip List</h3>
+            <p>Provides fast updates for dynamic menus, staff availability, or changing time slots.</p>
+           
+        </div>
+  <br>
+        <div class="ds-card hidden">
+            <h3>Sorting Algorithms</h3>
+            <p>Helps rank customers, sort prices, arrange menu items, or order services.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== EDUCATION ===================== -->
+<section class="glass-panel hidden">
+    <h2>Education Business</h2>
+    <div class="big-text">
+        An education business aims to provide knowledge, skills, and training to individuals of all ages. It can include schools, coaching centers, online learning platforms, or skill development institutes. The primary goal is to empower people by enhancing their learning opportunities, which can help them succeed in their careers or personal growth. With the rise of technology, online education has become a booming sector, making learning more accessible and flexible.
+        <ul>
+            <li>SDG 4 – Quality Education
+→ Inclusive, affordable, quality learning</li>
+<li>SDG 5 – Gender Equality
+→ Equal education for girls and boys</li>
+<li>SDG 8 – Decent Work & Economic Growth
+→ Skill development for employment</li>
+
+        </ul>
+    </div>
+
+    <div class="ds-list">
+
+        <div class="ds-card hidden">
+            <h3>Segment Tree</h3>
+            <p>Efficient for range queries like total attendance or marks within a roll-number interval.</p>
+            
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>AVL / RB Trees</h3>
+            <p>Good for maintaining sorted student data, records, and enrolling/dropping updates quickly.</p>
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>Trie</h3>
+            <p>Speeds up searching in digital libraries, documents, or course names using prefix lookup.</p>
+           
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>BFS / DFS</h3>
+            <p>Useful for navigating course prerequisites, academic hierarchies, or campus structures.</p>
+            
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>Dijkstra / Bellman-Ford / Floyd</h3>
+            <p>Used for shortest-path problems like campus navigation or timetable conflict optimization.</p>
+            
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>Union-Find</h3>
+            <p>Helps group students, detect cycles in prerequisite graphs, or manage club/team memberships.</p>
+            
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>Sorting Algorithms</h3>
+            <p>Required for ranking students, sorting marks, listing courses, or arranging schedules.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================== E-COMMERCE ===================== -->
+<section class="glass-panel hidden">
+    <h2>E-Commerce Business</h2>
+    <div class="big-text">
+        E-commerce businesses sell products or services online, allowing customers to shop from the comfort of their homes. This can include fashion, electronics, groceries, or digital products. The success of an e-commerce venture relies on a user-friendly website or app, secure payment systems, fast delivery, and good customer service. With the rapid growth of online shopping, e-commerce provides immense opportunities for reaching a wide audience and scaling quickly
+         <li>SDG 17 – Partnerships for the Goals</li>
+         <li>SDG-9:Industry, Innovation, and Infrastructure</li>
+         <li>SDG-8:Decent Work and Economic Growth</li>
+         <li>SDG-11:Sustainable Cities and Communities</li>
+    </div>
+
+    <div class="ds-list">
+<br>
+        <div class="ds-card hidden">
+            <h3>Trie</h3>
+            <p>Fast prefix search for product names, addresses, categories, and auto-completing user input.</p>
+           
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>Heap</h3>
+            <p>Prioritizes deliveries (express first), handles limited stock alerts, and processes urgent orders.</p>
+            
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>Graph Algorithms</h3>
+            <p>Calculate shortest/cheapest shipping routes and optimize delivery paths between warehouses.</p>
+        </div>
+        <br>
+
+        <div class="ds-card hidden">
+            <h3>Kruskal + Union-Find</h3>
+            <p>Build the most cost-efficient shipping/warehouse network using minimum spanning trees.</p>
+            
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>Segment / Fenwick Tree</h3>
+            <p>Supports real-time updates on inventory and fast range queries across large product datasets.</p>
+            
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>Skip List</h3>
+            <p>Maintains sorted dynamic lists of products by price, rating, or delivery speed.</p>
+            
+        </div>
+<br>
+        <div class="ds-card hidden">
+            <h3>Sorting Algorithms</h3>
+            <p>Help order products by cost, popularity, reviews, or arrival time.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="glass-panel hidden">
+
+<header>
+        <div class="logo"> DSA</div>
+        <div class="navbar">
+            <h1>Efficiency of Data Structures & Algorithms</h1>
+        </div>
+    </header>
+
+    <!-- MAIN PANEL -->
+    <div class="glass-panel hidden">
+        <h2>Time Complexity Overview</h2>
+        <p class="big-text">
+            The following table shows the efficiency of commonly used data structures
+            and algorithms in terms of time complexity.
+        </p>
+
+        <div class="ds-card">
+            <table style="width:100%; border-collapse: collapse; color:#000;">
+                <tr style="background:#ddd;">
+                    <th style="padding:12px; border:1px solid #555;">Structure / Algorithm</th>
+                    <th style="padding:12px; border:1px solid #555;">Operation</th>
+                    <th style="padding:12px; border:1px solid #555;">Time Complexity</th>
+                </tr>
+
+                <tr>
+                    <td rowspan="3" style="border:1px solid #555; padding:10px;">Heap </td>
+                    <td style="border:1px solid #555; padding:10px;">Insert</td>
+                    <td style="border:1px solid #555; padding:10px;">O(log n)</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">Delete</td>
+                    <td style="border:1px solid #555; padding:10px;">O(log n)</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">Build Heap</td>
+                    <td style="border:1px solid #555; padding:10px;">O(n)</td>
+                </tr>
+
+                <tr>
+                    <td rowspan="3" style="border:1px solid #555; padding:10px;">BST</td>
+                    <td style="border:1px solid #555; padding:10px;">Search</td>
+                    <td style="border:1px solid #555; padding:10px;">O(log n) avg, O(n) worst</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">Insert</td>
+                    <td style="border:1px solid #555; padding:10px;">O(log n) avg, O(n) worst</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">Delete</td>
+                    <td style="border:1px solid #555; padding:10px;">O(log n) avg, O(n) worst</td>
+                </tr>
+
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">DFS</td>
+                    <td style="border:1px solid #555; padding:10px;">Traversal</td>
+                    <td style="border:1px solid #555; padding:10px;">O(V + E)</td>
+                </tr>
+
+                <tr>
+                    <td rowspan="3" style="border:1px solid #555; padding:10px;">Skip List</td>
+                    <td style="border:1px solid #555; padding:10px;">Search</td>
+                    <td style="border:1px solid #555; padding:10px;">O(log n)</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">Insert</td>
+                    <td style="border:1px solid #555; padding:10px;">O(log n)</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">Delete</td>
+                    <td style="border:1px solid #555; padding:10px;">O(log n)</td>
+                </tr>
+
+                <tr>
+                    <td rowspan="2" style="border:1px solid #555; padding:10px;">Fenwick Tree</td>
+                    <td style="border:1px solid #555; padding:10px;">Update</td>
+                    <td style="border:1px solid #555; padding:10px;">O(log n)</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">Prefix Sum</td>
+                    <td style="border:1px solid #555; padding:10px;">O(log n)</td>
+                </tr>
+
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">Dijkstra</td>
+                    <td style="border:1px solid #555; padding:10px;">Shortest Path</td>
+                    <td style="border:1px solid #555; padding:10px;">O((V + E) log V)</td>
+                </tr>
+
+                <tr>
+                    <td rowspan="2" style="border:1px solid #555; padding:10px;">Trie</td>
+                    <td style="border:1px solid #555; padding:10px;">Insert</td>
+                    <td style="border:1px solid #555; padding:10px;">O(L)</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">Search</td>
+                    <td style="border:1px solid #555; padding:10px;">O(L)</td>
+                </tr>
+
+                <tr>
+                    <td rowspan="2" style="border:1px solid #555; padding:10px;">Segment Tree</td>
+                    <td style="border:1px solid #555; padding:10px;">Query</td>
+                    <td style="border:1px solid #555; padding:10px;">O(log n)</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">Update</td>
+                    <td style="border:1px solid #555; padding:10px;">O(log n)</td>
+                </tr>
+
+                <tr>
+                    <td rowspan="2" style="border:1px solid #555; padding:10px;">Union Find</td>
+                    <td style="border:1px solid #555; padding:10px;">Find</td>
+                    <td style="border:1px solid #555; padding:10px;">O(α(n)) ≈ O(1)</td>
+                </tr>
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">Union</td>
+                    <td style="border:1px solid #555; padding:10px;">O(α(n)) ≈ O(1)</td>
+                </tr>
+
+                <tr>
+                    <td style="border:1px solid #555; padding:10px;">Kruskal</td>
+                    <td style="border:1px solid #555; padding:10px;">MST</td>
+                    <td style="border:1px solid #555; padding:10px;">O(E log E)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </section>
+    <section class="glass-panel hidden">
+    <header>
+        <div class="logo"> DSA</div>
+        <div class="navbar">
+            <h1>Sample code of Data Structures & Algorithms</h1>
+        </div>
+    </header>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DSA Code Viewer</title>
+    <link rel="stylesheet" href="style.css"> <!-- your CSS file -->
+</head>
+<body>
+<button onclick="toggleCode('heap')">Heap</button>
+<div id="heap" class="codeBox">
+<pre>
+#include <iostream>
+using namespace std;
+
+class MaxHeap {
+    int arr[100];
+    int size;
+
+public:
+    MaxHeap() {
+        size = 0;
+    }
+
+    // Insert element into heap
+    void insert(int val) {
+        size++;
+        int i = size;
+
+        // Move up until heap property is satisfied
+        while (i > 1 && arr[i / 2] < val) {
+            arr[i] = arr[i / 2];
+            i = i / 2;
+        }
+        arr[i] = val;
+    }
+
+    // Delete maximum element (root)
+    void deleteMax() {
+        if (size == 0) {
+            cout << "Heap is empty\n";
+            return;
+        }
+
+        int last = arr[size];
+        size--;
+
+        int i = 1;
+        int child;
+
+        while (2 * i <= size) {
+            child = 2 * i;
+
+            if (child + 1 <= size && arr[child + 1] > arr[child])
+                child++;
+
+            if (last >= arr[child])
+                break;
+
+            arr[i] = arr[child];
+            i = child;
+        }
+        arr[i] = last;
+    }
+
+    // Display heap
+    void display() {
+        for (int i = 1; i <= size; i++)
+            cout << arr[i] << " ";
+        cout << endl;
+    }
+};
+
+int main() {
+    MaxHeap h;
+
+    h.insert(10);
+    h.insert(40);
+    h.insert(30);
+    h.insert(60);
+    h.insert(20);
+
+    cout << "Heap elements: ";
+    h.display();
+
+    h.deleteMax();
+
+    cout << "After deleting max: ";
+    h.display();
+
+    return 0;
+}
+
+</pre>
+</div>
+<br>
+<br>
+<button onclick="toggleCode('bst')">BST</button>
+<div id="bst" class="codeBox">
+<pre>
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+};
+
+Node* insert(Node* root, int key) {
+    if (!root) return new Node{key, NULL, NULL};
+    if (key < root->data)
+        root->left = insert(root->left, key);
+    else
+        root->right = insert(root->right, key);
+    return root;
+}
+</pre>
+</div>
+<br>
+<br>
+<button onclick="toggleCode('dfs')">DFS</button>
+<div id="dfs" class="codeBox">
+<pre>
+void dfs(int v, vector<int> adj[], vector<bool>& visited) {
+    visited[v] = true;
+    for (int u : adj[v]) {
+        if (!visited[u])
+            dfs(u, adj, visited);
+    }
+}
+</pre>
+</div>
+<br>
+<br>
+<button onclick="toggleCode('skiplist')">Skip List</button>
+<div id="skiplist" class="codeBox">
+<pre>
+struct SkipNode {
+    int key;
+    SkipNode* forward[4];
+};
+</pre>
+</div>
+<br>
+<br>
+<button onclick="toggleCode('fenwick')">Fenwick Tree</button>
+<div id="fenwick" class="codeBox">
+<pre>
+Function to update a value: (assigns value v to a[i])
+void update(int i, int v)
+{
+a[i] = v;
+}
+
+Calculate the sum of all array elements from the range 0 to k (first k items):
+int prefixsum(int k)
+{
+int sum = 0;
+for(int i = 0; i < k; i++)
+sum += a[i];
+return sum;
+}
+</pre>
+</div>
+<br>
+<br>
+<button onclick="toggleCode('dijkstra')">Dijkstra</button>
+<div id="dijkstra" class="codeBox">
+<pre>
+void dijkstra(int src, vector<pair<int,int>> adj[]) {
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;
+    vector<int> dist(100, INT_MAX);
+    dist[src] = 0;
+    pq.push({0, src});
+
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        pq.pop();
+        for (auto [v,w] : adj[u]) {
+            if (dist[v] > dist[u] + w) {
+                dist[v] = dist[u] + w;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+}
+</pre>
+</div>
+<br>
+<br>
+<button onclick="toggleCode('trie')">Trie</button>
+<div id="trie" class="codeBox">
+<pre>
+struct TrieNode {
+    TrieNode* child[26];
+    bool isEnd;
+};
+</pre>
+</div>
+<br>
+<br>
+<button onclick="toggleCode('segment')">Segment Tree</button>
+<div id="segment" class="codeBox">
+<pre>
+void build(int idx, int l, int r) {
+    if (l == r) return;
+    int mid = (l+r)/2;
+    build(2*idx, l, mid);
+    build(2*idx+1, mid+1, r);
+}
+</pre>
+</div>
+<br>
+<br>
+<button onclick="toggleCode('uf')">Union Find</button>
+<div id="uf" class="codeBox">
+<pre>
+
+</pre>
+</div>
+<br>
+<br>
+<button onclick="toggleCode('kruskal')">Kruskal</button>
+<div id="kruskal" class="codeBox">
+<pre>
+sort(edges.begin(), edges.end());
+for (auto e : edges) {
+    if (find(e.u) != find(e.v)) {
+        unite(e.u, e.v);
+    }
+}
+</pre>
+</div>
+
+<script>
+function toggleCode(id) {
+    const box = document.getElementById(id);
+    box.classList.toggle("show");
+}
+</script>
+
+
+</section>
+
+
+<footer>
+    © 2025 - Business DS Visual Guide
+</footer>
+
+</div>
+
+<!-- ======= SCROLL REVEAL SCRIPT ======= -->
+<script>
+const hiddenElems = document.querySelectorAll('.hidden');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.2 });
+
+hiddenElems.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
 
