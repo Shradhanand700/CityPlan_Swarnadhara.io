@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Module 4 – Smart Tax & Fraud Detection</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#0b0b0f;
+    color:#eaeaea;
+}
+
+/* ===== Sidebar ===== */
+.sidebar{
+    position:fixed;
+    top:0; left:0;
+    width:260px; height:100vh;
+    background:#111116;
+    padding:25px;
+    overflow-y:auto;
+}
+.sidebar h2{
+    color:#9ad1ff;
+    text-align:center;
+    margin-bottom:30px;
+}
+.sidebar a{
+    display:block;
+    color:#eaeaea;
+    text-decoration:none;
+    padding:12px;
+    margin-bottom:12px;
+    border-radius:8px;
+    background:#1a1a22;
+}
+.sidebar a:hover,
+.sidebar a.active{
+    background:#2b2b38;
+    color:#9ad1ff;
+    font-weight:600;
+}
+
+/* ===== Main ===== */
+.container{
+    margin-left:280px;
+    padding:40px;
+    max-width:1200px;
+}
+.card{
+    background:#15151d;
+    padding:28px;
+    border-radius:14px;
+    margin-bottom:35px;
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
+
+h1{color:#9ad1ff}
+h2{color:#cfcfcf}
+h3{color:#a8a8a8}
+p{line-height:1.8}
+
+.line{
+    background:#1f1f2a;
+    padding:12px;
+    border-radius:8px;
+    margin:8px 0;
+}
+
+/* ===== Tables ===== */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+th,td{
+    padding:12px;
+    border:1px solid #333;
+}
+th{
+    background:#1f1f2a;
+    color:#9ad1ff;
+}
+td{background:#14141b}
+
+/* ===== Code ===== */
+pre{
+    background:#0d0d12;
+    color:#d6d6d6;
+    padding:22px;
+    border-radius:12px;
+    font-size:13px;
+    line-height:1.7;
+    max-height:70vh;
+    overflow:auto;
+    white-space:pre;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>Modules</h2>
+    <a href="index.html">🏥 Health Care</a>
+    <a href="module2_crime_prevention.html">🚓 Crime Prevention</a>
+    <a href="module3_tourism.html">🏝 Tourism & Resort Booking</a>
+    <a href="module4_tax_fraud.html" class="active">💰 Smart Tax & Fraud Detection</a>
+</div>
+
+<!-- Main -->
+<div class="container">
+
+<h1>Module 4 – Smart Tax Collection & Fraud Detection</h1>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>B. Fraud Pattern Detection</h2>
+
+<p>
+Detects fraudulent behavior by combining textual pattern matching, temporal
+anomaly detection, and network influence analysis.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+KMP efficiently scans invoices and logs for suspicious phrases. A sliding-window
+z-score detects abnormal transaction amounts over time. PageRank assigns
+importance scores to accounts in a transaction graph to identify influential
+fraud hubs.
+</div>
+
+<h3>Efficiency Analysis</h3>
+<table>
+<tr><th>Technique</th><th>Time Complexity</th><th>Space</th></tr>
+<tr><td>KMP</td><td>O(n + m)</td><td>O(m)</td></tr>
+<tr><td>Sliding Window</td><td>O(L)</td><td>O(W)</td></tr>
+<tr><td>PageRank</td><td>O(E × iter)</td><td>O(V + E)</td></tr>
+</table>
+</div>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>C. Network Analysis & Audit Prioritization</h2>
+
+<p>
+Clusters suspicious taxpayers, isolates large illegal money flows,
+and prioritizes audits under budget constraints.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+Union-Find clusters colluding accounts. Dinic’s algorithm identifies large
+transfer paths via max-flow/min-cut. Knapsack DP selects the most profitable
+audits under limited resources.
+</div>
+
+<h3>Efficiency Analysis</h3>
+<table>
+<tr><th>Algorithm</th><th>Time</th><th>Space</th></tr>
+<tr><td>Union-Find</td><td>≈ O(α(V))</td><td>O(V)</td></tr>
+<tr><td>Dinic Max-Flow</td><td>O(E√V)</td><td>O(V + E)</td></tr>
+<tr><td>Knapsack DP</td><td>O(n × budget)</td><td>O(budget)</td></tr>
+</table>
+</div>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>Integrated C++ Code – Tax Fraud Module</h2>
+
+<pre>
+// ================= FRAUD PATTERN DETECTION =================
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+// ---------- KMP ----------
+vector&lt;int&gt; build_lps(const string &amp;p){
+    int m=p.size(); vector&lt;int&gt; lps(m,0);
+    for(int i=1,len=0;i&lt;m;){
+        if(p[i]==p[len]) lps[i++]=++len;
+        else if(len) len=lps[len-1];
+        else lps[i++]=0;
+    }
+    return lps;
+}
+
+vector&lt;int&gt; kmp(const string &amp;t,const string &amp;p){
+    if(p.empty()) return {};
+    string tt=t, pp=p;
+    for(auto &amp;c:tt) c=tolower((unsigned char)c);
+    for(auto &amp;c:pp) c=tolower((unsigned char)c);
+    auto lps=build_lps(pp);
+    vector&lt;int&gt; res; int i=0,j=0;
+    while(i&lt;(int)tt.size()){
+        if(tt[i]==pp[j]){
+            i++; j++;
+            if(j==(int)pp.size()){
+                res.push_back(i-j);
+                j=lps[j-1];
+            }
+        }else if(j) j=lps[j-1];
+        else i++;
+    }
+    return res;
+}
+
+// ---------- Sliding Window Anomaly ----------
+vector&lt;int&gt; sliding_window(const vector&lt;double&gt;&amp;a,int W,double k){
+    deque&lt;double&gt; dq; double sum=0,sq=0; vector&lt;int&gt; alarms;
+    for(int i=0;i&lt;(int)a.size();++i){
+        dq.push_back(a[i]); sum+=a[i]; sq+=a[i]*a[i];
+        if((int)dq.size()&gt;W){
+            double x=dq.front(); dq.pop_front();
+            sum-=x; sq-=x*x;
+        }
+        if(dq.size()&gt;=5){
+            double mean=sum/dq.size();
+            double var=sq/dq.size()-mean*mean;
+            double sd=sqrt(max(0.0,var));
+            if(sd&gt;0 &amp;&amp; a[i]&gt;mean+k*sd) alarms.push_back(i);
+        }
+    }
+    return alarms;
+}
+
+// ---------- PageRank ----------
+vector&lt;double&gt; pagerank(const vector&lt;vector&lt;int&gt;&gt;&amp;adj,int it=50,double d=0.85){
+    int n=adj.size();
+    vector&lt;double&gt; pr(n,1.0/n), tmp(n);
+    for(int k=0;k&lt;it;k++){
+        fill(tmp.begin(),tmp.end(),0.0);
+        for(int u=0;u&lt;n;u++){
+            if(adj[u].empty()) continue;
+            double share=pr[u]/adj[u].size();
+            for(int v:adj[u]) tmp[v]+=share;
+        }
+        for(int i=0;i&lt;n;i++) pr[i]=(1-d)/n+d*tmp[i];
+    }
+    return pr;
+}
+
+// ================= NETWORK & AUDIT =================
+struct DSU{
+    vector&lt;int&gt; p,r;
+    DSU(int n):p(n),r(n,0){ iota(p.begin(),p.end(),0); }
+    int find(int x){ return p[x]==x?x:p[x]=find(p[x]); }
+    bool unite(int a,int b){
+        a=find(a); b=find(b);
+        if(a==b) return false;
+        if(r[a]&lt;r[b]) swap(a,b);
+        p[b]=a;
+        if(r[a]==r[b]) r[a]++;
+        return true;
+    }
+};
+
+int knapsack(const vector&lt;int&gt;&amp;c,const vector&lt;int&gt;&amp;v,int B){
+    vector&lt;int&gt; dp(B+1,0);
+    for(int i=0;i&lt;(int)c.size();i++)
+        for(int b=B;b&gt;=c[i];b--)
+            dp[b]=max(dp[b],dp[b-c[i]]+v[i]);
+    return dp[B];
+}
+</pre>
+
+</div>
+
+</div>
+</body>
+</html>
