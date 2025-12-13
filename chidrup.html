@@ -57,6 +57,10 @@
     .show{opacity:1;transform:translateY(0)}
     .sdg-badges span{display:inline-block;padding:6px 8px;margin:4px 6px 0 0;
       border-radius:10px;background:rgba(255,255,255,.08);font-size:.8rem;font-weight:600;color:#fffbeb}
+    .sdg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:18px}
+    .sdg-card{background:rgba(15,23,42,0.7);border-radius:18px;padding:14px 16px;
+      border:1px solid rgba(255,255,255,0.15);font-size:0.9rem}
+    .sdg-label{font-weight:700;color:#ffdd59;margin-bottom:4px}
     footer{text-align:center;padding:20px;opacity:.8;margin-top:50px;font-size:.9rem;color:#ffdd59}
     .code-panel{display:none;position:relative}
     .close-btn{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.12);
@@ -82,7 +86,7 @@
         <li><a href="#traffic-intro">Traffic</a></li>
         <li><a href="#construction-intro">Construction</a></li>
         <li><a href="#algorithms">Algorithms</a></li>
-        <li><a href="#algo-chart">Complexity Chart</a></li>
+        <li><a href="#sdg-indicators">SDG Indicators</a></li>
         <li><a href="#codes">C++ Modules</a></li>
       </ul>
     </nav>
@@ -91,10 +95,10 @@
   <!-- OVERVIEW -->
   <section class="glass-panel intro-card" id="overview">
     <p>
-      The business plan combines four revenue‑generating verticals – Fuel Networks, Digital APMC, Smart Traffic, and Construction Contracting – into one integrated coastal platform that shares data, optimises assets, and builds long‑term, SDG‑aligned value.
+      The business plan combines four revenue‑generating verticals – Fuel Networks, Digital APMC, Smart Traffic, and Construction Contracting – into one integrated coastal platform that shares data, optimises assets, and builds long‑term, SDG‑aligned value. [web:258][web:261]
     </p>
     <p style="margin-top:18px;font-size:1rem;text-align:center;opacity:0.9">
-      Each vertical has clear monetisation (tariffs, service fees, contracts, analytics) and is supported by reusable algorithmic building blocks and C++ modules for planning, optimisation, and operations.
+      Each vertical has clear monetisation (tariffs, service fees, contracts, analytics) and is supported by reusable algorithmic building blocks and C++ modules for planning, optimisation, and operations. [web:261]
     </p>
   </section>
 
@@ -128,7 +132,7 @@
   <section class="glass-panel hidden" id="fuel-intro">
     <h2>Fuel Station Management – Business Intro</h2>
     <p>
-      The fuel business plans a network of fuel and EV stations, sets dynamic capacity targets, and designs refuelling SLAs so commuters rarely travel far or wait long. Revenue comes from fuel margins, EV charging tariffs, and data services to OEMs and fleet operators.
+      The fuel business plans a network of fuel and EV stations, sets dynamic capacity targets, and designs refuelling SLAs so commuters rarely travel far or wait long. Revenue comes from fuel margins, EV charging tariffs, and data services to OEMs and fleet operators, supporting clean energy and efficiency goals. [web:260][web:264]
     </p>
     <div class="sdg-badges">
       <strong>SDG Alignment:</strong><br>
@@ -142,7 +146,7 @@
   <section class="glass-panel hidden" id="apmc-intro">
     <h2>APMC Management – Business Intro</h2>
     <p>
-      The APMC platform monetises digital auctions, storage bookings, quality testing, and logistics coordination. It aims to reduce food loss, stabilise prices, and unlock better returns for farmers while charging small platform and service fees across the value chain.
+      The APMC platform monetises digital auctions, storage bookings, quality testing, and logistics coordination to reduce waste and raise farmer income, directly contributing to hunger reduction, decent work, and responsible consumption goals. [web:257][web:266]
     </p>
     <div class="sdg-badges">
       <strong>SDG Alignment:</strong><br>
@@ -156,7 +160,7 @@
   <section class="glass-panel hidden" id="traffic-intro">
     <h2>City Traffic Management – Business Intro</h2>
     <p>
-      The traffic business operates a city‑scale control centre that offers corridor management, incident response, and priority routing as services. Revenues come from city contracts, data APIs for app developers, and premium SLAs for public transport and freight corridors.
+      The traffic business operates a control centre that manages signals, corridors, and incidents, improving safety and reducing congestion‑related emissions in line with transport‑related SDG targets on road safety, sustainable cities, and climate action. [web:262][web:265]
     </p>
     <div class="sdg-badges">
       <strong>SDG Alignment:</strong><br>
@@ -170,7 +174,7 @@
   <section class="glass-panel hidden" id="construction-intro">
     <h2>Construction Contracting – Business Intro</h2>
     <p>
-      The construction arm focuses on transport, housing, and coastal‑protection projects. It uses scheduling and risk models to submit sharper bids, manage cashflow, and keep projects on track, capturing value through EPC contracts, maintenance, and long‑term service agreements.
+      The construction arm delivers resilient infrastructure and housing while integrating resource efficiency and climate‑resilient design, which links to goals on industry, sustainable cities, decent work, and climate adaptation. [web:262][web:265]
     </p>
     <div class="sdg-badges">
       <strong>SDG Alignment:</strong><br>
@@ -204,7 +208,7 @@
         <td>Quick Sort / Merge Sort</td>
         <td>Rabin–Karp, Brute Force</td>
         <td>
-          Greedy assignment checks every station for each demand point: time ≈ O(D·S) where D is number of demand nodes and S is stations; DP over horizon H is O(H) with O(H) memo space.
+          Greedy assignment checks every station for each demand point, giving time ≈ O(D·S); DP over H days is O(H) with O(H) memo space, suitable for medium‑scale planning. [web:240][web:245]
         </td>
       </tr>
       <tr>
@@ -214,7 +218,7 @@
         <td>Merge Sort / Heap + PQ</td>
         <td>Rabin–Karp, Brute Force</td>
         <td>
-          Merge sort on B bids runs in O(B log B) time with O(B) extra space; greedy clearing is linear O(B); DP for sell vs store across H days is O(H) time and O(H) space.
+          Merge sort on B bids costs O(B log B) time and O(B) space, greedy clearing is O(B), and DP over H days is O(H); this scales well for large daily auction volumes. [web:240][web:245]
         </td>
       </tr>
       <tr>
@@ -224,7 +228,7 @@
         <td>Heaps, Quick Sort</td>
         <td>Rabin–Karp (logs)</td>
         <td>
-          Dijkstra with a binary-heap priority queue runs in O((V + E) log V) time and O(V + E) space; greedy phase selection per junction is O(P); corridor DP over T slots is O(T).
+          Dijkstra with a binary‑heap priority queue runs in O((V + E) log V) time and O(V + E) space; local greedy phase choice is O(P), and corridor DP over T slots is O(T). [web:241][web:248]
         </td>
       </tr>
       <tr>
@@ -234,23 +238,53 @@
         <td>Quick Sort / Merge Sort</td>
         <td>Rabin–Karp (contracts)</td>
         <td>
-          Sorting N tasks by deadline/penalty costs O(N log N) time with O(1) extra space in-place; single pass penalty aggregation is O(N); logistics shortest paths are O((V + E) log V); project-cost DP over H days is O(H) time.
+          Sorting N tasks by deadline/penalty costs O(N log N); single‑pass penalty aggregation is O(N); logistics shortest paths are O((V + E) log V); project‑cost DP over H days is O(H). [web:240][web:249][web:253]
         </td>
       </tr>
       </tbody>
     </table>
   </section>
 
-  <!-- COMPLEXITY CHART SECTION -->
-  <section class="glass-panel hidden" id="algo-chart">
-    <h2>Complexity Comparison Chart</h2>
+  <!-- SDG INDICATORS SECTION -->
+  <section class="glass-panel hidden" id="sdg-indicators">
+    <h2>SDG Indicators Mapping</h2>
     <p style="font-size:0.95rem;opacity:0.9">
-      The bar chart encodes relative asymptotic time cost of each core planning algorithm on a simple rank scale
-      (1 = O(n), 2 = O(n log n), 3 = quadratic‑like, 4 = heavier graph‑based like O((V + E) log V)).
+      The table above shows algorithms; this panel highlights a few official SDG indicators that the four businesses can help improve when deployed at city scale. Indicators are taken from the UN global SDG indicator framework and sector reports. [web:255][web:267]
     </p>
-    <!-- Export the generated chart as chart.png and place it in the same folder -->
-    <img src="chart.png" alt="Relative time complexity of core planning algorithms"
-         style="width:100%;border-radius:18px;box-shadow:0 15px 40px rgba(0,0,0,0.5);">
+    <div class="sdg-grid">
+      <div class="sdg-card">
+        <div class="sdg-label">Fuel Stations – SDG 7 &amp; 12</div>
+        <ul style="margin:0 0 0 18px;padding:0;">
+          <li>7.2.1: Share of renewable energy in total final energy consumption (via EV charging and green fuels). [web:264]</li>
+          <li>7.3.1: Energy intensity (energy per unit of GDP) through efficient station design and routing. [web:260][web:264]</li>
+          <li>12.c.1: Fossil‑fuel subsidies per unit of GDP by enabling cleaner fuel mixes and demand monitoring. [web:260]</li>
+        </ul>
+      </div>
+      <div class="sdg-card">
+        <div class="sdg-label">APMC – SDG 2, 8 &amp; 12</div>
+        <ul style="margin:0 0 0 18px;padding:0;">
+          <li>2.3.1/2.3.2: Agricultural productivity and small‑scale producer income aided by better prices and lower losses. [web:256][web:269]</li>
+          <li>8.2.1: GDP per employed person through more efficient agri‑value chains. [web:261]</li>
+          <li>12.3.1: Food loss index by reducing spoilage via storage and logistics optimisation. [web:256][web:269]</li>
+        </ul>
+      </div>
+      <div class="sdg-card">
+        <div class="sdg-label">Traffic – SDG 3, 9, 11 &amp; 13</div>
+        <ul style="margin:0 0 0 18px;padding:0;">
+          <li>3.6.1: Death rate due to road traffic injuries through safer, coordinated signal control. [web:262]</li>
+          <li>11.2.1: Access to public transport by improving bus priority and corridor reliability. [web:102][web:105]</li>
+          <li>13.2.2: Greenhouse‑gas emissions from transport as congestion and idling are reduced. [web:265]</li>
+        </ul>
+      </div>
+      <div class="sdg-card">
+        <div class="sdg-label">Construction – SDG 9, 11 &amp; 13</div>
+        <ul style="margin:0 0 0 18px;padding:0;">
+          <li>9.1.1: Rural and urban access to all‑season roads and basic infrastructure. [web:262]</li>
+          <li>11.6.1: Share of waste managed in controlled facilities through better civic‑infrastructure projects. [web:102]</li>
+          <li>13.1.3: Local disaster‑risk‑reduction strategies supported by resilient coastal and flood‑management works. [web:265]</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <!-- LOGIC SECTIONS -->
