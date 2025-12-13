@@ -272,14 +272,12 @@ with minimal ecological impact.
 </body>
   </html>
 
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Algorithms & Nature — Summary</title>
 
-<style>
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Course Reflections — DAA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet"><style>
 /* --- BODY --- */
 body {
     margin: 0;
@@ -300,49 +298,25 @@ body {
 /* --- NAVBAR --- */
 header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 25px;
+    padding: 15px 30px;
     background: linear-gradient(90deg, #ff512f, #dd2476);
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-    margin: 30px;
+    margin-bottom: 50px;
 }
 
-header h1 {
-    font-size: 2rem;
+header .logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8rem;
     font-weight: 700;
-}
-
-/* --- TOC --- */
-nav.toc {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-nav.toc a {
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 25px;
-    background: rgba(255,255,255,0.15);
-    color: #fff;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-nav.toc a:hover {
-    background: #ffdd59;
-    color: #000;
 }
 
 /* --- GLASS PANELS --- */
 .glass-panel {
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
     border-radius: 25px;
     padding: 30px 40px;
     margin-bottom: 30px;
@@ -351,8 +325,8 @@ nav.toc a:hover {
 }
 
 .glass-panel:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(255,140,0,0.4);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(255,140,0,0.5);
 }
 
 /* --- HEADINGS --- */
@@ -362,159 +336,183 @@ h2, h3 {
     -webkit-text-fill-color: transparent;
 }
 
-ul {
-    line-height: 1.8;
+/* --- QA GRID --- */
+.course-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+}
+
+/* --- QA CARD --- */
+.qa-card {
+    background: rgba(255,140,0,0.06);
+    padding: 28px;
+    border-radius: 25px;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.qa-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 60px rgba(255,140,0,0.6);
+}
+
+/* --- SHIMMER --- */
+.qa-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: skewX(-25deg);
+}
+
+.qa-card:hover::before {
+    animation: shimmer 1s forwards;
+}
+
+@keyframes shimmer {
+    100% { left: 125%; }
 }
 
 /* --- ORDER OF GROWTH CHART --- */
-.o-chart {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 10px;
-    align-items: center;
+.chart {
+    margin-top: 18px;
+    background: rgba(255,255,255,0.04);
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.15);
 }
 
-.o-label {
-    font-family: monospace;
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0;
+}
+
+.bar-label {
+    width: 90px;
+    font-size: 0.9rem;
+    opacity: 0.85;
 }
 
 .bar {
-    height: 18px;
-    border-radius: 8px;
-    background: linear-gradient(90deg,#ff512f,#f0ff00);
+    height: 14px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #ff512f, #dd2476);
 }
-
-.bar.s1{width:4%}
-.bar.slog{width:8%}
-.bar.sn{width:30%}
-.bar.snlog{width:45%}
-.bar.sq{width:70%}
-.bar.s2n{width:92%}
-.bar.snf{width:100%}
 
 /* --- FOOTER --- */
 footer {
     text-align: center;
-    padding: 25px;
+    margin-top: 50px;
     color: #ffdd59;
-    opacity: 0.85;
 }
-</style>
-</head>
-
-<body>
-
-<header>
-  <h1>Algorithms & Nature — Concise Summary</h1>
-</header>
-
-<div class="container">
-
-<nav class="toc">
-  <a href="#q1">Nature Patterns</a>
-  <a href="#q2">Efficiency</a>
-  <a href="#q3">Design Principles</a>
-  <a href="#q4">Trees</a>
-  <a href="#q5">Array Queries</a>
-  <a href="#q6">Trees vs Graphs</a>
-  <a href="#q7">Sorting</a>
-  <a href="#q8">Graph Algorithms</a>
-  <a href="#q9">Techniques</a>
-</nav>
-
-<section id="q1" class="glass-panel">
-<h2>1. Computational Patterns in Nature</h2>
-<ul>
-<li><b>Iteration:</b> Seasonal cycles repeat endlessly.</li>
-<li><b>Recursion:</b> Fractal-like structures in leaves and shells.</li>
-<li><b>Backtracking:</b> Animals revisiting paths while foraging.</li>
-</ul>
-</section>
-
-<section id="q2" class="glass-panel">
-<h2>2. Space & Time Efficiency</h2>
-<ul>
-<li>O(1), O(log n), O(n), O(n log n)</li>
-<li>O(n²), O(2ⁿ), O(n!)</li>
-</ul>
-
-<h3>Order of Growth</h3>
-<div class="o-chart">
-<div class="o-label">O(1)</div><div class="bar s1"></div>
-<div class="o-label">O(log n)</div><div class="bar slog"></div>
-<div class="o-label">O(n)</div><div class="bar sn"></div>
-<div class="o-label">O(n log n)</div><div class="bar snlog"></div>
-<div class="o-label">O(n²)</div><div class="bar sq"></div>
-<div class="o-label">O(2ⁿ)</div><div class="bar s2n"></div>
-<div class="o-label">O(n!)</div><div class="bar snf"></div>
+</style></head>
+<body><div class="container"><header>
+  <div class="logo">DAA Reflections</div>
+</header><div class="glass-panel">
+  <p>
+    This document presents structured reflections on the course
+    <strong>Design and Analysis of Algorithms</strong>, rewritten in paragraph
+    format and styled using a modern glassmorphism layout suitable for academic
+    submission, presentations, and GitHub Pages.
+  </p>
+</div><div class="course-container"><!-- Q1 --><div class="qa-card">
+<h2>1. Problems Observed in Nature</h2>
+<p>
+Natural phenomena often reflect algorithmic paradigms such as iteration,
+recursion, and backtracking. Iteration is visible in seasonal cycles that repeat
+periodically, recursion appears in self-similar biological structures, and
+backtracking is observed in animals retracing paths after encountering dead
+ends, resembling systematic exploration strategies used in algorithms.
+</p>
+</div><!-- Q2 UPDATED --><div class="qa-card">
+<h2>2. Space and Time Efficiency</h2>
+<p>
+Space efficiency refers to the amount of additional memory required by an
+algorithm beyond the input data, while time efficiency measures the execution
+time taken to solve a problem. These measures are crucial because they determine
+whether an algorithm can scale effectively for large datasets and real-world
+applications. Algorithms that are inefficient may function correctly for small
+inputs but become impractical as the problem size increases.
+</p>
+<p>
+To evaluate efficiency, algorithms are classified using orders of growth, which
+describe how resource consumption increases with input size. Constant and
+logarithmic growth rates scale well, linear and linear-logarithmic rates are
+acceptable for many applications, while quadratic, exponential, and factorial
+growth rates increase rapidly and are unsuitable for large inputs.
+</p>
+<div class="chart">
+<h3>Order of Growth Comparison</h3>
+<div class="bar-row"><div class="bar-label">O(1)</div><div class="bar" style="width:8%"></div></div>
+<div class="bar-row"><div class="bar-label">O(log n)</div><div class="bar" style="width:16%"></div></div>
+<div class="bar-row"><div class="bar-label">O(n)</div><div class="bar" style="width:35%"></div></div>
+<div class="bar-row"><div class="bar-label">O(n log n)</div><div class="bar" style="width:48%"></div></div>
+<div class="bar-row"><div class="bar-label">O(n²)</div><div class="bar" style="width:68%"></div></div>
+<div class="bar-row"><div class="bar-label">O(2ⁿ)</div><div class="bar" style="width:88%"></div></div>
+<div class="bar-row"><div class="bar-label">O(n!)</div><div class="bar" style="width:98%"></div></div>
+<p style="font-size:0.9rem;opacity:0.85;margin-top:10px;">Wider bars indicate faster growth and poorer scalability as input size increases.</p>
 </div>
-</section>
-
-<section id="q3" class="glass-panel">
+</div><!-- Q3 --><div class="qa-card">
 <h2>3. Design Principles</h2>
-<ul>
-<li>BFS vs DFS exploration strategies</li>
-<li>Prefix & suffix logic in pattern matching</li>
-<li>Balancing rotations in trees</li>
-</ul>
-</section>
-
-<section id="q4" class="glass-panel">
-<h2>4. Hierarchical Data & Trees</h2>
-<ul>
-<li>Binary Trees</li>
-<li>AVL & Red-Black Trees</li>
-<li>Heaps & Tries</li>
-</ul>
-</section>
-
-<section id="q5" class="glass-panel">
+<p>
+Algorithm design principles provide structured approaches to solving problems.
+Traversal strategies such as BFS and DFS reflect different exploration methods,
+pattern recognition improves string searching, and balancing techniques in trees
+maintain efficiency as data grows.
+</p>
+</div><!-- Q4 --><div class="qa-card">
+<h2>4. Tree Structures and Optimisation</h2>
+<p>
+Trees efficiently represent hierarchical data. Balanced trees such as AVL and
+Red-Black trees ensure logarithmic performance, heaps manage priority-based
+operations, and tries support fast prefix-based searches used in dictionaries
+and autocomplete systems.
+</p>
+</div><!-- Q5 --><div class="qa-card">
 <h2>5. Array Query Algorithms</h2>
-<ul>
-<li>Fenwick Tree</li>
-<li>Segment Tree</li>
-<li>Precomputation Tables</li>
-</ul>
-</section>
-
-<section id="q6" class="glass-panel">
+<p>
+Array query algorithms support efficient range queries and updates in
+applications such as financial analysis and data filtering. Fenwick Trees enable
+fast prefix sum computations using compact memory and bitwise operations.
+</p>
+</div><!-- Q6 --><div class="qa-card">
 <h2>6. Trees vs Graphs</h2>
-<ul>
-<li>Trees: hierarchical, acyclic</li>
-<li>Graphs: cycles, networks</li>
-<li>Traversals: DFS & BFS</li>
-</ul>
-</section>
-
-<section id="q7" class="glass-panel">
-<h2>7. Sorting & Searching</h2>
-<ul>
-<li>Merge Sort, Quick Sort</li>
-<li>Binary Search</li>
-</ul>
-</section>
-
-<section id="q8" class="glass-panel">
-<h2>8. Graph Algorithms</h2>
-<ul>
-<li>Minimum Spanning Tree</li>
-<li>Dijkstra & Floyd–Warshall</li>
-</ul>
-</section>
-
-<section id="q9" class="glass-panel">
+<p>
+Trees are acyclic and hierarchical structures, whereas graphs are more general
+and can model complex networks with cycles. Traversal techniques such as BFS and
+DFS are fundamental for exploring both structures and solving connectivity
+problems.
+</p>
+</div><!-- Q7 --><div class="qa-card">
+<h2>7. Sorting and Searching</h2>
+<p>
+Sorting algorithms organize data for efficient access, while searching
+algorithms retrieve elements quickly. Advanced algorithms like Merge Sort and
+Quick Sort scale efficiently, and binary search significantly improves lookup
+performance in sorted datasets.
+</p>
+</div><!-- Q8 --><div class="qa-card">
+<h2>8. Importance of Graph Algorithms</h2>
+<p>
+Graph algorithms such as spanning trees and shortest path algorithms are
+essential for optimizing network design, routing, and navigation systems,
+ensuring minimal cost and efficient resource utilization.
+</p>
+</div><!-- Q9 --><div class="qa-card">
 <h2>9. Algorithm Design Techniques</h2>
-<ul>
-<li>Divide & Conquer</li>
-<li>Backtracking</li>
-<li>Graph Traversals</li>
-</ul>
-</section>
-
-<footer>
-<p>Glassmorphism version • Ready for GitHub & academic submission</p>
-</footer>
-
-</div>
+<p>
+Techniques such as divide and conquer, backtracking, and graph traversal form
+the foundation of algorithmic problem-solving and enable efficient exploration
+of solution spaces in complex computational problems.
+</p>
+</div></div><footer>
+<p>Prepared for academic evaluation, presentations, and GitHub Pages</p>
+</footer></div>
 </body>
-</html>
+                         </html>
