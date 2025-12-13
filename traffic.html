@@ -10,11 +10,11 @@
           data-autoloader-path="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/"></script>
   <style>
     body{margin:0;padding:0;font-family:'Space Grotesk',sans-serif;
-      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh}
+      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh;overflow-x:hidden}
     .container{max-width:1200px;margin:0 auto;padding:40px 20px}
     header{display:flex;justify-content:space-between;align-items:center;
       padding:15px 30px;background:linear-gradient(90deg,#ff512f,#dd2476);
-      border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.5);margin-bottom:50px}
+      border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.5);margin-bottom:50px;position:relative}
     .logo{display:flex;align-items:center;gap:10px;font-family:'Pacifico',cursive;
       font-size:1.8rem;font-weight:700;color:#fff}
     .logo img{width:40px;height:40px;border-radius:50%}
@@ -23,6 +23,17 @@
     .navbar a{color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;
       border-radius:8px;transition:.3s}
     .navbar a:hover{background:rgba(255,255,255,.2);color:#ffdd59;transform:scale(1.05)}
+    .back-btn{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.35);
+      border-radius:999px;border:none;color:#fffbeb;padding:6px 14px;
+      cursor:pointer;font-size:.9rem;display:flex;align-items:center;gap:4px}
+    .back-btn:hover{background:rgba(0,0,0,.6)}
+    .side-nav{position:fixed;left:-120px;top:50%;transform:translateY(-50%);
+      display:flex;flex-direction:column;gap:10px;z-index:5}
+    .side-nav a{writing-mode:vertical-rl;text-orientation:mixed;
+      background:rgba(15,23,42,.9);color:#fff;text-decoration:none;
+      padding:10px 6px;border-radius:12px 0 0 12px;font-size:.8rem;
+      border:1px solid rgba(255,255,255,.2);transition:.3s}
+    .side-nav a:hover{transform:translateX(110px);background:#ff512f}
     .glass-panel{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);
       -webkit-backdrop-filter:blur(20px);border-radius:25px;padding:30px 40px;
       margin-bottom:30px;border:1px solid rgba(255,255,255,.2);
@@ -49,15 +60,22 @@
   </style>
 </head>
 <body>
+<div class="side-nav">
+  <a href="index.html">Home</a>
+  <a href="fuel.html">Fuel</a>
+  <a href="apmc.html">APMC</a>
+  <a href="construction.html">Construction</a>
+</div>
+
 <div class="container">
   <header>
+    <button class="back-btn" onclick="history.back()">🔙 Back</button>
     <div class="logo">
       <img src="https://via.placeholder.com/40" alt="Logo"> Coastal Smart City
     </div>
     <nav class="navbar">
       <h1>Traffic Management</h1>
       <ul>
-        <li><a href="index.html">Overview</a></li>
         <li><a href="fuel.html">Fuel</a></li>
         <li><a href="apmc.html">APMC</a></li>
         <li><a href="traffic.html">Traffic</a></li>
@@ -69,10 +87,10 @@
   <section class="glass-panel">
     <h2>Business Plan</h2>
     <p>
-      The traffic vertical builds and operates a smart control centre that manages signals, corridors, and incident response. It offers SLAs for public transport, emergency services, and freight operators, and exposes data APIs to mobility apps and analytics customers.
+      The traffic vertical builds and operates a smart control centre that manages signals, priority corridors, and incident response. It sells SLAs to public transport, emergency services, and freight operators, and offers traffic data APIs to app developers and analytics users.
     </p>
     <p>
-      Revenue comes from city‑scale management contracts, premium corridor management for logistics, and monetisation of historical and real‑time traffic data under clear governance rules.
+      Revenue is driven by long‑term contracts with the city and corridor partners, plus value‑added analytics and congestion‑pricing advisory.
     </p>
     <div class="sdg-badges" style="margin-top:16px">
       <strong>SDG Alignment:</strong><br>
@@ -88,77 +106,100 @@
     <div class="course-container">
       <div class="qa-card">
         <h3>Road Network Graph</h3>
-        <p>Represent intersections and road segments as a weighted graph with time‑dependent congestion factors.</p>
+        <p>Nodes are intersections; edges carry base travel time and congestion multipliers for each corridor.</p>
       </div>
       <div class="qa-card">
-        <h3>Shortest Paths & Queues</h3>
-        <p>Use Dijkstra with priority queues to compute best routes and to estimate corridor performance under scenarios.</p>
+        <h3>Dijkstra + Priority Queue</h3>
+        <p>Heaps give efficient shortest‑path routing and corridor travel‑time estimates under dynamic congestion.</p>
       </div>
       <div class="qa-card">
-        <h3>Greedy Signal Control + DP</h3>
-        <p>Greedy rules pick phases based on queue length; DP accumulates corridor delay across time slots and signal plans.</p>
+        <h3>Greedy Signals + DP</h3>
+        <p>Greedy rules select phases with highest queues; DP accumulates corridor delay across future time slots.</p>
       </div>
     </div>
   </section>
 
   <section class="glass-panel">
-    <h2>Traffic – C++ Sketch</h2>
+    <h2>Traffic – C++ (Optimised Sketch)</h2>
     <pre><code class="language-cpp">
 #include &lt;bits/stdc++.h&gt;
 using namespace std;
 
-struct Edge{int to;double baseTime,congestion;};
+struct Edge{
+    int to;
+    double baseTime,congestion;
+};
 using Graph=vector&lt;vector&lt;Edge&gt;&gt;;
 
 vector&lt;double&gt; shortestPath(const Graph&g,int src){
-    int n=g.size(); const double INF=1e18;
-    vector&lt;double&gt;dist(n,INF); dist[src]=0;
+    const int n=(int)g.size();
+    const double INF=numeric_limits&lt;double&gt;::infinity();
+    vector&lt;double&gt; dist(n,INF);
+    dist[src]=0.0;
     using P=pair&lt;double,int&gt;;
-    priority_queue&lt;P,vector&lt;P&gt;,greater&lt;P&gt;&gt;pq;
-    pq.push({0,src});
+    priority_queue&lt;P,vector&lt;P&gt;,greater&lt;P&gt;&gt; pq;
+    pq.emplace(0.0,src);
+
     while(!pq.empty()){
-        auto[d,u]=pq.top();pq.pop();
-        if(d&gt;dist[u])continue;
-        for(auto &e:g[u]){
-            double w=e.baseTime*e.congestion;
-            if(dist[u]+w&lt;dist[e.to]){
-                dist[e.to]=dist[u]+w;
-                pq.push({dist[e.to],e.to});
+        const auto [d,u]=pq.top();
+        pq.pop();
+        if(d&gt;dist[u]) continue;
+        for(const auto &e:g[u]){
+            const double w=e.baseTime*e.congestion;
+            const double nd=dist[u]+w;
+            if(nd&lt;dist[e.to]){
+                dist[e.to]=nd;
+                pq.emplace(nd,e.to);
             }
         }
     }
     return dist;
 }
 
-struct IntersectionState{int id;vector&lt;int&gt;queueLengths;};
+struct IntersectionState{
+    int id;
+    vector&lt;int&gt; queueLengths;
+};
+
 int chooseGreenPhaseGreedy(const IntersectionState&st){
-    int best=0,bq=-1;
-    for(int i=0;i&lt;(int)st.queueLengths.size();i++)
-        if(st.queueLengths[i]&gt;bq){bq=st.queueLengths[i];best=i;}
+    int best=0;
+    int bestQ=-1;
+    const int n=(int)st.queueLengths.size();
+    for(int i=0;i&lt;n;i++){
+        if(st.queueLengths[i]&gt;bestQ){
+            bestQ=st.queueLengths[i];
+            best=i;
+        }
+    }
     return best;
 }
 
-map&lt;pair&lt;int,int&gt;,double&gt; memoTraffic;
+unordered_map&lt;int,double&gt; memoTraffic;
+
 double corridorCostDP(int cid,int slot,int maxSlot,const vector&lt;double&gt;&delay){
-    if(slot&gt;=maxSlot)return 0.0;
-    auto key=make_pair(cid,slot);
-    if(memoTraffic.count(key))return memoTraffic[key];
-    return memoTraffic[key]=delay[slot]+
-        corridorCostDP(cid,slot+1,maxSlot,delay);
+    if(slot&gt;=maxSlot) return 0.0;
+    const int key=(cid&lt;&lt;16)|slot;
+    auto it=memoTraffic.find(key);
+    if(it!=memoTraffic.end()) return it->second;
+    double val=delay[slot]+corridorCostDP(cid,slot+1,maxSlot,delay);
+    memoTraffic.emplace(key,val);
+    return val;
 }
 
 int main(){
     Graph g(4);
     g[0].push_back({1,10.0,1.2});
-    g[1].push_back({2,8.0,1.5});
-    g[2].push_back({3,6.0,1.1});
+    g[1].push_back({2, 8.0,1.5});
+    g[2].push_back({3, 6.0,1.1});
+
     auto dist=shortestPath(g,0);
     cout&lt;&lt;"0->3 time: "&lt;&lt;dist[3]&lt;&lt;"\n";
 
     IntersectionState st{1,{10,25,5,12}};
-    cout&lt;&lt;"Chosen phase: "&lt;&lt;chooseGreenPhaseGreedy(st)&lt;&lt;"\n";
+    cout&lt;&lt;"Chosen phase: "
+        &lt;&lt;chooseGreenPhaseGreedy(st)&lt;&lt;"\n";
 
-    vector&lt;double&gt;delay={100,120,130,110};
+    vector&lt;double&gt; delay={100,120,130,110};
     cout&lt;&lt;"Corridor delay: "
         &lt;&lt;corridorCostDP(0,0,(int)delay.size(),delay)&lt;&lt;"\n";
     return 0;
