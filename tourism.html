@@ -85,7 +85,7 @@ th{
 }
 td{background:#14141b}
 
-/* ===== Code ===== */
+/* ===== Code Blocks ===== */
 pre{
     background:#0d0d12;
     color:#d6d6d6;
@@ -102,116 +102,120 @@ pre{
 
 <body>
 
-<!-- Sidebar -->
+<!-- ===== Sidebar ===== -->
 <div class="sidebar">
     <h2>Modules</h2>
-    <a href="shradhanand.html" class="active">🏥 Health Care</a>
+    <a href="shradhanand.html">🏥 Health Care</a>
     <a href="crime.html">🚓 Crime Prevention</a>
-    <a href="tourism.html">Tourism</a>
-    <a href="tax.html">Fraud detection in Tax</a>
-    <a href="bank.html">Bank Management</a>
+    <a href="tourism.html" class="active">🏖️ Tourism</a>
+    <a href="tax.html">💰 Tax Fraud</a>
+    <a href="bank.html">🏦 Bank Management</a>
 </div>
 
-<!-- Main -->
+<!-- ===== Main Content ===== -->
 <div class="container">
 
-<h1>Module 3 – Tourism & Resort Booking</h1>
+<h1>Module 3 – Tourism & Resort Booking System</h1>
 
-<!-- ================================================= -->
+<!-- ============================ -->
 <div class="card">
 <h2>A. Booking Engine & Dynamic Pricing</h2>
 
 <p>
-This module manages resort occupancy, processes booking requests with priorities,
-and adjusts prices dynamically based on demand and occupancy levels.
+This module manages resort occupancy, processes booking requests based on
+priority, and ensures maximum utilization while preventing overbooking.
 </p>
 
-<h3>How the Code Works</h3>
+<h3>How the Algorithm Works</h3>
 <div class="line">
-A segment tree tracks daily occupancy and checks availability efficiently.
-Incoming booking requests are stored in a priority queue so high-priority
-customers are served first. If capacity allows, the booking is accepted and
-revenue is updated. A simple demand-based pricing rule increases prices as
-occupancy rises.
+A segment tree tracks daily occupancy efficiently. Booking requests are sorted
+by priority so VIP customers are processed first. If capacity allows, bookings
+are accepted and revenue is updated.
 </div>
 
 <h3>Efficiency Analysis</h3>
 <table>
-<tr><th>Component</th><th>Time Complexity</th><th>Space</th></tr>
+<tr><th>Component</th><th>Time</th><th>Space</th></tr>
 <tr><td>Segment Tree</td><td>O(log n)</td><td>O(n)</td></tr>
-<tr><td>Heap (Bookings)</td><td>O(log m)</td><td>O(m)</td></tr>
+<tr><td>Priority Sorting</td><td>O(m log m)</td><td>O(m)</td></tr>
 </table>
 </div>
 
-<!-- ================================================= -->
+<!-- ============================ -->
 <div class="card">
 <h2>B. Itinerary Planner</h2>
 
 <p>
-Plans optimal travel itineraries between multiple tourist locations using
-shortest-path and TSP heuristics.
+Generates an efficient travel plan covering multiple tourist spots using
+distance-based heuristics.
 </p>
 
-<h3>How the Code Works</h3>
+<h3>How the Algorithm Works</h3>
 <div class="line">
-Points of interest are treated as nodes. A nearest-neighbour heuristic builds
-an initial tour, and 2-opt optimization improves it. For real maps, Dijkstra
-or A* is used to compute segment costs.
+Tourist locations are treated as nodes in a graph. A nearest-neighbour heuristic
+selects the closest unvisited location, minimizing total travel distance.
 </div>
 
 <h3>Efficiency Analysis</h3>
 <table>
 <tr><th>Algorithm</th><th>Time</th><th>Space</th></tr>
-<tr><td>NN Heuristic</td><td>O(n²)</td><td>O(n)</td></tr>
-<tr><td>2-opt</td><td>O(n²)</td><td>O(n)</td></tr>
+<tr><td>Nearest Neighbour</td><td>O(n²)</td><td>O(n)</td></tr>
 </table>
 </div>
 
-<!-- ================================================= -->
+<!-- ============================ -->
 <div class="card">
-<h2>C. Review/Text Analysis & Recommender</h2>
+<h2>Input Data (JSON Files)</h2>
 
-<p>
-Analyzes customer reviews for keyword search and generates recommendations
-using text similarity.
-</p>
+<h3>Booking Input</h3>
+<pre>
+{
+  "resort": {
+    "capacity_per_day": 50,
+    "base_price": 200
+  },
+  "bookings": [
+    { "id": 1, "start_day": 12, "end_day": 15, "priority": 8 },
+    { "id": 2, "start_day": 14, "end_day": 16, "priority": 4 },
+    { "id": 3, "start_day": 20, "end_day": 22, "priority": 9 }
+  ]
+}
+</pre>
 
-<h3>How the Code Works</h3>
-<div class="line">
-KMP efficiently searches phrases inside reviews. An inverted index maps
-keywords to documents. Reviews are converted into sparse TF vectors and
-cosine similarity measures how similar two reviews are.
+<h3>Places Input</h3>
+<pre>
+{
+  "places": [
+    { "id": 0, "name": "Hotel", "x": 0, "y": 0 },
+    { "id": 1, "name": "Beach", "x": 2, "y": 5 },
+    { "id": 2, "name": "Museum", "x": 6, "y": 3 },
+    { "id": 3, "name": "Hill View", "x": 8, "y": 7 }
+  ]
+}
+</pre>
 </div>
 
-<h3>Efficiency Analysis</h3>
-<table>
-<tr><th>Technique</th><th>Time</th><th>Space</th></tr>
-<tr><td>KMP</td><td>O(n + m)</td><td>O(m)</td></tr>
-<tr><td>Inverted Index</td><td>O(total terms)</td><td>O(total terms)</td></tr>
-<tr><td>Cosine Similarity</td><td>O(overlap)</td><td>O(vocab)</td></tr>
-</table>
-</div>
-
-<!-- ================================================= -->
+<!-- ============================ -->
 <div class="card">
-<h2>Integrated C++ Code – Tourism Module</h2>
+<h2>Integrated C++ Code (JSON Driven)</h2>
 
 <pre>
-// ================= BOOKING ENGINE =================
 #include &lt;bits/stdc++.h&gt;
+#include "json.hpp"
 using namespace std;
+using json = nlohmann::json;
 
-struct Seg{
+struct Seg {
     int n; vector&lt;int&gt; t;
     Seg(int N){ n=1; while(n&lt;N) n&lt;&lt;=1; t.assign(2*n,0); }
-    void add(int idx,int val){
-        idx+=n; t[idx]+=val;
-        for(idx&gt;&gt;=1; idx; idx&gt;&gt;=1)
-            t[idx]=max(t[2*idx],t[2*idx+1]);
+    void add(int i,int v){
+        i+=n; t[i]+=v;
+        for(i&gt;&gt;=1;i;i&gt;&gt;=1)
+            t[i]=max(t[2*i],t[2*i+1]);
     }
-    int range_max(int l,int r){
-        int res=INT_MIN;
-        for(l+=n,r+=n; l&lt;=r; l&gt;&gt;=1,r&gt;&gt;=1){
+    int maxq(int l,int r){
+        int res=0;
+        for(l+=n,r+=n;l&lt;=r;l&gt;&gt;=1,r&gt;&gt;=1){
             if(l&amp;1) res=max(res,t[l++]);
             if(!(r&amp;1)) res=max(res,t[r--]);
         }
@@ -219,20 +223,31 @@ struct Seg{
     }
 };
 
-// ================= ITINERARY =================
-double euclid(pair&lt;double,double&gt;a, pair&lt;double,double&gt;b){
-    return hypot(a.first-b.first,a.second-b.second);
-}
+int main(){
+    ifstream f("booking_input.json");
+    json jb; f&gt;&gt;jb;
 
-// ================= TEXT ANALYSIS =================
-vector&lt;int&gt; build_lps(const string &amp;p){
-    int m=p.size(); vector&lt;int&gt; lps(m,0);
-    for(int i=1,len=0;i&lt;m;){
-        if(p[i]==p[len]) lps[i++]=++len;
-        else if(len) len=lps[len-1];
-        else lps[i++]=0;
+    int cap = jb["resort"]["capacity_per_day"];
+    int price = jb["resort"]["base_price"];
+
+    struct B{int id,l,r,p;};
+    vector&lt;B&gt; bk;
+    for(auto &amp;x:jb["bookings"])
+        bk.push_back({x["id"],x["start_day"],x["end_day"],x["priority"]});
+
+    sort(bk.begin(),bk.end(),
+         [](auto &amp;a,auto &amp;b){return a.p&gt;b.p;});
+
+    Seg seg(365);
+    int revenue=0;
+
+    for(auto &amp;b:bk){
+        if(seg.maxq(b.l,b.r)&lt;cap){
+            for(int d=b.l;d&lt;=b.r;d++) seg.add(d,1);
+            revenue+=(b.r-b.l+1)*price;
+        }
     }
-    return lps;
+    cout&lt;&lt;"Total Revenue: "&lt;&lt;revenue&lt;&lt;"\n";
 }
 </pre>
 
