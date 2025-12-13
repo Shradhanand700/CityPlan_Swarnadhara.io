@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Construction Contracting – Coastal Smart City</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"
+          data-autoloader-path="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/"></script>
+  <style>
+    body{margin:0;padding:0;font-family:'Space Grotesk',sans-serif;
+      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh}
+    .container{max-width:1200px;margin:0 auto;padding:40px 20px}
+    header{display:flex;justify-content:space-between;align-items:center;
+      padding:15px 30px;background:linear-gradient(90deg,#ff512f,#dd2476);
+      border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.5);margin-bottom:50px}
+    .logo{display:flex;align-items:center;gap:10px;font-family:'Pacifico',cursive;
+      font-size:1.8rem;font-weight:700;color:#fff}
+    .logo img{width:40px;height:40px;border-radius:50%}
+    .navbar h1{color:#fff;font-size:1.5rem;font-weight:700;margin-right:30px}
+    .navbar ul{list-style:none;display:flex;gap:20px;margin:0;padding:0;flex-wrap:wrap}
+    .navbar a{color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;
+      border-radius:8px;transition:.3s}
+    .navbar a:hover{background:rgba(255,255,255,.2);color:#ffdd59;transform:scale(1.05)}
+    .glass-panel{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);border-radius:25px;padding:30px 40px;
+      margin-bottom:30px;border:1px solid rgba(255,255,255,.2);
+      transition:.5s cubic-bezier(.175,.885,.32,1.275)}
+    .glass-panel:hover{transform:translateY(-10px) scale(1.02);
+      box-shadow:0 20px 50px rgba(255,140,0,.5)}
+    h2,h3{background:linear-gradient(90deg,#ff512f,#dd2476,#f0ff00);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .course-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
+    .qa-card,.card{background:rgba(255,140,0,.05);padding:25px;border-radius:25px;
+      transition:.5s;position:relative;overflow:hidden;cursor:pointer}
+    .qa-card:hover,.card:hover{animation:bounce .6s;transform:scale(1.04);
+      box-shadow:0 25px 60px rgba(255,140,0,.6)}
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}
+      40%{transform:translateY(-15px)}60%{transform:translateY(-8px)}}
+    .qa-card::before,.card::before{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;
+      background:linear-gradient(120deg,transparent,rgba(255,255,255,.2),transparent);transform:skewX(-25deg)}
+    .qa-card:hover::before,.card:hover::before{animation:shimmer 1s forwards}
+    @keyframes shimmer{0%{left:-75%}100%{left:125%}}
+    .sdg-badges span{display:inline-block;padding:6px 8px;margin:4px 6px 0 0;
+      border-radius:10px;background:rgba(255,255,255,.08);font-size:.8rem;font-weight:600;color:#fffbeb}
+    pre[class*="language-"]{background:rgba(0,0,0,.4)!important;border-radius:15px;font-size:.82rem}
+    footer{text-align:center;padding:20px;opacity:.8;margin-top:40px;font-size:.9rem;color:#ffdd59}
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">
+      <img src="https://via.placeholder.com/40" alt="Logo"> Coastal Smart City
+    </div>
+    <nav class="navbar">
+      <h1>Construction Contracting</h1>
+      <ul>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="fuel.html">Fuel</a></li>
+        <li><a href="apmc.html">APMC</a></li>
+        <li><a href="traffic.html">Traffic</a></li>
+        <li><a href="construction.html">Construction</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="glass-panel">
+    <h2>Business Plan</h2>
+    <p>
+      The construction vertical focuses on EPC and design‑build contracts for roads, bridges, housing, and coastal‑resilience projects. It wins bids by using data‑driven cost and risk models, then executes with tight schedule control, logistics optimisation, and safety KPIs.
+    </p>
+    <p>
+      Revenue comes from project contracts, long‑term O&M deals, and advisory/analytics services for other developers that want to reuse the same optimisation frameworks.
+    </p>
+    <div class="sdg-badges" style="margin-top:16px">
+      <strong>SDG Alignment:</strong><br>
+      <span>SDG 9 – Industry & Infrastructure</span>
+      <span>SDG 11 – Sustainable Cities</span>
+      <span>SDG 8 – Decent Work</span>
+      <span>SDG 13 – Climate Action</span>
+    </div>
+  </section>
+
+  <section class="glass-panel">
+    <h2>Algorithm & DSA View</h2>
+    <div class="course-container">
+      <div class="qa-card">
+        <h3>Project Graphs</h3>
+        <p>Model tasks and dependencies as DAGs for critical‑path analysis and resource‑constrained scheduling.</p>
+      </div>
+      <div class="qa-card">
+        <h3>Greedy Scheduling</h3>
+        <p>Sort tasks by deadlines and penalties to minimise total delay cost under finite crews and machinery.</p>
+      </div>
+      <div class="qa-card">
+        <h3>Logistics & DP Costs</h3>
+        <p>Use shortest paths for routing trucks and DP to accumulate cost and risk across the construction horizon.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="glass-panel">
+    <h2>Construction – C++ Sketch</h2>
+    <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+struct Task{int id;string name;int duration,deadline;double penalty;};
+
+bool taskCmp(const Task&a,const Task&b){
+    if(a.deadline!=b.deadline)return a.deadline&lt;b.deadline;
+    return a.penalty&gt;b.penalty;
+}
+
+struct LEdge{int to;double cost;};
+using LGraph=vector&lt;vector&lt;LEdge&gt;&gt;;
+
+vector&lt;double&gt; shortestPathL(const LGraph&g,int src){
+    int n=g.size(); const double INF=1e18;
+    vector&lt;double&gt;dist(n,INF); dist[src]=0;
+    using P=pair&lt;double,int&gt;;
+    priority_queue&lt;P,vector&lt;P&gt;,greater&lt;P&gt;&gt;pq;
+    pq.push({0,src});
+    while(!pq.empty()){
+        auto[d,u]=pq.top();pq.pop();
+        if(d&gt;dist[u])continue;
+        for(auto &e:g[u]){
+            if(dist[u]+e.cost&lt;dist[e.to]){
+                dist[e.to]=dist[u]+e.cost;
+                pq.push({dist[e.to],e.to});
+            }
+        }
+    }
+    return dist;
+}
+
+map&lt;pair&lt;int,int&gt;,double&gt; memoConstr;
+double projectCostDP(int pid,int day,int H,double base,double risk){
+    if(day&gt;=H)return 0.0;
+    auto key=make_pair(pid,day);
+    if(memoConstr.count(key))return memoConstr[key];
+    double today=base*(1.0+risk*day);
+    return memoConstr[key]=today+projectCostDP(pid,day+1,H,base,risk);
+}
+
+int main(){
+    vector&lt;Task&gt;tasks={{1,"Foundations",30,60,5000},
+                        {2,"Piers",40,120,4000},
+                        {3,"Deck",50,180,6000}};
+    sort(tasks.begin(),tasks.end(),taskCmp);
+    int cur=0; double totalPenalty=0;
+    for(auto &t:tasks){
+        int finish=cur+t.duration;
+        int delay=max(0,finish-t.deadline);
+        double pen=delay*t.penalty;
+        totalPenalty+=pen;
+        cout&lt;&lt;"Task "&lt;&lt;t.id&lt;&lt;" delay="&lt;&lt;delay
+            &lt;&lt;" penalty="&lt;&lt;pen&lt;&lt;"\n";
+        cur=finish;
+    }
+    cout&lt;&lt;"Total penalty: "&lt;&lt;totalPenalty&lt;&lt;"\n";
+
+    LGraph g(3);
+    g[0].push_back({1,10.0});
+    g[0].push_back({2,20.0});
+    auto d=shortestPathL(g,0);
+    cout&lt;&lt;"Depot->Site1 cost: "&lt;&lt;d[1]&lt;&lt;"\n";
+
+    cout&lt;&lt;"10-day project cost: "
+        &lt;&lt;projectCostDP(1,0,10,100000,0.02)&lt;&lt;"\n";
+    return 0;
+}
+    </code></pre>
+  </section>
+
+  <footer>Construction Contracting – Coastal Smart City Suite</footer>
+</div>
+</body>
+</html>
