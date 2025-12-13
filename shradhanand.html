@@ -43,12 +43,13 @@ body{
     font-weight:600;
 }
 
-/* Main */
+/* Main container */
 .container{
     margin-left:280px;
     padding:40px;
     max-width:1200px;
 }
+
 .card{
     background:#15151d;
     padding:28px;
@@ -56,6 +57,7 @@ body{
     margin-bottom:35px;
     box-shadow:0 0 20px rgba(0,0,0,0.6);
 }
+
 h1{color:#9ad1ff}
 h2{color:#cfcfcf}
 h3{color:#a8a8a8}
@@ -65,7 +67,7 @@ p{line-height:1.8}
     background:#1f1f2a;
     padding:12px;
     border-radius:8px;
-    margin:8px 0;
+    margin:10px 0;
 }
 
 /* Table */
@@ -101,6 +103,7 @@ pre{
 
 <body>
 
+<!-- Sidebar -->
 <div class="sidebar">
     <h2>Modules</h2>
     <a href="shradhanand.html" class="active">🏥 Health Care</a>
@@ -110,6 +113,12 @@ pre{
     <a href="bank.html">Bank Management</a>
 </div>
 
+<!-- Main Content -->
+<div class="container">
+
+<h1>Module 1 – Health Care System</h1>
+
+<!-- JSON Input Card -->
 <div class="card">
 <h2>Input Data (JSON-Based Real World Input)</h2>
 
@@ -131,8 +140,7 @@ allowing city data to change without modifying the algorithm.
 
 <h3>Sample JSON Input File</h3>
 
-<pre>
-{
+<pre>{
   "roads": [
     { "from": "A", "to": "B", "distance": 3.2 },
     { "from": "B", "to": "C", "distance": 1.5 },
@@ -149,32 +157,32 @@ allowing city data to change without modifying the algorithm.
   "hospitals": [
     { "id": "HOSP1", "location": "D", "beds_free": 5 }
   ]
-}
-</pre>
+}</pre>
 </div>
 
+<!-- Algorithm Explanation -->
 <div class="card">
 <h2>How the Algorithm Uses the JSON File (Approach-1)</h2>
 
 <div class="line">
 <ul>
-<li>The JSON file is read at runtime using a JSON parser</li>
-<li>City locations are converted into numeric graph nodes</li>
-<li>Roads form weighted graph edges</li>
-<li>Dijkstra’s algorithm runs from patient location</li>
-<li>Nearest hospital with free beds is selected</li>
+<li>JSON file is read at runtime</li>
+<li>Locations converted to graph nodes</li>
+<li>Roads become weighted edges</li>
+<li>Dijkstra runs from patient location</li>
+<li>Nearest hospital with free beds selected</li>
 </ul>
 </div>
 
-<h3>Why This Approach Is Used</h3>
 <table>
 <tr><th>Reason</th><th>Benefit</th></tr>
-<tr><td>External input file</td><td>No hardcoding, real-world flexibility</td></tr>
+<tr><td>External input</td><td>Real-world scalability</td></tr>
 <tr><td>Graph modeling</td><td>Accurate routing</td></tr>
-<tr><td>Dijkstra algorithm</td><td>Fast emergency response</td></tr>
+<tr><td>Dijkstra</td><td>Fast emergency dispatch</td></tr>
 </table>
 </div>
 
+<!-- Code -->
 <div class="card">
 <h2>Integrated C++ Code (JSON-Driven Emergency Routing)</h2>
 
@@ -208,14 +216,14 @@ struct Graph {
 
     vector&lt;double&gt; dijkstra(int src) {
         vector&lt;double&gt; dist(n, INF);
-        priority_queue&lt;pair&lt;double, int&gt;,
-            vector&lt;pair&lt;double, int&gt;&gt;, greater&lt;&gt;&gt; pq;
+        priority_queue&lt;pair&lt;double,int&gt;,
+            vector&lt;pair&lt;double,int&gt;&gt;, greater&lt;&gt;&gt; pq;
 
         dist[src] = 0;
         pq.push({0, src});
 
         while (!pq.empty()) {
-            auto [d, u] = pq.top(); pq.pop();
+            auto [d,u] = pq.top(); pq.pop();
             if (d &gt; dist[u]) continue;
 
             for (auto &amp;e : adj[u]) {
@@ -269,11 +277,10 @@ int main() {
 
     cout &lt;&lt; "Nearest Hospital: " &lt;&lt; bestHospital &lt;&lt; "\\n";
     cout &lt;&lt; "Distance: " &lt;&lt; best &lt;&lt; " km\\n";
-    return 0;
 }
 </pre>
 </div>
 
+</div>
 </body>
 </html>
-
