@@ -10,11 +10,11 @@
           data-autoloader-path="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/"></script>
   <style>
     body{margin:0;padding:0;font-family:'Space Grotesk',sans-serif;
-      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh}
+      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh;overflow-x:hidden}
     .container{max-width:1200px;margin:0 auto;padding:40px 20px}
     header{display:flex;justify-content:space-between;align-items:center;
       padding:15px 30px;background:linear-gradient(90deg,#ff512f,#dd2476);
-      border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.5);margin-bottom:50px}
+      border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.5);margin-bottom:50px;position:relative}
     .logo{display:flex;align-items:center;gap:10px;font-family:'Pacifico',cursive;
       font-size:1.8rem;font-weight:700;color:#fff}
     .logo img{width:40px;height:40px;border-radius:50%}
@@ -23,6 +23,17 @@
     .navbar a{color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;
       border-radius:8px;transition:.3s}
     .navbar a:hover{background:rgba(255,255,255,.2);color:#ffdd59;transform:scale(1.05)}
+    .back-btn{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.35);
+      border-radius:999px;border:none;color:#fffbeb;padding:6px 14px;
+      cursor:pointer;font-size:.9rem;display:flex;align-items:center;gap:4px}
+    .back-btn:hover{background:rgba(0,0,0,.6)}
+    .side-nav{position:fixed;left:-120px;top:50%;transform:translateY(-50%);
+      display:flex;flex-direction:column;gap:10px;z-index:5}
+    .side-nav a{writing-mode:vertical-rl;text-orientation:mixed;
+      background:rgba(15,23,42,.9);color:#fff;text-decoration:none;
+      padding:10px 6px;border-radius:12px 0 0 12px;font-size:.8rem;
+      border:1px solid rgba(255,255,255,.2);transition:.3s}
+    .side-nav a:hover{transform:translateX(110px);background:#ff512f}
     .glass-panel{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);
       -webkit-backdrop-filter:blur(20px);border-radius:25px;padding:30px 40px;
       margin-bottom:30px;border:1px solid rgba(255,255,255,.2);
@@ -49,15 +60,22 @@
   </style>
 </head>
 <body>
+<div class="side-nav">
+  <a href="index.html">Home</a>
+  <a href="fuel.html">Fuel</a>
+  <a href="apmc.html">APMC</a>
+  <a href="traffic.html">Traffic</a>
+</div>
+
 <div class="container">
   <header>
+    <button class="back-btn" onclick="history.back()">🔙 Back</button>
     <div class="logo">
       <img src="https://via.placeholder.com/40" alt="Logo"> Coastal Smart City
     </div>
     <nav class="navbar">
       <h1>Construction Contracting</h1>
       <ul>
-        <li><a href="index.html">Overview</a></li>
         <li><a href="fuel.html">Fuel</a></li>
         <li><a href="apmc.html">APMC</a></li>
         <li><a href="traffic.html">Traffic</a></li>
@@ -69,10 +87,10 @@
   <section class="glass-panel">
     <h2>Business Plan</h2>
     <p>
-      The construction vertical focuses on EPC and design‑build contracts for roads, bridges, housing, and coastal‑resilience projects. It wins bids by using data‑driven cost and risk models, then executes with tight schedule control, logistics optimisation, and safety KPIs.
+      The construction vertical focuses on EPC and design‑build contracts for roads, bridges, housing, and coastal‑protection works. It uses schedule and risk models to submit competitive bids and to keep projects on time and within budget.
     </p>
     <p>
-      Revenue comes from project contracts, long‑term O&M deals, and advisory/analytics services for other developers that want to reuse the same optimisation frameworks.
+      Revenue comes from EPC contracts, long‑term maintenance and operations deals, and advisory services that reuse its optimisation frameworks.
     </p>
     <div class="sdg-badges" style="margin-top:16px">
       <strong>SDG Alignment:</strong><br>
@@ -87,74 +105,96 @@
     <h2>Algorithm & DSA View</h2>
     <div class="course-container">
       <div class="qa-card">
-        <h3>Project Graphs</h3>
-        <p>Model tasks and dependencies as DAGs for critical‑path analysis and resource‑constrained scheduling.</p>
+        <h3>Project DAGs</h3>
+        <p>Model tasks and dependencies as directed acyclic graphs for critical path and sequencing analysis.</p>
       </div>
       <div class="qa-card">
         <h3>Greedy Scheduling</h3>
-        <p>Sort tasks by deadlines and penalties to minimise total delay cost under finite crews and machinery.</p>
+        <p>Sort tasks by deadline and penalty to minimise total delay cost under finite crews and resources.</p>
       </div>
       <div class="qa-card">
-        <h3>Logistics & DP Costs</h3>
-        <p>Use shortest paths for routing trucks and DP to accumulate cost and risk across the construction horizon.</p>
+        <h3>Logistics & DP</h3>
+        <p>Use shortest paths for routing materials and DP to accumulate cost and risk over a planning horizon.</p>
       </div>
     </div>
   </section>
 
   <section class="glass-panel">
-    <h2>Construction – C++ Sketch</h2>
+    <h2>Construction – C++ (Optimised Sketch)</h2>
     <pre><code class="language-cpp">
 #include &lt;bits/stdc++.h&gt;
 using namespace std;
 
-struct Task{int id;string name;int duration,deadline;double penalty;};
+struct Task{
+    int id;
+    string name;
+    int duration,deadline;
+    double penalty;
+};
 
-bool taskCmp(const Task&a,const Task&b){
-    if(a.deadline!=b.deadline)return a.deadline&lt;b.deadline;
+inline bool taskCmp(const Task&a,const Task&b){
+    if(a.deadline!=b.deadline) return a.deadline&lt;b.deadline;
     return a.penalty&gt;b.penalty;
 }
 
-struct LEdge{int to;double cost;};
+struct LEdge{
+    int to;
+    double cost;
+};
 using LGraph=vector&lt;vector&lt;LEdge&gt;&gt;;
 
 vector&lt;double&gt; shortestPathL(const LGraph&g,int src){
-    int n=g.size(); const double INF=1e18;
-    vector&lt;double&gt;dist(n,INF); dist[src]=0;
+    const int n=(int)g.size();
+    const double INF=numeric_limits&lt;double&gt;::infinity();
+    vector&lt;double&gt; dist(n,INF);
+    dist[src]=0.0;
     using P=pair&lt;double,int&gt;;
-    priority_queue&lt;P,vector&lt;P&gt;,greater&lt;P&gt;&gt;pq;
-    pq.push({0,src});
+    priority_queue&lt;P,vector&lt;P&gt;,greater&lt;P&gt;&gt; pq;
+    pq.emplace(0.0,src);
+
     while(!pq.empty()){
-        auto[d,u]=pq.top();pq.pop();
-        if(d&gt;dist[u])continue;
-        for(auto &e:g[u]){
-            if(dist[u]+e.cost&lt;dist[e.to]){
-                dist[e.to]=dist[u]+e.cost;
-                pq.push({dist[e.to],e.to});
+        const auto [d,u]=pq.top();
+        pq.pop();
+        if(d&gt;dist[u]) continue;
+        for(const auto &e:g[u]){
+            const double nd=dist[u]+e.cost;
+            if(nd&lt;dist[e.to]){
+                dist[e.to]=nd;
+                pq.emplace(nd,e.to);
             }
         }
     }
     return dist;
 }
 
-map&lt;pair&lt;int,int&gt;,double&gt; memoConstr;
+unordered_map&lt;int,double&gt; memoConstr;
+
 double projectCostDP(int pid,int day,int H,double base,double risk){
-    if(day&gt;=H)return 0.0;
-    auto key=make_pair(pid,day);
-    if(memoConstr.count(key))return memoConstr[key];
-    double today=base*(1.0+risk*day);
-    return memoConstr[key]=today+projectCostDP(pid,day+1,H,base,risk);
+    if(day&gt;=H) return 0.0;
+    const int key=(pid&lt;&lt;16)|day;
+    auto it=memoConstr.find(key);
+    if(it!=memoConstr.end()) return it->second;
+    const double today=base*(1.0+risk*day);
+    double val=today+projectCostDP(pid,day+1,H,base,risk);
+    memoConstr.emplace(key,val);
+    return val;
 }
 
 int main(){
-    vector&lt;Task&gt;tasks={{1,"Foundations",30,60,5000},
-                        {2,"Piers",40,120,4000},
-                        {3,"Deck",50,180,6000}};
+    vector&lt;Task&gt; tasks;
+    tasks.reserve(3);
+    tasks.push_back({1,"Foundations",30,60,5000});
+    tasks.push_back({2,"Piers",40,120,4000});
+    tasks.push_back({3,"Deck",50,180,6000});
+
     sort(tasks.begin(),tasks.end(),taskCmp);
-    int cur=0; double totalPenalty=0;
-    for(auto &t:tasks){
-        int finish=cur+t.duration;
-        int delay=max(0,finish-t.deadline);
-        double pen=delay*t.penalty;
+
+    int cur=0;
+    double totalPenalty=0.0;
+    for(const auto &t:tasks){
+        const int finish=cur+t.duration;
+        const int delay=max(0,finish-t.deadline);
+        const double pen=delay*t.penalty;
         totalPenalty+=pen;
         cout&lt;&lt;"Task "&lt;&lt;t.id&lt;&lt;" delay="&lt;&lt;delay
             &lt;&lt;" penalty="&lt;&lt;pen&lt;&lt;"\n";
@@ -167,7 +207,6 @@ int main(){
     g[0].push_back({2,20.0});
     auto d=shortestPathL(g,0);
     cout&lt;&lt;"Depot->Site1 cost: "&lt;&lt;d[1]&lt;&lt;"\n";
-
     cout&lt;&lt;"10-day project cost: "
         &lt;&lt;projectCostDP(1,0,10,100000,0.02)&lt;&lt;"\n";
     return 0;
