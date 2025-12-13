@@ -4,14 +4,13 @@
   <meta charset="UTF-8">
   <title>Coastal Smart City – Business Suite</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
   <style>
     body{margin:0;padding:0;font-family:'Space Grotesk',sans-serif;
-      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh}
+      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh;overflow-x:hidden}
     .container{max-width:1200px;margin:0 auto;padding:40px 20px}
     header{display:flex;justify-content:space-between;align-items:center;
       padding:15px 30px;background:linear-gradient(90deg,#ff512f,#dd2476);
-      border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.5);margin-bottom:50px}
+      border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.5);margin-bottom:50px;position:relative}
     .logo{display:flex;align-items:center;gap:10px;font-family:'Pacifico',cursive;
       font-size:1.8rem;font-weight:700;color:#fff}
     .logo img{width:40px;height:40px;border-radius:50%}
@@ -20,6 +19,17 @@
     .navbar a{color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;
       border-radius:8px;transition:.3s}
     .navbar a:hover{background:rgba(255,255,255,.2);color:#ffdd59;transform:scale(1.05)}
+    .back-btn{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.35);
+      border-radius:999px;border:none;color:#fffbeb;padding:6px 14px;
+      cursor:pointer;font-size:.9rem;display:flex;align-items:center;gap:4px}
+    .back-btn:hover{background:rgba(0,0,0,.6)}
+    .side-nav{position:fixed;left:-120px;top:50%;transform:translateY(-50%);
+      display:flex;flex-direction:column;gap:10px;z-index:5}
+    .side-nav a{writing-mode:vertical-rl;text-orientation:mixed;
+      background:rgba(15,23,42,.9);color:#fff;text-decoration:none;
+      padding:10px 6px;border-radius:12px 0 0 12px;font-size:.8rem;
+      border:1px solid rgba(255,255,255,.2);transition:.3s}
+    .side-nav a:hover{transform:translateX(110px);background:#ff512f}
     .glass-panel{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);
       -webkit-backdrop-filter:blur(20px);border-radius:25px;padding:30px 40px;
       margin-bottom:30px;border:1px solid rgba(255,255,255,.2);
@@ -50,15 +60,22 @@
   </style>
 </head>
 <body>
+<div class="side-nav">
+  <a href="fuel.html">Fuel</a>
+  <a href="apmc.html">APMC</a>
+  <a href="traffic.html">Traffic</a>
+  <a href="construction.html">Construction</a>
+</div>
+
 <div class="container">
   <header>
+    <button class="back-btn" onclick="history.back()">🔙 Back</button>
     <div class="logo">
       <img src="https://via.placeholder.com/40" alt="Logo"> Coastal Smart City
     </div>
     <nav class="navbar">
       <h1>Business Suite</h1>
       <ul>
-        <li><a href="index.html">Overview</a></li>
         <li><a href="fuel.html">Fuel</a></li>
         <li><a href="apmc.html">APMC</a></li>
         <li><a href="traffic.html">Traffic</a></li>
@@ -69,7 +86,7 @@
 
   <section class="glass-panel intro-card">
     <p>
-      Four coordinated business plans – Fuel Networks, Digital APMC, Smart Traffic, and Construction Contracting – share one data layer, one design language, and reusable C++ planning modules to build a profitable, SDG‑aligned coastal ecosystem.
+      Four coordinated business plans – Fuel Networks, Digital APMC, Smart Traffic, and Construction Contracting – share one data layer and reusable C++ planning modules to build a profitable, SDG‑aligned coastal ecosystem.
     </p>
     <p style="margin-top:18px;font-size:1rem;text-align:center;opacity:0.9">
       Use the cards below to explore each vertical’s business model, SDG mapping, and algorithmic core on its own dedicated page.
