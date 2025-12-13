@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Module 3 – Tourism & Resort Booking</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#0b0b0f;
+    color:#eaeaea;
+}
+
+/* ===== Sidebar ===== */
+.sidebar{
+    position:fixed;
+    top:0; left:0;
+    width:260px; height:100vh;
+    background:#111116;
+    padding:25px;
+    overflow-y:auto;
+}
+.sidebar h2{
+    color:#9ad1ff;
+    text-align:center;
+    margin-bottom:30px;
+}
+.sidebar a{
+    display:block;
+    color:#eaeaea;
+    text-decoration:none;
+    padding:12px;
+    margin-bottom:12px;
+    border-radius:8px;
+    background:#1a1a22;
+}
+.sidebar a:hover,
+.sidebar a.active{
+    background:#2b2b38;
+    color:#9ad1ff;
+    font-weight:600;
+}
+
+/* ===== Main ===== */
+.container{
+    margin-left:280px;
+    padding:40px;
+    max-width:1200px;
+}
+.card{
+    background:#15151d;
+    padding:28px;
+    border-radius:14px;
+    margin-bottom:35px;
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
+
+h1{color:#9ad1ff}
+h2{color:#cfcfcf}
+h3{color:#a8a8a8}
+p{line-height:1.8}
+
+.line{
+    background:#1f1f2a;
+    padding:12px;
+    border-radius:8px;
+    margin:8px 0;
+}
+
+/* ===== Tables ===== */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+th,td{
+    padding:12px;
+    border:1px solid #333;
+}
+th{
+    background:#1f1f2a;
+    color:#9ad1ff;
+}
+td{background:#14141b}
+
+/* ===== Code ===== */
+pre{
+    background:#0d0d12;
+    color:#d6d6d6;
+    padding:22px;
+    border-radius:12px;
+    font-size:13px;
+    line-height:1.7;
+    max-height:70vh;
+    overflow:auto;
+    white-space:pre;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>Modules</h2>
+    <a href="index.html">🏥 Health Care</a>
+    <a href="module2_crime_prevention.html">🚓 Crime Prevention</a>
+    <a href="module3_tourism.html" class="active">🏝 Tourism & Resort Booking</a>
+</div>
+
+<!-- Main -->
+<div class="container">
+
+<h1>Module 3 – Tourism & Resort Booking</h1>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>A. Booking Engine & Dynamic Pricing</h2>
+
+<p>
+This module manages resort occupancy, processes booking requests with priorities,
+and adjusts prices dynamically based on demand and occupancy levels.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+A segment tree tracks daily occupancy and checks availability efficiently.
+Incoming booking requests are stored in a priority queue so high-priority
+customers are served first. If capacity allows, the booking is accepted and
+revenue is updated. A simple demand-based pricing rule increases prices as
+occupancy rises.
+</div>
+
+<h3>Efficiency Analysis</h3>
+<table>
+<tr><th>Component</th><th>Time Complexity</th><th>Space</th></tr>
+<tr><td>Segment Tree</td><td>O(log n)</td><td>O(n)</td></tr>
+<tr><td>Heap (Bookings)</td><td>O(log m)</td><td>O(m)</td></tr>
+</table>
+</div>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>B. Itinerary Planner</h2>
+
+<p>
+Plans optimal travel itineraries between multiple tourist locations using
+shortest-path and TSP heuristics.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+Points of interest are treated as nodes. A nearest-neighbour heuristic builds
+an initial tour, and 2-opt optimization improves it. For real maps, Dijkstra
+or A* is used to compute segment costs.
+</div>
+
+<h3>Efficiency Analysis</h3>
+<table>
+<tr><th>Algorithm</th><th>Time</th><th>Space</th></tr>
+<tr><td>NN Heuristic</td><td>O(n²)</td><td>O(n)</td></tr>
+<tr><td>2-opt</td><td>O(n²)</td><td>O(n)</td></tr>
+</table>
+</div>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>C. Review/Text Analysis & Recommender</h2>
+
+<p>
+Analyzes customer reviews for keyword search and generates recommendations
+using text similarity.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+KMP efficiently searches phrases inside reviews. An inverted index maps
+keywords to documents. Reviews are converted into sparse TF vectors and
+cosine similarity measures how similar two reviews are.
+</div>
+
+<h3>Efficiency Analysis</h3>
+<table>
+<tr><th>Technique</th><th>Time</th><th>Space</th></tr>
+<tr><td>KMP</td><td>O(n + m)</td><td>O(m)</td></tr>
+<tr><td>Inverted Index</td><td>O(total terms)</td><td>O(total terms)</td></tr>
+<tr><td>Cosine Similarity</td><td>O(overlap)</td><td>O(vocab)</td></tr>
+</table>
+</div>
+
+<!-- ================================================= -->
+<div class="card">
+<h2>Integrated C++ Code – Tourism Module</h2>
+
+<pre>
+// ================= BOOKING ENGINE =================
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+struct Seg{
+    int n; vector&lt;int&gt; t;
+    Seg(int N){ n=1; while(n&lt;N) n&lt;&lt;=1; t.assign(2*n,0); }
+    void add(int idx,int val){
+        idx+=n; t[idx]+=val;
+        for(idx&gt;&gt;=1; idx; idx&gt;&gt;=1)
+            t[idx]=max(t[2*idx],t[2*idx+1]);
+    }
+    int range_max(int l,int r){
+        int res=INT_MIN;
+        for(l+=n,r+=n; l&lt;=r; l&gt;&gt;=1,r&gt;&gt;=1){
+            if(l&amp;1) res=max(res,t[l++]);
+            if(!(r&amp;1)) res=max(res,t[r--]);
+        }
+        return res;
+    }
+};
+
+// ================= ITINERARY =================
+double euclid(pair&lt;double,double&gt;a, pair&lt;double,double&gt;b){
+    return hypot(a.first-b.first,a.second-b.second);
+}
+
+// ================= TEXT ANALYSIS =================
+vector&lt;int&gt; build_lps(const string &amp;p){
+    int m=p.size(); vector&lt;int&gt; lps(m,0);
+    for(int i=1,len=0;i&lt;m;){
+        if(p[i]==p[len]) lps[i++]=++len;
+        else if(len) len=lps[len-1];
+        else lps[i++]=0;
+    }
+    return lps;
+}
+</pre>
+
+</div>
+
+</div>
+</body>
+</html>
