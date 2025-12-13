@@ -304,3 +304,309 @@ footer {
   </footer></div>
 </body>
         </html>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blue & Green Economy Ideas (SDG-aligned)</title>
+  <meta name="description" content="Six identified business ideas with description, economic impact and related SDGs — styled glassmorphism." />  <!-- Fonts -->  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">  <style>
+/* --- BODY --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* --- CONTAINER --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* --- NAVBAR --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    margin-bottom: 40px;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+header .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+header .navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+header .navbar ul li a:hover {
+    background: rgba(255,255,255,0.25);
+    color: #ffdd59;
+}
+
+/* --- GLASS PANELS --- */
+.glass-panel {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 25px;
+    padding: 30px 35px;
+    margin-bottom: 35px;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all 0.45s ease;
+}
+
+.glass-panel:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(255,140,0,0.45);
+}
+
+/* --- HEADINGS --- */
+h2 {
+    font-size: 1.8rem;
+    margin-top: 0;
+    background: linear-gradient(90deg, #ff512f, #dd2476, #f0ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.meta {
+    opacity: 0.85;
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+}
+
+/* --- GRID --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* --- CARDS --- */
+.card {
+    background: rgba(255,140,0,0.08);
+    padding: 22px;
+    border-radius: 22px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.45s ease;
+}
+
+.card:hover {
+    transform: scale(1.04);
+    box-shadow: 0 25px 60px rgba(255,140,0,0.6);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+    transform: skewX(-25deg);
+}
+
+.card:hover::before {
+    animation: shimmer 1s forwards;
+}
+
+@keyframes shimmer {
+    0% { left: -75%; }
+    100% { left: 125%; }
+}
+
+/* --- LIST --- */
+ul {
+    margin-left: 18px;
+}
+
+/* --- SDG TAGS --- */
+.sdg {
+    display: inline-block;
+    margin: 6px 8px 0 0;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.18);
+    color: #ffdd59;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: #ffdd59;
+}
+  </style></head>
+<body><div class="container">  <!-- HEADER / NAV -->  <header>
+    <div class="logo">🌍 Blue & Green Economy</div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="#green-energy">Green Energy</a></li>
+        <li><a href="#clean-water">Clean Water</a></li>
+        <li><a href="#transport">Transport</a></li>
+        <li><a href="#shipbuilding">Shipbuilding</a></li>
+        <li><a href="#waste">Waste-to-Energy</a></li>
+        <li><a href="#deep-ocean">Deep Ocean</a></li>
+      </ul>
+    </nav>
+  </header>  <!-- SECTION 1 -->  <section id="green-energy" class="glass-panel">
+    <h2>1. Green Energy & Ocean Energy Hub</h2>
+    <div class="meta">Brief description • Economic impact • Related SDGs</div>
+    <div class="grid">
+      <div class="card">
+        <strong>Description</strong>
+        <p>Development and deployment of offshore wind, tidal, wave and OTEC systems with port-based manufacturing, testing, grid integration and workforce training.</p>
+      </div>
+      <div class="card">
+        <strong>Impact on the Economy</strong>
+        <ul>
+          <li>High-skill employment in marine and electrical engineering.</li>
+          <li>Reduced fossil-fuel imports and improved energy security.</li>
+          <li>Export potential for renewable technologies and services.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <strong>Related SDGs</strong><br>
+        <span class="sdg">SDG 7</span><span class="sdg">SDG 9</span><span class="sdg">SDG 13</span><span class="sdg">SDG 14</span>
+      </div>
+    </div>
+  </section>  <!-- SECTION 2 -->  <section id="clean-water" class="glass-panel">
+    <h2>2. Clean Water & Environmental Industries</h2>
+    <div class="meta">Brief description • Economic impact • Related SDGs</div>
+    <div class="grid">
+      <div class="card">
+        <strong>Description</strong>
+        <p>Water purification, desalination, wastewater treatment, reuse systems and environmental monitoring to ensure water security.</p>
+      </div>
+      <div class="card">
+        <strong>Impact on the Economy</strong>
+        <ul>
+          <li>Improved public health and industrial productivity.</li>
+          <li>Job creation in engineering and water management services.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <strong>Related SDGs</strong><br>
+        <span class="sdg">SDG 6</span><span class="sdg">SDG 3</span><span class="sdg">SDG 12</span><span class="sdg">SDG 14</span>
+      </div>
+    </div>
+  </section>  <!-- SECTION 3 -->  <section id="transport" class="glass-panel">
+    <h2>3. Transport Model & Logistics</h2>
+    <div class="meta">Brief description • Economic impact • Related SDGs</div>
+    <div class="grid">
+      <div class="card">
+        <strong>Description</strong>
+        <p>Electric mobility, smart public transport, green freight, port logistics and digital supply-chain platforms.</p>
+      </div>
+      <div class="card">
+        <strong>Impact on the Economy</strong>
+        <ul>
+          <li>Lower logistics costs and improved trade competitiveness.</li>
+          <li>Employment across transport, warehousing and IT.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <strong>Related SDGs</strong><br>
+        <span class="sdg">SDG 9</span><span class="sdg">SDG 11</span><span class="sdg">SDG 13</span><span class="sdg">SDG 8</span>
+      </div>
+    </div>
+  </section>  <!-- SECTION 4 -->  <section id="shipbuilding" class="glass-panel">
+    <h2>4. Ship Building & Ship Repair</h2>
+    <div class="meta">Brief description • Economic impact • Related SDGs</div>
+    <div class="grid">
+      <div class="card">
+        <strong>Description</strong>
+        <p>Design, construction, retrofitting and repair of vessels and offshore structures.</p>
+      </div>
+      <div class="card">
+        <strong>Impact on the Economy</strong>
+        <ul>
+          <li>Large-scale skilled and semi-skilled employment.</li>
+          <li>Strengthened maritime and industrial capacity.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <strong>Related SDGs</strong><br>
+        <span class="sdg">SDG 9</span><span class="sdg">SDG 8</span><span class="sdg">SDG 14</span>
+      </div>
+    </div>
+  </section>  <!-- SECTION 5 -->  <section id="waste" class="glass-panel">
+    <h2>5. Waste-to-Blue-Energy Solutions</h2>
+    <div class="meta">Brief description • Economic impact • Related SDGs</div>
+    <div class="grid">
+      <div class="card">
+        <strong>Description</strong>
+        <p>Conversion of coastal and marine waste into biofuels, biogas, hydrogen and electricity.</p>
+      </div>
+      <div class="card">
+        <strong>Impact on the Economy</strong>
+        <ul>
+          <li>Circular economy and pollution reduction.</li>
+          <li>Startup growth in recycling and green energy.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <strong>Related SDGs</strong><br>
+        <span class="sdg">SDG 7</span><span class="sdg">SDG 12</span><span class="sdg">SDG 13</span><span class="sdg">SDG 14</span>
+      </div>
+    </div>
+  </section>  <!-- SECTION 6 -->  <section id="deep-ocean" class="glass-panel">
+    <h2>6. Deep Ocean Mining — Critical Minerals</h2>
+    <div class="meta">Brief description • Economic impact • Related SDGs</div>
+    <div class="grid">
+      <div class="card">
+        <strong>Description</strong>
+        <p>Environmentally regulated extraction of seabed minerals for batteries, electronics and renewable technologies.</p>
+      </div>
+      <div class="card">
+        <strong>Impact on the Economy</strong>
+        <ul>
+          <li>Secured supply of strategic minerals.</li>
+          <li>High-tech jobs in subsea robotics and monitoring.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <strong>Related SDGs</strong><br>
+        <span class="sdg">SDG 9</span><span class="sdg">SDG 12</span><span class="sdg">SDG 7</span><span class="sdg">SDG 14</span>
+      </div>
+    </div>
+  </section>  <footer>
+    Blue & Green Economy • SDG-Aligned • Glassmorphism UI
+  </footer></div>
+</body>
+                                        </html>
