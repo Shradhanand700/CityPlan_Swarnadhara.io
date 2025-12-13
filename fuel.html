@@ -10,11 +10,11 @@
           data-autoloader-path="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/"></script>
   <style>
     body{margin:0;padding:0;font-family:'Space Grotesk',sans-serif;
-      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh}
+      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh;overflow-x:hidden}
     .container{max-width:1200px;margin:0 auto;padding:40px 20px}
     header{display:flex;justify-content:space-between;align-items:center;
       padding:15px 30px;background:linear-gradient(90deg,#ff512f,#dd2476);
-      border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.5);margin-bottom:50px}
+      border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.5);margin-bottom:50px;position:relative}
     .logo{display:flex;align-items:center;gap:10px;font-family:'Pacifico',cursive;
       font-size:1.8rem;font-weight:700;color:#fff}
     .logo img{width:40px;height:40px;border-radius:50%}
@@ -23,6 +23,17 @@
     .navbar a{color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;
       border-radius:8px;transition:.3s}
     .navbar a:hover{background:rgba(255,255,255,.2);color:#ffdd59;transform:scale(1.05)}
+    .back-btn{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.35);
+      border-radius:999px;border:none;color:#fffbeb;padding:6px 14px;
+      cursor:pointer;font-size:.9rem;display:flex;align-items:center;gap:4px}
+    .back-btn:hover{background:rgba(0,0,0,.6)}
+    .side-nav{position:fixed;left:-120px;top:50%;transform:translateY(-50%);
+      display:flex;flex-direction:column;gap:10px;z-index:5}
+    .side-nav a{writing-mode:vertical-rl;text-orientation:mixed;
+      background:rgba(15,23,42,.9);color:#fff;text-decoration:none;
+      padding:10px 6px;border-radius:12px 0 0 12px;font-size:.8rem;
+      border:1px solid rgba(255,255,255,.2);transition:.3s}
+    .side-nav a:hover{transform:translateX(110px);background:#ff512f}
     .glass-panel{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);
       -webkit-backdrop-filter:blur(20px);border-radius:25px;padding:30px 40px;
       margin-bottom:30px;border:1px solid rgba(255,255,255,.2);
@@ -44,26 +55,28 @@
     @keyframes shimmer{0%{left:-75%}100%{left:125%}}
     .sdg-badges span{display:inline-block;padding:6px 8px;margin:4px 6px 0 0;
       border-radius:10px;background:rgba(255,255,255,.08);font-size:.8rem;font-weight:600;color:#fffbeb}
-    .code-panel{position:relative;margin-top:20px}
-    .close-btn{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.12);
-      border:none;color:#fff;border-radius:999px;width:28px;height:28px;
-      font-weight:700;cursor:pointer;transition:.2s}
-    .close-btn:hover{background:#ff512f}
     pre[class*="language-"]{background:rgba(0,0,0,.4)!important;border-radius:15px;
       font-size:.82rem}
     footer{text-align:center;padding:20px;opacity:.8;margin-top:40px;font-size:.9rem;color:#ffdd59}
   </style>
 </head>
 <body>
+<div class="side-nav">
+  <a href="index.html">Home</a>
+  <a href="apmc.html">APMC</a>
+  <a href="traffic.html">Traffic</a>
+  <a href="construction.html">Construction</a>
+</div>
+
 <div class="container">
   <header>
+    <button class="back-btn" onclick="history.back()">🔙 Back</button>
     <div class="logo">
       <img src="https://via.placeholder.com/40" alt="Logo"> Coastal Smart City
     </div>
     <nav class="navbar">
       <h1>Fuel Station Management</h1>
       <ul>
-        <li><a href="index.html">Overview</a></li>
         <li><a href="fuel.html">Fuel</a></li>
         <li><a href="apmc.html">APMC</a></li>
         <li><a href="traffic.html">Traffic</a></li>
@@ -75,10 +88,10 @@
   <section class="glass-panel">
     <h2>Business Plan</h2>
     <p>
-      Build a network of multi‑fuel and EV stations across coastal, core, and highway corridors, ensuring that 90% of citizens refuel within a short detour and wait under a defined SLA. Revenue streams include fuel margins, EV tariffs, service contracts with fleets, and analytics products for OEMs and logistics partners.
+      Build a network of multi‑fuel and EV stations across coastal, core, and highway corridors, targeting short detours and tight queue SLAs. Revenue streams include fuel margins, EV tariffs, fleet service contracts, and analytics products for OEMs and logistics partners.
     </p>
     <p>
-      The plan phases rollout by zone, prioritises high‑demand corridors, and uses data from traffic, APMC flows, and construction sites to refine locations, capacity, and operating hours over time.
+      Rollout phases start with high‑demand corridors and later refine locations, capacity, and operating hours using traffic, APMC, and construction data.
     </p>
     <div class="sdg-badges" style="margin-top:16px">
       <strong>SDG Alignment:</strong><br>
@@ -94,7 +107,7 @@
     <div class="course-container">
       <div class="qa-card">
         <h3>Graph & Zonal Partitioning</h3>
-        <p>Represent the city as weighted graphs per zone and choose station sites that minimise total travel cost and uncovered demand.</p>
+        <p>Represent each zone as a weighted graph and place stations to minimise total travel distance and uncovered demand.</p>
       </div>
       <div class="qa-card">
         <h3>Shortest Path Trees</h3>
@@ -102,64 +115,92 @@
       </div>
       <div class="qa-card">
         <h3>Greedy + DP Models</h3>
-        <p>Greedy matches demand to near‑by feasible stations; DP aggregates multi‑day fuel, EV load, and logistics costs under scenarios.</p>
+        <p>Greedy matches demand to nearby feasible stations; DP aggregates multi‑day fuel, EV load, and logistics costs.</p>
       </div>
     </div>
   </section>
 
-  <section class="glass-panel code-panel">
-    <button class="close-btn" onclick="document.getElementById('fuel-code').style.display='none'">&times;</button>
-    <h2>Fuel Planning – C++ Sketch</h2>
-    <div id="fuel-code">
-      <pre><code class="language-cpp">
+  <section class="glass-panel">
+    <h2>Fuel Planning – C++ (Optimised Sketch)</h2>
+    <pre><code class="language-cpp">
 #include &lt;bits/stdc++.h&gt;
 using namespace std;
 
-struct DemandPoint{int id;double x,y,demand;};
-struct Station{int id;double x,y,capacity;};
+struct DemandPoint{
+    int id;
+    double x,y,demand;
+};
+struct Station{
+    int id;
+    double x,y,capacity;
+};
 
-double dist2d(double x1,double y1,double x2,double y2){
-    double dx=x1-x2,dy=y1-y2;
+inline double dist2d(double x1,double y1,double x2,double y2){
+    const double dx=x1-x2,dy=y1-y2;
     return sqrt(dx*dx+dy*dy);
 }
 
-void greedyAssignFuel(vector&lt;DemandPoint&gt;&dem,vector&lt;Station&gt;&st){
-    for(auto &d:dem){
-        int bestId=-1; double best=1e18;
-        for(auto &s:st){
-            if(s.capacity&lt;d.demand)continue;
+void greedyAssignFuel(const vector&lt;DemandPoint&gt;&dem,vector&lt;Station&gt;&st){
+    for(const auto &d:dem){
+        int bestId=-1;
+        double best=numeric_limits&lt;double&gt;::infinity();
+        for(const auto &s:st){
+            if(s.capacity&lt;d.demand) continue;
             double c=dist2d(d.x,d.y,s.x,s.y);
-            if(c&lt;best){best=c;bestId=s.id;}
+            if(c&lt;best){
+                best=c;
+                bestId=s.id;
+            }
         }
-        if(bestId!=-1)
+        if(bestId!=-1){
             cout&lt;&lt;"Demand "&lt;&lt;d.id&lt;&lt;" -> station "
                 &lt;&lt;bestId&lt;&lt;" ("&lt;&lt;best&lt;&lt;" km)\n";
-        else
+        }else{
             cout&lt;&lt;"No feasible station for demand "&lt;&lt;d.id&lt;&lt;"\n";
+        }
     }
 }
 
-map&lt;pair&lt;int,int&gt;,double&gt; memoFuel;
+unordered_map&lt;long long,double&gt; memoFuel;
+
+inline long long keyFuel(int sid,int day){
+    return (static_cast&lt;long long&gt;(sid)&lt;&lt;32) | static_cast&lt;unsigned int&gt;(day);
+}
+
 double fuelCostDP(int sid,int day,int H,double base){
-    if(day&gt;=H)return 0.0;
-    auto key=make_pair(sid,day);
-    if(memoFuel.count(key))return memoFuel[key];
-    double today=base*(1.0+0.03*day);
-    return memoFuel[key]=today+fuelCostDP(sid,day+1,H,base);
+    if(day&gt;=H) return 0.0;
+    const long long key=keyFuel(sid,day);
+    auto it=memoFuel.find(key);
+    if(it!=memoFuel.end()) return it->second;
+    const double today=base*(1.0+0.03*day);
+    const double rest=fuelCostDP(sid,day+1,H,base);
+    double val=today+rest;
+    memoFuel.emplace(key,val);
+    return val;
 }
 
 int main(){
-    vector&lt;DemandPoint&gt; dem={{1,2,3,500},{2,10,8,700}};
-    vector&lt;Station&gt; st={{1,1,2,1000},{2,9,9,800}};
+    vector&lt;DemandPoint&gt; dem;
+    dem.reserve(2);
+    dem.push_back({1,2,3,500});
+    dem.push_back({2,10,8,700});
+
+    vector&lt;Station&gt; st;
+    st.reserve(2);
+    st.push_back({1,1,2,1000});
+    st.push_back({2,9,9,800});
+
     sort(st.begin(),st.end(),
-         [](auto &a,auto &b){return a.capacity&gt;b.capacity;});
+         [](const Station &a,const Station &b){
+             return a.capacity&gt;b.capacity;
+         });
+
     greedyAssignFuel(dem,st);
     cout&lt;&lt;"7-day base cost s1: "
         &lt;&lt;fuelCostDP(1,0,7,1.0)&lt;&lt;"\n";
     return 0;
 }
-      </code></pre>
-    </div>
+    </code></pre>
   </section>
 
   <footer>Fuel Station Management – Coastal Smart City Suite</footer>
