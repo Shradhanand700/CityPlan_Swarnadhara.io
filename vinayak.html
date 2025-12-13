@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>DSA in Sustainable Industry Sectors</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Coastal Knowledge Hub – Economy, Algorithms & DSA</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
     body{
       margin:0;padding:0;
@@ -42,11 +42,39 @@
       border:1px solid rgba(255,255,255,.16);
       box-shadow:0 12px 30px rgba(15,23,42,.7);
     }
+    .glass:hover{
+      transform:translateY(-4px);transition:.4s;
+      box-shadow:0 18px 40px rgba(255,140,0,.45);
+    }
+    h2,h3{
+      margin-top:0;
+      background:linear-gradient(90deg,#ff512f,#dd2476,#f0ff00);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
     .sector-title{
       margin-top:0;
       background:linear-gradient(90deg,#ff512f,#dd2476,#f0ff00);
       -webkit-background-clip:text;-webkit-text-fill-color:transparent;
       font-size:1.3rem;
+    }
+    p.lead{margin:0;color:#cbd5f5;font-size:.9rem;}
+    .pill{
+      display:inline-block;
+      padding:5px 10px;border-radius:999px;
+      background:rgba(255,255,255,.06);
+      font-size:.8rem;color:#9aa4b2;
+      text-decoration:none;margin:0 6px 6px 0;
+    }
+    .pill:hover{background:rgba(255,255,255,.16);color:#fffbeb;}
+    .grid2{
+      display:grid;grid-template-columns:1fr;gap:14px;
+    }
+    @media(min-width:880px){.grid2{grid-template-columns:1fr 1fr;}}
+    .card{
+      background:rgba(15,23,42,.65);
+      border-radius:14px;padding:14px;
+      border:1px solid rgba(148,163,184,.35);
+      font-size:.9rem;
     }
     .section-header{
       font-size:.98rem;font-weight:600;margin-top:14px;margin-bottom:4px;
@@ -61,6 +89,11 @@
       font-size:.88rem;
     }
     .dsa-list{margin:6px 0 0 18px;font-size:.9rem;}
+    .sdg{
+      display:inline-block;padding:5px 7px;border-radius:8px;
+      font-weight:600;font-size:.7rem;margin-right:6px;margin-bottom:4px;
+      background:rgba(15,118,110,.12);color:#2dd4bf;
+    }
     pre{
       background:#111827;border-radius:10px;
       padding:12px;overflow-x:auto;
@@ -73,10 +106,25 @@
     .code-type{color:#e5c07b;}
     .code-function{color:#61afef;}
     .code-string{color:#98c379;}
-    h1.page-title{
-      margin:0 0 6px 0;font-size:1.5rem;
+    .muted{color:#9aa4b2;font-size:.9rem;}
+    .o-chart{
+      display:grid;grid-template-columns:110px 1fr;gap:8px;
+      align-items:center;margin-top:8px;
     }
-    p.lead{margin:0;color:#cbd5f5;font-size:.9rem;}
+    .o-label{font-family:monospace;font-size:.78rem;color:#cbd5f5;}
+    .bar{
+      height:14px;border-radius:8px;
+      background:linear-gradient(90deg,#38bdf8,#7c3aed);
+      box-shadow:inset 0 -3px 0 rgba(15,23,42,.9);
+    }
+    .bar.s1{width:4%}.bar.slog{width:8%}.bar.sn{width:30%}
+    .bar.snlog{width:45%}.bar.sq{width:70%}.bar.s2n{width:92%}.bar.snf{width:100%}
+    .view{display:none;}
+    .view.active{display:block;}
+    footer{
+      text-align:center;margin-top:24px;font-size:.8rem;
+      color:#ffdd59;opacity:.9;
+    }
   </style>
 </head>
 <body>
@@ -84,22 +132,217 @@
   <header>
     <div class="logo">
       <img src="https://via.placeholder.com/38" alt="Logo">
-      Coastal DSA Hub
+      Coastal Knowledge Hub
     </div>
     <nav class="navbar">
       <div>
-        <h1 class="page-title">DSA in Sustainable Industry Sectors</h1>
+        <h1>Economy, Algorithms & DSA</h1>
         <ul>
-          <li><a href="#" class="active">Sustainable DSA Sectors</a></li>
+          <li><a href="#" data-view="combined" class="active">Blue/Green + Algorithms</a></li>
+          <li><a href="#" data-view="dsa">Sustainable DSA Sectors</a></li>
         </ul>
       </div>
     </nav>
   </header>
 
-  <main>
+  <!-- VIEW 1: BLUE/GREEN ECONOMY + ALGORITHMS SUMMARY -->
+  <div id="view-combined" class="view active">
     <section class="glass">
+      <h2>Blue & Green Economy Ideas (SDG-aligned)</h2>
+      <p class="muted">
+        Six coastal blue/green business ideas plus concise algorithm reflections – useful for smart-city planning and DAA mapping.
+      </p>
+      <div>
+        <a class="pill" href="#green-energy">Green &amp; Ocean Energy Hub</a>
+        <a class="pill" href="#clean-water">Clean Water &amp; Environment</a>
+        <a class="pill" href="#transport">Transport &amp; Logistics</a>
+        <a class="pill" href="#shipbuilding">Shipbuilding &amp; Repair</a>
+        <a class="pill" href="#waste-to-blue">Waste-to-Blue-Energy</a>
+        <a class="pill" href="#deep-ocean">Deep Ocean Mining</a>
+      </div>
+    </section>
+
+    <!-- Blue/Green sectors (condensed description version) -->
+    <section class="glass" id="green-energy">
+      <h3>1. Green Energy & Ocean Energy Hub</h3>
+      <div class="grid2">
+        <div class="card">
+          <strong>Description</strong>
+          <p>Offshore wind, tidal, wave, and OTEC hub with storage, grid integration, and port‑side assembly and testing.</p>
+        </div>
+        <div class="card">
+          <strong>Economic Impact</strong>
+          <ul>
+            <li>High‑skill engineering and marine jobs.</li>
+            <li>Reduced fuel imports and better energy security.</li>
+            <li>Local manufacturing and port supply chains.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>SDGs</strong><br>
+          <span class="sdg">SDG 7</span><span class="sdg">SDG 9</span>
+          <span class="sdg">SDG 11</span><span class="sdg">SDG 13</span>
+          <span class="sdg">SDG 14</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass" id="clean-water">
+      <h3>2. Clean Water + Environmental Industries</h3>
+      <div class="grid2">
+        <div class="card">
+          <strong>Description</strong>
+          <p>Water purification, desalination, reuse, pollution control, and monitoring services for secure water and healthy ecosystems.</p>
+        </div>
+        <div class="card">
+          <strong>Impact</strong>
+          <ul>
+            <li>Reliable water for homes, farms, and industry.</li>
+            <li>Lower health burden from waterborne diseases.</li>
+            <li>Engineering and operations employment.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>SDGs</strong><br>
+          <span class="sdg">SDG 6</span><span class="sdg">SDG 3</span>
+          <span class="sdg">SDG 11</span><span class="sdg">SDG 12</span>
+          <span class="sdg">SDG 14</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass" id="transport">
+      <h3>3. Transport Model & Logistics</h3>
+      <div class="grid2">
+        <div class="card">
+          <strong>Description</strong>
+          <p>Electric buses/ferries, smart public transport, intermodal freight, green last‑mile delivery, and port logistics platforms.</p>
+        </div>
+        <div class="card">
+          <strong>Impact</strong>
+          <ul>
+            <li>Lower logistics costs and better competitiveness.</li>
+            <li>Jobs in fleets, warehouses, and IT.</li>
+            <li>Reduced congestion and travel time.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>SDGs</strong><br>
+          <span class="sdg">SDG 9</span><span class="sdg">SDG 11</span>
+          <span class="sdg">SDG 13</span><span class="sdg">SDG 8</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass" id="shipbuilding">
+      <h3>4. Shipbuilding & Ship Repair</h3>
+      <div class="grid2">
+        <div class="card">
+          <strong>Description</strong>
+          <p>Yards and workshops to design, build, retrofit, and repair vessels from fishing boats to offshore platforms.</p>
+        </div>
+        <div class="card">
+          <strong>Impact</strong>
+          <ul>
+            <li>Skilled and semi‑skilled employment.</li>
+            <li>Stronger maritime and naval capacity.</li>
+            <li>Demand for steel, engines, and electronics.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>SDGs</strong><br>
+          <span class="sdg">SDG 9</span><span class="sdg">SDG 8</span>
+          <span class="sdg">SDG 14</span><span class="sdg">SDG 11</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass" id="waste-to-blue">
+      <h3>5. Waste-to-Blue-Energy Solutions</h3>
+      <div class="grid2">
+        <div class="card">
+          <strong>Description</strong>
+          <p>Convert coastal/urban waste to biogas, biofuel, electricity, or hydrogen via advanced recycling and bio‑processes.</p>
+        </div>
+        <div class="card">
+          <strong>Impact</strong>
+          <ul>
+            <li>Circular value chains from waste.</li>
+            <li>Restored tourism/fisheries along the coast.</li>
+            <li>Biotech and recycling innovation.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>SDGs</strong><br>
+          <span class="sdg">SDG 12</span><span class="sdg">SDG 7</span>
+          <span class="sdg">SDG 13</span><span class="sdg">SDG 14</span>
+          <span class="sdg">SDG 11</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass" id="deep-ocean">
+      <h3>6. Deep Ocean Mining – Critical Minerals</h3>
+      <div class="grid2">
+        <div class="card">
+          <strong>Description</strong>
+          <p>Governed extraction of seabed minerals for batteries and electronics with strong environmental monitoring.</p>
+        </div>
+        <div class="card">
+          <strong>Impact</strong>
+          <ul>
+            <li>Strategic mineral supply for high‑tech sectors.</li>
+            <li>Subsea engineering and robotics jobs.</li>
+            <li>Export earnings and lower import dependence.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>SDGs</strong><br>
+          <span class="sdg">SDG 9</span><span class="sdg">SDG 12</span>
+          <span class="sdg">SDG 7</span><span class="sdg">SDG 14</span>
+          <span class="sdg">SDG 8</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Algorithms & Nature quick summary -->
+    <section class="glass">
+      <h2>Algorithms & Nature — Quick Notes</h2>
+      <p class="muted">
+        Iteration, recursion, backtracking, complexity, trees/graphs, and key design techniques used in DAA.
+      </p>
+      <div class="grid2">
+        <div class="card">
+          <strong>Nature & Patterns</strong>
+          <ul>
+            <li>Seasonal cycles → iteration.</li>
+            <li>Self-similar branching → recursion.</li>
+            <li>Animal path exploration → backtracking.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>Complexity Classes</strong>
+          <p>O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ), O(n!).</p>
+          <div class="o-chart">
+            <div class="o-label">O(1)</div><div class="bar s1"></div>
+            <div class="o-label">O(log n)</div><div class="bar slog"></div>
+            <div class="o-label">O(n)</div><div class="bar sn"></div>
+            <div class="o-label">O(n log n)</div><div class="bar snlog"></div>
+            <div class="o-label">O(n²)</div><div class="bar sq"></div>
+            <div class="o-label">O(2ⁿ)</div><div class="bar s2n"></div>
+            <div class="o-label">O(n!)</div><div class="bar snf"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VIEW 2: SUSTAINABLE DSA SECTORS WITH CODE -->
+  <div id="view-dsa" class="view">
+    <section class="glass">
+      <h2>DSA in Sustainable Industry Sectors</h2>
       <p class="lead">
-        Mapping real-world sustainable sectors to core data structures and algorithms, with SDG alignment and small C++ snippets.
+        Mapping real‑world sustainable sectors to core data structures and algorithms, with SDG alignment and C++ snippets.
       </p>
     </section>
 
@@ -108,16 +351,16 @@
       <h2 class="sector-title">🌱 1. Green Energy & Ocean Energy Hub</h2>
 
       <div class="section-header">What does this sector do?</div>
-      <p>The Green Energy &amp; Ocean Energy Hub focuses on generating renewable energy from offshore wind farms, tidal power stations, wave energy systems, and floating solar plants distributed along coastal and deep‑ocean regions. Because underwater cables are costly and hard to maintain, the network must be planned to connect all stations with minimal cable while maintaining reliability.</p>
+      <p>The Green Energy &amp; Ocean Energy Hub focuses on offshore wind, tidal, wave, and floating solar assets distributed along the coast and open sea, where cable planning must minimize cost and keep the grid reliable.</p>
 
       <div class="section-header">How does this sector use Data Structures & Algorithms?</div>
-      <p>The energy network is modeled as a weighted graph where stations are vertices and submarine cables are edges. Minimum Spanning Tree algorithms reduce cable cost, and Union–Find prevents redundant cycles when new links are added.</p>
+      <p>The network is a weighted graph (stations = vertices, cables = edges). MST algorithms cut cable cost; Union–Find avoids cycles and redundant links.</p>
 
       <div class="section-header">🌍 SDG Alignment</div>
       <ul class="sdg-list">
-        <li><strong>SDG 7</strong> – Affordable and Clean Energy: Delivers reliable renewable power.</li>
-        <li><strong>SDG 9</strong> – Industry, Innovation and Infrastructure: Builds resilient offshore energy infrastructure.</li>
-        <li><strong>SDG 13</strong> – Climate Action: Cuts emissions via large‑scale renewables.</li>
+        <li><strong>SDG 7</strong> – Affordable and Clean Energy.</li>
+        <li><strong>SDG 9</strong> – Resilient energy infrastructure.</li>
+        <li><strong>SDG 13</strong> – Climate action via renewables.</li>
       </ul>
 
       <div class="section-header">Data Structures Used</div>
@@ -155,16 +398,16 @@ Adjacency list is memory efficient
       <h2 class="sector-title">💧 2. Clean Water & Environmental Industries</h2>
 
       <div class="section-header">What does this sector do?</div>
-      <p>This sector manages treatment plants, reservoirs, desalination units, and pipelines to deliver safe water to consumers on time.</p>
+      <p>Manages purification plants, reservoirs, desalination units, and pipelines to ensure safe, timely water delivery.</p>
 
-      <div class="section-header">How does this sector use Data Structures & Algorithms?</div>
-      <p>Queues control batch processing in treatment plants, hash tables support instant lookups for quality parameters, and all‑pairs shortest path algorithms such as Floyd–Warshall can evaluate optimal distribution paths.</p>
+      <div class="section-header">How does this sector use DSA?</div>
+      <p>Queues manage batch flows through treatment; hash tables support instant quality checks; APSP algorithms optimize distribution routes.</p>
 
       <div class="section-header">🌍 SDG Alignment</div>
       <ul class="sdg-list">
-        <li><strong>SDG 6</strong> – Clean Water and Sanitation.</li>
-        <li><strong>SDG 3</strong> – Good Health and Well‑being.</li>
-        <li><strong>SDG 9</strong> – Industry, Innovation and Infrastructure.</li>
+        <li><strong>SDG 6</strong> – Clean water and sanitation.</li>
+        <li><strong>SDG 3</strong> – Good health and well‑being.</li>
+        <li><strong>SDG 9</strong> – Optimized water infrastructure.</li>
       </ul>
 
       <div class="section-header">Data Structures Used</div>
@@ -193,21 +436,21 @@ FIFO processing of water treatment batches
 }</code></pre>
     </section>
 
-    <!-- 3. Transport & Logistics -->
+    <!-- 3. Transport -->
     <section class="glass">
       <h2 class="sector-title">🚦 3. Transport Model & Logistics</h2>
 
       <div class="section-header">What does this sector do?</div>
-      <p>This sector coordinates roads, rail, ports, and logistics hubs to minimize construction costs and operating delays for freight and passengers.</p>
+      <p>Coordinates roads, rail, ports, and logistics hubs to minimize cost and delays.</p>
 
-      <div class="section-header">How does this sector use Data Structures & Algorithms?</div>
-      <p>Union–Find helps avoid cycles when designing minimal transport networks, while priority queues order shipments so high‑priority cargo is dispatched first.</p>
+      <div class="section-header">How does this sector use DSA?</div>
+      <p>Union–Find structures avoid cycles during network design; priority queues schedule urgent shipments first.</p>
 
       <div class="section-header">🌍 SDG Alignment</div>
       <ul class="sdg-list">
-        <li><strong>SDG 9</strong> – Efficient transport infrastructure.</li>
-        <li><strong>SDG 11</strong> – Sustainable urban and regional connectivity.</li>
-        <li><strong>SDG 8</strong> – Supports trade and economic growth.</li>
+        <li><strong>SDG 9</strong> – Efficient, resilient transport networks.</li>
+        <li><strong>SDG 11</strong> – Better connectivity for cities and regions.</li>
+        <li><strong>SDG 8</strong> – Supports trade and jobs.</li>
       </ul>
 
       <div class="section-header">Data Structures Used</div>
@@ -241,117 +484,19 @@ Higher value = higher priority shipment
       <h2 class="sector-title">🚢 4. Ship Building & Ship Repair Business</h2>
 
       <div class="section-header">What does this sector do?</div>
-      <p>Shipbuilding is hierarchical assembly of hull, decks, and systems; repair often reverses this as components are dismantled, inspected, and replaced.</p>
+      <p>Assembles hull, decks, and systems hierarchically; repairs dismantle and replace components in reverse order.</p>
 
       <div class="section-header">🌍 SDG Alignment</div>
       <ul class="sdg-list">
         <li><strong>SDG 9</strong> – Maritime industrial capacity.</li>
-        <li><strong>SDG 8</strong> – Skilled shipyard employment.</li>
-        <li><strong>SDG 14</strong> – Safer vessels reduce marine pollution risk.</li>
+        <li><strong>SDG 8</strong> – Skilled shipyard work.</li>
+        <li><strong>SDG 14</strong> – Safer ships protect marine ecosystems.</li>
       </ul>
 
       <div class="section-header">Data Structures Used</div>
       <ul class="dsa-list">
-        <li>Tree (hierarchy of components)</li>
-        <li>Stack (LIFO dismantling steps)</li>
+        <li>Tree</li>
+        <li>Stack</li>
       </ul>
 
-      <div class="section-header">Sample Code – Tree (C++)</div>
-      <pre><code><span class="code-include">#include &lt;iostream&gt;</span>
-<span class="code-keyword">using</span> <span class="code-keyword">namespace</span> std;
-
-<span class="code-keyword">struct</span> ShipComponent {
-  <span class="code-type">int</span> id;
-  ShipComponent* left;
-  ShipComponent* right;
-};
-
-ShipComponent* <span class="code-function">createComponent</span>(<span class="code-type">int</span> id) {
-  ShipComponent* node = <span class="code-keyword">new</span> ShipComponent();
-  node-&gt;id = id;
-  node-&gt;left = node-&gt;right = NULL;
-  <span class="code-keyword">return</span> node;
-}
-<span class="code-comment">// main() would build a tree for hull, deck, engine, etc.</span></code></pre>
-    </section>
-
-    <!-- 5. Waste-to-Blue-Energy -->
-    <section class="glass">
-      <h2 class="sector-title">♻️ 5. Waste-to-Blue-Energy Solutions</h2>
-
-      <div class="section-header">What does this sector do?</div>
-      <p>Converts marine and urban waste streams into biogas, biofuel, and other energy carriers, supporting circular economy models.</p>
-
-      <div class="section-header">🌍 SDG Alignment</div>
-      <ul class="sdg-list">
-        <li><strong>SDG 12</strong> – Responsible consumption and production.</li>
-        <li><strong>SDG 7</strong> – Clean energy from waste.</li>
-        <li><strong>SDG 14</strong> – Less marine waste and pollution.</li>
-      </ul>
-
-      <div class="section-header">Data Structures Used</div>
-      <ul class="dsa-list">
-        <li>Array (raw waste/energy values)</li>
-        <li>Heap (max-heap for high-energy waste first)</li>
-      </ul>
-
-      <div class="section-header">Sample Code – Array + Heap (C++)</div>
-      <pre><code><span class="code-include">#include &lt;iostream&gt;</span>
-<span class="code-include">#include &lt;queue&gt;</span>
-<span class="code-keyword">using</span> <span class="code-keyword">namespace</span> std;
-
-<span class="code-type">int</span> <span class="code-function">main</span>() {
-  <span class="code-type">int</span> energyValues[] = {25, 60, 40, 80, 30};
-  <span class="code-type">priority_queue&lt;int&gt;</span> energyHeap;
-
-  <span class="code-keyword">for</span> (<span class="code-type">int</span> value : energyValues)
-    energyHeap.<span class="code-function">push</span>(value);
-
-  cout <span class="code-string">&lt;&lt; "Highest energy waste processed: "</span>
-       <span class="code-string">&lt;&lt; energyHeap.top()</span>;
-  <span class="code-keyword">return</span> 0;
-}</code></pre>
-    </section>
-
-    <!-- 6. Deep Ocean Mining -->
-    <section class="glass">
-      <h2 class="sector-title">🌊 6. Deep Ocean Mining – Rare Earth & Critical Minerals</h2>
-
-      <div class="section-header">What does this sector do?</div>
-      <p>Uses autonomous underwater vehicles to explore and extract rare earth and critical minerals from the seabed while aiming to minimise ecological disruption.</p>
-
-      <div class="section-header">🌍 SDG Alignment</div>
-      <ul class="sdg-list">
-        <li><strong>SDG 9</strong> – High‑tech resource extraction infrastructure.</li>
-        <li><strong>SDG 12</strong> – Efficient use of critical minerals.</li>
-        <li><strong>SDG 14</strong> – Emphasis on environmentally responsible seabed exploration.</li>
-      </ul>
-
-      <div class="section-header">Data Structures & Algorithms Used</div>
-      <ul class="dsa-list">
-        <li>Graph (seabed locations and paths)</li>
-        <li>Depth First Search (DFS)</li>
-      </ul>
-
-      <div class="section-header">Sample Code – DFS (C++)</div>
-      <pre><code><span class="code-type">void</span> <span class="code-function">DFS</span>(<span class="code-type">int</span> node,
-          <span class="code-keyword">const</span> <span class="code-type">vector&lt;vector&lt;int&gt;&gt;</span>& seabedMap,
-          <span class="code-type">vector&lt;bool&gt;</span>& visited) {
-
-  visited[node] = <span class="code-keyword">true</span>;
-  cout <span class="code-string">&lt;&lt; "Exploring seabed location: "</span> <span class="code-string">&lt;&lt; node &lt;&lt; endl</span>;
-
-  <span class="code-keyword">for</span> (<span class="code-type">int</span> next : seabedMap[node]) {
-    <span class="code-keyword">if</span> (!visited[next])
-      <span class="code-function">DFS</span>(next, seabedMap, visited);
-  }
-}</code></pre>
-    </section>
-  </main>
-
-  <footer>
-    DSA in Sustainable Industry Sectors – Coastal style glassmorphism layout.
-  </footer>
-</div>
-</body>
-</html>
+      <div class="section-
