@@ -9,159 +9,73 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"
           data-autoloader-path="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/"></script>
   <style>
-    :root{
-      --accent:#ffdd59;
-      --accent-2:#38bdf8;
-      --glass-bg:rgba(15,23,42,0.65);
-    }
-    body{
-      margin:0;padding:0;
-      font-family:'Space Grotesk',sans-serif;
-      background:
-        radial-gradient(circle at 10% 20%, #22c1c3 0, transparent 35%),
-        radial-gradient(circle at 90% 10%, #ff512f 0, transparent 40%),
-        radial-gradient(circle at 0% 100%, #009ffd 0, transparent 45%),
-        #050816;
-      color:#e5e7eb;min-height:100vh;
-    }
-    .container{max-width:1200px;margin:0 auto;padding:40px 20px 60px;}
-    header{
-      display:flex;justify-content:space-between;align-items:center;
-      padding:18px 28px;margin-bottom:40px;
-      background:linear-gradient(120deg,rgba(15,23,42,0.9),rgba(30,64,175,0.9));
-      border-radius:20px;border:1px solid rgba(148,163,184,0.4);
-      box-shadow:0 18px 40px rgba(15,23,42,0.8);
-      position:relative;overflow:hidden;
-    }
-    header::before{
-      content:"";position:absolute;inset:-40px;
-      background:radial-gradient(circle at 0 0,rgba(244,244,245,0.08),transparent 60%);
-      opacity:0.9;pointer-events:none;
-    }
+    body{margin:0;padding:0;font-family:'Space Grotesk',sans-serif;
+      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh}
+    .container{max-width:1200px;margin:0 auto;padding:40px 20px}
+    header{display:flex;justify-content:space-between;align-items:center;
+      padding:15px 30px;background:linear-gradient(90deg,#ff512f,#dd2476);
+      border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.5);margin-bottom:50px}
     .logo{display:flex;align-items:center;gap:10px;font-family:'Pacifico',cursive;
-      font-size:1.8rem;font-weight:700;color:#fff;position:relative;z-index:1;}
-    .logo img{width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,0.6);}
-    .navbar{position:relative;z-index:1;text-align:right;}
-    .navbar h1{color:#f9fafb;font-size:1.5rem;margin:0 0 6px;}
-    .navbar p{margin:0 0 8px;font-size:0.85rem;color:#cbd5f5;}
-    .navbar ul{list-style:none;display:flex;gap:14px;margin:0;padding:0;flex-wrap:wrap;justify-content:flex-end;}
-    .navbar a{color:#e5e7eb;text-decoration:none;font-weight:600;padding:7px 14px;
-      border-radius:999px;border:1px solid rgba(148,163,184,0.5);
-      background:rgba(15,23,42,0.6);backdrop-filter:blur(12px);
-      font-size:0.85rem;transition:all .25s;}
-    .navbar a:hover{background:linear-gradient(120deg,#f97316,#eab308);color:#020617;
-      transform:translateY(-1px);box-shadow:0 0 18px rgba(250,204,21,0.6);}
-
-    .glass-panel{
-      background:var(--glass-bg);
-      backdrop-filter:blur(24px) saturate(140%);
-      -webkit-backdrop-filter:blur(24px) saturate(140%);
-      border-radius:26px;padding:26px 30px;margin-bottom:30px;
-      border:1px solid rgba(148,163,184,0.35);
-      box-shadow:0 22px 50px rgba(15,23,42,0.9);
-      position:relative;overflow:hidden;
-    }
-    .glass-panel::before{
-      content:"";position:absolute;inset:-60px;
-      background:radial-gradient(circle at 0 0,rgba(248,250,252,0.06),transparent 55%);
-      opacity:0.7;pointer-events:none;
-    }
-    .glass-panel > *{position:relative;z-index:1;}
-    .intro-card-main{
-      display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:26px;
-      align-items:center;
-    }
-    @media(max-width:800px){.intro-card-main{grid-template-columns:1fr;}}
-    .intro-text h2{font-size:1.6rem;margin:0 0 10px;
-      background:linear-gradient(120deg,#f97316,#22c55e,#22d3ee);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    .intro-text p{margin:0 0 10px;font-size:0.97rem;color:#e5e7eb;}
-    .intro-pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
-    .intro-pill{
-      font-size:0.75rem;padding:5px 10px;border-radius:999px;
-      border:1px solid rgba(148,163,184,0.6);color:#e5e7eb;
-      background:rgba(15,23,42,0.7);
-    }
-    .hero-illustration{
-      border-radius:22px;border:1px solid rgba(148,163,184,0.5);
-      background:radial-gradient(circle at 10% 0%,rgba(56,189,248,0.25),transparent 55%),
-                 radial-gradient(circle at 90% 100%,rgba(248,250,252,0.15),transparent 55%),
-                 rgba(15,23,42,0.9);
-      padding:14px;display:flex;flex-direction:column;gap:10px;
-    }
-    .hero-illustration img{
-      width:100%;border-radius:18px;object-fit:cover;
-      box-shadow:0 12px 30px rgba(15,23,42,0.85);
-    }
-    .hero-caption{font-size:0.8rem;color:#cbd5f5;}
-
-    h2,h3{background:linear-gradient(90deg,#f97316,#fb7185,#facc15);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-top:0;}
-    .styled-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.9rem;}
-    .styled-table caption{caption-side:top;font-size:1.1rem;margin-bottom:8px;color:#e5e7eb;}
-    .styled-table th,.styled-table td{border:1px solid rgba(148,163,184,0.7);
-      padding:10px 11px;text-align:left;}
-    .styled-table th{background:rgba(15,23,42,0.9);}
-    .course-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
-    .qa-card,.card{
-      background:radial-gradient(circle at 0 0,rgba(251,191,36,0.08),transparent 55%),
-                 rgba(15,23,42,0.9);
-      padding:20px;border-radius:22px;border:1px solid rgba(156,163,175,0.7);
-      transition:.4s;position:relative;overflow:hidden;cursor:pointer;
-      box-shadow:0 16px 34px rgba(15,23,42,0.85);
-    }
-    .qa-card:hover,.card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 26px 60px rgba(251,191,36,0.4);
-    }
-    .card img.thumb{
-      width:48px;height:48px;border-radius:16px;margin-bottom:10px;
-      object-fit:cover;border:1px solid rgba(148,163,184,0.6);
-    }
-    a.btn{
-      display:inline-flex;align-items:center;gap:6px;margin-top:12px;
-      padding:8px 18px;border-radius:999px;border:none;
-      background:linear-gradient(120deg,#22c55e,#22d3ee);
-      color:#020617;font-weight:600;text-decoration:none;font-size:0.82rem;
-      box-shadow:0 0 18px rgba(34,197,94,0.6);transition:.25s;
-    }
-    a.btn span{font-size:1.05rem;}
-    a.btn:hover{transform:translateY(-1px) scale(1.02);box-shadow:0 0 24px rgba(56,189,248,0.9);}
-    .hidden{opacity:0;transform:translateY(40px);transition:all .7s ease-out;}
-    .show{opacity:1;transform:translateY(0);}
-    .sdg-badges span{
-      display:inline-block;padding:5px 9px;margin:4px 6px 0 0;
-      border-radius:999px;border:1px solid rgba(148,163,184,0.7);
-      background:rgba(15,23,42,0.85);font-size:0.78rem;font-weight:600;color:#f9fafb;
-    }
-    footer{text-align:center;padding:16px 10px;opacity:.8;margin-top:30px;
-      font-size:0.85rem;color:#e5e7eb;}
-    .code-panel{display:none;position:relative;}
-    .close-btn{
-      position:absolute;top:10px;right:10px;background:rgba(15,23,42,0.9);
-      border:1px solid rgba(248,250,252,0.8);color:#f9fafb;border-radius:999px;
-      width:28px;height:28px;font-weight:700;cursor:pointer;font-size:1rem;
-      display:flex;align-items:center;justify-content:center;z-index:2;
-      box-shadow:0 0 14px rgba(248,250,252,0.6);transition:.2s;
-    }
-    .close-btn:hover{background:#f97316;color:#020617;}
-    pre[class*="language-"]{
-      background:linear-gradient(135deg,rgba(15,23,42,0.95),rgba(30,64,175,0.95))!important;
-      border-radius:18px;font-size:0.82rem;border:1px solid rgba(148,163,184,0.7);
-      box-shadow:0 18px 40px rgba(15,23,42,0.9);
-    }
+      font-size:1.8rem;font-weight:700;color:#fff}
+    .logo img{width:40px;height:40px;border-radius:50%}
+    .navbar h1{color:#fff;font-size:1.5rem;font-weight:700;margin-right:30px}
+    .navbar ul{list-style:none;display:flex;gap:20px;margin:0;padding:0;flex-wrap:wrap}
+    .navbar a{color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;
+      border-radius:8px;transition:.3s}
+    .navbar a:hover{background:rgba(255,255,255,.2);color:#ffdd59;transform:scale(1.05)}
+    .glass-panel{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);border-radius:25px;padding:30px 40px;
+      margin-bottom:30px;border:1px solid rgba(255,255,255,.2);
+      transition:.5s cubic-bezier(.175,.885,.32,1.275)}
+    .glass-panel:hover{transform:translateY(-10px) scale(1.02);
+      box-shadow:0 20px 50px rgba(255,140,0,.5)}
+    .intro-card p{font-size:1.6rem;line-height:1.8;text-align:center;
+      animation:fadeInZoom 1s ease forwards}
+    @keyframes fadeInZoom{0%{opacity:0;transform:scale(.8)}100%{opacity:1;transform:scale(1)}}
+    h2,h3{background:linear-gradient(90deg,#ff512f,#dd2476,#f0ff00);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .styled-table{width:100%;border-collapse:collapse;margin:20px 0}
+    .styled-table caption{caption-side:top;font-size:1.3rem;margin-bottom:10px}
+    .styled-table th,.styled-table td{border:1px solid #fff;padding:12px 15px;text-align:left}
+    .styled-table th{background:rgba(255,140,0,.2)}
+    .course-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
+    .qa-card,.card{background:rgba(255,140,0,.05);padding:25px;border-radius:25px;
+      transition:.5s;position:relative;overflow:hidden;cursor:pointer}
+    .qa-card:hover,.card:hover{animation:bounce .6s;transform:scale(1.04);
+      box-shadow:0 25px 60px rgba(255,140,0,.6)}
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}
+      40%{transform:translateY(-15px)}60%{transform:translateY(-8px)}}
+    a.btn{display:inline-block;margin-top:12px;padding:10px 25px;
+      background:rgba(255,140,0,.2);color:#fff;text-decoration:none;
+      border-radius:30px;font-weight:600;transition:.3s;cursor:pointer}
+    a.btn:hover{background:#ff8c00;color:#000;box-shadow:0 10px 20px rgba(255,140,0,.5)}
+    .qa-card::before,.card::before{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;
+      background:linear-gradient(120deg,transparent,rgba(255,255,255,.2),transparent);transform:skewX(-25deg)}
+    .qa-card:hover::before,.card:hover::before{animation:shimmer 1s forwards}
+    @keyframes shimmer{0%{left:-75%}100%{left:125%}}
+    .hidden{opacity:0;transform:translateY(50px);transition:all .8s ease-out}
+    .show{opacity:1;transform:translateY(0)}
+    .sdg-badges span{display:inline-block;padding:6px 8px;margin:4px 6px 0 0;
+      border-radius:10px;background:rgba(255,255,255,.08);font-size:.8rem;font-weight:600;color:#fffbeb}
+    footer{text-align:center;padding:20px;opacity:.8;margin-top:50px;font-size:.9rem;color:#ffdd59}
+    .code-panel{display:none;position:relative}
+    .close-btn{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.12);
+      border:none;color:#fff;border-radius:999px;width:28px;height:28px;
+      font-weight:700;cursor:pointer;transition:.2s}
+    .close-btn:hover{background:#ff512f}
+    pre[class*="language-"]{background:rgba(0,0,0,.4)!important;border-radius:15px;
+      font-size:.82rem}
   </style>
 </head>
 <body>
 <div class="container">
   <header>
     <div class="logo">
-      <img src="https://via.placeholder.com/80x80.png?text=CS" alt="Logo">
+      <img src="https://via.placeholder.com/40" alt="Coastal city logo">
       Coastal Smart City
     </div>
     <nav class="navbar">
-      <h1>Algorithmic Business Design</h1>
-      <p>Four verticals • SDGs • C++ modules • Single integrated coastal platform.</p>
+      <h1>Integrated Business Models</h1>
       <ul>
         <li><a href="#overview">Overview</a></li>
         <li><a href="#fuel-intro">Fuel</a></li>
@@ -175,62 +89,52 @@
   </header>
 
   <!-- RICH OVERVIEW -->
-  <section class="glass-panel intro-card-main" id="overview">
-    <div class="intro-text">
-      <h2>1300 sq km Coastal Smart City – One Integrated Algorithm Stack</h2>
-      <p>
-        The city spans harbour fronts, dense core, river islands, and peri‑urban belts, hosting roughly 18 million people and a
-        mixed economy of logistics, agriculture, tourism, and industry. Each day, fuel tankers, farm trucks, buses, and cranes
-        share the same limited road and port infrastructure.
-      </p>
-      <p>
-        Instead of running fragmented IT systems, the city operates a single algorithmic core: graphs for roads and markets,
-        greedy + dynamic programming for daily decisions, and C++ modules that planners can simulate and tune like “plugins”.
-        Four flagship businesses sit on top of this stack.
-      </p>
-      <div class="intro-pill-row">
-        <span class="intro-pill">Fuel & EV Networks</span>
-        <span class="intro-pill">Digital APMC & Exports</span>
-        <span class="intro-pill">Traffic & Safety Grid</span>
-        <span class="intro-pill">Construction & Resilience</span>
-        <span class="intro-pill">SDG 2 · 7 · 9 · 11 · 12 · 13</span>
-      </div>
-    </div>
-    <div class="hero-illustration">
-      <img src="https://via.placeholder.com/520x260.png?text=Coastal+City+Map" alt="Coastal city map illustration">
-      <div class="hero-caption">
-        Concept sketch of the coastal region with overlayed fuel corridors, APMC hubs, traffic corridors, and construction clusters.
-      </div>
+  <section class="glass-panel intro-card" id="overview">
+    <p>
+      Imagine a 1300 sq km coastal smart city with ~18 million residents, clean beaches, dense transit corridors, and an AI‑driven control room that watches real‑time dashboards of fuel, food, traffic, and construction activity.  
+      Four core businesses – Fuel Station Management, APMC Markets, City Traffic Control, and Construction Contracting – run on shared data platforms and algorithms to keep the city moving, fed, and growing while staying within climate and resource limits.
+    </p>
+    <div style="margin-top:25px;display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:center;">
+      <img src="https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=600"
+           alt="Coastal skyline with port and city" style="max-width:280px;border-radius:18px;">
+      <img src="https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg?auto=compress&cs=tinysrgb&w=600"
+           alt="Night city traffic lights" style="max-width:280px;border-radius:18px;">
+      <img src="https://images.pexels.com/photos/954677/pexels-photo-954677.jpeg?auto=compress&cs=tinysrgb&w=600"
+           alt="Construction site with cranes" style="max-width:280px;border-radius:18px;">
     </div>
   </section>
 
-  <!-- BUSINESS SNAPSHOT -->
+  <!-- SNAPSHOT CARDS -->
   <section class="glass-panel hidden" id="models">
-    <h2>Four Business Verticals at a Glance</h2>
+    <h2>Four Core Business Verticals</h2>
     <div class="course-container">
       <div class="card">
-        <img class="thumb" src="https://via.placeholder.com/96.png?text=Fuel" alt="Fuel icon">
         <h3>Fuel Station Management</h3>
-        <p>Plans a balanced grid of fuel and EV stations so that citizens rarely travel more than a few kilometres to refuel.</p>
-        <a href="#fuel-intro" class="btn"><span>⛽</span>Fuel Overview</a>
+        <img src="https://img.icons8.com/?size=100&id=11797&format=png&color=ffffff"
+             alt="Fuel station icon" style="width:60px;height:60px;margin-bottom:10px;">
+        <p>Optimises fuel + EV station placement, capacity, and inventory so citizens rarely drive far for refuelling.</p>
+        <a href="#fuel-intro" class="btn">Fuel Overview</a>
       </div>
       <div class="card">
-        <img class="thumb" src="https://via.placeholder.com/96.png?text=APMC" alt="APMC icon">
         <h3>APMC Management</h3>
-        <p>Runs high‑throughput digital mandis, storage, and export chains so that food loss shrinks and farmer income stabilises.</p>
-        <a href="#apmc-intro" class="btn"><span>🌾</span>APMC Overview</a>
+        <img src="https://img.icons8.com/?size=100&id=Z0m5emvA9cjG&format=png&color=ffffff"
+             alt="Marketplace icon" style="width:60px;height:60px;margin-bottom:10px;">
+        <p>Digitises mandis and supply chains so farmers, traders, and exporters see prices, lots, and logistics in one transparent system.</p>
+        <a href="#apmc-intro" class="btn">APMC Overview</a>
       </div>
       <div class="card">
-        <img class="thumb" src="https://via.placeholder.com/96.png?text=Traffic" alt="Traffic icon">
         <h3>Traffic Management</h3>
-        <p>Orchestrates traffic lights, guidance, and emergency routes to keep the coastal belt moving even in peak tourism season.</p>
-        <a href="#traffic-intro" class="btn"><span>🚦</span>Traffic Overview</a>
+        <img src="https://img.icons8.com/?size=100&id=59888&format=png&color=ffffff"
+             alt="Traffic light icon" style="width:60px;height:60px;margin-bottom:10px;">
+        <p>Controls signals and routes on a large road graph to cut congestion, improve safety, and support public transport.</p>
+        <a href="#traffic-intro" class="btn">Traffic Overview</a>
       </div>
       <div class="card">
-        <img class="thumb" src="https://via.placeholder.com/96.png?text=Build" alt="Construction icon">
         <h3>Construction Contracting</h3>
-        <p>Coordinates hundreds of parallel building and coastal‑protection projects with cost and risk dashboards.</p>
-        <a href="#construction-intro" class="btn"><span>🏗️</span>Construction Overview</a>
+        <img src="https://img.icons8.com/?size=100&id=63448&format=png&color=ffffff"
+             alt="Construction crane icon" style="width:60px;height:60px;margin-bottom:10px;">
+        <p>Plans and executes housing, bridges, and coastal works using algorithmic scheduling and risk‑aware budgeting.</p>
+        <a href="#construction-intro" class="btn">Construction Overview</a>
       </div>
     </div>
   </section>
@@ -238,73 +142,92 @@
   <!-- FUEL INTRO -->
   <section class="glass-panel hidden" id="fuel-intro">
     <h2>Fuel Station Management – Business Intro</h2>
-    <p>
-      The fuel vertical manages petrol, diesel, CNG, and EV charging stations across coastal highways, industrial belts, and
-      dense inner wards. The objectives are short refuelling distance, minimal tanker kilometres, and guaranteed emergency
-      coverage near hospitals and ports.
-    </p>
-    <div class="sdg-badges">
-      <strong>SDG Alignment:</strong><br>
-      <span>SDG 7 – Affordable & Clean Energy</span>
-      <span>SDG 9 – Industry & Infrastructure</span>
-      <span>SDG 11 – Sustainable Cities</span>
-      <span>SDG 13 – Climate Action</span>
+    <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;">
+      <div style="flex:1 1 260px;">
+        <p>
+          Operates a mixed network of petrol, diesel, and EV charging stations in coastal, core, and highway belts. Data from vehicle flows and sales helps decide where to add new pumps, how to size underground tanks, and when to dispatch tankers so stock‑outs are rare but overstock is avoided.
+        </p>
+        <div class="sdg-badges">
+          <strong>SDG Alignment:</strong><br>
+          <span>SDG 7 – Affordable & Clean Energy</span>
+          <span>SDG 9 – Industry & Infrastructure</span>
+          <span>SDG 11 – Sustainable Cities</span>
+          <span>SDG 13 – Climate Action</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/9799997/pexels-photo-9799997.jpeg?auto=compress&cs=tinysrgb&w=600"
+           alt="Modern fuel and EV station" style="flex:1 1 260px;max-width:320px;border-radius:18px;">
     </div>
   </section>
 
   <!-- APMC INTRO -->
   <section class="glass-panel hidden" id="apmc-intro">
     <h2>APMC Management – Business Intro</h2>
-    <p>
-      The mandi platform connects inland farmers, peri‑urban collection centres, city wholesale markets, silos, cold storages,
-      and coastal export terminals. It must clear daily auctions fairly, choose when to store or export, and honour MSP rules.
-    </p>
-    <div class="sdg-badges">
-      <strong>SDG Alignment:</strong><br>
-      <span>SDG 2 – Zero Hunger</span>
-      <span>SDG 8 – Decent Work & Growth</span>
-      <span>SDG 9 – Innovation & Infrastructure</span>
-      <span>SDG 12 – Responsible Consumption</span>
+    <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;flex-direction:row-reverse;">
+      <div style="flex:1 1 260px;">
+        <p>
+          Runs digital marketplaces that connect farmers, FPOs, traders, warehouses, and ports. Live bids, lot tracking, and payment workflows reduce middle‑layer opacity, while storage and routing decisions are driven by demand, price forecasts, and spoilage risk.
+        </p>
+        <div class="sdg-badges">
+          <strong>SDG Alignment:</strong><br>
+          <span>SDG 2 – Zero Hunger</span>
+          <span>SDG 8 – Decent Work & Growth</span>
+          <span>SDG 9 – Innovation & Infrastructure</span>
+          <span>SDG 12 – Responsible Consumption</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/1327836/pexels-photo-1327836.jpeg?auto=compress&cs=tinysrgb&w=600"
+           alt="Farmers market with fresh produce" style="flex:1 1 260px;max-width:320px;border-radius:18px;">
     </div>
   </section>
 
   <!-- TRAFFIC INTRO -->
   <section class="glass-panel hidden" id="traffic-intro">
     <h2>City Traffic Management – Business Intro</h2>
-    <p>
-      The traffic centre watches sensors at intersections, bus corridors, bridges, and evacuation routes. It tunes signal plans,
-      broadcasts advisories, and reserves green waves for ambulances and port convoys when required.
-    </p>
-    <div class="sdg-badges">
-      <strong>SDG Alignment:</strong><br>
-      <span>SDG 9 – Infrastructure</span>
-      <span>SDG 11 – Sustainable Cities</span>
-      <span>SDG 3 – Health & Safety</span>
-      <span>SDG 13 – Climate Action</span>
+    <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;">
+      <div style="flex:1 1 260px;">
+        <p>
+          Operates a traffic command centre that fuses camera feeds, sensor data, and public‑transport GPS traces. Algorithms adjust signal plans, suggest alternative routes, and give emergency vehicles priority, cutting idle time at junctions and lowering emissions per trip.
+        </p>
+        <div class="sdg-badges">
+          <strong>SDG Alignment:</strong><br>
+          <span>SDG 9 – Infrastructure</span>
+          <span>SDG 11 – Sustainable Cities</span>
+          <span>SDG 3 – Health & Safety</span>
+          <span>SDG 13 – Climate Action</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/3739652/pexels-photo-3739652.jpeg?auto=compress&cs=tinysrgb&w=600"
+           alt="Smart city traffic at night" style="flex:1 1 260px;max-width:320px;border-radius:18px;">
     </div>
   </section>
 
   <!-- CONSTRUCTION INTRO -->
   <section class="glass-panel hidden" id="construction-intro">
     <h2>Construction Contracting – Business Intro</h2>
-    <p>
-      The construction vertical handles housing, bridges, metro piers, and sea walls. It must sequence tasks, move materials,
-      and hedge climate risk (storms, flooding) while keeping projects financially viable and socially inclusive.
-    </p>
-    <div class="sdg-badges">
-      <strong>SDG Alignment:</strong><br>
-      <span>SDG 9 – Industry & Infrastructure</span>
-      <span>SDG 11 – Sustainable Cities</span>
-      <span>SDG 8 – Decent Work</span>
-      <span>SDG 13 – Climate Action</span>
+    <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;flex-direction:row-reverse;">
+      <div style="flex:1 1 260px;">
+        <p>
+          Plans and builds housing clusters, bridges, metros, and sea‑walls using networked project schedules and logistics graphs. Each project balances speed, cost, and resilience by simulating delays, weather risk, and resource conflicts before work begins on site.
+        </p>
+        <div class="sdg-badges">
+          <strong>SDG Alignment:</strong><br>
+          <span>SDG 9 – Industry & Infrastructure</span>
+          <span>SDG 11 – Sustainable Cities</span>
+          <span>SDG 8 – Decent Work</span>
+          <span>SDG 13 – Climate Action</span>
+        </div>
+      </div>
+      <img src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=600"
+           alt="Bridge and building construction site" style="flex:1 1 260px;max-width:320px;border-radius:18px;">
     </div>
   </section>
 
-  <!-- ALGORITHMS TABLE -->
+  <!-- ALGORITHMIC TABLE -->
   <section class="glass-panel hidden" id="algorithms">
-    <h2>Techniques Across Verticals</h2>
+    <h2>Techniques, Principles, Sorting & Searching</h2>
     <table class="styled-table">
-      <caption>Core Algorithmic Ideas in Each Business</caption>
+      <caption>Best-Fit Algorithmic Choices Across Verticals</caption>
       <thead>
       <tr>
         <th>Vertical</th><th>Core Technique</th><th>Key Principles</th><th>Sorting</th><th>String Search</th>
@@ -321,20 +244,20 @@
       <tr>
         <td>APMC</td>
         <td>Greedy auction clearing + DP sell/store</td>
-        <td>Hierarchical data, Partitioning, Sliding Window</td>
-        <td>Merge Sort / Heap + Priority Queue</td>
+        <td>Partitioning, Hierarchical Data, Sliding Window</td>
+        <td>Merge Sort / Heap + PQ</td>
         <td>Rabin–Karp, Brute Force</td>
       </tr>
       <tr>
         <td>Traffic</td>
         <td>Greedy signal control + DP corridors</td>
-        <td>Shortest Paths, Pattern Recognition, Trade-off</td>
+        <td>Shortest Path Trees, Pattern Recognition, Trade-off</td>
         <td>Heaps, Quick Sort</td>
-        <td>Rabin–Karp (incident logs)</td>
+        <td>Rabin–Karp (logs)</td>
       </tr>
       <tr>
         <td>Construction</td>
-        <td>Greedy scheduling + DP cost/risk</td>
+        <td>Greedy scheduling + DP risk/cost</td>
         <td>Decomposition, Partitioning, Trade-off</td>
         <td>Quick Sort / Merge Sort</td>
         <td>Rabin–Karp (contracts)</td>
@@ -343,21 +266,21 @@
     </table>
   </section>
 
-  <!-- LOGIC SECTIONS (short) -->
+  <!-- LOGIC SECTIONS -->
   <section class="glass-panel hidden" id="fuel-algo">
     <h2>Fuel Station Management – Logic</h2>
     <div class="course-container">
       <div class="qa-card">
         <h3>Graph & Partitioning</h3>
-        <p>Zones form subgraphs; each node is demand or station, edges carry travel time and road class.</p>
+        <p>City zones (coastal, core, highway) are subgraphs; each has demand nodes and candidate stations joined by weighted road edges.</p>
       </div>
       <div class="qa-card">
         <h3>Shortest Path Trees</h3>
-        <p>Dijkstra trees from stations estimate effective catchment areas and accessibility scores.</p>
+        <p>Shortest path trees provide travel times used to evaluate which station is most convenient for each demand cluster.</p>
       </div>
       <div class="qa-card">
         <h3>Greedy + DP</h3>
-        <p>Greedy assignment chooses nearest feasible station; DP predicts multi‑day stock and tanker cost.</p>
+        <p>Greedy assigns demand to the nearest feasible station; DP accumulates multi-day logistics and stock costs.</p>
       </div>
     </div>
   </section>
@@ -367,15 +290,15 @@
     <div class="course-container">
       <div class="qa-card">
         <h3>Hierarchical Market Graph</h3>
-        <p>Village, mandi, warehouse, port layers ensure clear separation of collection, storage, and export flows.</p>
+        <p>Village collection, mandis, warehouses, and port terminals form levels in a graph for flow of produce and bids.</p>
       </div>
       <div class="qa-card">
         <h3>Greedy Auctions</h3>
-        <p>Sorted bids are cleared top‑down while rejecting any below floor or MSP thresholds.</p>
+        <p>Sorted bids are cleared greedily from highest to lowest while enforcing MSP and reserve price constraints.</p>
       </div>
       <div class="qa-card">
         <h3>DP Sell vs Store</h3>
-        <p>DP weighs decay and forecast prices when choosing between immediate sale and storage.</p>
+        <p>DP compares sell-today revenue with discounted future revenue after storage losses and price forecasts.</p>
       </div>
     </div>
   </section>
@@ -385,15 +308,15 @@
     <div class="course-container">
       <div class="qa-card">
         <h3>Road Network Graph</h3>
-        <p>Nodes are intersections; edges store base time, congestion factor, and priority class.</p>
+        <p>Intersections are nodes; edges carry base travel time and congestion factors and feed into shortest-path routing.</p>
       </div>
       <div class="qa-card">
         <h3>Greedy Signal Control</h3>
-        <p>Local controllers choose the lane group with highest pressure (queue × priority).</p>
+        <p>Local controllers pick the movement with the highest queue length subject to safety and minimum-green rules.</p>
       </div>
       <div class="qa-card">
         <h3>DP Over Time Slots</h3>
-        <p>DP accumulates corridor delay profiles for different control policies across the day.</p>
+        <p>DP accumulates corridor delay values over time slots and evaluates strategies across peak and off-peak windows.</p>
       </div>
     </div>
   </section>
@@ -403,48 +326,44 @@
     <div class="course-container">
       <div class="qa-card">
         <h3>Project & Logistics Graphs</h3>
-        <p>Task precedence and site logistics are modelled as graphs for critical‑path and routing analysis.</p>
+        <p>Task dependencies form project graphs; depots, sites, and materials are connected in logistics graphs for routing.</p>
       </div>
       <div class="qa-card">
         <h3>Greedy Scheduling</h3>
-        <p>Tasks are sorted by deadline and penalty to minimise late costs under crew constraints.</p>
+        <p>Tasks are sorted by deadlines and penalties to minimise total delay cost under crew and resource limits.</p>
       </div>
       <div class="qa-card">
         <h3>DP Cost/Risk</h3>
-        <p>DP layers risk multipliers (storm windows, supply shocks) onto baseline project costs.</p>
+        <p>DP sums base cost and dynamic risk multipliers over days, capturing monsoon or supply uncertainty.</p>
       </div>
     </div>
   </section>
 
-  <!-- C++ MODULE BUTTONS -->
+  <!-- C++ BUTTONS -->
   <section class="glass-panel hidden" id="codes">
     <h2>C++ Core Modules</h2>
-    <p>These sketches implement the core logic in modern C++. Use the close icon inside each panel to hide it again.</p>
+    <p>Each vertical has a C++ sketch. Click a button to open, then use the close icon inside the panel to hide it again.</p>
     <div class="course-container">
       <div class="card">
-        <img class="thumb" src="https://via.placeholder.com/96.png?text=C%2B%2B" alt="C++">
         <h3>Fuel Module</h3>
-        <a class="btn" data-open="fuel-code-panel"><span>▶</span>View Fuel C++</a>
+        <a class="btn" data-open="fuel-code-panel">View Fuel C++</a>
       </div>
       <div class="card">
-        <img class="thumb" src="https://via.placeholder.com/96.png?text=C%2B%2B" alt="C++">
         <h3>APMC Module</h3>
-        <a class="btn" data-open="apmc-code-panel"><span>▶</span>View APMC C++</a>
+        <a class="btn" data-open="apmc-code-panel">View APMC C++</a>
       </div>
       <div class="card">
-        <img class="thumb" src="https://via.placeholder.com/96.png?text=C%2B%2B" alt="C++">
         <h3>Traffic Module</h3>
-        <a class="btn" data-open="traffic-code-panel"><span>▶</span>View Traffic C++</a>
+        <a class="btn" data-open="traffic-code-panel">View Traffic C++</a>
       </div>
       <div class="card">
-        <img class="thumb" src="https://via.placeholder.com/96.png?text=C%2B%2B" alt="C++">
         <h3>Construction Module</h3>
-        <a class="btn" data-open="construction-code-panel"><span>▶</span>View Construction C++</a>
+        <a class="btn" data-open="construction-code-panel">View Construction C++</a>
       </div>
     </div>
   </section>
 
-  <!-- FUEL CODE -->
+  <!-- FUEL C++ -->
   <section class="glass-panel hidden code-panel" id="fuel-code-panel">
     <button class="close-btn" data-close>&times;</button>
     <h2>Fuel Station Planning – C++ Sketch</h2>
@@ -452,15 +371,19 @@
 #include &lt;bits/stdc++.h&gt;
 using namespace std;
 
-struct DemandPoint{int id;double x,y,demand;};
-struct Station{int id;double x,y,capacity;};
-
+struct DemandPoint{
+    int id; double x,y,demand;
+};
+struct Station{
+    int id; double x,y,capacity;
+};
 double dist2d(double x1,double y1,double x2,double y2){
-    double dx=x1-x2,dy=y1-y2;return sqrt(dx*dx+dy*dy);
+    double dx=x1-x2,dy=y1-y2;
+    return sqrt(dx*dx+dy*dy);
 }
 void greedyAssignFuel(vector&lt;DemandPoint&gt;&dem,vector&lt;Station&gt;&st){
     for(auto &d:dem){
-        int bestId=-1;double best=1e18;
+        int bestId=-1; double best=1e18;
         for(auto &s:st){
             if(s.capacity&lt;d.demand)continue;
             double c=dist2d(d.x,d.y,s.x,s.y);
@@ -482,10 +405,10 @@ double fuelCostDP(int sid,int day,int H,double base){
     return memoFuel[key]=today+fuelCostDP(sid,day+1,H,base);
 }
 int main(){
-    vector&lt;DemandPoint&gt;dem={{1,2,3,500},{2,10,8,700}};
-    vector&lt;Station&gt;st={{1,1,2,1000},{2,9,9,800}};
+    vector&lt;DemandPoint&gt; dem={{1,2,3,500},{2,10,8,700}};
+    vector&lt;Station&gt; st={{1,1,2,1000},{2,9,9,800}};
     sort(st.begin(),st.end(),
-         [](auto&a,auto&b){return a.capacity&gt;b.capacity;});
+         [](auto &a,auto &b){return a.capacity&gt;b.capacity;});
     greedyAssignFuel(dem,st);
     cout&lt;&lt;"Fuel 7-day base cost s1: "
         &lt;&lt;fuelCostDP(1,0,7,1.0)&lt;&lt;"\n";
@@ -494,7 +417,7 @@ int main(){
     </code></pre>
   </section>
 
-  <!-- APMC CODE -->
+  <!-- APMC C++ -->
   <section class="glass-panel hidden code-panel" id="apmc-code-panel">
     <button class="close-btn" data-close>&times;</button>
     <h2>APMC Management – C++ Sketch</h2>
@@ -504,7 +427,6 @@ using namespace std;
 
 struct Lot{int id;string commodity;double qty,basePrice;int perishDays;};
 struct Bid{int lotId,traderId;double price,qty;};
-
 bool cmpBid(const Bid&a,const Bid&b){
     if(a.price!=b.price)return a.price&gt;b.price;
     return a.traderId&lt;b.traderId;
@@ -536,12 +458,13 @@ double clearAuctionGreedy(const Lot&lot,const vector&lt;Bid&gt;&bids){
         if(b.price&lt;lot.basePrice)continue;
         if(rem&lt;=0)break;
         double t=min(rem,b.qty);
-        rev+=t*b.price;rem-=t;
+        rev+=t*b.price; rem-=t;
     }
     return rev;
 }
 map&lt;pair&lt;int,int&gt;,double&gt; memoAPMC;
-double bestRevenueDP(const Lot&lot,int day,int maxDay,const vector&lt;double&gt;&f){
+double bestRevenueDP(const Lot&lot,int day,int maxDay,
+                     const vector&lt;double&gt;&f){
     if(day&gt;=maxDay||lot.perishDays-day&lt;=0)return 0.0;
     auto key=make_pair(lot.id,day);
     if(memoAPMC.count(key))return memoAPMC[key];
@@ -564,7 +487,7 @@ int main(){
     </code></pre>
   </section>
 
-  <!-- TRAFFIC CODE -->
+  <!-- TRAFFIC C++ -->
   <section class="glass-panel hidden code-panel" id="traffic-code-panel">
     <button class="close-btn" data-close>&times;</button>
     <h2>Traffic Management – C++ Sketch</h2>
@@ -574,10 +497,9 @@ using namespace std;
 
 struct Edge{int to;double baseTime,congestion;};
 using Graph=vector&lt;vector&lt;Edge&gt;&gt;;
-
 vector&lt;double&gt; shortestPath(const Graph&g,int src){
-    int n=g.size();const double INF=1e18;
-    vector&lt;double&gt;dist(n,INF);dist[src]=0;
+    int n=g.size(); const double INF=1e18;
+    vector&lt;double&gt;dist(n,INF); dist[src]=0;
     using P=pair&lt;double,int&gt;;
     priority_queue&lt;P,vector&lt;P&gt;,greater&lt;P&gt;&gt;pq;
     pq.push({0,src});
@@ -626,7 +548,7 @@ int main(){
     </code></pre>
   </section>
 
-  <!-- CONSTRUCTION CODE -->
+  <!-- CONSTRUCTION C++ -->
   <section class="glass-panel hidden code-panel" id="construction-code-panel">
     <button class="close-btn" data-close>&times;</button>
     <h2>Construction Contracting – C++ Sketch</h2>
@@ -641,10 +563,9 @@ bool taskCmp(const Task&a,const Task&b){
 }
 struct LEdge{int to;double cost;};
 using LGraph=vector&lt;vector&lt;LEdge&gt;&gt;;
-
 vector&lt;double&gt; shortestPathL(const LGraph&g,int src){
-    int n=g.size();const double INF=1e18;
-    vector&lt;double&gt;dist(n,INF);dist[src]=0;
+    int n=g.size(); const double INF=1e18;
+    vector&lt;double&gt;dist(n,INF); dist[src]=0;
     using P=pair&lt;double,int&gt;;
     priority_queue&lt;P,vector&lt;P&gt;,greater&lt;P&gt;&gt;pq;
     pq.push({0,src});
@@ -673,7 +594,7 @@ int main(){
                         {2,"Piers",40,120,4000},
                         {3,"Deck",50,180,6000}};
     sort(tasks.begin(),tasks.end(),taskCmp);
-    int cur=0;double totalPenalty=0;
+    int cur=0; double totalPenalty=0;
     for(auto &t:tasks){
         int finish=cur+t.duration;
         int delay=max(0,finish-t.deadline);
@@ -685,8 +606,7 @@ int main(){
     }
     cout&lt;&lt;"Total penalty: "&lt;&lt;totalPenalty&lt;&lt;"\n";
     LGraph g(3);
-    g[0].push_back({1,10.0});
-    g[0].push_back({2,20.0});
+    g[0].push_back({1,10.0}); g[0].push_back({2,20.0});
     auto d=shortestPathL(g,0);
     cout&lt;&lt;"Depot->Site1 cost: "&lt;&lt;d[1]&lt;&lt;"\n";
     cout&lt;&lt;"10-day project cost: "
@@ -696,14 +616,14 @@ int main(){
     </code></pre>
   </section>
 
-  <footer>Coastal Smart City – Algorithmic Business Design Hub</footer>
+  <footer>Coastal Smart City – Integrated Algorithmic Business Design</footer>
 </div>
 
 <script>
   const hiddenEls=document.querySelectorAll('.hidden');
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
-  },{threshold:0.15});
+  },{threshold:0.1});
   hiddenEls.forEach(el=>obs.observe(el));
 
   document.querySelectorAll('[data-open]').forEach(btn=>{
@@ -722,7 +642,9 @@ int main(){
     btn.addEventListener('click',e=>{
       e.preventDefault();
       const panel=btn.closest('.code-panel');
-      if(panel){panel.style.display='none';}
+      if(panel){
+        panel.style.display='none';
+      }
     });
   });
 </script>
