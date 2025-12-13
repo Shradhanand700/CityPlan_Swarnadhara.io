@@ -1,11 +1,13 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blue & Green Economy Ideas (SDG-aligned)</title>
-  <meta name="description" content="Six identified business ideas with description, economic impact and related SDGs — styled glassmorphism." />  <!-- Fonts -->  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSA in Sustainable Industry Sectors</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
 /* --- BODY --- */
 body {
     margin: 0;
@@ -32,280 +34,242 @@ header {
     background: linear-gradient(90deg, #ff512f, #dd2476);
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 header .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
     font-family: 'Pacifico', cursive;
     font-size: 1.8rem;
     font-weight: 700;
 }
 
-header .navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 18px;
-    margin: 0;
-    padding: 0;
-}
-
-header .navbar ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-header .navbar ul li a:hover {
-    background: rgba(255,255,255,0.25);
-    color: #ffdd59;
+header h1 {
+    font-size: 1.4rem;
 }
 
 /* --- GLASS PANELS --- */
 .glass-panel {
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
     border-radius: 25px;
-    padding: 30px 35px;
-    margin-bottom: 35px;
-    border: 1px solid rgba(255,255,255,0.25);
-    transition: all 0.45s ease;
+    padding: 30px 40px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .glass-panel:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(255,140,0,0.45);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(255,140,0,0.5);
 }
 
-/* --- HEADINGS --- */
-h2 {
-    font-size: 1.8rem;
-    margin-top: 0;
+/* --- GRADIENT HEADINGS --- */
+h2, h3 {
     background: linear-gradient(90deg, #ff512f, #dd2476, #f0ff00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.meta {
-    opacity: 0.85;
-    font-size: 0.95rem;
-    margin-bottom: 18px;
-}
-
-/* --- GRID --- */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-/* --- CARDS --- */
-.card {
-    background: rgba(255,140,0,0.08);
-    padding: 22px;
-    border-radius: 22px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.45s ease;
-}
-
-.card:hover {
-    transform: scale(1.04);
-    box-shadow: 0 25px 60px rgba(255,140,0,0.6);
-}
-
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -75%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
-    transform: skewX(-25deg);
-}
-
-.card:hover::before {
-    animation: shimmer 1s forwards;
-}
-
-@keyframes shimmer {
-    0% { left: -75%; }
-    100% { left: 125%; }
-}
-
-/* --- LIST --- */
-ul {
-    margin-left: 18px;
-}
-
-/* --- SDG TAGS --- */
-.sdg {
-    display: inline-block;
-    margin: 6px 8px 0 0;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
+.section-title {
+    margin-top: 15px;
     font-weight: 700;
-    background: rgba(255,255,255,0.18);
-    color: #ffdd59;
+}
+
+/* --- LISTS --- */
+ul {
+    padding-left: 20px;
+}
+
+.sdg-list li {
+    list-style: none;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.08);
+    border-left: 4px solid #ff8c00;
+}
+
+/* --- CODE BLOCK --- */
+pre {
+    background: #0b1220;
+    padding: 18px;
+    border-radius: 15px;
+    overflow-x: auto;
+    margin-top: 10px;
+    color: #d7e8fb;
 }
 
 /* --- FOOTER --- */
 footer {
     text-align: center;
     padding: 20px;
+    opacity: 0.8;
     margin-top: 50px;
     font-size: 0.9rem;
     color: #ffdd59;
 }
-  </style></head>
-<body><div class="container">  <!-- HEADER / NAV -->  <header>
-    <div class="logo">🌍 Blue & Green Economy</div>
-    <nav class="navbar">
-      <ul>
-        <li><a href="#green-energy">Green Energy</a></li>
-        <li><a href="#clean-water">Clean Water</a></li>
-        <li><a href="#transport">Transport</a></li>
-        <li><a href="#shipbuilding">Shipbuilding</a></li>
-        <li><a href="#waste">Waste-to-Energy</a></li>
-        <li><a href="#deep-ocean">Deep Ocean</a></li>
-      </ul>
-    </nav>
-  </header>  <!-- SECTION 1 -->  <section id="green-energy" class="glass-panel">
-    <h2>1. Green Energy & Ocean Energy Hub</h2>
-    <div class="meta">Brief description • Economic impact • Related SDGs</div>
-    <div class="grid">
-      <div class="card">
-        <strong>Description</strong>
-        <p>Development and deployment of offshore wind, tidal, wave and OTEC systems with port-based manufacturing, testing, grid integration and workforce training.</p>
-      </div>
-      <div class="card">
-        <strong>Impact on the Economy</strong>
-        <ul>
-          <li>High-skill employment in marine and electrical engineering.</li>
-          <li>Reduced fossil-fuel imports and improved energy security.</li>
-          <li>Export potential for renewable technologies and services.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <strong>Related SDGs</strong><br>
-        <span class="sdg">SDG 7</span><span class="sdg">SDG 9</span><span class="sdg">SDG 13</span><span class="sdg">SDG 14</span>
-      </div>
-    </div>
-  </section>  <!-- SECTION 2 -->  <section id="clean-water" class="glass-panel">
-    <h2>2. Clean Water & Environmental Industries</h2>
-    <div class="meta">Brief description • Economic impact • Related SDGs</div>
-    <div class="grid">
-      <div class="card">
-        <strong>Description</strong>
-        <p>Water purification, desalination, wastewater treatment, reuse systems and environmental monitoring to ensure water security.</p>
-      </div>
-      <div class="card">
-        <strong>Impact on the Economy</strong>
-        <ul>
-          <li>Improved public health and industrial productivity.</li>
-          <li>Job creation in engineering and water management services.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <strong>Related SDGs</strong><br>
-        <span class="sdg">SDG 6</span><span class="sdg">SDG 3</span><span class="sdg">SDG 12</span><span class="sdg">SDG 14</span>
-      </div>
-    </div>
-  </section>  <!-- SECTION 3 -->  <section id="transport" class="glass-panel">
-    <h2>3. Transport Model & Logistics</h2>
-    <div class="meta">Brief description • Economic impact • Related SDGs</div>
-    <div class="grid">
-      <div class="card">
-        <strong>Description</strong>
-        <p>Electric mobility, smart public transport, green freight, port logistics and digital supply-chain platforms.</p>
-      </div>
-      <div class="card">
-        <strong>Impact on the Economy</strong>
-        <ul>
-          <li>Lower logistics costs and improved trade competitiveness.</li>
-          <li>Employment across transport, warehousing and IT.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <strong>Related SDGs</strong><br>
-        <span class="sdg">SDG 9</span><span class="sdg">SDG 11</span><span class="sdg">SDG 13</span><span class="sdg">SDG 8</span>
-      </div>
-    </div>
-  </section>  <!-- SECTION 4 -->  <section id="shipbuilding" class="glass-panel">
-    <h2>4. Ship Building & Ship Repair</h2>
-    <div class="meta">Brief description • Economic impact • Related SDGs</div>
-    <div class="grid">
-      <div class="card">
-        <strong>Description</strong>
-        <p>Design, construction, retrofitting and repair of vessels and offshore structures.</p>
-      </div>
-      <div class="card">
-        <strong>Impact on the Economy</strong>
-        <ul>
-          <li>Large-scale skilled and semi-skilled employment.</li>
-          <li>Strengthened maritime and industrial capacity.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <strong>Related SDGs</strong><br>
-        <span class="sdg">SDG 9</span><span class="sdg">SDG 8</span><span class="sdg">SDG 14</span>
-      </div>
-    </div>
-  </section>  <!-- SECTION 5 -->  <section id="waste" class="glass-panel">
-    <h2>5. Waste-to-Blue-Energy Solutions</h2>
-    <div class="meta">Brief description • Economic impact • Related SDGs</div>
-    <div class="grid">
-      <div class="card">
-        <strong>Description</strong>
-        <p>Conversion of coastal and marine waste into biofuels, biogas, hydrogen and electricity.</p>
-      </div>
-      <div class="card">
-        <strong>Impact on the Economy</strong>
-        <ul>
-          <li>Circular economy and pollution reduction.</li>
-          <li>Startup growth in recycling and green energy.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <strong>Related SDGs</strong><br>
-        <span class="sdg">SDG 7</span><span class="sdg">SDG 12</span><span class="sdg">SDG 13</span><span class="sdg">SDG 14</span>
-      </div>
-    </div>
-  </section>  <!-- SECTION 6 -->  <section id="deep-ocean" class="glass-panel">
-    <h2>6. Deep Ocean Mining — Critical Minerals</h2>
-    <div class="meta">Brief description • Economic impact • Related SDGs</div>
-    <div class="grid">
-      <div class="card">
-        <strong>Description</strong>
-        <p>Environmentally regulated extraction of seabed minerals for batteries, electronics and renewable technologies.</p>
-      </div>
-      <div class="card">
-        <strong>Impact on the Economy</strong>
-        <ul>
-          <li>Secured supply of strategic minerals.</li>
-          <li>High-tech jobs in subsea robotics and monitoring.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <strong>Related SDGs</strong><br>
-        <span class="sdg">SDG 9</span><span class="sdg">SDG 12</span><span class="sdg">SDG 7</span><span class="sdg">SDG 14</span>
-      </div>
-    </div>
-  </section>  <footer>
-    Blue & Green Economy • SDG-Aligned • Glassmorphism UI
-  </footer></div>
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+    <div class="logo">🌍 DSA × SDGs</div>
+    <h1>Sustainable Industry Applications</h1>
+</header>
+
+<!-- SECTOR 1 -->
+<section class="glass-panel">
+<h2>🌱 Green Energy & Ocean Energy Hub</h2>
+
+<h3 class="section-title">What does this sector do?</h3>
+<p>
+This sector focuses on offshore wind farms, tidal energy, wave energy systems,
+and floating solar plants. Since underwater cable installation is costly,
+efficient network planning is essential.
+</p>
+
+<h3 class="section-title">How DSA is used</h3>
+<p>
+Energy stations are modeled as vertices and cables as weighted edges.
+Minimum Spanning Tree algorithms reduce total cable cost.
+</p>
+
+<h3 class="section-title">🌍 SDG Alignment</h3>
+<ul class="sdg-list">
+<li><b>SDG 7</b> – Affordable and Clean Energy</li>
+<li><b>SDG 9</b> – Industry, Innovation & Infrastructure</li>
+<li><b>SDG 13</b> – Climate Action</li>
+</ul>
+
+<h3 class="section-title">Data Structures</h3>
+<ul>
+<li>Graph</li>
+<li>Union–Find</li>
+</ul>
+
+<pre><code>vector&lt;vector&lt;int&gt;&gt; energyGraph;</code></pre>
+</section>
+
+<!-- SECTOR 2 -->
+<section class="glass-panel">
+<h2>💧 Clean Water & Environmental Industries</h2>
+
+<p>
+Ensures purification, storage, and distribution of safe drinking water
+through optimized pipeline and treatment management.
+</p>
+
+<h3 class="section-title">DSA Usage</h3>
+<ul>
+<li>Queue – batch processing of water treatment</li>
+<li>Hash Table – instant quality verification</li>
+</ul>
+
+<h3 class="section-title">🌍 SDG Alignment</h3>
+<ul class="sdg-list">
+<li><b>SDG 6</b> – Clean Water and Sanitation</li>
+<li><b>SDG 3</b> – Good Health and Well-being</li>
+<li><b>SDG 9</b> – Infrastructure Optimization</li>
+</ul>
+
+<pre><code>queue&lt;int&gt; waterQueue;</code></pre>
+</section>
+
+<!-- SECTOR 3 -->
+<section class="glass-panel">
+<h2>🚦 Transport Model & Logistics</h2>
+
+<p>
+Optimizes road, rail, port, and freight networks to reduce cost and delays.
+</p>
+
+<ul>
+<li>Union–Find – avoids cyclic infrastructure</li>
+<li>Priority Queue – urgent shipments first</li>
+</ul>
+
+<h3 class="section-title">🌍 SDG Alignment</h3>
+<ul class="sdg-list">
+<li><b>SDG 9</b> – Industry & Infrastructure</li>
+<li><b>SDG 11</b> – Sustainable Cities</li>
+<li><b>SDG 8</b> – Economic Growth</li>
+</ul>
+
+<pre><code>priority_queue&lt;int&gt; shipments;</code></pre>
+</section>
+
+<!-- SECTOR 4 -->
+<section class="glass-panel">
+<h2>🚢 Ship Building & Ship Repair</h2>
+
+<p>
+Ship construction follows hierarchical assembly, while repair involves
+reverse dismantling processes.
+</p>
+
+<ul>
+<li>Tree – structural hierarchy</li>
+<li>Stack – repair sequencing</li>
+</ul>
+
+<h3 class="section-title">🌍 SDG Alignment</h3>
+<ul class="sdg-list">
+<li><b>SDG 9</b> – Industrial Growth</li>
+<li><b>SDG 8</b> – Skilled Employment</li>
+<li><b>SDG 14</b> – Life Below Water</li>
+</ul>
+</section>
+
+<!-- SECTOR 5 -->
+<section class="glass-panel">
+<h2>♻️ Waste-to-Blue-Energy Solutions</h2>
+
+<p>
+Converts marine and urban waste into biogas and renewable energy.
+</p>
+
+<ul>
+<li>Array – waste energy values</li>
+<li>Heap – maximum energy extraction</li>
+</ul>
+
+<h3 class="section-title">🌍 SDG Alignment</h3>
+<ul class="sdg-list">
+<li><b>SDG 12</b> – Responsible Consumption</li>
+<li><b>SDG 7</b> – Clean Energy</li>
+<li><b>SDG 14</b> – Ocean Protection</li>
+</ul>
+</section>
+
+<!-- SECTOR 6 -->
+<section class="glass-panel">
+<h2>🌊 Deep Ocean Mining</h2>
+
+<p>
+Uses autonomous underwater vehicles to explore and extract rare earth minerals
+with minimal ecological impact.
+</p>
+
+<ul>
+<li>Graph – seabed mapping</li>
+<li>DFS – exploration of mineral zones</li>
+</ul>
+
+<h3 class="section-title">🌍 SDG Alignment</h3>
+<ul class="sdg-list">
+<li><b>SDG 9</b> – Innovation</li>
+<li><b>SDG 12</b> – Resource Efficiency</li>
+<li><b>SDG 14</b> – Marine Conservation</li>
+</ul>
+
+<pre><code>void DFS(int node) { /* explore seabed */ }</code></pre>
+</section>
+
+<footer>
+<p>DSA Applications for Sustainable Development | Academic Presentation Ready</p>
+</footer>
+
+</div>
 </body>
-        </html>
-
-
-
-
-
+  </html>
