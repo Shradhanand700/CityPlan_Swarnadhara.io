@@ -12,12 +12,25 @@ body{
     background:#0b0b0f;
     color:#eaeaea;
 }
+.container{
+    margin-left:260px; /* match sidebar width exactly */
+    padding:40px;
+    max-width:calc(100% - 260px); /* ensure it doesn't overflow */
+}
+
 .image-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:32px;
     margin-top:30px;
 }
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    margin-top: 30px;
+}
+
 
 .image-box{
     background:#12121a;
