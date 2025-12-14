@@ -636,23 +636,54 @@ int main() {
 </div>
 <br>
 <br>
-<button onclick="toggleCode('bst')">BST</button>
+<button onclick="toggleCode('bst')">BSF</button>
 <div id="bst" class="codeBox">
 <pre>
-struct Node {
-    int data;
-    Node* left;
-    Node* right;
-};
+#include <iostream>
+using namespace std;
 
-Node* insert(Node* root, int key) {
-    if (!root) return new Node{key, NULL, NULL};
-    if (key < root->data)
-        root->left = insert(root->left, key);
-    else
-        root->right = insert(root->right, key);
-    return root;
+void bfs(int m[10][10], int v, int source) {
+    int queue[20];
+    int front = 0, rear = 0, u, i;
+    int visited[10];
+
+    for (i = 0; i < v; i++)
+        visited[i] = 0;
+
+    queue[rear] = source;
+    visited[source] = 1;
+
+    cout << "The BFS Traversal is... \n";
+
+    while (front <= rear) {
+        u = queue[front];
+        cout << u << "\t";
+        front++;
+
+        for (i = 0; i < v; i++) {
+            if (m[u][i] == 1 && visited[i] == 0) {
+                visited[i] = 1;
+                rear++;
+                queue[rear] = i;
+            }
+        }
+    }
 }
+
+int main() {
+    int v = 5;
+    int m[10][10] = {{0,1,1,0,0}, {1,0,0,1,1},
+        {1,0,0,0,1}, {0,1,0,0,0}, {0,1,1,0,0}};
+
+    int source;
+    cout << "Enter the source vertex: ";
+    cin >> source;
+
+    bfs(m, v, source);
+
+    return 0;
+}
+
 </pre>
 </div>
 <br>
@@ -660,13 +691,39 @@ Node* insert(Node* root, int key) {
 <button onclick="toggleCode('dfs')">DFS</button>
 <div id="dfs" class="codeBox">
 <pre>
-void dfs(int v, vector<int> adj[], vector<bool>& visited) {
-    visited[v] = true;
-    for (int u : adj[v]) {
-        if (!visited[u])
-            dfs(u, adj, visited);
+#include <iostream>
+using namespace std;
+
+int v = 5;
+int m[10][10] = {{0,1,1,0,0}, {1,0,0,1,1},
+        {1,0,0,0,1}, {0,1,0,0,0}, {0,1,1,0,0}};
+int visited[10];
+
+void dfs(int m[10][10], int v, int source) {
+    visited[source] = 1;
+    for (int i = 0; i < v; i++) {
+        if (m[source][i] == 1 && visited[i] == 0) {
+            cout << i << "\t";
+            dfs(m, v, i);
+        }
     }
 }
+
+int main() {
+    int source;
+    for (int i = 0; i < v; i++)
+        visited[i] = 0;
+
+    cout << "Enter the source vertex: ";
+    cin >> source;
+
+    cout << "The DFS Traversal is... \n";
+    cout << source << "\t";
+    dfs(m, v, source);
+
+    return 0;
+}
+
 </pre>
 </div>
 <br>
@@ -706,23 +763,77 @@ return sum;
 <button onclick="toggleCode('dijkstra')">Dijkstra</button>
 <div id="dijkstra" class="codeBox">
 <pre>
-void dijkstra(int src, vector<pair<int,int>> adj[]) {
-    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;
-    vector<int> dist(100, INT_MAX);
-    dist[src] = 0;
-    pq.push({0, src});
+#include <iostream>
+using namespace std;
 
-    while (!pq.empty()) {
-        int u = pq.top().second;
-        pq.pop();
-        for (auto [v,w] : adj[u]) {
-            if (dist[v] > dist[u] + w) {
-                dist[v] = dist[u] + w;
-                pq.push({dist[v], v});
+#define MAXN 100
+#define INF 999
+
+int main() {
+    int n;
+    cout << "Enter the number of Vertices\n";
+    cin >> n;
+
+    int cost[MAXN][MAXN];
+
+    cout << "Enter the cost matrix: (Enter 999 for Infinity)\n";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> cost[i][j];
+        }
+    }
+
+    int source;
+    cout << "Enter the source\n";
+    cin >> source;
+
+    int dist[MAXN], path[MAXN], visited[MAXN];
+
+
+    for (int i = 0; i < n; i++) {
+        dist[i] = cost[source][i];
+        path[i] = source;
+        visited[i] = 0;
+    }
+    visited[source] = 1;
+
+
+    for (int iter = 0; iter < n - 1; iter++) {
+        int u = -1;
+        int min = INF + 1;
+
+
+        for (int i = 0; i < n; i++) {
+            if (!visited[i] && dist[i] < min) {
+                min = dist[i];
+                u = i;
+            }
+        }
+
+        if (u == -1)
+            break;
+
+        visited[u] = 1;
+
+
+        for (int v = 0; v < n; v++) {
+            if (!visited[v] && cost[u][v] != INF) {
+                if (dist[u] + cost[u][v] < dist[v]) {
+                    dist[v] = dist[u] + cost[u][v];
+                    path[v] = u;
+                }
             }
         }
     }
+
+    cout << "\nVertex   Dist   Path\n";
+    for (int i = 0; i < n; i++) {
+        cout << i << "        " << dist[i] << "      " << path[i] << "\n";
+    }
+
+    return 0;
 }
+
 </pre>
 </div>
 <br>
@@ -754,7 +865,24 @@ void build(int idx, int l, int r) {
 <button onclick="toggleCode('uf')">Union Find</button>
 <div id="uf" class="codeBox">
 <pre>
-
+void union(int a[],int n,int u,int v)
+    {
+    int temp=a[u];
+    int i;
+    for(i=0;i<n;i++)
+    {
+       if(a[i]==temp){
+           a[i]=a[v];
+         }
+     }
+     }
+int find(int a[],int u,int v){
+        if(a[u]==a[v]){
+             return 1;
+                 }
+         else
+             return 0;
+                 }
 </pre>
 </div>
 <br>
@@ -762,12 +890,82 @@ void build(int idx, int l, int r) {
 <button onclick="toggleCode('kruskal')">Kruskal</button>
 <div id="kruskal" class="codeBox">
 <pre>
-sort(edges.begin(), edges.end());
-for (auto e : edges) {
-    if (find(e.u) != find(e.v)) {
-        unite(e.u, e.v);
+#include <iostream>
+using namespace std;
+
+
+struct Edge {
+    int u, v, w;
+};
+
+
+void bubbleSort(Edge edges[], int m) {
+    for (int i = 0; i < m - 1; i++) {
+        for (int j = 0; j < m - i - 1; j++) {
+            if (edges[j].w > edges[j + 1].w) {
+                Edge temp = edges[j];
+                edges[j] = edges[j + 1];
+                edges[j + 1] = temp;
+            }
+        }
     }
 }
+
+void Union(int a[], int n, int u, int v) {
+    int temp = a[u];
+    for (int i = 0; i < n; i++) {
+        if (a[i] == temp)
+            a[i] = a[v];
+    }
+}
+
+int Find(int a[], int n, int u, int v) {
+    if (a[u] == a[v])
+        return true;
+    else
+        return false;
+}
+
+
+int main() {
+    int n, m;
+    cout << "Enter number of vertices and edges: ";
+    cin >> n >> m;
+
+    Edge edges[100];
+
+    cout << "Enter edges as: u v w\n";
+    for (int i = 0; i < m; i++) {
+        cin >> edges[i].u >> edges[i].v >> edges[i].w;
+    }
+
+    int parent[100];
+    for (int i = 0; i < n; i++)
+        parent[i] = i;
+
+
+    bubbleSort(edges, m);
+
+    int mstWeight = 0;
+
+    cout << "\nEdges in MST:\n";
+    for (int i = 0; i < m; i++) {
+        int u = edges[i].u;
+        int v = edges[i].v;
+        int w = edges[i].w;
+
+        if (!Find(parent, n, u, v)) {
+            cout << u << " -- " << v << " == " << w << "\n";
+            mstWeight += w;
+            Union(parent, n, u, v);
+        }
+    }
+
+    cout << "Total Weight of MST = " << mstWeight << endl;
+
+    return 0;
+}
+
 </pre>
 </div>
 
