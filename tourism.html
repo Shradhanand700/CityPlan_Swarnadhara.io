@@ -5,6 +5,42 @@
 <title>Module 3 – Tourism & Resort Booking</title>
 
 <style>
+
+/* ===== Image Section ===== */
+.image-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:32px;
+    margin-top:30px;
+}
+
+.image-box{
+    background:#12121a;
+    border-radius:16px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 0 15px rgba(0,0,0,0.6);
+}
+
+.image-box img{
+    width:100%;
+    max-height:300px;
+    object-fit:contain;
+    border-radius:12px;
+    margin-bottom:15px;
+    background:#0b0b0f;
+}
+
+.image-box h3{
+    color:#9ad1ff;
+    margin-bottom:8px;
+}
+
+.image-box p{
+    font-size:14px;
+    color:#cfcfcf;
+}
+
 *{box-sizing:border-box}
 body{
     margin:0;
@@ -254,5 +290,30 @@ int main(){
 </div>
 
 </div>
+
+<div class="card">
+    <h2>System Visualization & Output</h2>
+    <p>
+        Visual representation of the tourism booking engine and itinerary
+        planning logic used in the system.
+    </p>
+
+    <div class="image-grid">
+
+        <div class="image-box">
+            <img src="images/booking_engine.png" alt="Booking Engine Output">
+            <h3>Booking Engine Output</h3>
+            <p>Resort occupancy tracking and revenue calculation using segment tree.</p>
+        </div>
+
+        <div class="image-box">
+            <img src="images/itinerary_plan.png" alt="Itinerary Planner">
+            <h3>Itinerary Planner</h3>
+            <p>Optimized tourist route generated using nearest-neighbour heuristic.</p>
+        </div>
+
+    </div>
+</div>
+
 </body>
 </html>
