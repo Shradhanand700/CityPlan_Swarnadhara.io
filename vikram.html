@@ -688,7 +688,24 @@ int main() {
 </div>
 <br>
 <br>
-<button onclick="toggleCode('dfs')">DFS</button>
+<button onclick="toggleCode('sort1')">Bubble sort</button>
+<div id="sort1" class="codeBox">
+<pre>#include <iostream>
+using namespace std;
+
+void bubbleSort(int A[], int n) {
+    for (int i = 0; i <= n - 2; i++) {
+        for (int j = 0; j <= n - 2 - i; j++) {
+            if (A[j + 1] < A[j]) {
+                swap(A[j], A[j + 1]);
+            }
+        }
+    }
+}
+
+</pre>
+</div>
+                <button onclick="toggleCode('dfs')">DFS</button>
 <div id="dfs" class="codeBox">
 <pre>
 #include <iostream>
@@ -726,6 +743,123 @@ int main() {
 
 </pre>
 </div>
+            <button onclick="toggleCode('sort2')">Selection sort</button>
+<div id="sort2" class="codeBox">
+<pre>#include <iostream>
+using namespace std;
+
+void selectionSort(int A[], int n) {
+    for (int i = 0; i <= n - 2; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j <= n - 1; j++) {
+            if (A[j] < A[minIndex]) {
+                minIndex = j;
+            }
+        }
+        swap(A[i], A[minIndex]);
+    }
+}
+
+</pre>
+</div>
+            <button onclick="toggleCode('sort3')">Insertion sort</button>
+<div id="sort3" class="codeBox">
+<pre>#include <iostream>
+using namespace std;
+
+void insertionSort(int A[], int n) {
+    for (int i = 1; i <= n - 1; i++) {
+        int v = A[i];
+        int j = i - 1;
+
+        while (j >= 0 && A[j] > v) {
+            A[j + 1] = A[j];
+            j--;
+        }
+        A[j + 1] = v;
+    }
+}
+
+</pre>
+</div>
+            <button onclick="toggleCode('sort4')">Merge sort</button>
+<div id="sort4" class="codeBox">
+<pre>#include <iostream>
+using namespace std;
+
+void merge(int A[], int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    int L[n1], R[n2];
+
+    for (int i = 0; i < n1; i++)
+        L[i] = A[left + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = A[mid + 1 + j];
+
+    int i = 0, j = 0, k = left;
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            A[k++] = L[i++];
+        } else {
+            A[k++] = R[j++];
+        }
+    }
+
+    while (i < n1)
+        A[k++] = L[i++];
+
+    while (j < n2)
+        A[k++] = R[j++];
+}
+
+void mergeSort(int A[], int left, int right) {
+    if (left < right) {
+        int mid = (left + right) / 2;
+
+        mergeSort(A, left, mid);
+        mergeSort(A, mid + 1, right);
+        merge(A, left, mid, right);
+    }
+}
+
+</pre>
+</div>
+            <button onclick="toggleCode('sort5')">Quick sort</button>
+<div id="sort5" class="codeBox">
+<pre>#include <iostream>
+using namespace std;
+
+int partition(int A[], int l, int r) {
+    int pivot = A[l];
+    int i = l;
+    int j = r + 1;
+
+    do {
+        do { i++; } while (A[i] < pivot);
+        do { j--; } while (A[j] > pivot);
+
+        if (i < j)
+            swap(A[i], A[j]);
+    } while (i < j);
+
+    swap(A[l], A[j]);
+    return j;
+}
+
+void quickSort(int A[], int l, int r) {
+    if (l < r) {
+        int s = partition(A, l, r);
+        quickSort(A, l, s - 1);
+        quickSort(A, s + 1, r);
+    }
+}
+
+</pre>
+</div>
+
 <br>
 <br>
 <button onclick="toggleCode('skiplist')">Skip List</button>
@@ -869,7 +1003,7 @@ void union(int a[],int n,int u,int v)
     {
     int temp=a[u];
     int i;
-    for(i=0;i<n;i++)
+    for(i=0;i< ;i++)
     {
        if(a[i]==temp){
            a[i]=a[v];
