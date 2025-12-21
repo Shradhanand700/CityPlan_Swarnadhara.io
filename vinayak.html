@@ -8,24 +8,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
-/* --- BODY --- */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Space Grotesk', sans-serif;
     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     color: #fff;
-    min-height: 100vh;
 }
 
-/* --- CONTAINER --- */
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
     padding: 40px 20px;
 }
 
-/* --- NAVBAR --- */
 header {
     display: flex;
     justify-content: space-between;
@@ -33,37 +29,23 @@ header {
     padding: 15px 30px;
     background: linear-gradient(90deg, #ff512f, #dd2476);
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
     margin-bottom: 50px;
 }
 
 header .logo {
     font-family: 'Pacifico', cursive;
     font-size: 1.8rem;
-    font-weight: 700;
 }
 
-header h1 {
-    font-size: 1.4rem;
-}
-
-/* --- GLASS PANELS --- */
 .glass-panel {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.06);
     backdrop-filter: blur(20px);
     border-radius: 25px;
-    padding: 30px 40px;
-    margin-bottom: 30px;
+    padding: 35px 45px;
+    margin-bottom: 35px;
     border: 1px solid rgba(255,255,255,0.2);
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.glass-panel:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(255,140,0,0.5);
-}
-
-/* --- GRADIENT HEADINGS --- */
 h2, h3 {
     background: linear-gradient(90deg, #ff512f, #dd2476, #f0ff00);
     -webkit-background-clip: text;
@@ -71,40 +53,29 @@ h2, h3 {
 }
 
 .section-title {
-    margin-top: 15px;
     font-weight: 700;
+    margin-top: 18px;
 }
 
-/* --- LISTS --- */
 ul {
-    padding-left: 20px;
+    padding-left: 22px;
+}
+
+ul li {
+    margin-bottom: 8px;
+    line-height: 1.6;
 }
 
 .sdg-list li {
     list-style: none;
-    margin-bottom: 8px;
     padding: 8px 12px;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.1);
     border-left: 4px solid #ff8c00;
 }
 
-/* --- CODE BLOCK --- */
-pre {
-    background: #0b1220;
-    padding: 18px;
-    border-radius: 15px;
-    overflow-x: auto;
-    margin-top: 10px;
-    color: #d7e8fb;
-}
-
-/* --- FOOTER --- */
 footer {
     text-align: center;
-    padding: 20px;
-    opacity: 0.8;
-    margin-top: 50px;
-    font-size: 0.9rem;
+    padding: 25px;
     color: #ffdd59;
 }
 </style>
@@ -122,100 +93,167 @@ footer {
 <section class="glass-panel">
 <h2>🌱 Green Energy & Ocean Energy Hub</h2>
 
-<h3 class="section-title">What does this sector do?</h3>
-<p>
-This sector focuses on offshore wind farms, tidal energy, wave energy systems,
-and floating solar plants. Since underwater cable installation is costly,
-efficient network planning is essential.
-</p>
+<h3 class="section-title">Definition</h3>
+<ul>
+<li>Green and ocean energy quietly gathers strength from wind, waves, and tides, producing power without exhausting the planet.</li>
+</ul>
 
-<h3 class="section-title">How DSA is used</h3>
-<p>
-Energy stations are modeled as vertices and cables as weighted edges.
-Minimum Spanning Tree algorithms reduce total cable cost.
-</p>
+<h3 class="section-title">Policy & Global Vision</h3>
+<ul>
+<li>India targets 500 GW non-fossil capacity by 2030 under MNRE.</li>
+<li>UN and IEA consider marine renewables a backbone of net-zero economies.</li>
+</ul>
 
-<h3 class="section-title">🌍 SDG Alignment</h3>
+<h3 class="section-title">🌍 Relevant SDGs</h3>
 <ul class="sdg-list">
-<li><b>SDG 7</b> – Affordable and Clean Energy</li>
-<li><b>SDG 9</b> – Industry, Innovation & Infrastructure</li>
+<li><b>SDG 7</b> – Clean Energy</li>
+<li><b>SDG 9</b> – Infrastructure</li>
 <li><b>SDG 13</b> – Climate Action</li>
 </ul>
 
-<h3 class="section-title">Data Structures</h3>
+<h3 class="section-title">Business & Entrepreneurial Opportunities</h3>
 <ul>
-<li>Graph</li>
-<li>Union–Find</li>
+<li>Offshore wind farm development and maintenance firms.</li>
+<li>Marine cable-laying and underwater inspection services.</li>
+<li>Energy storage and smart-grid optimization companies.</li>
 </ul>
 
+<h3 class="section-title">Positive Impacts</h3>
+<ul>
+<li>Stable long-term energy supply.</li>
+<li>Employment generation in coastal regions.</li>
+</ul>
+
+<h3 class="section-title">Negative Impacts</h3>
+<ul>
+<li>High capital investment.</li>
+<li>Short-term marine disturbances.</li>
+</ul>
 </section>
 
 <!-- SECTOR 2 -->
 <section class="glass-panel">
 <h2>💧 Clean Water & Environmental Industries</h2>
 
-<p>
-Ensures purification, storage, and distribution of safe drinking water
-through optimized pipeline and treatment management.
-</p>
-
-<h3 class="section-title">DSA Usage</h3>
+<h3 class="section-title">Definition</h3>
 <ul>
-<li>Queue – batch processing of water treatment</li>
-<li>Hash Table – instant quality verification</li>
+<li>This sector sustains life by ensuring water flows safely and continuously, much like veins in a living body.</li>
 </ul>
 
-<h3 class="section-title">🌍 SDG Alignment</h3>
+<h3 class="section-title">Policy & Global Vision</h3>
+<ul>
+<li>Jal Jeevan Mission prioritizes universal water access.</li>
+<li>WHO and UNICEF frame water security as public health.</li>
+</ul>
+
+<h3 class="section-title">🌍 Relevant SDGs</h3>
 <ul class="sdg-list">
-<li><b>SDG 6</b> – Clean Water and Sanitation</li>
-<li><b>SDG 3</b> – Good Health and Well-being</li>
-<li><b>SDG 9</b> – Infrastructure Optimization</li>
+<li><b>SDG 6</b> – Clean Water</li>
+<li><b>SDG 3</b> – Health</li>
+<li><b>SDG 9</b> – Infrastructure</li>
 </ul>
 
+<h3 class="section-title">Business & Entrepreneurial Opportunities</h3>
+<ul>
+<li>Water purification and filtration startups.</li>
+<li>Smart water metering and leak-detection services.</li>
+<li>Wastewater recycling and reuse plants.</li>
+</ul>
+
+<h3 class="section-title">Positive Impacts</h3>
+<ul>
+<li>Improved public health.</li>
+<li>Reliable agricultural water supply.</li>
+</ul>
+
+<h3 class="section-title">Negative Impacts</h3>
+<ul>
+<li>High operational costs.</li>
+<li>Infrastructure gaps in remote regions.</li>
+</ul>
 </section>
 
 <!-- SECTOR 3 -->
 <section class="glass-panel">
 <h2>🚦 Transport Model & Logistics</h2>
 
-<p>
-Optimizes road, rail, port, and freight networks to reduce cost and delays.
-</p>
-
+<h3 class="section-title">Definition</h3>
 <ul>
-<li>Union–Find – avoids cyclic infrastructure</li>
-<li>Priority Queue – urgent shipments first</li>
+<li>Transport and logistics form the circulatory system of the economy, moving goods efficiently across regions.</li>
 </ul>
 
-<h3 class="section-title">🌍 SDG Alignment</h3>
+<h3 class="section-title">Policy & Global Vision</h3>
+<ul>
+<li>India’s National Logistics Policy aims cost efficiency.</li>
+<li>Global focus on green and smart mobility.</li>
+</ul>
+
+<h3 class="section-title">🌍 Relevant SDGs</h3>
 <ul class="sdg-list">
-<li><b>SDG 9</b> – Industry & Infrastructure</li>
+<li><b>SDG 9</b> – Infrastructure</li>
 <li><b>SDG 11</b> – Sustainable Cities</li>
 <li><b>SDG 8</b> – Economic Growth</li>
 </ul>
 
+<h3 class="section-title">Business & Entrepreneurial Opportunities</h3>
+<ul>
+<li>Logistics optimization software companies.</li>
+<li>Electric freight and last-mile delivery startups.</li>
+<li>Smart warehousing and cold-chain services.</li>
+</ul>
 
+<h3 class="section-title">Positive Impacts</h3>
+<ul>
+<li>Reduced fuel consumption.</li>
+<li>Improved trade efficiency.</li>
+</ul>
+
+<h3 class="section-title">Negative Impacts</h3>
+<ul>
+<li>High technology adoption cost.</li>
+<li>Infrastructure dependency.</li>
+</ul>
 </section>
 
 <!-- SECTOR 4 -->
 <section class="glass-panel">
 <h2>🚢 Ship Building & Ship Repair</h2>
 
-<p>
-Ship construction follows hierarchical assembly, while repair involves
-reverse dismantling processes.
-</p>
-
+<h3 class="section-title">Definition</h3>
 <ul>
-<li>Tree – structural hierarchy</li>
-<li>Stack – repair sequencing</li>
+<li>Shipbuilding assembles massive floating systems where precision and endurance decide survival at sea.</li>
 </ul>
 
-<h3 class="section-title">🌍 SDG Alignment</h3>
+<h3 class="section-title">Policy & Global Vision</h3>
+<ul>
+<li>Sagarmala strengthens maritime industry.</li>
+<li>IMO promotes energy-efficient vessels.</li>
+</ul>
+
+<h3 class="section-title">🌍 Relevant SDGs</h3>
 <ul class="sdg-list">
-<li><b>SDG 9</b> – Industrial Growth</li>
-<li><b>SDG 8</b> – Skilled Employment</li>
-<li><b>SDG 14</b> – Life Below Water</li>
+<li><b>SDG 9</b> – Industry</li>
+<li><b>SDG 8</b> – Employment</li>
+<li><b>SDG 14</b> – Marine Life</li>
+</ul>
+
+<h3 class="section-title">Business & Entrepreneurial Opportunities</h3>
+<ul>
+<li>Ship repair docks and dry dock services.</li>
+<li>Green ship retrofitting companies.</li>
+<li>Marine component manufacturing units.</li>
+</ul>
+
+<h3 class="section-title">Positive Impacts</h3>
+<ul>
+<li>Skilled employment generation.</li>
+<li>Boost to maritime trade.</li>
+</ul>
+
+<h3 class="section-title">Negative Impacts</h3>
+<ul>
+<li>Environmental pollution risks.</li>
+<li>Capital-intensive operations.</li>
 </ul>
 </section>
 
@@ -223,20 +261,41 @@ reverse dismantling processes.
 <section class="glass-panel">
 <h2>♻️ Waste-to-Blue-Energy Solutions</h2>
 
-<p>
-Converts marine and urban waste into biogas and renewable energy.
-</p>
-
+<h3 class="section-title">Definition</h3>
 <ul>
-<li>Array – waste energy values</li>
-<li>Heap – maximum energy extraction</li>
+<li>This sector transforms discarded waste into energy, turning burden into resource.</li>
 </ul>
 
-<h3 class="section-title">🌍 SDG Alignment</h3>
+<h3 class="section-title">Policy & Global Vision</h3>
+<ul>
+<li>Swachh Bharat Mission supports waste recovery.</li>
+<li>UNEP promotes circular economy models.</li>
+</ul>
+
+<h3 class="section-title">🌍 Relevant SDGs</h3>
 <ul class="sdg-list">
 <li><b>SDG 12</b> – Responsible Consumption</li>
 <li><b>SDG 7</b> – Clean Energy</li>
 <li><b>SDG 14</b> – Ocean Protection</li>
+</ul>
+
+<h3 class="section-title">Business & Entrepreneurial Opportunities</h3>
+<ul>
+<li>Waste-to-energy plant operators.</li>
+<li>Marine waste collection startups.</li>
+<li>Biofuel and biogas production firms.</li>
+</ul>
+
+<h3 class="section-title">Positive Impacts</h3>
+<ul>
+<li>Pollution reduction.</li>
+<li>Renewable energy generation.</li>
+</ul>
+
+<h3 class="section-title">Negative Impacts</h3>
+<ul>
+<li>Technology dependence.</li>
+<li>Segregation inefficiencies.</li>
 </ul>
 </section>
 
@@ -244,33 +303,51 @@ Converts marine and urban waste into biogas and renewable energy.
 <section class="glass-panel">
 <h2>🌊 Deep Ocean Mining</h2>
 
-<p>
-Uses autonomous underwater vehicles to explore and extract rare earth minerals
-with minimal ecological impact.
-</p>
-
+<h3 class="section-title">Definition</h3>
 <ul>
-<li>Graph – seabed mapping</li>
-<li>DFS – exploration of mineral zones</li>
+<li>Deep ocean mining explores mineral wealth in the planet’s last unexplored frontier.</li>
 </ul>
 
-<h3 class="section-title">🌍 SDG Alignment</h3>
+<h3 class="section-title">Policy & Global Vision</h3>
+<ul>
+<li>India operates under International Seabed Authority regulations.</li>
+<li>Global caution emphasizes environmental protection.</li>
+</ul>
+
+<h3 class="section-title">🌍 Relevant SDGs</h3>
 <ul class="sdg-list">
 <li><b>SDG 9</b> – Innovation</li>
 <li><b>SDG 12</b> – Resource Efficiency</li>
 <li><b>SDG 14</b> – Marine Conservation</li>
 </ul>
 
+<h3 class="section-title">Business & Entrepreneurial Opportunities</h3>
+<ul>
+<li>Underwater robotics and sensor manufacturing.</li>
+<li>Seabed mapping and data analytics services.</li>
+<li>Mineral processing and material research firms.</li>
+</ul>
 
+<h3 class="section-title">Positive Impacts</h3>
+<ul>
+<li>Access to critical minerals.</li>
+<li>Reduced land mining pressure.</li>
+</ul>
+
+<h3 class="section-title">Negative Impacts</h3>
+<ul>
+<li>Ecological uncertainty.</li>
+<li>Ethical and regulatory concerns.</li>
+</ul>
 </section>
 
 <footer>
-<p>DSA Applications for Sustainable Development | Academic Presentation Ready</p>
+<p>DSA Applications for Sustainable Development | Business-Ready & Policy-Aligned</p>
 </footer>
 
 </div>
 </body>
-  </html>
+</html>
 
 
 <!DOCTYPE html><html lang="en">
