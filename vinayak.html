@@ -593,3 +593,439 @@ of solution spaces in complex computational problems.
 </footer></div>
 </body>
                          </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSA Driven Sustainable Industry Sectors</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* --- BODY --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    min-height: 100vh;
+}
+/* --- CONTAINER --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+/* --- GLASS PANELS --- */
+.glass-panel {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 30px 40px;
+    margin-bottom: 50px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+h2, h3 {
+    background: linear-gradient(90deg, #ff512f, #dd2476, #f0ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin: 25px 0 5px 0;
+}
+.caption {
+    text-align: center;
+    color: #ffdd59;
+    margin-bottom: 25px;
+}
+p, li {
+    line-height: 1.85;
+}
+pre {
+    background: rgba(11,18,32,0.9);
+    padding: 22px;
+    border-radius: 15px;
+    overflow-x: auto;
+}
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #ffdd59;
+}
+ul {
+    padding-left: 20px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- SECTOR 1 -->
+<section class="glass-panel">
+<h2>🌱 Green Energy & Ocean Energy Hub</h2>
+<img src="https://curlytales.com/wp-content/uploads/2021/01/Solar-power.jpg">
+<div class="caption">Solar and ocean energy integration</div>
+
+<h3>1️⃣ What this sector does</h3>
+<p>
+Generates renewable electricity by integrating solar power plants with tidal and offshore wind systems. Coastal hubs manage energy storage and transmission efficiently. Smart grids monitor flow and prevent losses. Underwater cabling connects stations, and energy storage stabilizes supply. This reduces fossil fuel dependence, carbon emissions, and strengthens energy security.
+</p>
+
+<h3>2️⃣ How Data Structures are used</h3>
+<ul>
+<li>Graphs model stations and subsea grid connections.</li>
+<li>Edges store installation and transmission costs.</li>
+<li>Union-Find avoids cycles and redundant connections.</li>
+</ul>
+
+<h3>3️⃣ Best Data Structure</h3>
+<p><b>Graph + Disjoint Set (Union-Find)</b></p>
+
+<h3>4️⃣ C++ Code (Kruskal’s MST – Elaborated)</h3>
+<pre>
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+// Edge structure for grid connections
+struct Edge {
+    int u, v, w;
+};
+
+// Disjoint Set Union (Union-Find)
+class DSU {
+    vector&lt;int&gt; parent, rank;
+public:
+    DSU(int n) {
+        parent.resize(n);
+        iota(parent.begin(), parent.end(), 0);
+        rank.assign(n, 0);
+    }
+    int find(int x) {
+        if(parent[x] != x) parent[x] = find(parent[x]);
+        return parent[x];
+    }
+    bool unite(int a, int b) {
+        a = find(a); b = find(b);
+        if(a == b) return false;
+        if(rank[a] &lt; rank[b]) parent[a] = b;
+        else if(rank[a] &gt; rank[b]) parent[b] = a;
+        else { parent[b] = a; rank[a]++; }
+        return true;
+    }
+};
+
+int main() {
+    int stations = 4;
+    vector&lt;Edge&gt; edges = {{0,1,4},{0,2,2},{1,2,5},{1,3,10},{2,3,3}};
+    sort(edges.begin(), edges.end(), [](Edge a, Edge b){ return a.w &lt; b.w; });
+
+    DSU dsu(stations);
+    int totalCost = 0;
+    cout &lt;&lt; "Connecting Renewable Stations:\n";
+    for(auto &e : edges) {
+        if(dsu.unite(e.u, e.v)) {
+            cout &lt;&lt; "Connecting station " &lt;&lt; e.u &lt;&lt; " &lt;-&gt; " &lt;&lt; e.v &lt;&lt; " with cost " &lt;&lt; e.w &lt;&lt; "\n";
+            totalCost += e.w;
+        }
+    }
+    cout &lt;&lt; "Total Minimum Cable Cost: " &lt;&lt; totalCost &lt;&lt; endl;
+}
+</pre>
+
+<h3>5️⃣ Time Efficiency & Impact</h3>
+<ul>
+<li>O(E log E) – Scales for large energy networks</li>
+<li>Minimizes cable cost and material usage</li>
+<li>Supports carbon reduction and green employment</li>
+</ul>
+</section>
+
+<!-- SECTOR 2 -->
+<section class="glass-panel">
+<h2>💧 Clean Water & Environmental Industries</h2>
+<img src="https://thumbs.dreamstime.com/b/clean-water-flows-industrial-treatment-plant-purifying-reuse-drains-cleaned-promoting-environmental-health-320004335.jpg">
+
+<h3>1️⃣ What this sector does</h3>
+<p>
+Provides safe drinking water using advanced RO plants, smart purification pipelines, and forest conservation. Sensors track quality, pressure, and leakages. Efficient recycling and controlled distribution reduce wastage. Integration with natural watershed protection improves sustainability.
+</p>
+
+<h3>2️⃣ How Data Structures are used</h3>
+<ul>
+<li>Graph structures model pipelines, tanks, and reservoirs.</li>
+<li>Priority Queues optimize shortest-loss water paths.</li>
+<li>Queue schedules sequential water treatment operations.</li>
+</ul>
+
+<h3>3️⃣ Best Data Structure</h3>
+<p><b>Graph + Priority Queue</b></p>
+
+<h3>4️⃣ C++ Code (Dijkstra – Elaborated)</h3>
+<pre>
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n = 5; // 5 junctions
+    vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; g(n);
+    // pipeline connections: {destination, loss}
+    g[0] = {{1,4},{2,2}};
+    g[1] = {{3,5}};
+    g[2] = {{3,1}};
+    g[3] = {{4,3}};
+
+    vector&lt;int&gt; dist(n, INT_MAX);
+    priority_queue&lt;pair&lt;int,int&gt;, vector&lt;pair&lt;int,int&gt;&gt;, greater&lt;&gt;&gt; pq;
+    dist[0] = 0; pq.push({0,0});
+
+    while(!pq.empty()) {
+        auto [d,u] = pq.top(); pq.pop();
+        if(d &gt; dist[u]) continue;
+        for(auto &p:g[u]) {
+            int v = p.first, w = p.second;
+            if(dist[v] &gt; dist[u]+w) {
+                dist[v] = dist[u]+w;
+                pq.push({dist[v],v});
+            }
+        }
+    }
+    cout &lt;&lt; "Minimum water loss to residential zone: " &lt;&lt; dist[4] &lt;&lt; endl;
+}
+</pre>
+
+<h3>5️⃣ Time Efficiency & Impact</h3>
+<ul>
+<li>O((V + E) log V) – Efficient city-scale water network</li>
+<li>Reduces water wastage and operational cost</li>
+<li>Supports urban health, sanitation, and forest conservation</li>
+</ul>
+</section>
+
+<!-- SECTOR 3 -->
+<section class="glass-panel">
+<h2>🚚 Transport Model & Logistics</h2>
+<img src="https://img.freepik.com/premium-vector/modern-transport-logistics-design-vector-illustration_1120563-33060.jpg">
+
+<h3>1️⃣ What this sector does</h3>
+<p>
+Optimizes road, rail, and freight networks to minimize delivery delays, fuel usage, and costs. Real-time logistics planning ensures timely delivery and efficient supply chain coordination.
+</p>
+
+<h3>2️⃣ How Data Structures are used</h3>
+<ul>
+<li>Graph models road network with nodes = cities, edges = routes.</li>
+<li>Priority Queue ensures urgent deliveries are prioritized.</li>
+<li>Union-Find detects and avoids cyclic routes.</li>
+</ul>
+
+<h3>3️⃣ Best Data Structure</h3>
+<p><b>Graph + Priority Queue</b></p>
+
+<h3>4️⃣ C++ Code (Dijkstra – Elaborated)</h3>
+<pre>
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n = 6;
+    vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; g(n);
+    g[0] = {{1,5},{2,2}};
+    g[1] = {{3,3}};
+    g[2] = {{3,2}};
+    g[3] = {{4,1},{5,7}};
+
+    vector&lt;int&gt; dist(n, INT_MAX);
+    priority_queue&lt;pair&lt;int,int&gt;, vector&lt;pair&lt;int,int&gt;&gt;, greater&lt;&gt;&gt; pq;
+    dist[0] = 0; pq.push({0,0});
+
+    while(!pq.empty()) {
+        auto [d,u] = pq.top(); pq.pop();
+        if(d &gt; dist[u]) continue;
+        for(auto &p:g[u]) {
+            int v=p.first, w=p.second;
+            if(dist[v] &gt; dist[u]+w){
+                dist[v] = dist[u]+w;
+                pq.push({dist[v],v});
+            }
+        }
+    }
+
+    cout &lt;&lt; "Fastest delivery time to destination: " &lt;&lt; dist[4] &lt;&lt; " hours" &lt;&lt; endl;
+}
+</pre>
+
+<h3>5️⃣ Time Efficiency & Impact</h3>
+<ul>
+<li>O((V+E) log V)</li>
+<li>Faster deliveries and fuel savings</li>
+<li>Boosts urban economy and emergency response</li>
+</ul>
+</section>
+
+<!-- SECTOR 4 -->
+<section class="glass-panel">
+<h2>🚢 Ship Building & Ship Repair</h2>
+<img src="https://labuanshipyard.com/wp-content/uploads/slider2/LSE-Labuan-Shipyard-Government-Ship-Repair-KD-Pahang.jpeg">
+
+<h3>1️⃣ What this sector does</h3>
+<p>
+Constructs and repairs ships using hierarchical assembly. Components like hull, engine, and deck are integrated sequentially. Reverse dismantling helps efficient repairs. Scheduling ensures optimal dockyard use.
+</p>
+
+<h3>2️⃣ How Data Structures are used</h3>
+<ul>
+<li>Tree structures represent assembly hierarchy.</li>
+<li>Stack handles reverse dismantling.</li>
+<li>Queue schedules dockyard operations.</li>
+</ul>
+
+<h3>3️⃣ Best Data Structure</h3>
+<p><b>Tree + Stack + Queue</b></p>
+
+<h3>4️⃣ C++ Code (Assembly Tree – Elaborated)</h3>
+<pre>
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+struct Node {
+    string part;
+    vector&lt;Node*&gt; children;
+};
+
+// Print assembly hierarchy
+void printAssembly(Node* root, int level=0){
+    for(int i=0;i&lt;level;i++) cout<<"--";
+    cout &lt;&lt; root-&gt;part &lt;&lt; "\n";
+    for(auto c: root-&gt;children) printAssembly(c, level+1);
+}
+
+int main(){
+    Node* ship = new Node{"Ship"};
+    Node* hull = new Node{"Hull"};
+    Node* engine = new Node{"Engine"};
+    Node* deck = new Node{"Deck"};
+    ship-&gt;children = {hull, engine, deck};
+    
+    cout &lt;&lt; "Ship Assembly Hierarchy:\n";
+    printAssembly(ship);
+}
+</pre>
+
+<h3>5️⃣ Time Efficiency & Impact</h3>
+<ul>
+<li>O(N) traversal</li>
+<li>Reduces errors and assembly time</li>
+<li>Supports maritime jobs and infrastructure</li>
+</ul>
+</section>
+
+<!-- SECTOR 5 -->
+<section class="glass-panel">
+<h2>♻️ Waste-to-Blue-Energy Solutions</h2>
+<img src="https://our-power.co.uk/wp-content/uploads/2023/11/DreamShaper_v7_Wastetoenergy_0-1.jpg">
+
+<h3>1️⃣ What this sector does</h3>
+<p>
+Converts marine and urban waste to renewable energy using prioritized extraction. Supplies local communities, reduces pollution, and promotes blue economy development.
+</p>
+
+<h3>2️⃣ How Data Structures are used</h3>
+<ul>
+<li>Array stores energy yields from different waste types.</li>
+<li>Max-Heap identifies highest energy sources.</li>
+<li>Graph models distribution networks.</li>
+</ul>
+
+<h3>3️⃣ Best Data Structure</h3>
+<p><b>Heap + Array + Graph</b></p>
+
+<h3>4️⃣ C++ Code (Max-Heap – Elaborated)</h3>
+<pre>
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    vector&lt;int&gt; wasteEnergy = {30, 50, 20, 40};
+    priority_queue&lt;int&gt; pq(wasteEnergy.begin(), wasteEnergy.end());
+
+    int totalEnergy = 0;
+    cout &lt;&lt; "Processing energy from waste sources:\n";
+    while(!pq.empty()){
+        int top = pq.top(); pq.pop();
+        cout &lt;&lt; "Extracted " &lt;&lt; top &lt;&lt; " units\n";
+        totalEnergy += top;
+    }
+    cout &lt;&lt; "Total renewable energy: " &lt;&lt; totalEnergy &lt;&lt; " units\n";
+}
+</pre>
+
+<h3>5️⃣ Time Efficiency & Impact</h3>
+<ul>
+<li>O(log n) per extraction</li>
+<li>Maximizes renewable energy output</li>
+<li>Reduces coastal pollution</li>
+</ul>
+</section>
+
+<!-- SECTOR 6 -->
+<section class="glass-panel">
+<h2>🌊 Deep Sea Mining & Offshore Projects</h2>
+<img src="https://th.bing.com/th/id/OIP.VpWPCddZqljAyysnvR3zSAHaDt?o=7&cb=ucfimg2&rm=3&ucfimg=1&rs=1">
+
+<h3>1️⃣ What this sector does</h3>
+<p>
+Uses autonomous underwater vehicles and platforms to explore seabeds and extract minerals. Maps high-yield zones, plans safe extraction, and monitors ecological impact. Supports offshore energy and strategic resource independence.
+</p>
+
+<h3>2️⃣ How Data Structures are used</h3>
+<ul>
+<li>Graph models seabed zones.</li>
+<li>DFS explores all mineral-rich areas.</li>
+<li>Heap schedules high-priority machinery.</li>
+</ul>
+
+<h3>3️⃣ Best Data Structure</h3>
+<p><b>Graph + DFS + Heap</b></p>
+
+<h3>4️⃣ C++ Code (DFS Exploration – Elaborated)</h3>
+<pre>
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+void dfs(int u, vector&lt;vector&lt;int&gt;&gt; &amp;g, vector&lt;bool&gt;&amp; visited){
+    visited[u]=true;
+    cout &lt;&lt; "Exploring zone " &lt;&lt; u &lt;&lt; "\\n";
+    for(int v:g[u])
+        if(!visited[v]) dfs(v,g,visited);
+}
+
+int main(){
+    vector&lt;vector&lt;int&gt;&gt; seabed = {{1,2},{0,3},{0,4},{1},{2}};
+    vector&lt;bool&gt; visited(seabed.size(), false);
+    cout &lt;&lt; "Starting seabed exploration...\n";
+    dfs(0,seabed,visited);
+    cout &lt;&lt; "Exploration completed successfully.\n";
+}
+</pre>
+
+<h3>5️⃣ Time Efficiency & Impact</h3>
+<ul>
+<li>DFS: O(V+E)</li>
+<li>Ensures complete seabed exploration</li>
+<li>Supports safe mineral extraction and energy planning</li>
+</ul>
+</section>
+
+<footer>
+DSA Driven Sustainable Industry Systems | Blue Economy & Smart City Focus
+</footer>
+
+</div>
+</body>
+</html>
+
