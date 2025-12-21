@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City Design</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City Design - Swarnadhara</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+/* SAME STYLES AS ABOVE with card-grid addition */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.interactive-card {
+    background: rgba(15,23,42,0.7); border-radius: 20px; padding: 18px;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+.interactive-card img { width: 100%; border-radius: 20px; margin-bottom: 10px; }
+</style>
 </head>
 <body>
- 
+<!-- SAME HEADER -->
+<section class="container">
+    <div class="glass-panel hidden">
+        <h2>🏙 City Design Sketch</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 25px;">
+            These sketches illustrate the overall layout and demographic planning for Swarna Dhārā - a future-ready coastal metropolis near Goa.
+        </p>
+        <div class="card-grid">
+            <div class="interactive-card hidden">
+                <img src="assets/swarnafr.jpg" alt="City Layout">
+                <p style="font-size: 0.95rem; opacity: 0.9;">
+                    Detailed city layout with residential areas, commercial zones, ports, and major landmarks. Designed for Viksit Bharat 2047.
+                </p>
+            </div>
+            <div class="interactive-card hidden">
+                <img src="assets/swarnabk.jpg" alt="Demographics & Planning">
+                <p style="font-size: 0.95rem; opacity: 0.9;">
+                    Demographic distribution, utilities planning, and statistical zones for efficient city management with blue-economy focus.
+                </p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="course.html" style="margin-right: 15px;">← Back to Course</a>
+            <a href="index.html" style="background: linear-gradient(90deg, #ff512f, #dd2476); color: white; padding: 12px 30px; text-decoration: none; border-radius: 30px; font-weight: 600;">← Back to Home</a>
+        </div>
+    </div>
+</section>
+<!-- SAME FOOTER AND SCRIPT -->
 </body>
+</html>
