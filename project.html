@@ -6,17 +6,68 @@
 <title>City Design - Swarnadhara</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
 <style>
-/* SAME STYLES AS ABOVE with card-grid addition */
+body {
+    margin: 0; padding: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, rgba(15,12,41,0.92), rgba(48,43,99,0.9), rgba(36,36,62,0.9)),
+                url("image.jpg") center/cover fixed no-repeat;
+    color: #fff; min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 30px; background: linear-gradient(90deg, #ff512f, #dd2476);
+    border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    margin: 20px auto 30px; max-width: 1200px;
+}
+header .logo { display: flex; align-items: center; gap: 10px;
+    font-family: 'Pacifico', cursive; font-size: 1.8rem; font-weight: 700; color: #fff; }
+header .logo img { width: 40px; height: 40px; border-radius: 50%; }
+header .navbar h1 { color: #fff; font-size: 1.5rem; font-weight: 700; margin-right: 30px; }
+header .navbar ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
+header .navbar ul li a {
+    color: #fff; text-decoration: none; font-weight: 600; padding: 8px 15px;
+    border-radius: 8px; transition: all 0.3s ease;
+}
+header .navbar ul li a:hover { background: rgba(255,255,255,0.2); color: #ffdd59; transform: scale(1.05); }
+.glass-panel {
+    background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-radius: 25px; padding: 30px 40px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.glass-panel:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 50px rgba(255,140,0,0.5); }
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
 .interactive-card {
     background: rgba(15,23,42,0.7); border-radius: 20px; padding: 18px;
     border: 1px solid rgba(255,255,255,0.15);
 }
 .interactive-card img { width: 100%; border-radius: 20px; margin-bottom: 10px; }
+h2, h3 { background: linear-gradient(90deg, #ff512f, #dd2476, #f0ff00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hidden { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+.show { opacity: 1; transform: translateY(0); }
+footer { text-align: center; padding: 20px; opacity: 0.8; margin-top: 50px; font-size: 0.9rem; color: #ffdd59; }
+.btn-nav { background: linear-gradient(90deg, #ff512f, #dd2476) !important; color: white !important; padding: 12px 30px !important; font-size: 1.1rem !important; }
 </style>
 </head>
 <body>
-<!-- SAME HEADER -->
+<header>
+    <div class="logo">
+        <img src="rcb-logo.png" alt="RCB Logo"> City Design
+    </div>
+    <nav class="navbar">
+        <h1>DAA PORTFOLIO</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="chidrup.html">Chidrup</a></li>
+            <li><a href="vinayak.html">Vinayak</a></li>
+            <li><a href="vikram.html">Vikram</a></li>
+            <li><a href="shradhanand.html">Shradhanand</a></li>
+        </ul>
+    </nav>
+</header>
+
 <section class="container">
     <div class="glass-panel hidden">
         <h2>🏙 City Design Sketch</h2>
@@ -38,11 +89,21 @@
             </div>
         </div>
         <div style="text-align: center; margin-top: 30px;">
-            <a href="course.html" style="margin-right: 15px;">← Back to Course</a>
-            <a href="index.html" style="background: linear-gradient(90deg, #ff512f, #dd2476); color: white; padding: 12px 30px; text-decoration: none; border-radius: 30px; font-weight: 600;">← Back to Home</a>
+            <a href="about.html" style="margin-right: 15px; padding: 12px 30px; background: rgba(255,255,255,0.1); color: white; text-decoration: none; border-radius: 30px;">← Back to About</a>
+            <a href="index.html" class="btn-nav">← Back to Home</a>
         </div>
     </div>
 </section>
-<!-- SAME FOOTER AND SCRIPT -->
+
+<footer>Created for DAA Course 2025 | Hosted on GitHub Pages</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+});
+document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
