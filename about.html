@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course & Team - Swarnadhara</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+body {
+    margin: 0; padding: 0; font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, rgba(15,12,41,0.92), rgba(48,43,99,0.9), rgba(36,36,62,0.9)),
+                url("image.jpg") center/cover fixed no-repeat;
+    color: #fff; min-height: 100vh;
+}
+/* Same header, glass-panel, hidden/show, footer styles as index.html */
+.container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+header { /* same as index.html */ }
+.glass-panel { /* same as index.html */ }
+.course-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.qa-card, .card {
+    background: rgba(255,140,0,0.05); padding: 25px; border-radius: 25px;
+    transition: all 0.5s ease; position: relative; overflow: hidden; cursor: pointer;
+}
+.qa-card:hover, .card:hover {
+    animation: bounce 0.6s; transform: scale(1.04); box-shadow: 0 25px 60px rgba(255,140,0,0.6);
+}
+@keyframes bounce { 0%,20%,50%,80%,100%{transform:translateY(0);} 40%{transform:translateY(-15px);} 60%{transform:translateY(-8px);} }
+h2, h3 { background: linear-gradient(90deg, #ff512f, #dd2476, #f0ff00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hidden { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+.show { opacity: 1; transform: translateY(0); }
+footer { text-align: center; padding: 20px; opacity: 0.8; margin-top: 50px; font-size: 0.9rem; color: #ffdd59; }
+</style>
+</head>
+<body>
+<!-- SAME HEADER AS index.html with updated nav links -->
+<section class="container">
+    <div class="glass-panel hidden">
+        <h2>Course Overview</h2>
+        <div class="course-container">
+            <div class="qa-card hidden">
+                <h3>WHAT IS THE COURSE ALL ABOUT?</h3>
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Strengthens structured thinking and logical problem-solving.</li>
+                    <li>Teaches algorithmic efficiency and optimization.</li>
+                    <li>Explains real-world problem-solving applications.</li>
+                    <li>Improves creativity and critical thinking for scalable systems.</li>
+                </ul>
+            </div>
+            <div class="qa-card hidden">
+                <h3>WHAT ALL WE STUDY?</h3>
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Arrays & Strings, Linked Lists, Stacks & Queues</li>
+                    <li>Trees & Graphs, Hash Tables, Tries</li>
+                    <li>Recursion, Divide & Conquer, Greedy & Dynamic Programming</li>
+                </ul>
+            </div>
+            <div class="qa-card hidden">
+                <h3>REAL-TIME APPLICATIONS</h3>
+                <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem;">
+                    <li>Google Maps → Dijkstra's Algorithm</li>
+                    <li>E-commerce → Sorting & Recommendations</li>
+                    <li>Dynamic Programming → Seat booking, CPU scheduling</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-panel hidden">
+        <h2>Team Business Ideas</h2>
+        <div class="course-container">
+            <div class="card hidden">
+                <h3>Chidrup - 01FE24BCS290</h3>
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Fuel Stations Management</li>
+                    <li>APMC Management</li>
+                    <li>Traffic Management</li>
+                    <li>Construction Contractor</li>
+                </ul>
+            </div>
+            <div class="card hidden">
+                <h3>Vinayak - 01FE24BCS286</h3>
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Green Energy & Ocean Hub</li>
+                    <li>Clean Water Industries</li>
+                    <li>Transport & Logistics</li>
+                    <li>Ship Building/Repair</li>
+                </ul>
+            </div>
+            <div class="card hidden">
+                <h3>Vikram - 01FE24BCS266</h3>
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Entertainment (Cinema, Gaming)</li>
+                    <li>Lifestyle (Gym, Café, Spa)</li>
+                    <li>Education (Schools, Colleges)</li>
+                    <li>E-commerce Shipping</li>
+                </ul>
+            </div>
+            <div class="card hidden">
+                <h3>Shradhanand - 01FE24BCS291</h3>
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Crime Detection & Surveillance</li>
+                    <li>Healthcare Dispatch</li>
+                    <li>Tourism Booking</li>
+                    <li>Tax Fraud Detection</li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="index.html" style="margin-right: 15px;">← Back to Home</a>
+            <a href="city.html" style="background: linear-gradient(90deg, #ff512f, #dd2476); color: white; padding: 12px 30px; text-decoration: none; border-radius: 30px; font-weight: 600;">Next: City Design →</a>
+        </div>
+    </div>
+</section>
+<!-- SAME FOOTER AND SCRIPT AS index.html -->
+</body>
+</html>
 
