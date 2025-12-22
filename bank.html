@@ -24,7 +24,7 @@ body{
     background:#111116;
     padding:25px;
     overflow-y:auto;
-    z-index:2000; /* VERY IMPORTANT */
+    z-index:2000;
 }
 
 .sidebar h2{
@@ -52,7 +52,7 @@ body{
 
 /* ================= MAIN CONTENT ================= */
 .container{
-    margin-left:260px; /* SAME AS SIDEBAR WIDTH */
+    margin-left:260px;
     padding:40px;
     max-width:1200px;
 }
@@ -155,10 +155,10 @@ pre{
 <div class="sidebar">
     <h2>Modules</h2>
     <a href="shradhanand.html">🏥 Health Care</a>
-    <a href="crime.html" class="active">🚓 Crime Prevention</a>
+    <a href="crime.html">🚓 Crime Prevention</a>
     <a href="tourism.html">🌍 Tourism</a>
-    <a href="tax.html">💰 Fraud Detection in Tax</a>
-    <a href="bank.html">🏦 Bank Management</a>
+    <a href="tax.html">💰 Fraud detection in Tax</a>
+    <a href="bank.html" class="active">🏦 Bank Management</a>
 </div>
 
 <!-- ================= MAIN CONTENT ================= -->
@@ -172,11 +172,64 @@ pre{
 Processes live banking transactions to detect abnormal behavior, duplicate
 patterns, and suspicious account connectivity.
 </p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+A sliding-window z-score detects unusually large transactions.<br>
+Bloom filters reject duplicate transaction IDs efficiently.<br>
+Graph traversal (BFS/DFS) explores suspicious money-flow networks.
+</div>
+
+<h3>Efficiency Analysis</h3>
+<table>
+<tr><th>Technique</th><th>Time Complexity</th><th>Space</th></tr>
+<tr><td>Sliding Window Z-Score</td><td>O(1) amortized</td><td>O(W)</td></tr>
+<tr><td>Bloom Filter</td><td>O(k)</td><td>Sublinear</td></tr>
+<tr><td>Graph BFS / DFS</td><td>O(V + E)</td><td>O(V + E)</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>B. Credit Scoring Engine</h2>
+<p>
+Evaluates customer creditworthiness using income, age, and repayment history.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+Dynamic-programming knapsack model selects optimal financial features.<br>
+Greedy ranking provides fast approximations.<br>
+Trie and hash maps allow fast feature lookup.
+</div>
+
+<h3>Efficiency Analysis</h3>
+<table>
+<tr><th>Method</th><th>Time</th><th>Space</th></tr>
+<tr><td>DP (Knapsack)</td><td>O(n × budget)</td><td>O(budget)</td></tr>
+<tr><td>Greedy Ranking</td><td>O(n log n)</td><td>O(n)</td></tr>
+<tr><td>Trie Lookup</td><td>O(L)</td><td>O(ΣL)</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>C. Ledger Management & Fast Lookup</h2>
+<p>
+Maintains ordered transaction history with ultra-fast lookup capabilities.
+</p>
+
+<h3>How the Code Works</h3>
+<div class="line">
+Skip Lists maintain ordered ledger entries with probabilistic guarantees.<br>
+std::map ensures strict log-time ordering.<br>
+unordered_map allows constant-time transaction ID lookups.
+</div>
 </div>
 
 <div class="card">
 <h2>System Visualization & Output</h2>
-<p>Visual outputs and internal working diagrams of the Crime Prevention system.</p>
+<p>
+Visual outputs and internal working diagrams of the Crime Prevention system.
+</p>
 
 <div class="image-grid">
 
@@ -208,5 +261,6 @@ patterns, and suspicious account connectivity.
 </div>
 
 </div>
+
 </body>
 </html>
