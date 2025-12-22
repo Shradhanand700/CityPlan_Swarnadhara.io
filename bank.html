@@ -224,6 +224,68 @@ std::map ensures strict log-time ordering.<br>
 unordered_map allows constant-time transaction ID lookups.
 </div>
 </div>
+<!-- ================= CODE SECTION ================= -->
+<div class="card">
+<h2>Integrated C++ Core Logic (Excerpt)</h2>
+
+<pre>
+// ================= SLIDING WINDOW Z-SCORE =================
+struct SlidingZ{
+    int W; deque<double> q;
+    double sum=0, sumsq=0;
+    SlidingZ(int w):W(w){}
+    pair<bool,double> push(double x,double k){
+        q.push_back(x); sum+=x; sumsq+=x*x;
+        if(q.size()>W){
+            double o=q.front(); q.pop_front();
+            sum-=o; sumsq-=o*o;
+        }
+        if(q.size()<10) return {false,0};
+        double mean=sum/q.size();
+        double var=sumsq/q.size()-mean*mean;
+        double sd=sqrt(max(0.0,var));
+        double z = sd>0 ? (x-mean)/sd : 0;
+        return {z>k,z};
+    }
+};
+
+// ================= SKIP LIST NODE =================
+struct SkipNode{
+    long long key; string value;
+    vector<SkipNode*> next;
+    SkipNode(long long k,string v,int lvl)
+        :key(k),value(v),next(lvl,nullptr){}
+};
+</pre>
+</div>
+
+<!-- ================= JSON SECTION ================= -->
+<div class="card">
+<h2>📁 JSON Data Inputs</h2>
+
+<h3>transactions.json</h3>
+<pre>
+{
+  "transactions": [
+    { "txid": 1, "sender": 101, "amount": 520.75 },
+    { "txid": 2, "sender": 102, "amount": 510.20 },
+    { "txid": 3, "sender": 101, "amount": 9800.00 },
+    { "txid": 4, "sender": 103, "amount": 545.10 }
+  ]
+}
+</pre>
+
+<h3>customers.json</h3>
+<pre>
+{
+  "customers": [
+    { "id": 1, "income": 60000, "age": 35, "credit_score": 720 },
+    { "id": 2, "income": 35000, "age": 28, "credit_score": 640 },
+    { "id": 3, "income": 95000, "age": 42, "credit_score": 810 }
+  ]
+}
+</pre>
+</div>
 
 <div class="card">
 <h2>System Visualization & Output</h2>
