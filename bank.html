@@ -298,6 +298,294 @@ struct SkipNode{
 
 </div>
 </div>
+<div class="card">
+<h2>📊 Integrated Case Study – Algorithms, Data Structures & SDGs Mapping</h2>
+
+<table>
+<thead>
+<tr>
+<th>Case Study</th>
+<th>Module (Short)</th>
+<th>Algorithms & Complexities</th>
+<th>Data Structures (Cost / Use)</th>
+<th>Core DAA Principles Used</th>
+<th>Relevant SDGs</th>
+</tr>
+</thead>
+
+<tbody>
+
+<!-- ================= HEALTHCARE ================= -->
+<tr>
+<td>Healthcare</td>
+<td>
+A. Emergency Routing & Dispatch
+</td>
+<td>
+Dijkstra – O(E log V) per run;<br>
+A* – O(E) heuristic (avg);<br>
+Bellman-Ford – O(VE);<br>
+KD-Tree nearest neighbor – build O(n log n), query O(log n);<br>
+Multi-source Dijkstra for many ambulances – k × O(E log V)
+</td>
+<td>
+Graph adjacency list – build O(V+E);<br>
+Min-Heap – O(log k);<br>
+AVL Tree for ambulances (search/update O(log n));<br>
+HashMap for hospital status O(1);<br>
+Stack/LinkedList for path reconstruction O(path length)
+</td>
+<td>
+Edge Relaxation;<br>
+Partitioning (zones);<br>
+Precomputing (all-pairs for hubs);<br>
+Trade-off (latency vs load);<br>
+Search as Decision
+</td>
+<td>
+SDG 3 – Good Health & Well-being;<br>
+SDG 9 – Industry, Innovation & Infrastructure;<br>
+SDG 11 – Sustainable Cities & Communities
+</td>
+</tr>
+
+<tr>
+<td>Healthcare</td>
+<td>
+B. Hospital Bed & Resource Manager
+</td>
+<td>
+Segment Tree – build O(n), query/update O(log n);<br>
+Fenwick Tree (BIT) – update/query O(log n);<br>
+DP for forecast – depends on model;<br>
+Backtracking surgery schedule – worst exponential but pruned;<br>
+Greedy assignment – O(log n) with heap
+</td>
+<td>
+Segment Tree (range updates/queries);<br>
+Fenwick Tree;<br>
+Trie for specialties (insert/search O(m));<br>
+HashMap (patient → bed O(1));<br>
+Queue/LinkedList for waiting lists O(1)
+</td>
+<td>
+Sliding Window;<br>
+Lazy Propagation (batch updates);<br>
+Precomputing;<br>
+Pruning;<br>
+Balance Maintenance
+</td>
+<td>
+SDG 3 – Good Health & Well-being;<br>
+SDG 10 – Reduced Inequalities;<br>
+SDG 12 – Responsible Consumption & Production
+</td>
+</tr>
+
+<!-- ================= CRIME ================= -->
+<tr>
+<td>Crime</td>
+<td>
+C. CCTV / Sensor Network Design
+</td>
+<td>
+Kruskal / Prim (MST) – sort edges O(E log E), then O(E α(V));<br>
+Min-Cut (Stoer-Wagner) – O(VE + V² log V) approx;<br>
+Redundancy planning (k-MST variants)
+</td>
+<td>
+Graph adjacency list;<br>
+Union-Find for Kruskal O(α(V));<br>
+Heaps for Prim O(E log V)
+</td>
+<td>
+Cut & Cycle Properties;<br>
+Connectivity & Reachability;<br>
+Balance Maintenance
+</td>
+<td>
+SDG 11 – Sustainable Cities & Communities;<br>
+SDG 16 – Peace, Justice & Strong Institutions;<br>
+SDG 9 – Industry, Innovation & Infrastructure
+</td>
+</tr>
+
+<tr>
+<td>Crime</td>
+<td>
+D. Identity / DB Search & Matching
+</td>
+<td>
+Trie lookup O(m);<br>
+Hashing O(1) average;<br>
+KMP / Boyer-Moore / Rabin-Karp O(n+m);<br>
+Bloom Filter for negative checks O(k)
+</td>
+<td>
+Trie;<br>
+HashMap;<br>
+Bloom Filter (space-efficient);<br>
+Skip List as alternative index O(log n)
+</td>
+<td>
+Prefix/Suffix Invariants;<br>
+Space-Time Trade-off
+</td>
+<td>
+SDG 16 – Peace, Justice & Strong Institutions;<br>
+SDG 11 – Sustainable Cities & Communities
+</td>
+</tr>
+
+<!-- ================= TOURISM ================= -->
+<tr>
+<td>Tourism</td>
+<td>
+A. Booking Engine & Dynamic Pricing
+</td>
+<td>
+Greedy assignment O(log n);<br>
+Heap operations O(log n);<br>
+Merge/Quick/Heap Sort O(n log n);<br>
+Bubble/Insertion/Selection (small lists)
+</td>
+<td>
+HashMap bookings O(1);<br>
+Segment Tree for occupancy O(log n);<br>
+Skip List for overbooking O(log n);<br>
+LinkedList for vendor queues
+</td>
+<td>
+Precomputing;<br>
+Sliding Window (seasonal);<br>
+Trade-off (price vs occupancy);<br>
+Abstraction
+</td>
+<td>
+SDG 8 – Decent Work & Economic Growth;<br>
+SDG 11 – Sustainable Cities & Communities;<br>
+SDG 12 – Responsible Consumption & Production
+</td>
+</tr>
+
+<tr>
+<td>Tourism</td>
+<td>
+B. Itinerary Planner
+</td>
+<td>
+Dijkstra per pair O(E log V);<br>
+Floyd-Warshall (small nodes) O(V³);<br>
+TSP NN heuristic O(n²) + 2-opt;<br>
+A* for constrained paths O(E) avg
+</td>
+<td>
+Graph adjacency list / matrix (all-pairs);<br>
+Priority Queue;<br>
+Arrays
+</td>
+<td>
+Decomposition (itinerary segments);<br>
+Greedy heuristics;<br>
+Relaxation
+</td>
+<td>
+SDG 8 – Decent Work & Economic Growth;<br>
+SDG 9 – Industry, Innovation & Infrastructure;<br>
+SDG 11 – Sustainable Cities & Communities
+</td>
+</tr>
+
+<!-- ================= TAX / REVENUE ================= -->
+<tr>
+<td>Tax / Revenue</td>
+<td>
+B. Fraud Pattern Detection
+</td>
+<td>
+KMP / Boyer-Moore O(n+m);<br>
+Sliding-window anomaly O(n);<br>
+Graph analytics BFS/DFS O(V+E);<br>
+PageRank O(E × iter)
+</td>
+<td>
+Trie for invoice patterns;<br>
+Graph adjacency;<br>
+Segment Tree for temporal queries
+</td>
+<td>
+Pattern Recognition;<br>
+Cut & Cycle Properties;<br>
+Search Space Exploration
+</td>
+<td>
+SDG 16 – Peace, Justice & Strong Institutions;<br>
+SDG 10 – Reduced Inequalities;<br>
+SDG 17 – Partnerships for the Goals
+</td>
+</tr>
+
+<tr>
+<td>Tax / Revenue</td>
+<td>
+C. Network Analysis & Audit Prioritization
+</td>
+<td>
+Union-Find clusters O(α(V));<br>
+Min-Cut / Max-Flow for isolating flows;<br>
+DP for audit allocation O(n × budget);<br>
+Hungarian O(n³) for assignments
+</td>
+<td>
+Graph adjacency;<br>
+Priority Queues;<br>
+HashMap
+</td>
+<td>
+Trade-off (audit effort vs recovery);<br>
+Greedy + DP;<br>
+Precomputing
+</td>
+<td>
+SDG 16 – Peace, Justice & Strong Institutions;<br>
+SDG 9 – Industry, Innovation & Infrastructure
+</td>
+</tr>
+
+<!-- ================= BANKING ================= -->
+<tr>
+<td>Banking</td>
+<td>
+A. Transaction Stream Monitor & Fraud
+</td>
+<td>
+Sliding-window z-score O(1) per event;<br>
+LSH near-duplicate O(1) avg per hash band;<br>
+KMP for search O(n+m);<br>
+Graph DFS/BFS O(V+E)
+</td>
+<td>
+HashMap;<br>
+Bloom Filter;<br>
+Skip List for ledger indexing O(log n);<br>
+LSH tables
+</td>
+<td>
+Pattern Recognition;<br>
+Precomputing;<br>
+Sliding Window;<br>
+Invariants
+</td>
+<td>
+SDG 8 – Decent Work & Economic Growth;<br>
+SDG 9 – Industry, Innovation & Infrastructure;<br>
+SDG 16 – Peace, Justice & Strong Institutions
+</td>
+</tr>
+
+</tbody>
+</table>
+</div>
 
 </div>
 
