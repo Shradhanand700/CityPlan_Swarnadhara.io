@@ -35,6 +35,48 @@ body{
     background:#0b0b0f;
 }
 /* ===== Sidebar ===== */
+/* ===== Sidebar ===== */
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:260px;
+    height:100vh;
+    background:#0f0f16;
+    padding:20px;
+    z-index:1000;
+}
+
+/* ===== Main Content Wrapper ===== */
+.main-content{
+    margin-left:260px;      /* SAME AS SIDEBAR WIDTH */
+    padding:40px;
+}
+
+/* ===== Image Grid ===== */
+.image-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+    margin-top:30px;
+}
+
+.image-box{
+    background:#12121a;
+    border-radius:16px;
+    padding:20px;
+    text-align:center;
+}
+
+.image-box img{
+    width:100%;
+    max-height:280px;
+    object-fit:contain;
+    border-radius:12px;
+    margin-bottom:15px;
+    background:#0b0b0f;
+}
+
 .sidebar{
     position:fixed;
     top:0; left:0;
@@ -277,19 +319,30 @@ struct SkipNode{
 </div>
 
 </div>
-<div class="card">
-    <h2>System Visualization & Output</h2>
-    <p>
-        Visual outputs and internal working diagrams of the Crime Prevention system.
-    </p>
+<!-- Sidebar -->
+<div class="sidebar">
+    <!-- sidebar buttons -->
+</div>
 
-    <div class="image-grid">
-        <div class="image-box">
-            <img src="images/cctv_graph.png" alt="CCTV Network Graph">
-            <h3>CCTV Network Graph</h3>
-            <p>Graph representation of CCTV nodes and weighted connections.</p>
+<!-- Main Content -->
+<div class="main-content">
+
+    <div class="card">
+        <h2>System Visualization & Output</h2>
+        <p>
+            Visual outputs and internal working diagrams of the Crime Prevention system.
+        </p>
+
+        <div class="image-grid">
+            <div class="image-box">
+                <img src="images/cctv_graph.png" alt="CCTV Network Graph">
+                <h3>CCTV Network Graph</h3>
+                <p>Graph representation of CCTV nodes and weighted connections.</p>
+            </div>
         </div>
     </div>
+
 </div>
+
 </body>
 </html>
