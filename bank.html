@@ -12,7 +12,28 @@ body{
     background:#0b0b0f;
     color:#eaeaea;
 }
+.image-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+    margin-top:30px;
+}
 
+.image-box{
+    background:#12121a;
+    border-radius:16px;
+    padding:20px;
+    text-align:center;
+}
+
+.image-box img{
+    width:100%;
+    max-height:280px;
+    object-fit:contain;
+    border-radius:12px;
+    margin-bottom:15px;
+    background:#0b0b0f;
+}
 /* ===== Sidebar ===== */
 .sidebar{
     position:fixed;
