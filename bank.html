@@ -4,18 +4,114 @@
 <meta charset="UTF-8">
 <title>Module 5 – Smart Banking</title>
 
-
 <style>
 *{box-sizing:border-box}
+
 body{
     margin:0;
     font-family:"Segoe UI",Arial,sans-serif;
     background:#0b0b0f;
     color:#eaeaea;
 }
+
+/* ================= SIDEBAR ================= */
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:260px;
+    height:100vh;
+    background:#111116;
+    padding:25px;
+    overflow-y:auto;
+    z-index:2000; /* VERY IMPORTANT */
+}
+
+.sidebar h2{
+    color:#9ad1ff;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.sidebar a{
+    display:block;
+    padding:12px;
+    margin:10px 0;
+    background:#1a1a22;
+    color:#eaeaea;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+    background:#2b2b38;
+    color:#9ad1ff;
+    font-weight:600;
+}
+
+/* ================= MAIN CONTENT ================= */
+.container{
+    margin-left:260px; /* SAME AS SIDEBAR WIDTH */
+    padding:40px;
+    max-width:1200px;
+}
+
+.card{
+    background:#15151d;
+    padding:28px;
+    border-radius:14px;
+    margin-bottom:35px;
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
+
+h1{color:#9ad1ff}
+h2{color:#cfcfcf}
+h3{color:#a8a8a8}
+p{line-height:1.8}
+
+.line{
+    background:#1f1f2a;
+    padding:12px;
+    border-radius:8px;
+    margin:10px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,td{
+    padding:12px;
+    border:1px solid #333;
+}
+
+th{
+    background:#1f1f2a;
+    color:#9ad1ff;
+}
+
+td{
+    background:#14141b;
+}
+
+pre{
+    background:#0d0d12;
+    color:#d6d6d6;
+    padding:22px;
+    border-radius:12px;
+    font-size:13px;
+    line-height:1.7;
+    max-height:70vh;
+    overflow:auto;
+}
+
+/* ================= IMAGE GRID ================= */
 .image-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
     gap:32px;
     margin-top:30px;
 }
@@ -36,283 +132,81 @@ body{
     background:#0b0b0f;
 }
 
-
-/* Sidebar */
-.sidebar{
-    position:fixed;
-    top:0; left:0;
-    width:260px; height:100vh;
-    background:#111116;
-    padding:25px;
-    overflow-y:auto;
-}
-.sidebar h2{
-    color:#9ad1ff;
-    text-align:center;
-}
-.sidebar a{
-    display:block;
-    padding:12px;
-    margin:10px 0;
-    background:#1a1a22;
-    color:#eaeaea;
-    border-radius:8px;
-    text-decoration:none;
-}
-.sidebar a:hover,.sidebar a.active{
-    background:#2b2b38;
-    color:#9ad1ff;
-    font-weight:600;
-}
-
-/* Main */
-.container{
-    margin-left:280px;
-    padding:40px;
-    max-width:1200px;
-}
-.card{
-    background:#15151d;
-    padding:28px;
-    border-radius:14px;
-    margin-bottom:35px;
-    box-shadow:0 0 20px rgba(0,0,0,0.6);
-}
-h1{color:#9ad1ff}
-h2{color:#cfcfcf}
-h3{color:#a8a8a8}
-p{line-height:1.8}
-
-.line{
-    background:#1f1f2a;
-    padding:12px;
-    border-radius:8px;
-    margin:10px 0;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:15px;
-}
-th,td{
-    padding:12px;
-    border:1px solid #333;
-}
-th{background:#1f1f2a;color:#9ad1ff}
-td{background:#14141b}
-
-pre{
-    background:#0d0d12;
-    color:#d6d6d6;
-    padding:22px;
-    border-radius:12px;
-    font-size:13px;
-    line-height:1.7;
-    max-height:70vh;
-    overflow:auto;
-    white-space:pre;
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+    }
+    .container{
+        margin-left:0;
+    }
+    .image-grid{
+        grid-template-columns:1fr;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Sidebar -->
+<!-- ================= SIDEBAR ================= -->
 <div class="sidebar">
     <h2>Modules</h2>
     <a href="shradhanand.html">🏥 Health Care</a>
     <a href="crime.html" class="active">🚓 Crime Prevention</a>
-    <a href="tourism.html">Tourism</a>
-    <a href="tax.html">Fraud detection in Tax</a>
-    <a href="bank.html">Bank Management</a>
+    <a href="tourism.html">🌍 Tourism</a>
+    <a href="tax.html">💰 Fraud Detection in Tax</a>
+    <a href="bank.html">🏦 Bank Management</a>
 </div>
 
-
-<!-- ===== Main Content ===== -->
+<!-- ================= MAIN CONTENT ================= -->
 <div class="container">
 
 <h1>Module 5 – Smart Banking System</h1>
 
-<!-- ================================================= -->
 <div class="card">
 <h2>A. Transaction Stream Monitoring & Fraud Detection</h2>
-
 <p>
 Processes live banking transactions to detect abnormal behavior, duplicate
 patterns, and suspicious account connectivity.
 </p>
-
-<h3>How the Code Works</h3>
-<div class="line">
-A sliding-window z-score detects unusually large transactions.  
-Bloom filters reject duplicate transaction IDs efficiently.  
-Graph traversal (BFS/DFS) explores suspicious money-flow networks.
 </div>
-
-<h3>Efficiency Analysis</h3>
-<table>
-<tr><th>Technique</th><th>Time Complexity</th><th>Space</th></tr>
-<tr><td>Sliding Window Z-Score</td><td>O(1) amortized</td><td>O(W)</td></tr>
-<tr><td>Bloom Filter</td><td>O(k)</td><td>Sublinear</td></tr>
-<tr><td>Graph BFS / DFS</td><td>O(V + E)</td><td>O(V + E)</td></tr>
-</table>
-</div>
-
-<!-- ================================================= -->
-<div class="card">
-<h2>B. Credit Scoring Engine</h2>
-
-<p>
-Evaluates customer creditworthiness using income, age, and repayment history.
-</p>
-
-<h3>How the Code Works</h3>
-<div class="line">
-A dynamic-programming knapsack model selects optimal financial features.
-Greedy ranking provides fast approximations. Trie and hash maps allow fast
-feature lookup. A logistic-style scoring stub demonstrates learning-based logic.
-</div>
-
-<h3>Efficiency Analysis</h3>
-<table>
-<tr><th>Method</th><th>Time</th><th>Space</th></tr>
-<tr><td>DP (Knapsack)</td><td>O(n × budget)</td><td>O(budget)</td></tr>
-<tr><td>Greedy Ranking</td><td>O(n log n)</td><td>O(n)</td></tr>
-<tr><td>Trie Lookup</td><td>O(L)</td><td>O(ΣL)</td></tr>
-</table>
-</div>
-
-<!-- ================================================= -->
-<div class="card">
-<h2>C. Ledger Management & Fast Lookup</h2>
-
-<p>
-Maintains ordered transaction history with ultra-fast lookup capabilities.
-</p>
-
-<h3>How the Code Works</h3>
-<div class="line">
-Skip Lists maintain ordered ledger entries with probabilistic guarantees.
-std::map ensures strict log-time ordering. unordered_map allows constant-time
-transaction ID lookups.
-</div>
-
-<h3>Efficiency Analysis</h3>
-<table>
-<tr><th>Structure</th><th>Time</th><th>Space</th></tr>
-<tr><td>Skip List</td><td>Avg O(log n)</td><td>O(n)</td></tr>
-<tr><td>std::map</td><td>O(log n)</td><td>O(n)</td></tr>
-<tr><td>unordered_map</td><td>O(1) avg</td><td>O(n)</td></tr>
-</table>
-</div>
-
-<!-- ================================================= -->
-<div class="card">
-<h2>Integrated C++ Core Logic (Excerpt)</h2>
-
-<pre>
-// ================= SLIDING WINDOW Z-SCORE =================
-struct SlidingZ{
-    int W; deque&lt;double&gt; q;
-    double sum=0, sumsq=0;
-    SlidingZ(int w):W(w){}
-    pair&lt;bool,double&gt; push(double x,double k){
-        q.push_back(x); sum+=x; sumsq+=x*x;
-        if(q.size()&gt;W){
-            double o=q.front(); q.pop_front();
-            sum-=o; sumsq-=o*o;
-        }
-        if(q.size()&lt;10) return {false,0};
-        double mean=sum/q.size();
-        double var=sumsq/q.size()-mean*mean;
-        double sd=sqrt(max(0.0,var));
-        double z = sd&gt;0 ? (x-mean)/sd : 0;
-        return {z&gt;k,z};
-    }
-};
-
-// ================= SKIP LIST NODE =================
-struct SkipNode{
-    long long key; string value;
-    vector&lt;SkipNode*&gt; next;
-    SkipNode(long long k,string v,int lvl)
-        :key(k),value(v),next(lvl,nullptr){}
-};
-</pre>
-
-</div>
-
-<!-- ================================================= -->
-<div class="card">
-<h2>📁 JSON Data Inputs</h2>
-
-<h3>transactions.json</h3>
-<pre>
-{
-  "transactions": [
-    { "txid": 1, "sender": 101, "amount": 520.75 },
-    { "txid": 2, "sender": 102, "amount": 510.20 },
-    { "txid": 3, "sender": 101, "amount": 9800.00 },
-    { "txid": 4, "sender": 103, "amount": 545.10 }
-  ]
-}
-</pre>
-
-<h3>customers.json</h3>
-<pre>
-{
-  "customers": [
-    { "id": 1, "income": 60000, "age": 35, "credit_score": 720 },
-    { "id": 2, "income": 35000, "age": 28, "credit_score": 640 },
-    { "id": 3, "income": 95000, "age": 42, "credit_score": 810 }
-  ]
-}
-</pre>
-    
-</div>
-
-</div>
-<!-- Sidebar -->
-<div class="sidebar">
-    <!-- sidebar buttons -->
-</div>
-
 
 <div class="card">
-    <h2>System Visualization & Output</h2>
-    <p>
-        Visual outputs and internal working diagrams of the Crime Prevention system.
-    </p>
+<h2>System Visualization & Output</h2>
+<p>Visual outputs and internal working diagrams of the Crime Prevention system.</p>
 
-    <div class="image-grid">
+<div class="image-grid">
 
-        <div class="image-box">
-            <img src="images/cctv_graph.png" alt="CCTV Network Graph">
-            <h3>CCTV Network Graph</h3>
-            <p>Graph representation of CCTV nodes and weighted connections.</p>
-        </div>
-
-        <div class="image-box">
-            <img src="images/mst_output.png" alt="Minimum Spanning Tree">
-            <h3>Minimum Spanning Tree</h3>
-            <p>Optimized CCTV network generated using Kruskal’s algorithm.</p>
-        </div>
-
-        <div class="image-box">
-            <img src="images/trie_search.png" alt="Trie Based Search">
-            <h3>Trie-Based Identity Search</h3>
-            <p>Fast lookup of suspect names using Trie data structure.</p>
-        </div>
-
-        <div class="image-box">
-            <img src="images/log_detection.png" alt="Suspicious Log Detection">
-            <h3>Suspicious Log Detection</h3>
-            <p>Log scanning and pattern matching for crime detection.</p>
-        </div>
-
-    </div>
+<div class="image-box">
+<img src="images/cctv_graph.png" alt="CCTV Network Graph">
+<h3>CCTV Network Graph</h3>
+<p>Graph representation of CCTV nodes and weighted connections.</p>
 </div>
 
+<div class="image-box">
+<img src="images/mst_output.png" alt="Minimum Spanning Tree">
+<h3>Minimum Spanning Tree</h3>
+<p>Optimized CCTV network generated using Kruskal’s algorithm.</p>
+</div>
+
+<div class="image-box">
+<img src="images/trie_search.png" alt="Trie Search">
+<h3>Trie-Based Identity Search</h3>
+<p>Fast lookup of suspect names using Trie data structure.</p>
+</div>
+
+<div class="image-box">
+<img src="images/log_detection.png" alt="Log Detection">
+<h3>Suspicious Log Detection</h3>
+<p>Log scanning and pattern matching for crime detection.</p>
+</div>
+
+</div>
+</div>
+
+</div>
 </body>
 </html>
